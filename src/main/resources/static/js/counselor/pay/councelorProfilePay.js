@@ -1,7 +1,7 @@
 // JavaScript 함수를 정의하여 페이지 이동을 처리
 function reservation() {
     // 페이지 이동을 원하는 URL로 변경
-    window.location.href = '../html/bookingDetails.html'; // 이동하려는 URL을 여기에 입력
+    window.location.href = '/src/main/resources/templates/counselor/book/bookingDetails.html'; // 이동하려는 URL을 여기에 입력
 }
 
 //강사님의 js입니다. 
