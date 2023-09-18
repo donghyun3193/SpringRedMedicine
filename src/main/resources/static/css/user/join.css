@@ -326,6 +326,21 @@
     font-size: 18px;
     font-weight: bold;
   }
+  .main-c-s-d1{
+    width: 95%;
+    height: 60px;
+    display: flex;
+    position: relative;
+  }
+  .main-time{
+    position: absolute;
+    right: 81px;
+    top: -10px;
+  
+    font-size: 20px;
+    color: #000;
+    /* color:rgb(194, 200, 204);; */
+  }
 .input-name{
   height: 20px;
   width: 100%;
