@@ -1,0 +1,530 @@
+/*공통으로 사용된는 CSS*/
+@font-face {
+    font-family: 'TAEBAEKmilkyway';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/TAEBAEKmilkyway.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'SUITE-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/SUITE-Regular.woff2') format('woff2');
+    font-weight: 600;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'iceJaram-Rg';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/iceJaram-Rg.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+/*공통으로 사용되는 CSS 종료*/
+
+/*===헤더가 시작되는 CSS===*/
+.header{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    /* height: 120px; */
+    /* background-color: antiquewhite; */
+  
+    border-bottom: 1px solid #f1f1f1;
+  }
+  .header-container{
+    width: 1200px;
+    height: 120px;
+    /* margin: 0 auto; */
+    display: flex;
+    justify-content: space-between;
+    /* background-color: yellow; */
+  }
+  .header-nav1{
+    font-family: 'SUITE-Regular';
+    font-size: 18px;
+    width: 850px;
+    height: 120px;
+    display: flex;
+    /* align-items: center; */
+    margin: 0 10px 0 20px;
+    /* background-color: pink; */
+  }
+  
+  .logo{
+    width: 100px;
+    height: 120px;
+    margin: 0 10px;
+    display: flex;
+    align-items: flex-end;
+  }
+  .logo img{
+    width: 100px;
+    height: 100px;
+  }
+  .nav1{
+    width: 650px;
+    height: 90px;
+    /* background-color: aqua; */
+    margin: 0 20px ;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+  }
+  .nav1 ul{
+    display: flex;
+    list-style: none;
+    /* align-items: flex-end; */
+    /* background-color: yellow; */
+  }
+  .nav1 ul li{
+    margin: 0 10px;
+  }
+  .header-nav2{
+    width: 180px;
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    font-family: 'SUITE-Regular';
+    font-size: 18px;
+    /* align-items: center; */
+    /* margin: 0 10px; */
+    /* background-color: blueviolet; */
+  }
+  .nav2-box{
+    width: 180px;
+    height: 90px;
+    /* background-color: green; */
+    display: flex;
+    align-items: flex-end;
+  }
+  .header-nav2 ul{
+    display: flex;
+    list-style: none;
+    font-family: 'SUITE-Regular';
+    /* background-color: red; */
+  }
+  .header-nav2 ul li{
+    display: flex;
+    margin: 0 10px;
+    /* background-color: antiquewhite; */
+  }
+/*===헤더가 종료되는 CSS===*/
+
+/*===footer가 시작되는 CSS===*/
+.footer{
+    width: 100vw;
+    height: 130px;
+    background-color: rgb(243, 241, 241);
+    font-family: 'SUITE-Regular';
+    color: rgb(169, 168, 168);
+}
+.footer-container1{
+    margin: 0 auto;
+    width: 100%;
+    height: 90px;
+    border-bottom: 0.5px solid rgb(200, 199, 199);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container1-content{
+    margin: 5px 0;
+    /* background-color: pink; */
+    text-align: center;
+}
+.container1-content p{
+    margin-bottom: 3px;
+}
+.footer-container2{
+    margin: 0 auto;
+    width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+}
+.footer-container2 p {
+    margin: 8px 0;
+}
+.container2-01{
+    display: flex;
+}
+.container2-01-content{
+    margin: 8px 10px;
+}
+.container2-01-content>a{
+  color: rgb(169, 168, 168);
+}
+/*===footer가 종료되는 CSS===*/
+
+/* 서브 메인 나브바  */
+.main-nav-container{
+  width: 100%;
+  height: 30px;
+  background-color: rgb(249, 147, 37);
+  
+  display: flex;
+  justify-content: center;
+  
+  }
+  
+  .main-nav-container ul{
+  list-style: none;
+  display: flex;
+  margin: 0 400px;
+  line-height: 30px;
+  margin-left: -260px;
+  }
+  .main-nav-container ul li{
+  font-size: 14px;
+  margin: 0 10px;
+  text-align: center;
+  /* font-weight: bold; */
+  }
+  #main-nav-button{
+  color: white;
+  }
+  #nav-title{
+  margin: 20px 20px;
+  font-size: 23px;
+  padding: 20px 0;
+  font-weight: bold;
+  }
+  .main-nav-container5 ul li :hover{
+    border-bottom: 4px solid white;
+    padding-bottom: 5px;
+    font-weight: bold;
+    
+  }
+  /*  */
+
+/* ===councelorProfile 시작합니다.=== */
+.profile{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.profile-container{
+    margin-top: 80px;
+    width: 800px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 100px;
+}
+.profile-img{
+    width: 600px;
+    height: 340px;
+    /* border-radius: 5px; */
+}
+.profile-namebox{
+    width: 600px;
+    height: 90px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.profile-name{
+    width: 135px;
+    height: 35px;
+    display: flex;
+}
+.profile-button{
+  width: 72px;
+  height: 35px;
+  background-color: orange;
+  color: white;
+  font-weight: bold;
+  font-size: 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.profile-careerbox{
+    width: 600px;
+    height: 110px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-top: 1px solid #c0c0c0;
+    border-bottom: 1px solid #c0c0c0;
+}
+.profile-super,
+.profile-career{
+    width: 145px;
+    height: 90px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.profile-career{
+    border-left: 1px solid #c0c0c0;
+    border-right: 1px solid #c0c0c0;
+}
+.profile-price{
+    width: 195px;
+    height: 90px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.profile-sessionbox{
+    width: 600px;
+    height: 40px;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+.session{
+    border: none;
+    color: rgb(75, 75, 255);
+    background-color: white;
+    cursor: pointer;
+}
+.councel-target{
+    width: 600px;
+    height: 70px;
+    display: block;
+}
+.councel-area{
+    width: 600px;
+    height: 140px;
+    display: block;
+}
+.councel-total{
+    width: 600px;
+    height: auto;
+    display: block;
+}
+/* 강사님의 리플입니다. */
+/* ======== 리플 스타일 ======= */
+
+/* 댓글 작성 스타일 */
+.reply-wrap {
+    margin: 20px 0;
+}
+
+.reply-wrap__box {
+    margin: 20px 0;
+    border: 1px solid #ccc;
+}
+
+.reply-content__box {
+    border-bottom: 1px solid #ccc;
+    padding: 20px;
+}
+
+#reply-content {
+    margin: 10px 0;
+    width: 535px;
+    resize: none;
+    border: none;
+    background-color: #f7f7f7;
+    height: 80px;
+    padding: 10px;
+}
+
+.reply-writer {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.reply-btn-wrap {
+    text-align: right;
+}
+
+.btn-reply {
+    font-size: 12px;
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    border: 1px solid rgb(8, 20, 73);
+    padding: 7px;
+    cursor: pointer;
+    height: 40px;
+    background-color: rgb(8, 20, 73);
+}
+
+.btn-reply:hover {
+    background-color: rgb(8, 20, 73);
+}
+
+/* 댓글 목록 스타일 */
+.reply {
+    margin: 40px 0;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    justify-content: space-between;
+}
+
+.reply-box {
+    width: 95%;
+}
+
+.reply-box__writer {
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.reply-box__content {
+    margin-bottom: 20px;
+    padding-left: 5px;
+}
+
+.reply-btns {
+    background-image: linear-gradient(transparent, transparent), url(https://ssl.pstatic.net/static/comic/comment_new/sp_comment.svg);
+    display: inline-block;
+    overflow: hidden;
+    font-size: 0;
+    line-height: 0;
+    vertical-align: top;
+    background-position: -320px -96px;
+    background-repeat: no-repeat;
+    width: 10px;
+    height: 15px;
+    margin: 7px 0 0 13px;
+    cursor: pointer;
+}
+
+.reply-btn-box {
+    position: relative;
+}
+
+.reply-btns__box {
+    border: 1px solid #888;
+    border-radius: 5px;
+    width: 80px;
+    position: absolute;
+    top: 30px;
+    right: 0;
+    background-color: #f7f7f7;
+}
+
+.reply-btns__box > div {
+    text-align: center;
+    height: 40px;
+    line-height: 40px;
+    cursor: pointer;
+}
+
+.reply-remove-btn {
+    border-bottom: 1px solid #888;
+}
+
+.none {
+    display: none;
+}
+
+/* 추가추가! */
+
+/* 강사님의 리플입니다. */
+
+/* 모달창 Css 입니다. */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+  
+  .modal-content {
+    background-color: white;
+    margin: 15% auto;
+    padding: 20px;
+    border-radius: 5px;
+    width: 70%;
+    max-width: 550px;
+    height: 180px;
+    text-align: center;
+    position: relative;
+  }
+  
+  .close {
+    position: absolute;
+    width: 100px;
+    height: 30px;
+    top: 170px;
+    right: 20px;
+    font-size: 20px;
+    font-weight: 400;
+    cursor: pointer;
+    background-color: rgb(255, 198, 93);
+    border-radius: 5px;
+  }
+  .close:hover{
+    position: absolute;
+    width: 100px;
+    height: 30px;
+    top: 170px;
+    right: 20px;
+    font-size: 20px;
+    font-weight: 400;
+    cursor: pointer;
+    background-color: orange;
+    border-radius: 5px;
+  }
+/*자꾸 모다창이 인식을 못하여 2개로 나눴다*/
+.sModal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+  
+  .sModal-content {
+    background-color: white;
+    margin: 15% auto;
+    padding: 20px;
+    border-radius: 5px;
+    width: 70%;
+    max-width: 550px;
+    height: 180px;
+    text-align: center;
+    position: relative;
+  }
+  
+  .sModal-close {
+    position: absolute;
+    width: 100px;
+    height: 30px;
+    top: 170px;
+    right: 20px;
+    font-size: 20px;
+    font-weight: 400;
+    cursor: pointer;
+    background-color: rgb(255, 198, 93);
+    border-radius: 5px;
+
+  }
+  .sModal-close:hover{
+    position: absolute;
+    width: 100px;
+    height: 30px;
+    top: 170px;
+    right: 20px;
+    font-size: 20px;
+    font-weight: 400;
+    cursor: pointer;
+    background-color: orange;
+    border-radius: 5px;
+  }
+
+/* 모달창 종료 */

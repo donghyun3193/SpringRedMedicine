@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원관리</title>
+    <link rel="stylesheet" href="/css/counselorBook.css">
+    <script defer src="/js/counselorBook.js"></script>
+</head>
+<body>
+
+    <div class="header">
+        <div class="header-container">
+            <div class="header-nav1">
+                <div class="logo"><a href="/html/index.html"><img src="/img/logo.png" alt=""></a></div>
+                <div class="nav1">
+                    <ul>
+                        <li><a href="">힐링음악</a></li>
+                        <li><a href="/html/notice.html">커뮤니티</a></li>
+                        <li><a href="/html/diagnosis.html">자가진단테스트</a></li>
+                        <li><a href="">비대면상담받기</a></li>
+                        <li><a href="/html/index.html">일반회원등록</a></li>
+                        <li><a href="/html/map.html">상담센터찾기</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="header-nav2">
+                <div class="nav2-box">
+                    <ul>
+                        <li><a href="">로그인</a></li>
+                        <li><a href="">회원가입</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-nav-container5">
+        <ul>
+            <!-- <li><a href="/html/diagnosis.html" id="main-nav-button">우울증</a></li>
+            <li><a href="/html/bipolarDisorder.html" id="main-nav-button">조울증</a></li>
+            <li><a href="/html/anxiety.html" id="main-nav-button">불안증</a></li>
+            <li><a href="/html/stress.html" id="main-nav-button">스트레스</a></li> -->
+        </ul>
+</div>
+
+    <div class="main-container">
+
+        <div class="main-content">
+            <!-- <img class="main-content-title img" src="/img/master.jpg" alt=""> -->
+                <div class="main-content-title">상담 예약 관리
+
+                </div>
+                
+                <div class="main-content-list">
+
+
+                <div class="content-search">
+                    <div class="search-1">
+                        
+                    <div class="main-box3-searchbox">
+                        <span class="search-s">※ 검 색  : </span>
+                        <select name="search-target" id="">
+                            <option value="title">이름</option>
+                            <option value="content">상담날짜</option>
+                            <option value="content">상담시간</option>
+                            
+                        </select>
+                        <input type="text">
+                        <button class="">검 색</button>
+                    </div>
+
+                    </div>
+                </div>
+
+
+                  <table>
+                    <th>번호</th>
+                    <th>이름</th>
+                    <th>상담날짜</th>
+                    <th>상담시간</th>
+                    <th>취소처리</th>
+                    <th>완료처리</th>
+                    <tr>
+                        <td>1</td>
+<!-- 모달 창 들어 가는 부분  -->
+<div class="modal">
+<div class="modal_body">
+<strong style="font-size: 30px; ">
+김레인
+</strong>
+<br><br><br>
+<hr>      
+<br><br>              
+
+  <span class="modal_span">
+  <span style="font-size: 20px;">휴대폰 번호 : 010-2349-1463</span>
+  <br>
+  <br>
+
+  <span style="font-size: 20px;">이메일 : spring@naver.com</span>
+  <br>
+  <br>
+  <br><hr><br><br>
+  <strong style="font-size: 20px;">
+    상담내용
+    </strong>
+  <br><br><br>
+  <span style="font-size: 20px;">"저는 우울하고 기운이 없어서 상담을 받고 싶습니다. 
+  <br>
+제 기분이 좋지 않고, 어떤 도움이 필요하다고 느껴집니다."</span>
+
+<br><br><br><br><br><br><br><br><br>
+  <hr>
+</span>
+</div>
+</div>
+<!-- 모달 창 들어 가는 부분 끝 -->
+                        <td> <button class="btn-open-popup">김레인</button></td>
+                        <td>2023-09-16</td>
+                        <td>13:00~14:00</td>
+                        <td>
+                          <input class="td-nobutton" type="submit" value="상담취소" onclick="call_confirm1()"></input>
+                       </td>
+                        <td>
+                            <input class="td-okbutton" type="submit" value="상담완료" onclick="call_confirm2()"></input>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td> <button class="btn-open-popup">머라이어케리</button></td>
+                        <td>2023-06-11</td>
+                        <td>14:00~15:00</td>
+                        <td>
+                          <input class="td-nobutton" type="submit" value="상담취소"></input>
+                       </td>
+                        <td>
+                            <input class="td-okbutton" type="submit" value="상담완료"></input>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td> <button class="btn-open-popup">호날두</button></td>
+                        <td>2023-05-12</td>
+                        <td>18:00~19:00</td>
+                        <td>
+                          <input class="td-nobutton" type="submit" value="상담취소"></input>
+                       </td>
+                        <td>
+                            <input class="td-okbutton" type="submit" value="상담완료"></input>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td> <button class="btn-open-popup">메시</button></td>
+                        <td>2023-05-11</td>
+                        <td>11:00~12:00</td>
+                        <td>
+                          <input class="td-nobutton" type="submit" value="상담취소"></input>
+                       </td>
+                        <td>
+                            <input class="td-okbutton" type="submit" value="상담완료"></input>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td> <button class="btn-open-popup">탁재훈</button></td>
+                        <td>2023-02-09</td>
+                        <td>16:00~17:00</td>
+                        <td>
+                          <input class="td-nobutton" type="submit" value="상담취소"></input>
+                       </td>
+                        <td>
+                            <input class="td-okbutton" type="submit" value="상담완료"></input>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td> <button class="btn-open-popup">신정환</button></td>
+                        <td>2023-01-23</td>
+                        <td>11:00~12:00</td>
+                        <td>
+                          <input class="td-nobutton" type="submit" value="상담취소"></input>
+                       </td>
+                        <td>
+                            <input class="td-okbutton" type="submit" value="상담완료"></input>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td> <button class="btn-open-popup">페이커</button></td>
+                        <td>2022-12-18</td>
+                        <td>14:00~15:00</td>
+                        <td>
+                          <input class="td-nobutton" type="submit" value="상담취소"></input>
+                       </td>
+                        <td>
+                            <input class="td-okbutton" type="submit" value="상담완료"></input>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td> <button class="btn-open-popup">하리수</button></td>
+                        <td>2022-11-13</td>
+                        <td>15:00~16:00</td>
+                        <td>
+                          <input class="td-nobutton" type="submit" value="상담취소"></input>
+                       </td>
+                        <td>
+                            <input class="td-okbutton" type="submit" value="상담완료"></input>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td> <button class="btn-open-popup">성시경</button></td>
+                        <td>2022-06-03</td>
+                        <td>11:00~12:00</td>
+                        <td>
+                          <input class="td-nobutton" type="submit" value="상담취소"></input>
+                       </td>
+                        <td>
+                            <input class="td-okbutton" type="submit" value="상담완료"></input>
+                        </td>
+                    </tr>
+                    <tr>
+                      <td>10</td>
+                      <td> <button class="btn-open-popup">유재석</button></td>
+                      <td>2022-01-23</td>
+                      <td>16:00~17:00</td>
+                      <td>
+                        <input class="td-nobutton" type="submit" value="상담취소"></input>
+                     </td>
+                      <td>
+                          <input class="td-okbutton" type="submit" value="상담완료"></input>
+                      </td>
+                  </tr>
+                </table>
+
+                </div>
+
+                <div class="paging-container">
+                  <ul>
+                      <li><a href="">&lt; 이전</a></li>
+                      <li><a href="">1</a></li>
+                      <li><a href="">2</a></li>
+                      <li><a href="">3</a></li>
+                      <li><a href="">다음 &gt;</a></li>
+                  </ul>
+              </div>
+
+
+            
+        </div>
+    </div>
+
+
+<div class="footer">
+    <div class="footer-container1">
+        <div class="container1-content">
+            <p>(주)MGMG(빨간약)</p>
+            <p>노의진(팀장) 이지윤(부팀장) 이동현 유대훈</p>
+            <p>서울특별시 노원구 상계로1길 34 5층</p>
+        </div>
+    </div>
+    <div class="footer-container2">
+        <p>ⓒ MGMG All Rights Reserved.</p>
+        <div class="container2-01">
+            <div class="container2-01-content"><a href="">문의하기</a></div>
+            <div class="container2-01-content"><a href="">이용약관</a></div>
+            <div class="container2-01-content"><a href="">개인정보처리방침</a></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

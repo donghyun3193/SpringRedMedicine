@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>비밀번호 찾기</title>
+    <link rel="stylesheet" href="/css/findPw.css">
+    <script defer src="/js/findPw.js"></script>
+    <link rel="icon" href="/img/favicon.ico" type="image/x-icosn" sizes="16x16">
+</head>
+<body>
+    <div class="header">
+        <div class="header-container">
+            <div class="header-nav1">
+                <div class="logo"><a href="/html/index.html"><img src="/img/logo.png" alt=""></a></div>
+                <div class="nav1">
+                    <ul>
+                        <li><a href="">힐링음악</a></li>
+                        <li><a href="/html/notice.html">커뮤니티</a></li>
+                        <li><a href="/html/diagnosis.html">자가진단테스트</a></li>
+                        <li><a href="">비대면상담받기</a></li>
+                        <li><a href="/html/index.html">상담사등록</a></li>
+                        <li><a href="/html/map.html">상담센터찾기</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="header-nav2">
+                <div class="nav2-box">
+                    <ul>
+                        <li><a href="">로그인</a></li>
+                        <li><a href="">회원가입</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="main-nav-container5">
+        <ul>
+            <!-- <li><a href="/html/diagnosis.html" id="main-nav-button">우울증</a></li>
+            <li><a href="/html/bipolarDisorder.html" id="main-nav-button">조울증</a></li>
+            <li><a href="/html/anxiety.html" id="main-nav-button">불안증</a></li>
+            <li><a href="/html/stress.html" id="main-nav-button">스트레스</a></li> -->
+        </ul>
+</div>
+    <div class="main-container">
+
+        <div class="main-content">
+            <div class="main-content-contaniner">
+                <div class="main-content-title">비밀번호 찾기</div>
+                <div class="main-content-list">
+                  <div class="content-box">
+                      <div class="findid">
+                        <a class="findida" href="/html/findId.html">아이디 찾기</a>
+                      </div>
+                      <div class="findpw">
+                        <a class="findpwa" href="/html/findPw.html">비밀번호 찾기</a>
+                      </div>
+
+                      <div class="div1">
+                        <input class="inputnumber" type="phonenumber" placeholder="휴대폰 번호" >
+                      </div>
+                      <div>
+                        <input class="main-b1" name="numberAuth" type="submit" value="휴대폰 인증 문자 전송" onclick="checkInput()">
+                      </div>
+
+                      <div class="main-c-s-d1">
+                        <input type="text" name="number" placeholder="인증번호" value class="main-label1-input2">
+                        <div class="main-time" id="time"></div>
+                        <button class="main-b3" >확 인</button>
+                      </div>
+
+                      <div class="inputresult" style="display: none;"><strong>                        해당 휴대폰 번호로 인증번호가 전송 되었습니다!</strong>
+
+                      </div>
+
+                      <hr style="margin-top: 50px; border:1px solid #ffe4cb;">
+
+                      <button class="idfindbutton" >
+                        확 인
+                      </button>
+
+
+                    </div>
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="footer-container1">
+            <div class="container1-content">
+                <p>(주)MGMG(빨간약)</p>
+                <p>노의진(팀장) 이지윤(부팀장) 이동현 유대훈</p>
+                <p>서울특별시 노원구 상계로1길 34 5층</p>
+            </div>
+        </div>
+        <div class="footer-container2">
+            <p>ⓒ MGMG All Rights Reserved.</p>
+            <div class="container2-01">
+                <div class="container2-01-content"><a href="">문의하기</a></div>
+                <div class="container2-01-content"><a href="">이용약관</a></div>
+                <div class="container2-01-content"><a href="">개인정보처리방침</a></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

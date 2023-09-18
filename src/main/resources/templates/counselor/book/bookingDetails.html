@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/bookingDetails.css">
+    <title>bookingDetails</title>
+</head>
+<body>
+<div class="header">
+    <div class="header-container">
+        <div class="header-nav1">
+            <div class="logo"><a href="/html/index.html"><img src="/img/logo.png" alt="로고"></a></div>
+            <div class="nav1">
+                <ul>
+                    <li><a href="/html/music.html">힐링음악</a></li>
+                    <li><a href="/html/notice.html">커뮤니티</a></li>
+                    <li><a href="/html/diagnosis.html">자가진단테스트</a></li>
+                    <li><a href="/html/matemainpay.html">비대면상담받기</a></li>
+                    <li><a href="freeRegistration02.html">상담사등록</a></li>
+                    <li><a href="/html/map.html">상담센터찾기</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="header-nav2">
+            <div class="nav2-box">
+                <ul>
+                    <li><a href="/html/login.html">로그인</a></li>
+                    <li><a href="/html/join.html">회원가입</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 헤더 종료 -->
+<!-- bookingDetails 메인 페이지 시작 -->
+<div class="main-nav-container5">
+    <ul>
+        <!-- <li><a href="/html/diagnosis.html" id="main-nav-button">우울증</a></li>
+        <li><a href="/html/bipolarDisorder.html" id="main-nav-button">조울증</a></li>
+        <li><a href="/html/anxiety.html" id="main-nav-button">불안증</a></li>
+        <li><a href="/html/stress.html" id="main-nav-button">스트레스</a></li> -->
+    </ul>
+</div>
+<main class="booking">
+    <div class="edge">
+        <div class="explanation">
+            <h3>세션 시간 안내사항</h3>
+            <br>
+            <p>세션은 50분 동안 진행됩니다.</p>
+        </div>
+        <div class="time-selectbox">
+            <div class="calender-box">
+                <div class="calender-box-title">
+                    <h2>상담 일시 선택</h2>
+                    <br>
+                    <p>날짜와 시간은 대한민국 서울 시간을 표시합니다.</p>
+                    <div class="calender-titlebox">
+                        <p>날짜 선택</p> 
+                    </div>
+                </div>
+                <!-- 달력이 시작합니다. -->
+                <div class="calender-div">
+                    <table class="Calendar">
+                        <thead>
+                            <tr>
+                                <td onClick="prevCalendar();" style="cursor:pointer;">&#60;</td>
+                                <td colspan="5">
+                                    <span id="calYear"></span>년
+                                    <span id="calMonth"></span>월
+                                </td>
+                                <td onClick="nextCalendar();" style="cursor:pointer;">&#62;</td>
+                            </tr>
+                            <tr>
+                                <td>일</td>
+                                <td>월</td>
+                                <td>화</td>
+                                <td>수</td>
+                                <td>목</td>
+                                <td>금</td>
+                                <td>토</td>
+                            </tr>
+                        </thead>
+            
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- 달력 종료 -->
+            </div>
+            <div><h3>시간 선택</h3></div>
+            <div class="timebox">
+                <div class="btn-time-container"><button class="btn-time" data-time="00:00시">00:00시</button></div>
+                <div class="btn-time-container"><button class="btn-time" data-time="01:00시">01:00시</button></div>
+                <div class="btn-time-container"><button class="btn-time" data-time="02:00시">02:00시</button></div>
+                <div class="btn-time-container"><button class="btn-time" data-time="03:00시">03:00시</button></div>
+                <div class="btn-time-container"><button class="btn-time" data-time="04:00시">04:00시</button></div>
+                <div class="btn-time-container"><button class="btn-time" data-time="05:00시">05:00시</button></div>
+                <div class="btn-time-container"><button class="btn-time" data-time="06:00시">06:00시</button></div>
+                <div class="btn-time-container"><button class="btn-time" data-time="07:00시">07:00시</button></div>
+                <div class="btn-time-container"><button class="btn-time" data-time="08:00시">08:00시</button></div>
+                <div class="btn-time-container"><button class="btn-time" data-time="09:00시">09:00시</button></div>
+                <div class="btn-time-container"><button class="btn-time" data-time="10:00시">10:00시</button></div>
+                <div class="btn-time-container"><button class="btn-time" data-time="11:00시">11:00시</button></div>
+                <div class="btn-time-container"><button class="btn-time" data-time="12:00시">12:00시</button></div>
+                <div class="btn-time-container"><button class="btn-time" data-time="13:00시">13:00시</button></div>
+                <div class="btn-time-container"><button class="btn-time" data-time="14:00시">14:00시</button></div>
+                <div class="btn-time-container"><button class="btn-time" data-time="15:00시">15:00시</button></div>
+                <div class="btn-time-container"><button class="btn-time" data-time="16:00시">16:00시</button></div>
+                <div class="btn-time-container"><button class="btn-time" data-time="17:00시">17:00시</button></div>
+                <div class="btn-time-container"><button class="btn-time" data-time="18:00시">18:00시</button></div>
+                <div class="btn-time-container"><button class="btn-time" data-time="19:00시">19:00시</button></div>
+                <div class="btn-time-container"><button class="btn-time" data-time="20:00시">20:00시</button></div>
+                <div class="btn-time-container"><button class="btn-time" data-time="21:00시">21:00시</button></div>
+                <div class="btn-time-container"><button class="btn-time" data-time="22:00시">22:00시</button></div>
+                <div class="btn-time-container"><button class="btn-time" data-time="23:00시">23:00시</button></div>
+            </div>
+        </div>
+        <div class="btn-nextpage">
+            <a class="nextpage" href="/html/bookingDetails02.html">다음 단계</a>
+        </div>
+    </div>
+</main>
+<!-- bookingDetails 종료 -->
+<!-- 풋터 시작 -->
+<div class="footer">
+    <div class="footer-container1">
+        <div class="container1-content">
+            <p>(주)MGMG(빨간약)</p>
+            <p>노의진(팀장) 이지윤(부팀장) 이동현 유대훈</p>
+            <p>서울특별시 노원구 상계로1길 34 5층</p>
+        </div>
+    </div>
+    <div class="footer-container2">
+        <p>ⓒ MGMG All Rights Reserved.</p>
+        <div class="container2-01">
+            <div class="container2-01-content"><a href="/html/terms.html">이용약관</a></div>
+            <div class="container2-01-content"><a href="/html/privacy.html">개인정보처리방침</a></div>
+        </div>
+    </div>
+</div>
+<!-- 풋터 종료 -->
+<script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+<script src="../js/bookingDetails.js"></script>
+</body>
+</html>

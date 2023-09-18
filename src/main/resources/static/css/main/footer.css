@@ -1,0 +1,63 @@
+@font-face {
+    font-family: 'TAEBAEKmilkyway';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/TAEBAEKmilkyway.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'SUITE-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/SUITE-Regular.woff2') format('woff2');
+    font-weight: 600;
+    font-style: normal;
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+
+/*===footer가 시작되는 CSS===*/
+.footer{
+    width: 100vw;
+    height: 130px;
+    background-color: rgb(243, 241, 241);
+    font-family: 'SUITE-Regular';
+    color: rgb(169, 168, 168);
+}
+.footer-container1{
+    margin: 0 auto;
+    width: 100%;
+    height: 90px;
+    border-bottom: 0.5px solid rgb(200, 199, 199);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container1-content{
+    margin: 5px 0;
+    /* background-color: pink; */
+    text-align: center;
+}
+.container1-content p{
+    margin-bottom: 3px;
+}
+.footer-container2{
+    margin: 0 auto;
+    width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+}
+.footer-container2 p {
+    margin: 8px 0;
+}
+.container2-01{
+    display: flex;
+}
+.container2-01-content{
+    margin: 8px 10px;
+}
+/*===footer가 종료되는 CSS===*/
