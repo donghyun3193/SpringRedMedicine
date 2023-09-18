@@ -22,5 +22,5 @@ submitButton.addEventListener("click", function () {
 
     alert("메인 페이지로 이동합니다.");
     // 페이지 이동을 수행합니다.
-    window.location.href = "/html/index.html"; // 이동할 페이지의 URL로 변경하세요.
+    window.location.href = "/src/main/resources/templates/main/index.html"; // 이동할 페이지의 URL로 변경하세요.
 });
