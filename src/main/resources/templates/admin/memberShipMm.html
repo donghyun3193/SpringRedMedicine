@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원관리</title>
+    <link rel="stylesheet" href="/css/memberShipMm.css">
+    <script defer src="/js/memberShipMm.js"></script>
+</head>
+<body>
+
+    <div class="header">
+        <div class="header-container">
+            <div class="header-nav1">
+                <div class="logo"><a href="/html/index.html"><img src="/img/logo.png" alt=""></a></div>
+                <div class="nav1">
+                    <ul>
+                        <li><a href="">힐링음악</a></li>
+                        <li><a href="/html/notice.html">커뮤니티</a></li>
+                        <li><a href="/html/diagnosis.html">자가진단테스트</a></li>
+                        <li><a href="">비대면상담받기</a></li>
+                        <li><a href="/html/index.html">상담사등록</a></li>
+                        <li><a href="/html/map.html">상담센터찾기</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="header-nav2">
+                <div class="nav2-box">
+                    <ul>
+                        <li><a href="">로그인</a></li>
+                        <li><a href="">회원가입</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-nav-container5">
+        <ul>
+            <!-- <li><a href="/html/diagnosis.html" id="main-nav-button">우울증</a></li>
+            <li><a href="/html/bipolarDisorder.html" id="main-nav-button">조울증</a></li>
+            <li><a href="/html/anxiety.html" id="main-nav-button">불안증</a></li>
+            <li><a href="/html/stress.html" id="main-nav-button">스트레스</a></li> -->
+        </ul>
+</div>
+
+    <div class="main-container">
+
+        <div class="main-content">
+            <!-- <img class="main-content-title img" src="/img/master.jpg" alt=""> -->
+                <div class="main-content-title">회원 정보 관리
+
+                </div>
+                
+                <div class="main-content-list">
+
+
+                <div class="content-search">
+                    <div class="search-1">
+                        
+                    <div class="main-box3-searchbox">
+                        <span class="search-s">※ 검 색  : </span>
+                        <select name="search-target" id="">
+                            <option value="title">이름</option>
+                            <option value="name">상담사</option>
+                            <option value="name">일반회원</option>
+                        </select>
+                        <input type="text">
+                        <button class="">검 색</button>
+                    </div>
+
+                    </div>
+                </div>
+
+
+                  <table>
+                    <th>번호</th>
+                    <th>이메일</th>
+                    <th>이름</th>
+                    <th>가입일</th>
+                    <th>상태</th>
+                    <th>관리</th>
+                    <tr>
+                        <td>1</td>
+                        <td><a href="">asdf@naver.com</a></td>
+                        <td>김레인</td>
+                        <td>2023-09-10</td>
+                        <td>일반회원</td>
+                        <td>
+                            <button class="td-button" type="button" onclick="call_confirm()">탈퇴</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td><a href="">nanana123@gmail.com</a></td>
+                        <td>하리보</td>
+                        <td>2023-09-10</td>
+                        <td>상담사</td>
+                        <td>
+                            <button class="td-button" type="button">탈퇴</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td><a href="">gradle@dreamwize.com</a></td>
+                        <td>김솔라</td>
+                        <td>2023-09-08</td>
+                        <td>일반회원</td>
+                        <td>
+                            <button class="td-button" type="button">탈퇴</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td><a href="">slamdunk@gamil.com</a></td>
+                        <td>서장훈</td>
+                        <td>2023-08-05</td>
+                        <td>일반회원</td>
+                        <td>
+                            <button class="td-button" type="button">탈퇴</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td><a href="">basketball@dreamwize.com</a></td>
+                        <td>하승진</td>
+                        <td>2023-07-18</td>
+                        <td>일반회원</td>
+                        <td>
+                            <button class="td-button" type="button">탈퇴</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td><a href="">JDK11@gmail.com</a></td>
+                        <td>김종국</td>
+                        <td>2023-07-07</td>
+                        <td>일반회원</td>
+                        <td>
+                            <button class="td-button" type="button">탈퇴</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td><a href="">spring@naver.com</a></td>
+                        <td>유재석</td>
+                        <td>2023-06-22</td>
+                        <td>일반회원</td>
+                        <td>
+                            <button class="td-button" type="button">탈퇴</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td><a href="">wrap111@gmail.com</a></td>
+                        <td>신정환</td>
+                        <td>2023-05-04</td>
+                        <td>일반회원</td>
+                        <td>
+                            <button class="td-button" type="button">탈퇴</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td><a href="">samba77@gmail.com</a></td>
+                        <td>성시경</td>
+                        <td>2023-04-08</td>
+                        <td>일반회원</td>
+                        <td>
+                            <button class="td-button" type="button">탈퇴</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td><a href="">kimme123@naver.com</a></td>
+                        <td>신동엽</td>
+                        <td>2022-01-08</td>
+                        <td>상담사</td>
+                        <td>
+                            <button class="td-button" type="button">탈퇴</button>
+                        </td>
+                    </tr>
+    
+                </table>
+
+                </div>
+
+                <div class="paging-container">
+                  <ul>
+                      <li><a href="">&lt; 이전</a></li>
+                      <li><a href="">1</a></li>
+                      <li><a href="">2</a></li>
+                      <li><a href="">3</a></li>
+                      <li><a href="">다음 &gt;</a></li>
+                  </ul>
+              </div>
+
+
+            
+        </div>
+    </div>
+
+
+<div class="footer">
+    <div class="footer-container1">
+        <div class="container1-content">
+            <p>(주)MGMG(빨간약)</p>
+            <p>노의진(팀장) 이지윤(부팀장) 이동현 유대훈</p>
+            <p>서울특별시 노원구 상계로1길 34 5층</p>
+        </div>
+    </div>
+    <div class="footer-container2">
+        <p>ⓒ MGMG All Rights Reserved.</p>
+        <div class="container2-01">
+            <div class="container2-01-content"><a href="">문의하기</a></div>
+            <div class="container2-01-content"><a href="">이용약관</a></div>
+            <div class="container2-01-content"><a href="">개인정보처리방침</a></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

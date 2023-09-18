@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/myDaybook.css">
+    <title>My Daybook</title>
+</head>
+<body>
+<div class="header">
+    <div class="header-container">
+        <div class="header-nav1">
+            <div class="logo"><a href="/html/index.html"><img src="/img/logo.png" alt="로고"></a></div>
+            <div class="nav1">
+                <ul>
+                    <li><a href="/html/music.html">힐링음악</a></li>
+                    <li><a href="/html/notice.html">커뮤니티</a></li>
+                    <li><a href="/html/diagnosis.html">자가진단테스트</a></li>
+                    <li><a href="/html/payMate.html">비대면상담받기</a></li>
+                    <li><a href="/html/freeRegistration.html">상담사등록</a></li>
+                    <li><a href="/html/map.html">상담센터찾기</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="header-nav2">
+            <div class="nav2-box">
+                <ul>
+                    <li><a href="/html/login.html">로그인</a></li>
+                    <li><a href="/html/join.html">회원가입</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    </div>
+<!-- 헤더 종료 -->
+<!-- myDaybook 메인 페이지 시작 -->
+<div class="main-nav-container5">
+    <ul>
+        <!-- <li><a href="/html/diagnosis.html" id="main-nav-button">우울증</a></li>
+        <li><a href="/html/bipolarDisorder.html" id="main-nav-button">조울증</a></li>
+        <li><a href="/html/anxiety.html" id="main-nav-button">불안증</a></li>
+        <li><a href="/html/stress.html" id="main-nav-button">스트레스</a></li> -->
+    </ul>
+</div>
+<main class="daybook">
+    <div class="edge">
+        <div class="img-container">
+            <div class="img-container-title">
+                <h2>일기장</h2>
+                <br>
+                <p>나의 일기장을 관리해 보세요.</p>
+            </div>
+            <div class="img-container-img">
+                <img src="/img/daybook.png" alt="내 글 일기장"
+                style="width: 300px; height: 250px; margin-right: 150px;">
+            </div>
+        </div>
+        <div class="article-container">
+            <div class="article-container-title">
+                <div class="daybook-title">
+                    <h2>나의 일기</h2>
+                </div>
+                <div class="counselor-title">
+                    <a href="/html/myCounselor.html"style="color:#a1a1a1;"><h2>나의 상담록</h2></a>
+                </div>
+            </div>
+            <div class="article-container-community">
+                <div class="main-content-list">
+                    <table>
+                        <th id="main-content-list-title">제목</th>
+                        <th>작성일</th>
+                        <th>공개여부</th>
+                        <tr>
+                            <td><a href="/html/readingDiary.html">오늘의 기록</a></td>
+                            <td>2023-09-09</td>
+                            <td><button id="toggleButton" class="t-btn">공개</button></td>
+                        </tr>
+                        <tr>
+                            <td><a href="/html/readingDiary.html">오늘의 기록</a></td>
+                            <td>2023-09-09</td>
+                            <td><button id="toggleButton">비공개</button></td>
+                        </tr>
+                        <tr>
+                            <td><a href="/html/readingDiary.html">오늘의 기록</a></td>
+                            <td>2023-09-09</td>
+                            <td><button id="toggleButton">비공개</button></td>
+                        </tr>
+                        <tr>
+                            <td><a href="">오늘의 기록</a></td>
+                            <td>2023-09-09</td>
+                            <td><button id="toggleButton">비공개</button></td>
+                        </tr>
+                        <tr>
+                            <td><a href="">오늘의 기록</a></td>
+                            <td>2023-09-09</td>
+                            <td><button id="toggleButton">비공개</button></td>
+                        </tr>
+                        <tr>
+                            <td><a href="">오늘의 기록</a></td>
+                            <td>2023-09-09</td>
+                            <td><button id="toggleButton">공개</button></td>
+                        </tr>
+                    </table>
+                </div>
+                <!-- main-content-list 종료합니다. -->
+                <!-- 페이징 처리가 들어가는 공간입니다. -->
+                <div class="paging-container">
+                    <ul>
+                        <li><a href="">&lt; 이전</a></li>
+                        <li><a href="">1</a></li>
+                        <li><a href="">2</a></li>
+                        <li><a href="">3</a></li>
+                        <li><a href="">4</a></li>
+                        <li><a href="">5</a></li>
+                        <li><a href="">다음 &gt;</a></li>
+                    </ul>
+                </div>
+                <!-- 페이징 처리 완료 -->
+            </div>
+        </div>
+    </div>  
+</main>
+<!-- myDaybook 종료 -->
+<!-- =====풋터 시작===== -->
+<div class="footer">
+    <div class="footer-container1">
+        <div class="container1-content">
+            <p>(주)MGMG(빨간약)</p>
+            <p>노의진(팀장) 이지윤(부팀장) 이동현 유대훈</p>
+            <p>서울특별시 노원구 상계로1길 34 5층</p>
+        </div>
+    </div>
+    <div class="footer-container2">
+        <p>ⓒ MGMG All Rights Reserved.</p>
+        <div class="container2-01">
+            <div class="container2-01-content"><a href="/html/terms.html">이용약관</a></div>
+            <div class="container2-01-content"><a href="/html/privacy.html">개인정보처리방침</a></div>
+        </div>
+    </div>
+</div>
+<!-- =====풋터 종료====== -->
+<script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+<script src="../js/myDaybook.js"></script>
+</body>
+</html>

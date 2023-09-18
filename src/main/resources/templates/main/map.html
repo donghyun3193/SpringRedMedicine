@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>상담센터찾기</title>
+    <link rel="stylesheet" href="/css/map.css">
+    <script defer src ="/js/map.js"></script>
+<link rel="icon" href="/img/favicon.ico" type="image/x-icosn" sizes="16x16">
+</head>
+<body>
+  <div id="wrapper">
+    <div class="header">
+        <div class="header-container">
+            <div class="header-nav1">
+                <div class="logo"><a href="/html/index.html"><img src="/img/logo.png" alt=""></a></div>
+                <div class="nav1">
+                    <ul>
+                        <li><a href="">힐링음악</a></li>
+                        <li><a href="/html/notice.html">커뮤니티</a></li>
+                        <li><a href="/html/diagnosis.html">자가진단테스트</a></li>
+                        <li><a href="">비대면상담받기</a></li>
+                        <li><a href="/html/index.html">상담사등록</a></li>
+                        <li><a href="/html/map.html">상담센터찾기</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="header-nav2">
+                <div class="nav2-box">
+                    <ul>
+                        <li><a href="">로그인</a></li>
+                        <li><a href="">회원가입</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="main-nav-container5">
+        <ul>
+            <!-- <li><a href="/html/map.html" id="main-nav-button">상담센터찾기</a></li> -->
+            <li><a href="/html/bipolarDisorder.html" id="main-nav-button"></a></li>
+            <li><a href="/html/anxiety.html" id="main-nav-button"></a></li>
+            <li><a href="/html/stress.html" id="main-nav-button"></a></li>
+        </ul>
+</div>
+
+        <div class="main-content">
+            <div class="main-content-contaniner">
+
+                <!-- <div class="main-content-title">상담 센터 찾기</div> -->
+
+                <div class="main-content-title">
+                    <div class="title-info">
+                        <div class="main-content-title-text01">상담 센터 찾기</div>
+                        <div class="main-content-title-text02">
+                            
+                        </div>
+                    </div>
+                    <img src="../img/map.png" alt="">
+                </div>
+
+
+
+
+                <div class="main-content-list">
+
+
+                    <div class="main-box3-searchbox">
+
+
+                <div class="container-section2">
+
+                  <form onsubmit="searchPlaces(); return false;">
+                      <img class="search-img" src="/img/glass.png">
+                      <input type="text" value="노원역" id="keyword" size="15" class="main-container-up-section2-searchbox"> 
+                      <button class="main-container-up-section2-button" type="submit" id="map-btn">검색</button>
+                  </form>
+              </div>   
+              <div class="container-section3">
+                  <div>
+                      <div id="menu_wrap" class="bg_white">
+                         <div class="placelist"><ul id="placesList"></ul></div> 
+                          <div id="pagination"></div>
+                      </div>
+                  </div>
+                  <div id="map"></div>
+              </div>
+
+
+                </div>
+
+        
+    </div>
+</div>
+
+
+
+<div class="footer">
+  <div class="footer-container1">
+      <div class="container1-content">
+          <p>(주)MGMG(빨간약)</p>
+          <p>노의진(팀장) 이지윤(부팀장) 이동현 유대훈</p>
+          <p>서울특별시 노원구 상계로1길 34 5층</p>
+      </div>
+  </div>
+  <div class="footer-container2">
+      <p>ⓒ MGMG All Rights Reserved.</p>
+      <div class="container2-01">
+          <div class="container2-01-content"><a href="">문의하기</a></div>
+          <div class="container2-01-content"><a href="">이용약관</a></div>
+          <div class="container2-01-content"><a href="">개인정보처리방침</a></div>
+      </div>
+  </div>
+</div>
+</body>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ae95d73b26d78be40345423aca839fb3&libraries=services"></script>
+</html>

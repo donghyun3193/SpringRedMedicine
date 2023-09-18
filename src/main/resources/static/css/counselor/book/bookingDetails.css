@@ -1,0 +1,391 @@
+/*공통으로 사용된는 CSS*/
+@font-face {
+    font-family: 'TAEBAEKmilkyway';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/TAEBAEKmilkyway.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'SUITE-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/SUITE-Regular.woff2') format('woff2');
+    font-weight: 600;
+    font-style: normal;
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+/*공통으로 사용되는 CSS 종료*/
+
+/*===헤더가 시작되는 CSS===*/
+.header{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    /* height: 120px; */
+    /* background-color: antiquewhite; */
+  
+    border-bottom: 1px solid #f1f1f1;
+  }
+  .header-container{
+    width: 1200px;
+    height: 120px;
+    /* margin: 0 auto; */
+    display: flex;
+    justify-content: space-between;
+    /* background-color: yellow; */
+  }
+  .header-nav1{
+    font-family: 'SUITE-Regular';
+    font-size: 18px;
+    width: 850px;
+    height: 120px;
+    display: flex;
+    /* align-items: center; */
+    margin: 0 10px 0 20px;
+    /* background-color: pink; */
+  }
+  
+  .logo{
+    width: 100px;
+    height: 120px;
+    margin: 0 10px;
+    display: flex;
+    align-items: flex-end;
+  }
+  .logo img{
+    width: 100px;
+    height: 100px;
+  }
+  .nav1{
+    width: 650px;
+    height: 90px;
+    /* background-color: aqua; */
+    margin: 0 20px ;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+  }
+  .nav1 ul{
+    display: flex;
+    list-style: none;
+    /* align-items: flex-end; */
+    /* background-color: yellow; */
+  }
+  .nav1 ul li{
+    margin: 0 10px;
+  }
+  .header-nav2{
+    width: 180px;
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    font-family: 'SUITE-Regular';
+    font-size: 18px;
+    /* align-items: center; */
+    /* margin: 0 10px; */
+    /* background-color: blueviolet; */
+  }
+  .nav2-box{
+    width: 180px;
+    height: 90px;
+    /* background-color: green; */
+    display: flex;
+    align-items: flex-end;
+  }
+  .header-nav2 ul{
+    display: flex;
+    list-style: none;
+    font-family: 'SUITE-Regular';
+    /* background-color: red; */
+  }
+  .header-nav2 ul li{
+    display: flex;
+    margin: 0 10px;
+    /* background-color: antiquewhite; */
+  }
+/*===헤더가 종료되는 CSS===*/
+
+/*===footer가 시작되는 CSS===*/
+.footer{
+    width: 100vw;
+    height: 130px;
+    background-color: rgb(243, 241, 241);
+    font-family: 'SUITE-Regular';
+    color: rgb(169, 168, 168);
+}
+.footer-container1{
+    margin: 0 auto;
+    width: 100%;
+    height: 90px;
+    border-bottom: 0.5px solid rgb(200, 199, 199);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container1-content{
+    margin: 5px 0;
+    /* background-color: pink; */
+    text-align: center;
+}
+.container1-content p{
+    margin-bottom: 3px;
+}
+.footer-container2{
+    margin: 0 auto;
+    width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+}
+.footer-container2 p {
+    margin: 8px 0;
+}
+.container2-01{
+    display: flex;
+}
+.container2-01-content{
+    margin: 8px 10px;
+}
+.container2-01-content>a{
+  color: rgb(169, 168, 168);
+}
+/*===footer가 종료되는 CSS===*/
+/* 서브 메인 나브바  */
+.main-nav-container5{
+  width: 100%;
+  height: 30px;
+  background-color: rgb(249, 147, 37);
+
+  display: flex;
+  justify-content: center;
+
+}
+
+.main-nav-container5 ul{
+  list-style: none;
+  display: flex;
+  margin: 0 400px;
+  line-height: 30px;
+  margin-left: -170px;
+}
+.main-nav-container5 ul li{
+  font-size: 14px;
+  margin: 0 10px;
+}
+#main-nav-button{
+  color: white;
+}
+
+#nav-title{
+  margin: 20px 20px;
+  font-size: 23px;
+  padding: 20px 0;
+  font-weight: bold;
+}
+.main-nav-container5 ul li :hover{
+  border-bottom: 4px solid white;
+  padding-bottom: 5px;
+  font-weight: bold;
+  
+}
+/*  */
+/* ===예약 상세 페이지입니다.=== */
+.booking{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.edge{
+    width: 1000px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    /* border: 1px solid rgb(249, 147, 37); */
+    margin-bottom: 100px;
+}
+.explanation{
+  width: 300px;
+  height: 80px;
+  /* border: 1px solid black; */
+  text-align: center;
+  margin-top: 100px;
+  margin-bottom: 50px;
+  border-bottom: 3px solid rgb(249, 147, 37);
+  border-radius: 5px;
+}
+.time-selectbox{
+  width: 800px;
+  height: auto;
+  /* border: 1px solid black; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.calender-box{
+  width: 600px;
+  height: 600px;
+  display: flex;
+  flex-direction: column ;
+  /* justify-content: center; */
+  align-items: center;
+  /* border: 1px solid black; */
+  margin-bottom: 10px;
+  overflow: hidden; /* 내부 컨텐츠가 div 영역을 벗어나는 경우 스크롤바를 숨깁니다. */
+}
+.calender-box-title{
+  width: 600px;
+  height: 130px;
+  text-align: center;
+}
+.calender-titlebox{
+  margin-top: 20px;
+  width: 600px;
+  height: 20px;
+  font-size: 18px;
+  font-weight: bold;
+}
+/* .calender-titlebox>p{
+  font-size: 18px;
+  font-weight: bold;
+  text-align: start;
+  margin-left: 120px;
+} */
+/*달력 css 시작*/
+@import url('https://fonts.googleapis.com/css?family=Questrial&display=swap');
+
+.calender-div{
+  background-color: white;
+  height: auto;
+  width: 400px;
+  margin: 0px;
+  padding: 20px;
+  margin: 0 auto;
+  margin-left: 95px;
+  /* border: 5px solid black; */
+  border-radius: 5px;
+  box-shadow: 0px 20px 15px -10px rgb(255, 226, 173);
+}
+
+td {
+    width: 50px;
+    height: 50px;
+}
+
+.Calendar {
+    text-align: center;
+}
+
+.Calendar>thead>tr:first-child>td {
+    font-family: 'Questrial', sans-serif;
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
+.Calendar>thead>tr:last-child>td {
+    font-family: 'Questrial', sans-serif;
+    font-weight: 600;     
+}
+
+.Calendar>tbody>tr>td>p {
+    font-family: 'Montserrat', sans-serif;
+    height: 45px;
+    width: 45px;
+    border-radius: 45px;
+    transition-duration: .2s;
+    line-height: 45px;
+    margin: 2.5px;
+    display: block;
+    text-align: center;
+}        
+
+.pastDay {
+    color: lightgray;
+}
+
+.today {
+    background-color: #F5D042;            
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.futureDay {
+    background-color: #FFFFFF;
+    cursor: pointer;
+}
+.futureDay:hover{
+    background:#eee;
+}
+
+.futureDay.choiceDay,
+.today.choiceDay {
+    background: #0A174E;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+}
+/* 달력 css 종료 */
+/* 시간 선택 css */
+.timebox {
+  width: 600px;
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-time-container {
+  flex: 0 0 20%;
+  margin: 5px;
+}
+
+.btn-time {
+  width: 100%;
+  height: 40px;
+  background-color: white;
+  color: black;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-time:hover {
+  background-color: rgb(255, 226, 173);
+  border-radius: 5px;
+}
+.selected{
+  background-color: orange;
+  border-radius: 5px;
+}
+/* 시간 선택 css 종료*/
+.btn-nextpage{
+  width: 600px;
+  height: 50px;
+  display: flex;
+  justify-content: end;
+  margin-bottom: 100px;
+}
+.nextpage{
+  width: 100px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 5px;
+  background-color: rgb(255, 226, 173);
+  font-size: 18px;
+  font-weight: 400;
+  margin:30px 50px 0 0 ;
+}

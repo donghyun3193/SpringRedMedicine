@@ -1,0 +1,123 @@
+@font-face {
+    font-family: 'SUITE-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/SUITE-Regular.woff2') format('woff2');
+    font-weight: 600;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'iceJaram-Rg';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/iceJaram-Rg.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+.header{
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    /* height: 120px; */
+    /* background-color: antiquewhite; */
+}
+.header-container{
+    width: 1200px;
+    height: 120px;
+    /* margin: 0 auto; */
+    display: flex;
+    justify-content: space-between;
+    /* background-color: yellow; */
+}
+.header-nav1{
+    font-family: 'SUITE-Regular';
+    font-size: 18px;
+    width: 850px;
+    height: 120px;
+    display: flex;
+    /* align-items: center; */
+    margin: 0 10px 0 20px;
+    /* background-color: pink; */
+}
+
+.logo{
+    width: 100px;
+    height: 120px;
+    margin: 0 10px;
+    display: flex;
+    align-items: flex-end;
+}
+.logo img{
+    width: 100px;
+    height: 100px;
+}
+.nav1{
+    width: 650px;
+    height: 90px;
+    /* background-color: aqua; */
+    margin: 0 20px ;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+.nav1 ul{
+    display: flex;
+    list-style: none;
+    /* align-items: flex-end; */
+    /* background-color: yellow; */
+}
+.nav1 ul li{
+    margin: 0 10px;
+} 
+.header-nav2{
+    width: 180px;
+    height: 120px;
+    justify-content: center;
+    font-family: 'SUITE-Regular';
+    font-size: 18px;
+    padding: 67px 0 20px 0;
+    box-sizing: border-box;
+    /* background-color: antiquewhite; */
+} 
+.nav2-box{
+    display: inline-block;
+    position: relative; 
+    /* background-color: gray; */
+}
+.myList{
+    position: absolute;
+    display: none;
+    width: 100px;
+    height: 110px;
+    background-color: #f9f9f9;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+.myList a{
+    text-decoration: none;
+    display: block;
+    box-sizing: border-box;
+    padding: 3px;
+    font-size: 16px;
+    color: rgb(88, 87, 87);
+}
+.myList a:hover{
+    background-color: #f1f1f1;
+}
+.nav2-box:hover .myList{
+    display: block;
+}
+/*.header-nav2 ul{
+    display: flex;
+    list-style: none;
+    font-family: 'SUITE-Regular';
+     background-color: red; 
+}
+.header-nav2 ul li{
+    display: flex;
+    margin: 0 10px;
+    background-color: antiquewhite; 
+} */
