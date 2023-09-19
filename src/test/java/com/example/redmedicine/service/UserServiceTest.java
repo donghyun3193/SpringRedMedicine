@@ -1,6 +1,7 @@
 package com.example.redmedicine.service;
 
 import com.example.redmedicine.domain.dto.UserDto;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -11,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
+@Slf4j
 @Transactional
 class UserServiceTest {
     @Autowired
@@ -34,9 +36,11 @@ class UserServiceTest {
 
     @Test
     void registerAndFindUserNumber() {
+        //등록 후 회원번호 찾기 테스트를 진행하겠다
         userService.register(userDto);
 
         Long foundNumber = userService.findUserNumber(userDto.getUserId(),userDto.getUserPassword());
+        //userService.findUserNumber(userDto.getUserId(), userDto.getUserPassword())에 이미 정보가 있는 상태
 
         assertThat(foundNumber).isEqualTo(userDto.getUserNumber());
     }

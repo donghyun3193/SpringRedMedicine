@@ -1,38 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/src/main/resources/static/css/user/myDaybook.css">
+    <link rel="stylesheet" href="/css/user/myDaybook.css">
     <title>My Daybook</title>
 </head>
 <body>
-<div class="header">
-    <div class="header-container">
-        <div class="header-nav1">
-            <div class="logo"><a href="/src/main/resources/templates/main/index.html"><img src="/src/main/resources/img/logo.png" alt="로고"></a></div>
-            <div class="nav1">
-                <ul>
-                    <li><a href="/src/main/resources/templates/main/music.html">힐링음악</a></li>
-                    <li><a href="/src/main/resources/templates/board/notice.html">커뮤니티</a></li>
-                    <li><a href="/src/main/resources/templates/test/diagnosis.html">자가진단테스트</a></li>
-                    <li><a href="/src/main/resources/templates/counselor/pay/payMate.html">비대면상담받기</a></li>
-                    <li><a href="/src/main/resources/templates/counselor/pay/Registration.html">상담사등록</a></li>
-                    <li><a href="/src/main/resources/templates/main/map.html">상담센터찾기</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="header-nav2">
-            <div class="nav2-box">
-                <ul>
-                    <li><a href="/src/main/resources/templates/user/join.html">로그인</a></li>
-                    <li><a href="/src/main/resources/templates/user/login.html">회원가입</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- 헤더 종료 -->
+<!-- 헤더 시작-->
+<header class="header" th:replace="fragments/header :: header"></header>
+<!-- 헤더 종료-->
 <!-- myDaybook 메인 페이지 시작 -->
 <div class="main-nav-container5">
     <ul>
@@ -51,7 +28,7 @@
                 <p>나의 일기장을 관리해 보세요.</p>
             </div>
             <div class="img-container-img">
-                <img src="/src/main/resources/img/daybook.png" alt="내 글 일기장"
+                <img src="/img/daybook.png" alt="내 글 일기장"
                 style="width: 300px; height: 250px; margin-right: 150px;">
             </div>
         </div>
@@ -61,7 +38,7 @@
                     <h2>나의 일기</h2>
                 </div>
                 <div class="counselor-title">
-                    <a href="/src/main/resources/templates/counselor/book/myCounselor.html"style="color:#a1a1a1;"><h2>나의 상담록</h2></a>
+                    <a href="/counselor/book/myCounselor.html"style="color:#a1a1a1;"><h2>나의 상담록</h2></a>
                 </div>
             </div>
             <div class="article-container-community">
@@ -71,17 +48,17 @@
                         <th>작성일</th>
                         <th>공개여부</th>
                         <tr>
-                            <td><a href="/src/main/resources/templates/board/readingDiary.html">오늘의 기록</a></td>
+                            <td><a href="/board/readingDiary.html">오늘의 기록</a></td>
                             <td>2023-09-09</td>
                             <td><button id="toggleButton" class="t-btn">공개</button></td>
                         </tr>
                         <tr>
-                            <td><a href="/src/main/resources/templates/board/readingDiary.html">오늘의 기록</a></td>
+                            <td><a href="/board/readingDiary.html">오늘의 기록</a></td>
                             <td>2023-09-09</td>
                             <td><button id="toggleButton">비공개</button></td>
                         </tr>
                         <tr>
-                            <td><a href="/src/main/resources/templates/board/readingDiary.html">오늘의 기록</a></td>
+                            <td><a href="/board/readingDiary.html">오늘의 기록</a></td>
                             <td>2023-09-09</td>
                             <td><button id="toggleButton">비공개</button></td>
                         </tr>
@@ -122,24 +99,9 @@
 </main>
 <!-- myDaybook 종료 -->
 <!-- =====풋터 시작===== -->
-<div class="footer">
-    <div class="footer-container1">
-        <div class="container1-content">
-            <p>(주)MGMG(빨간약)</p>
-            <p>노의진(팀장) 이지윤(부팀장) 이동현 유대훈</p>
-            <p>서울특별시 노원구 상계로1길 34 5층</p>
-        </div>
-    </div>
-    <div class="footer-container2">
-        <p>ⓒ MGMG All Rights Reserved.</p>
-        <div class="container2-01">
-            <div class="container2-01-content"><a href="/src/main/resources/templates/main/terms.html">이용약관</a></div>
-            <div class="container2-01-content"><a href="/src/main/resources/templates/main/privacy.html">개인정보처리방침</a></div>
-        </div>
-    </div>
-</div>
+<footer class="footer" th:replace="fragments/footer :: footer"></footer>
 <!-- =====풋터 종료====== -->
 <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
-<script src="/src/main/resources/static/js/user/myDaybook.js"></script>
+<script src="/js/user/myDaybook.js"></script>
 </body>
 </html>

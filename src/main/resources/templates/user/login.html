@@ -21,22 +21,26 @@
                 <div class="main-content-title">로그인</div>
                 
                 <div class="content-box">
-                    <div class="main-container-section1">
-                        <div class="input-name">아이디</div>
-                        <input class="inputid" type="text" placeholder="아이디" ><br><br>
-                        <div class="input-name">비밀번호</div>
-                        <input class="inputpw" type="password" placeholder="비밀번호" >
-                    </div>
+                    <form class="login-form" method="post" action="/user/login">
+                        <!--post로 지정해야 컨트롤러에서 post로 어노테이션 실행할꺼니까-->
+                        <div class="main-container-section1">
+                            <div class="input-name">아이디</div>
+                            <input class="inputid" type="text" placeholder="아이디"
+                            id="userId" name="userId" required><br><br>
+                            <div class="input-name">비밀번호</div>
+                            <input class="inputpw" type="password" placeholder="비밀번호"
+                            id="userPassword" name="userPassword" required>
+                        </div>
 
-                    <hr style="margin-top: 70px; border:1px solid #ffe4cb;">
+                        <hr style="margin-top: 70px; border:1px solid #ffe4cb;">
 
-                    <div class="main-container-section2">
-                        <button class="btn-login">로그인</button>
-                        
-                    </div>
+                        <div class="main-container-section2">
+                            <button class="btn-login" type="submit">로그인</button>
+                        </div>
+                    </form>
                     <div class="main-container-section3">
-                        <a href="./join.html"><div class="linkjoin">회원가입</div></a>
-                        <a href="./findId.html"><div class="linkfindid">아이디ㆍ비밀번호 찾기</div></a>
+                        <a href="/user/join"><div class="linkjoin">회원가입</div></a>
+                        <a href="/user/findId"><div class="linkfindid">아이디ㆍ비밀번호 찾기</div></a>
                     </div>
 
                     <!-- 카카오 로그인 -->

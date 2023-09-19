@@ -1,38 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/src/main/resources/static/css/main/privacy.css">
+    <link rel="stylesheet" href="/css/main/privacy.css">
     <title>개인정보처리방침</title>
 </head>
 <body>
-<div class="header">
-    <div class="header-container">
-        <div class="header-nav1">
-            <div class="logo"><a href="/src/main/resources/templates/main/index.html"><img src="/src/main/resources/img/logo.png" alt="로고"></a></div>
-            <div class="nav1">
-                <ul>
-                    <li><a href="/src/main/resources/templates/main/music.html">힐링음악</a></li>
-                    <li><a href="/src/main/resources/templates/board/notice.html">커뮤니티</a></li>
-                    <li><a href="/src/main/resources/templates/test/diagnosis.html">자가진단테스트</a></li>
-                    <li><a href="/src/main/resources/templates/counselor/pay/payMate.html">비대면상담받기</a></li>
-                    <li><a href="/src/main/resources/templates/counselor/pay/Registration.html">상담사등록</a></li>
-                    <li><a href="/src/main/resources/templates/main/map.html">상담센터찾기</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="header-nav2">
-            <div class="nav2-box">
-                <ul>
-                    <li><a href="/src/main/resources/templates/user/join.html">로그인</a></li>
-                    <li><a href="/src/main/resources/templates/user/login.html">회원가입</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</div>
-<!--=======헤더 종료=======-->
+<!-- 헤더 시작-->
+<header class="header" th:replace="fragments/header :: header"></header>
+<!-- 헤더 종료-->
 
     <main class="main-outline"><!--main시작-->
         <div class="main-outline-container">
@@ -171,23 +148,8 @@
     </main>
     <!--=====메인 종료입니다.=====-->
 
-    <!-- =====풋터 시작===== -->
-    <div class="footer">
-        <div class="footer-container1">
-            <div class="container1-content">
-                <p>(주)MGMG(빨간약)</p>
-                <p>노의진(팀장) 이지윤(부팀장) 이동현 유대훈</p>
-                <p>서울특별시 노원구 상계로1길 34 5층</p>
-            </div>
-        </div>
-        <div class="footer-container2">
-            <p>ⓒ MGMG All Rights Reserved.</p>
-            <div class="container2-01">
-                <div class="container2-01-content"><a href="/src/main/resources/templates/main/terms.html">이용약관</a></div>
-                <div class="container2-01-content"><a href="/src/main/resources/templates/main/privacy.html">개인정보처리방침</a></div>
-            </div>
-        </div>
-    </div>
-    <!-- =====풋터 종료====== -->
+<!-- =====풋터 시작===== -->
+<footer class="footer" th:replace="fragments/footer :: footer"></footer>
+<!-- =====풋터 종료====== -->
 </body>
 </html>
