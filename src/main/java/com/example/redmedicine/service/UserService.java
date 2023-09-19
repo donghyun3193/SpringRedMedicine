@@ -26,7 +26,7 @@ public class UserService {
     //회원 번호 찾기
     public Long findUserNumber(String userId, String userPassword){
         return ofNullable(userMapper.selectUserNumber(userId,userPassword))
-                .orElseThrow(()-> {throw new IllegalArgumentException("일치하는 회원 정보 없음!");
+                .orElseThrow(()-> {throw new IllegalArgumentException("아이디와 패스워드가 일치하는 회원 정보가 없습니다.");
                 });
     }
 }

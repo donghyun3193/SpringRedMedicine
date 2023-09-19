@@ -1,43 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/src/main/resources/static/css/counselor/free/councelorProfileFree.css">
+    <link rel="stylesheet" href="/css/counselor/free/councelorProfileFree.css">
     <title>councelorProfileFree</title>
 </head>
 <body>
-<div class="header">
-    <div class="header-container">
-        <div class="header-nav1">
-            <div class="logo"><a href="/src/main/resources/templates/main/index.html"><img src="/src/main/resources/img/logo.png" alt="로고"></a></div>
-            <div class="nav1">
-                <ul>
-                    <li><a href="/src/main/resources/templates/main/music.html">힐링음악</a></li>
-                    <li><a href="/src/main/resources/templates/board/notice.html">커뮤니티</a></li>
-                    <li><a href="/src/main/resources/templates/test/diagnosis.html">자가진단테스트</a></li>
-                    <li><a href="/src/main/resources/templates/counselor/pay/payMate.html">비대면상담받기</a></li>
-                    <li><a href="/src/main/resources/templates/counselor/pay/Registration.html">상담사등록</a></li>
-                    <li><a href="/src/main/resources/templates/main/map.html">상담센터찾기</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="header-nav2">
-            <div class="nav2-box">
-                <ul>
-                    <li><a href="/src/main/resources/templates/user/join.html">로그인</a></li>
-                    <li><a href="/src/main/resources/templates/user/login.html">회원가입</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- 헤더 종료 -->
+<!-- 헤더 시작-->
+<header class="header" th:replace="fragments/header :: header"></header>
+<!-- 헤더 종료-->
 <!-- councelorProfile 메인 페이지 시작 -->
 <div class="main-nav-container">
     <ul>
-        <li><a href="/src/main/resources/templates/counselor/free/freeMate.html" id="main-nav-button">무료 상담사</a></li>
-        <li><a href="/src/main/resources/templates/counselor/pay/payMate.html" id="main-nav-button">유료 상담사</a></li>
+        <li><a href="/counselor/free/freeMate.html" id="main-nav-button">무료 상담사</a></li>
+        <li><a href="/counselor/pay/payMate.html" id="main-nav-button">유료 상담사</a></li>
     </ul>
 </div>
 <!-- 내가 원하는 장소 아무곳에나 모달창을 삽입해도 무관하더라 -->
@@ -67,16 +44,16 @@
 <main class="profile">
     <div class="profile-container">
         <div class="profile-img">
-            <img src="/src/main/resources/img/councelor01.jpg" alt="인물01"
+            <img src="/img/councelor01.jpg" alt="인물01"
             style="width: 600px; height: 340px; border-radius: 5px;">
         </div>
         <div class="profile-namebox">
             <div class="profile-name">
                 <h2>상담사</h2>
-                <img src="/src/main/resources/img/flower.png" alt="목화꽃" style="width: 17px; height: 17px; margin-top: 14px; margin-left: 3px;">
-                <img src="/src/main/resources/img/flower.png" alt="목화꽃" style="width: 17px; height: 17px; margin-top: 14px;">
+                <img src="/img/flower.png" alt="목화꽃" style="width: 17px; height: 17px; margin-top: 14px; margin-left: 3px;">
+                <img src="/img/flower.png" alt="목화꽃" style="width: 17px; height: 17px; margin-top: 14px;">
                 <button class="cotton-question" style="border: none; background-color: white;" onclick="openModal()">
-                    <img src="/src/main/resources/img/question-mark.png" alt="물음표" style="width: 17px; height: 17px; margin-top: 14px; margin-left: 2px; cursor: pointer;">
+                    <img src="/img/question-mark.png" alt="물음표" style="width: 17px; height: 17px; margin-top: 14px; margin-left: 2px; cursor: pointer;">
                 </button>
             </div>
             <button class="profile-button" type="submit" onclick="reservation()">예약</button>
@@ -201,25 +178,10 @@ Somatic Experiencing (SE) (Peter Levine, 3시간)<br>
 </main>
 
 <!-- councelorProfile 종료 -->
-<!-- 풋터 시작 -->
-<div class="footer">
-    <div class="footer-container1">
-        <div class="container1-content">
-            <p>(주)MGMG(빨간약)</p>
-            <p>노의진(팀장) 이지윤(부팀장) 이동현 유대훈</p>
-            <p>서울특별시 노원구 상계로1길 34 5층</p>
-        </div>
-    </div>
-    <div class="footer-container2">
-        <p>ⓒ MGMG All Rights Reserved.</p>
-        <div class="container2-01">
-            <div class="container2-01-content"><a href="/src/main/resources/templates/main/terms.html">이용약관</a></div>
-            <div class="container2-01-content"><a href="/src/main/resources/templates/main/privacy.html">개인정보처리방침</a></div>
-        </div>
-    </div>
-</div>
-<!-- 풋터 종료 -->
+<!-- =====풋터 시작===== -->
+<footer class="footer" th:replace="fragments/footer :: footer"></footer>
+<!-- =====풋터 종료====== -->
 <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
-<script src="/src/main/resources/static/js/counselor/free/councelorProfileFree.js"></script>
+<script src="/js/counselor/free/councelorProfileFree.js"></script>
 </body>
 </html>
