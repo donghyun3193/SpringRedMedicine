@@ -3,46 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/main/index.css">
     <title>메인페이지</title>
 </head>
 <body>
-    <div class="header">
-        <div class="header-container">
-            <div class="header-nav1">
-                <div class="logo"><a href="#"><img src="/static/img/logo.png" alt=""></a></div>
-                <div class="nav1">
-                    <ul>
-                        <li><a href="/html/music.html">힐링음악</a></li>
-                        <li><a href="/html/notice.html">커뮤니티</a></li>
-                        <li><a href="/html/diagnosis.html">자가진단테스트</a></li>
-                        <li><a href="/html/matemainfree.html">비대면상담받기</a></li>
-                        <li><a href="/html/index.html">상담사등록</a></li>
-                        <li><a href="/html/map.html">상담센터찾기</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="header-nav2">
-                <div class="nav2-box">
-                    <ul>
-                        <li><a href="/html/login.html">로그인</a></li>
-                        <li><a href="/html/join.html">회원가입</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
+<!-- 헤더 시작-->
+<header class="header" th:replace="fragments/header :: header"></header>
+<!-- 헤더 종료-->
     <div class="main-container">
         <div class="main-content">
             <div class="main-img-box">
                 <div class="main-img-text">
                     "당신의 마음에 행복이 몽글몽글 피어났으면 좋겠습니다."
                 </div>
-                <img src="/static/img/mainimg.jpg" alt="">
+                <img src="/img/mainimg.jpg" alt="">
             </div>
             <div class="introduction-01">
                 <div class="intro-title">
-                    <img src="../img/bubble_img.png" alt="" id="bubble-img">
+                    <img src="/img/bubble_img.png" alt="" id="bubble-img">
                     <p class="intro-title-text">몽글몽글</p>
                     <p class="intro-title-text02">세상 모든 사람들이 행복해지길 바라는 마음으로</p> 
                 </div>
@@ -63,25 +41,25 @@
                 <div class="program-contents">
                     <div class="program-contents-01">
                         <div class="program-contents-content">
-                            <img src="../img/edit.png" alt="">
+                            <img src="/img/edit.png" alt="">
                             <div class="program-contents-text">오늘 하루는 어땠나요?<br>나의 하루를 기록해보기</div>
                         </div>   
                         <div class="program-contents-content">
-                            <img src="../img/musical-note.png" alt="">
+                            <img src="/img/musical-note.png" alt="">
                             <div class="program-contents-text">기분 좋아지는 음악을 들으며 <br>마음 다스리기</div>
                         </div>
                         <div class="program-contents-content">
-                            <img src="../img/online-meeting.png" alt="">
+                            <img src="/img/online-meeting.png" alt="">
                             <div class="program-contents-text">언제 어디서든 편하게 <br>비대면 상담</div>
                         </div>
                     </div>
                     <div class="program-contents-01">
                         <div class="program-contents-content">
-                            <img src="../img/approval.png" alt="">
+                            <img src="/img/approval.png" alt="">
                             <div class="program-contents-text">나의 현재 상태를 체크해보는 <br>자가진단테스트</div>
                         </div>
                         <div class="program-contents-content">
-                            <img src="../img/location.png" alt="">
+                            <img src="/img/location.png" alt="">
                             <div class="program-contents-text">우리집 근처 <br>심리상담센터 찾기</div>
                         </div>
                     </div>
@@ -105,26 +83,13 @@
                     </div>
                 </div>
                 <div class="register-img">
-                    <img src="../img/register_img.png" alt="">
+                    <img src="/img/register_img.png" alt="">
                 </div>
             </div>
         </div>
     </div>
-    <div class="footer">
-        <div class="footer-container1">
-            <div class="container1-content">
-                <p>(주)MGMG(빨간약)</p>
-                <p>노의진(팀장) 이지윤(부팀장) 이동현 유대훈</p>
-                <p>서울특별시 노원구 상계로1길 34 5층</p>
-            </div>
-        </div>
-        <div class="footer-container2">
-            <p>ⓒ MGMG All Rights Reserved.</p>
-            <div class="container2-01">
-                <div class="container2-01-content">이용약관</div>
-                <div class="container2-01-content">개인정보처리방침</div>
-            </div>
-        </div>
-    </div>
+<!-- 후터 시작-->
+<footer class="footer" th:replace="fragments/footer :: footer"></footer>
+<!-- 후터 끝-->
 </body>
 </html>
