@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.redmedicine.mapper.CounselorMapper">
+    <insert id="insertProfilePay">
+        <selectKey keyProperty="profileNumber" order="BEFORE" resultType="long">
+            SELECT SEQ_PROFILE.NEXTVAL FROM DUAL
+        </selectKey>
+        insert into TBL_PROFILE (PROFILE_NUMBER, USER_NUMBER, PROFILE_SUPER, PROFILE_CAREER, PROFILE_FEE, PROFILE_TARGET, PROFILE_AREA, PROFILE_DAY, PROFILE_TIME, PROFILE_CONTENT)
+        values (#{profileNumber},#{userNumber},#{profileSuper},#{profileCareer},#{profile_fee},#{profileTarget},#{profileArea},#{profileDay},#{profiletTime},#{profileContent})
+    </insert>
+
+    <insert id="insertProfileFree">
+        <selectKey keyProperty="profileNumber" order="BEFORE" resultType="long">
+            SELECT SEQ_PROFILE.NEXTVAL FROM DUAL
+        </selectKey>
+        insert into TBL_PROFILE (PROFILE_NUMBER, USER_NUMBER, PROFILE_SUPER, PROFILE_CAREER, PROFILE_TARGET, PROFILE_AREA, PROFILE_DAY, PROFILE_TIME, PROFILE_CONTENT)
+        values (#{profileNumber},#{userNumber},#{profileSuper},#{profileCareer},#{profileTarget},#{profileArea},#{profileDay},#{profiletTime},#{profileContent})
+    </insert>
+
+    <select id="selectProfilePayNumber" resultType="long">
+        SELECT PROFILE_NUMBER, PROFILE_NAME, PROFILE_FEE, PROFILE_TARGET, PROFILE_AREA
+        FROM PROFILE_NUMBER = #{profileNumber}
+        ORDER BY PROFILE_NUMBER DESC;
+    </select>
+</mapper>
