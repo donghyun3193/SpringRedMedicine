@@ -4,37 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>자가진단테스트-우울증</title>
-    <link rel="stylesheet" href="../../static/css/test/bipolarDisorder.css">
-  <script defer src="../../static/js/test/bipolarDisorder.js"></script>
+    <link rel="stylesheet" href="/css/test/bipolarDisorder.css">
+  <script defer src="/js/test/bipolarDisorder.js"></script>
 
 
 </head>
 <body>
-    <div class="header">
-        <div class="header-container">
-            <div class="header-nav1">
-                <div class="logo"><a href="/html/index.html"><img src="../../static/img/logo.png" alt=""></a></div>
-                <div class="nav1">
-                  <ul>
-                    <li><a href="">힐링음악</a></li>
-                    <li><a href="/html/notice.html">커뮤니티</a></li>
-                    <li><a href="/html/diagnosis.html">자가진단테스트</a></li>
-                    <li><a href="">비대면상담받기</a></li>
-                    <li><a href="/html/index.html">상담사등록</a></li>
-                    <li><a href="/html/map.html">상담센터찾기</a></li>
-                </ul>
-                </div>
-            </div>
-            <div class="header-nav2">
-                <div class="nav2-box">
-                    <ul>
-                        <li><a href="">로그인</a></li>
-                        <li><a href="">회원가입</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
+<!-- 헤더 시작-->
+<header class="header" th:replace="fragments/header :: header"></header>
+<!-- 헤더 종료-->
     <div class="main-container">
         <div class="main-nav-container5">
 
@@ -418,16 +396,16 @@
 </table>
 
 <div class="board-button">
-  <input type="button" class="b-button" value="결과확인하기" >
+  <input type="button" class="b-button" value="결과확인하기" onclick="calculateResult()">
 </div>
 <div class="result" id="result_div">
-<strong class="result-title">진단결과 : ?? 점 입니다.</strong><br>
-<strong><br>
-- 0점 ~ 15점 :<br>
+  <strong class="result-title">진단결과 : 00 점 입니다.</strong><br>
+  <strong><br>
+    - 0점 ~ 15점 :<br>
     - 편안한 상태입니다. 지속적으로 정신건강에 관심을 갖고 예방을 위해 년1회 정기검사도 잊지 마세요.<br><br>
-- 16점 ~ 24점 :<br>
+    - 16점 ~ 24점 :<br>
     - 가벼운 우울감을 겪고 있는 상태입니다. 우울증 예방을 위해 운동, 여가활동, 대인관계 맺기 등 즐거움을 주는 활동에 적극적으로 참여해보세요.<br><br>
-- 25점 이상 :<br>
+    - 25점 이상 :<br>
     - 다양한 우울증상으로 일상생활에 영향을 주고 있는 상태입니다. 이러한 상태가 2주 이상 지속된다면 전문가와의 상담을 반드시 받아보세요.</strong>
 </div>
 
@@ -437,22 +415,8 @@
             </div>
         </div>
     </div>
-    <div class="footer">
-        <div class="footer-container1">
-            <div class="container1-content">
-                <p>(주)MGMG(빨간약)</p>
-                <p>노의진(팀장) 이지윤(부팀장) 이동현 유대훈</p>
-                <p>서울특별시 노원구 상계로1길 34 5층</p>
-            </div>
-        </div>
-        <div class="footer-container2">
-            <p>ⓒ MGMG All Rights Reserved.</p>
-            <div class="container2-01">
-                <div class="container2-01-content"><a href="">문의하기</a></div>
-                <div class="container2-01-content"><a href="">이용약관</a></div>
-                <div class="container2-01-content"><a href="">개인정보처리방침</a></div>
-            </div>
-        </div>
-    </div>
+<!-- 후터 시작-->
+<footer class="footer" th:replace="fragments/footer :: footer"></footer>
+<!-- 후터 끝-->
 </body>
 </html>
