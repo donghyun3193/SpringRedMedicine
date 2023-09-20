@@ -28,4 +28,10 @@ public class MainController {
     public String showTermsPage(){
         return "main/terms";
     }
+
+    //힐림음악
+    @GetMapping("/music")
+    public String showMusicPage(){
+       return "main/music";
+    }
 }

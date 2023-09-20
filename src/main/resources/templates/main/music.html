@@ -1,39 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>music</title>
-    <link rel="stylesheet" href="../../static/css/main/music.css">
+    <link rel="stylesheet" href="/css/main/music.css">
 </head>
 <body>
-    <!-- 헤더 시작-->
-    <div class="header">
-        <div class="header-container">
-            <div class="header-nav1">
-                <div class="logo"><a href="#"><img src="/static/img/logo.png" alt=""></a></div>
-                <div class="nav1">
-                    <ul>
-                        <li><a href="">힐링음악</a></li>
-                        <li><a href="">커뮤니티</a></li>
-                        <li><a href="">자가진단테스트</a></li>
-                        <li><a href="">비대면상담받기</a></li>
-                        <li><a href="">상담사등록</a></li>
-                        <li><a href="">상담센터찾기</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="header-nav2">
-                <div class="nav2-box">
-                    <ul>
-                        <li><a href="">로그인</a></li>
-                        <li><a href="">회원가입</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- 헤더 종료-->
+<!-- 헤더 시작-->
+<header class="header" th:replace="fragments/header :: header"></header>
+<!-- 헤더 종료-->
     <!-- 메인 시작-->
     <div class="main-container">
         <div class="main-nav-container">
@@ -71,88 +47,84 @@
                     </div>
                 </div>
             </div>
+            <!-- 2줄============================================================================================================= -->
+
             <div class="main-content-contaniner1">
                 <div class="main-container-section1">
                     <div class="main-container-section1-up">
-                        <iframe width="300 " height="200" 
-                        src="https://www.youtube.com/embed/ZQWrleq-NhQ?si=Q7TJ9kOeSrAUV96H" 
-                        title="YouTube video player" frameborder="0" 
-                        allow="accelerometer; autoplay; clipboard-write;
-                        encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowfullscreen class="main-youtube"></iframe>
+                        <iframe width="300" height="200" src="https://www.youtube.com/embed/gnQcIfUp8Ao?si=nKJ6BJ9niPa6uaXc"
+                                title="YouTube video player" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen class="main-youtube"></iframe>
                     </div>
                     <div class="main-container-section1-down">
-                        <p><strong>마음이 편안해지는 힐링,휴식음악,모닥불 소리,스트레스 해소음악,명상음악</strong></p>
+                        <p><strong>하루의 끝, 편안한 침실에서 듣는 수면음악 | 잠잘때 듣는 음악,불면증 치료 음악,수면유도음악</strong></p>
                     </div>
                 </div>
                 <div class="main-container-section1">
                     <div class="main-container-section1-up">
-                        <iframe class="main-youtube" width="300" height="200" src="https://www.youtube.com/embed/Gg8pB9-6T8g?si=bLI_B-2KMM5XO2u_" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        <iframe width="300" height="200" src="https://www.youtube.com/embed/X901on9pDEo?si=fUQQt7DClFi0f_tV"
+                                title="YouTube video player" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen class="main-youtube"></iframe>
                     </div>
                     <div class="main-container-section1-down">
-                        <p><strong>휴식을 위한 시간 힐링 음악,편안한 음악,스트레스 해소음악,빗소리</strong></p>
+                        <p><strong>생각을 비우고 잠드는 시간 | 편안한 밤을 위한 수면음악,불면증 치료 음악,잠잘때 듣는 음악</strong></p>
                     </div>
                 </div>
                 <div class="main-container-section1">
                     <div class="main-container-section1-up">
-                        <iframe class="main-youtube" width="300" height="200" src="https://www.youtube.com/embed/P8_8C2kA1WY?si=7NqTwl5W0gQmPaxO" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        <iframe width="300" height="200" src="https://www.youtube.com/embed/32yPqcT1Gh4?si=lIxZFte1ME1s0iHm"
+                                title="YouTube video player" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen class="main-youtube"></iframe>
                     </div>
                     <div class="main-container-section1-down">
-                        <p><strong>마음의 휴식을 위한 힐링음악 편안한 피아노 음악ㅣ독서음악,공부음악,명상음악</strong></p>
+                        <p><strong>마음이 편안해지는 시간 | 침실에서 듣는 수면음악,잠잘때 듣는 음악,불면증 치료 음악</strong></p>
                     </div>
                 </div>
             </div>
+
+<!-- 3줄============================================================================================================= -->
             <div class="main-content-contaniner1">
                 <div class="main-container-section1">
                     <div class="main-container-section1-up">
-                        <iframe width="300 " height="200" 
-                        src="https://www.youtube.com/embed/ZQWrleq-NhQ?si=Q7TJ9kOeSrAUV96H" 
-                        title="YouTube video player" frameborder="0" 
-                        allow="accelerometer; autoplay; clipboard-write;
-                        encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowfullscreen class="main-youtube"></iframe>
+                        <iframe width="300" height="200" src="https://www.youtube.com/embed/8kU9VlFtcxE?si=5GVp4_8gX0GTa0wX"
+                                title="YouTube video player" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen class="main-youtube"></iframe>
                     </div>
                     <div class="main-container-section1-down">
-                        <p><strong>마음이 편안해지는 힐링,휴식음악,모닥불 소리,스트레스 해소음악,명상음악</strong></p>
+                        <p><strong>'Windy Day' 당신의 편안한 마음을 위한 힐링음악 | 휴식음악,스트레스 해소음악,명상음악</strong></p>
                     </div>
                 </div>
                 <div class="main-container-section1">
                     <div class="main-container-section1-up">
-                        <iframe class="main-youtube" width="300" height="200" src="https://www.youtube.com/embed/Gg8pB9-6T8g?si=bLI_B-2KMM5XO2u_" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        <iframe width="300" height="200" src="https://www.youtube.com/embed/pVZtnlA0HUs?si=3NJEdVZ3NKsSO1fZ"
+                                title="YouTube video player" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen class="main-youtube"></iframe>
                     </div>
                     <div class="main-container-section1-down">
-                        <p><strong>휴식을 위한 시간 힐링 음악,편안한 음악,스트레스 해소음악,빗소리</strong></p>
+                        <p><strong>초록빛 가득한 날 | 자연 속 힐링음악, 스트레스 해소음악, 명상음악</strong></p>
                     </div>
                 </div>
                 <div class="main-container-section1">
                     <div class="main-container-section1-up">
-                        <iframe class="main-youtube" width="300" height="200" src="https://www.youtube.com/embed/P8_8C2kA1WY?si=7NqTwl5W0gQmPaxO" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        <iframe width="300" height="200" src="https://www.youtube.com/embed/tRMKck72-uY?si=TgMAVN2CPRzDUeaq"
+                                title="YouTube video player" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen class="main-youtube"></iframe>
                     </div>
                     <div class="main-container-section1-down">
-                        <p><strong>마음의 휴식을 위한 힐링음악 편안한 피아노 음악ㅣ독서음악,공부음악,명상음악</strong></p>
+                        <p><strong>가을에 듣기 좋은 힐링음악 | 휴식음악, 스트레스 해소음악, 편안한 음악</strong></p>
                     </div>
                 </div>
             </div>
         </div>
     <!-- 메인 끝-->
-    <!-- 후터 시작-->
-    <div class="footer">
-        <div class="footer-container1">
-            <div class="container1-content">
-                <p>(주)MGMG(빨간약)</p>
-                <p>노의진(팀장) 이지윤(부팀장) 이동현 유대훈</p>
-                <p>서울특별시 노원구 상계로1길 34 5층</p>
-            </div>
-        </div>
-        <div class="footer-container2">
-            <p>ⓒ MGMG All Rights Reserved.</p>
-            <div class="container2-01">
-                <div class="container2-01-content"><a href="">문의하기</a></div>
-                <div class="container2-01-content"><a href="">이용약관</a></div>
-                <div class="container2-01-content"><a href="">개인정보처리방침</a></div>
-            </div>
-        </div>
-    </div>
-    <!-- 후터 끝-->
+        <!-- =====풋터 시작===== -->
+        <footer class="footer" th:replace="fragments/footer :: footer"></footer>
+        <!-- =====풋터 종료====== -->
 </body>
 </html>
