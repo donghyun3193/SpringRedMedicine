@@ -4,8 +4,9 @@
 <configuration>
     <typeAliases>
         <typeAlias type="com.example.redmedicine.domain.dto.UserDto" alias="userDto"/>
+        <typeAlias type="com.example.redmedicine.domain.dto.CounselorDto" alias="counselorDto"/>
 
-<!--        <typeAlias type="com.example.redmedicine.domain.vo.BoardVo" alias="boardVo" />-->
+        <typeAlias type="com.example.redmedicine.domain.vo.CounselorVo" alias="counselorVo"/>
 
 <!--        <typeAlias type="com.example.redmedicine.domain.vo.Criteria" alias="criteria"/>-->
     </typeAliases>

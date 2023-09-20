@@ -8,4 +8,14 @@ import org.springframework.stereotype.Component;
 @Data
 @NoArgsConstructor
 public class CounselorDto {
+    Long profileNumber;
+    Long userNumber;
+    Long profileSuper;
+    Long profileCareer;
+    Long profileFee;
+    String profileTarget;
+    String profileArea;
+    String profileDay;
+    String profileTime;
+    String profileContent;
 }
