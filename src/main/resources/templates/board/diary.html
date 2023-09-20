@@ -7,31 +7,9 @@
     <link rel="stylesheet" href="../css/diary.css">
 </head>
 <body>
-    <div class="header">
-        <div class="header-container">
-            <div class="header-nav1">
-                <div class="logo"><a href="/html/index.html"><img src="../img/logo.png" alt=""></a></div>
-                <div class="nav1">
-                    <ul>
-                        <li><a href="/html/music.html">힐링음악</a></li>
-                        <li><a href="/html/notice.html">커뮤니티</a></li>
-                        <li><a href="/html/diagnosis.html">자가진단테스트</a></li>
-                        <li><a href="/html/matemainfree.html">비대면상담받기</a></li>
-                        <li><a href="/html/index.html">상담사등록</a></li>
-                        <li><a href="/html/map.html">상담센터찾기</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="header-nav2">
-                <div class="nav2-box">
-                    <ul>
-                        <li><a href="/html/login.html">로그인</a></li>
-                        <li><a href="/html/join.html">회원가입</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
+<!-- 헤더 시작-->
+<header class="header" th:replace="fragments/header :: header"></header>
+<!-- 헤더 종료-->
     <div class="main-container">
         <div class="main-nav-container">
             <!-- <div class="main-nav"> -->
@@ -149,22 +127,8 @@
             </div>
         </div>
     </div>
-    <div class="footer">
-        <div class="footer-container1">
-            <div class="container1-content">
-                <p>(주)MGMG(빨간약)</p>
-                <p>노의진(팀장) 이지윤(부팀장) 이동현 유대훈</p>
-                <p>서울특별시 노원구 상계로1길 34 5층</p>
-            </div>
-        </div>
-        <div class="footer-container2">
-            <p>ⓒ MGMG All Rights Reserved.</p>
-            <div class="container2-01">
-                <div class="container2-01-content"><a href="">문의하기</a></div>
-                <div class="container2-01-content"><a href="/html/terms.html">이용약관</a></div>
-                <div class="container2-01-content"><a href="/html/privacy.html">개인정보처리방침</a></div>
-            </div>
-        </div>
-    </div>
+<!-- 후터 시작-->
+<footer class="footer" th:replace="fragments/footer :: footer"></footer>
+<!-- 후터 끝-->
 </body>
 </html>
