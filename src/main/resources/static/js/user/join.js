@@ -66,6 +66,8 @@ birthDayEl.addEventListener('focus', function () {
     });
 
 
+
+
 // '이용약관' 모달 열기
 $('.btn-open-popup').on('click', function(){
   $('section.terms-modal').removeClass('none');
@@ -107,3 +109,50 @@ $('.modal').on('click', function(event){
       }
     }, 1000);
   //타이머 js 끝
+
+//성별 선택!
+let $radioGender = $('.radio-gender');
+
+$radioGender.on('click', function(e){
+  let idx = $radioGender.index(this);
+  console.log(idx);
+  for(let i=0;i<$radioGender.length; i++){
+    if (i == idx) {
+      $radioGender.eq(i).addClass('checked');
+    } else {
+      $radioGender.eq(i).removeClass('checked');
+    }
+  }
+});
+
+/*결국 해냈다 회원가입 시 날짜 입력될 수 있도록 유도!*/
+const birthYearSelect = document.getElementById('birth-year');
+const birthMonthSelect = document.getElementById('birth-month');
+const birthDaySelect = document.getElementById('birth-day');
+const userBirthInput = document.getElementById('userBirth');
+
+// 선택한 년, 월, 일 값을 가져와서 userBirth input 필드에 설정
+function updateUserBirth() {
+  const selectedYear = birthYearSelect.value;
+  let selectedMonth = birthMonthSelect.value;
+  let selectedDay = birthDaySelect.value;
+
+  // 월과 일이 한 자릿수일 경우 앞에 0을 추가해줍니다.
+  if (selectedMonth.length === 1) {
+    selectedMonth = '0' + selectedMonth;
+  }
+  if (selectedDay.length === 1) {
+    selectedDay = '0' + selectedDay;
+  }
+
+  // 연도, 월, 일을 하이픈(-)으로 구분된 문자열로 설정합니다.
+  userBirthInput.value = selectedYear + '-' + selectedMonth + '-' + selectedDay;
+}
+
+// 선택한 값이 변경될 때마다 updateUserBirth 함수 호출
+birthYearSelect.addEventListener('change', updateUserBirth);
+birthMonthSelect.addEventListener('change', updateUserBirth);
+birthDaySelect.addEventListener('change', updateUserBirth);
+
+// 초기화시에도 실행
+updateUserBirth();

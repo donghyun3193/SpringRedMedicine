@@ -18,8 +18,11 @@ public class UserService {
     public void register(UserDto userDto){
         if (userDto == null) {
             throw new IllegalArgumentException("회원 정보 누락!");
-
         }
+        //회원 가입 시 회원의 레벨을 1로 고정 -> 추후 상담사가 된다면 바뀔 것
+        userDto.setUserLevel(1L);
+
+//        userDto.setUserBirth("20000506");
         userMapper.insert(userDto);
     }
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,48 +19,62 @@
             <div class="main-content-contaniner">
                 <div class="main-content-title">회원가입</div>
                 
-                <div class="content-box">
+                <form class="content-box" action="/user/join" method="post" >
                     <div class="main-container-section1">
                         <div class="input-name">아이디</div>
-                        <input class="inputid" type="text" placeholder="아이디" ><br>
+                        <input class="inputid" type="text" placeholder="아이디"
+                        id="userId" name="userId" required><br>
                         <div class="input-name">비밀번호</div>
-                        <input class="inputpw" type="password" placeholder="비밀번호" ><br>
+                        <input class="inputpw" type="password" placeholder="비밀번호"
+                        id="userPassword" name="userPassword" required><br>
                         <div class="input-name">비밀번호확인</div>
-                        <input class="inputpw2" type="password" placeholder="비밀번호확인"><br>
+                        <input class="inputpw2" type="password" placeholder="비밀번호확인"
+                        id="confirm-password" name="confirm-password" required><br>
                         <div class="input-name">이름</div>
-                        <input class="inputname" type="test" placeholder="이름"><br>
+                        <input class="inputname" type="test" placeholder="이름"
+                        id="userName" name="userName" required><br>
                         <div class="input-name">이메일</div>
-                        <input class="inputemail" type="email" placeholder="이메일" ><br>
+                        <input class="inputemail" type="email" placeholder="이메일"
+                        id="userEmail" name="userEmail" required><br>
+
+                        <!--일단 전화번호와 인증절차는 button type으로 처리하였음-->
                         <div class="input-name">휴대전화</div>
                         
                         <div>
-                            <input class="inputphone" type="text" placeholder="휴대폰번호" >
-                            <button class="btn-auth" type="submit">전송</button>
+                            <input class="inputphone" type="text" placeholder="휴대폰번호"
+                            id="userPhone" name="userPhone" required>
+                            <button class="btn-auth" type="button">전송</button>
                         </div><br>
                         <div class="main-c-s-d1">
                             <div class="main-time" id="time"></div>
                         </div>
                         <div>
-                            <input class="phone-auth" type="text" placeholder="인증번호입력" >
-                            <button class="btn-auth" type="submit">인증</button>
+<!--                            <input class="phone-auth" type="text" placeholder="인증번호입력" >-->
+<!--                            <button class="btn-auth" type="button">인증</button>-->
                         </div><br>
 
                         <div class="input-name">생년월일</div>
                         <div class="info" id="info__birth">
                             <select class="box" id="birth-year">
-                            <option disabled selected>출생 연도</option>
+                            <option disabled selected required >출생 연도</option>
+
                             </select>
                             <select class="box" id="birth-month">
-                            <option disabled selected>월</option>
+                            <option disabled selected required>월</option>
                             </select>
                             <select class="box" id="birth-day">
-                            <option disabled selected>일</option>
+                            <option disabled selected required>일</option>
+                                <input type="hidden" id="userBirth" name="userBirth"/>
                             </select>
+
+
                         </div><br>
                         <div class="input-name">성별</div>
                         <div class="radio-gender">
-                            <input type='radio' name='gender' value='male' />남
-                            <input type='radio' name='gender' value='female' />여
+                            <input type='radio' name='userGender' value='M'
+                            id="gender-m" required/>남
+                            <input type='radio' name='userGender' value='F'
+                            id="gender-f" required/>여
                         </div>
                     </div>
                     <div class="main-container-section2"><br> 
@@ -74,39 +88,36 @@
                             
                             <section class="none terms-modal"> 
                                 <div class="modal">
-                                    <div  th:replace="fragments/terms :: terms"></div>
+                                    <div th:replace="fragments/terms :: terms"></div>
                                 </div>
                             </section>
                             <div class="checkbox-agree">
-                                <input type="checkbox" value="false" class="main-checkbox">
-                                <button type="button" class="btn-open-popup">
-                                이용약관<p class="span-p">(필수)</p></button>
+                                <input type="checkbox" value="false" class="main-checkbox" required>
+                                <button type="button" class="btn-open-popup">이용약관<p class="span-p">(필수)</p></button>
                             </div>
                             
 <!-- 모달창1 끝 -->
 <!-- 모달창2 시작-->
                             <section class="none privacy-modal">
                                 <div class="modal">
-                                    <div  th:replace="fragments/privacy :: privacy"></div>
+                                    <div th:replace="fragments/privacy :: privacy"></div>
                                 </div>
                             </section>
                             <div class="checkbox-agree">
-                                <input type="checkbox" value="false" class="main-checkbox">
-                                <button type="button" class="btn-open-popup2">
-                                개인정보수집 및 이용동의<p class="span-p">(필수)</p>
-                                </button>
+                                <input type="checkbox" value="false" class="main-checkbox" required>
+                                <button type="button" class="btn-open-popup2">개인정보수집 및 이용동의<p class="span-p">(필수)</p></button>
                             </div>
                             <!-- 모달창2 끝-->
                     </div>
                     
                     <div class="main-container-section3">
-                        <button class="btn-join">회원가입</button>
-                        
+                        <button class="btn-join" type="submit">회원가입</button>
                     </div>
                     <div class="main-container-section4">
-                    <a href="/user/login">이미 아이디가 있으신가요? <u>로그인</u></a>
+                        <a href="/user/login">이미 아이디가 있으신가요? <u>로그인</u></a>
                     </div>
-                </div>
+                </form>
+
             </div>
         </div>
     </div>
