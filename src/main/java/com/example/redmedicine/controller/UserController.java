@@ -41,7 +41,7 @@ public class UserController {
 
     }
 
-    @PostMapping("join")
+    @PostMapping("join")//회원가입시 postMapping
     public RedirectView join(UserDto userDto){
         userService.register(userDto);//서비스에서 만든 메서드를 사용하겠구나
         return new RedirectView("/user/login");//RedirectView를 쓰는 이유는 가져온 정보를 뿌려줄 수 있으므로!
