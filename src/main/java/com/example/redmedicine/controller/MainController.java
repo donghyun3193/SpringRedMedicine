@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequiredArgsConstructor
 public class MainController {
 
-    //메인 이동
+    //메인
    @GetMapping("/index")
     public String showIndexPage(){
         return "main/index";
@@ -23,7 +23,7 @@ public class MainController {
         return "main/privacy";
     }
 
-    //
+    //이용약관
     @GetMapping("/terms")
     public String showTermsPage(){
         return "main/terms";
