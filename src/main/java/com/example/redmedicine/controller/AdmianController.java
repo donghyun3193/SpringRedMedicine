@@ -21,9 +21,8 @@ public class AdmianController {
 
     // 회원정보 관리
     @GetMapping("/memberShipMm")
-    public String showMemberShipMm(@PathVariable Long userNumber, Model model){
-        UserDto userDto = adminService.getUserNumber(userNumber);
-        model.addAttribute("userList", userDto);
+    public String showMemberShipMm(Model model){
+        model.addAttribute("userList", adminService.getUserNumber(Long userNumber));
 
         return "admin/memberShipMm";
     }
