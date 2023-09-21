@@ -11,4 +11,12 @@ public interface UserMapper {
 
     //회원 번호 조회 -> 입력받은 ID와 PW를 이용해서 userNumber를 가져오겠다?
     public Long selectUserNumber(@Param("userId") String userId, @Param("userPassword") String userPassword);
+
+    //회원 정보 조회
+    public UserDto select();
+
+    //회원 정보 수정 - update
+    public void update(UserDto userDto);
+
+
 }

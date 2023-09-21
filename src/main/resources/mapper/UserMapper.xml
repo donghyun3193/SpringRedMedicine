@@ -6,12 +6,24 @@
             SELECT SEQ_USER.NEXTVAL FROM DUAL
         </selectKey>
         insert into TBL_USER (USER_NUMBER, USER_ID, USER_PASSWORD, USER_NAME, USER_EMAIL, USER_PHONE, USER_BIRTH, USER_GENDER,
-                              USER_LEVEL)
-        values (#{userNumber}, #{userId}, #{userPassword}, #{userName}, #{userEmail}, #{userPhone}, #{userBirth}, #{userGender}, #{userLevel})
+        USER_LEVEL, USER_JOINDATE)
+        values (#{userNumber}, #{userId}, #{userPassword}, #{userName}, #{userEmail}, #{userPhone}, #{userBirth}, #{userGender}, #{userLevel}, TO_CHAR(SYSDATE, 'YYYY-MM-DD'))
     </insert>
 
     <select id="selectUserNumber" resultType="long">
         SELECT USER_NUMBER FROM TBL_USER
         WHERE USER_ID = #{userId} AND USER_PASSWORD = #{userPassword}
     </select>
+
+    <select id="select" resultType="userDto">
+        SELECT * FROM TBL_USER
+    </select>
+
+    <update id="update">
+        UPDATE TBL_USER
+        SET USER_ID = #{userId}, USER_PASSWORD = #{userPassword},
+            USER_NAME =#{userName}, USER_EMAIL = #{userEmail}, USER_PHONE=#{userPhone},
+            USER_BIRTH = #{userBirth}, USER_GENDER= #{userGender}
+        WHERE USER_NUMBER = #{userNumber}
+    </update>
 </mapper>
