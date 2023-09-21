@@ -16,5 +16,6 @@ public class UserDto {
     private String userPhone;
     private String userBirth;
     private String userGender;
+    private String userJoindate;
     private Long userLevel;
 }
