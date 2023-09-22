@@ -10,17 +10,17 @@
 <!-- 헤더 시작-->
 <header class="header" th:replace="fragments/header :: header"></header>
 <!-- 헤더 종료-->
-    <!-- 메인 시작-->
-    <div class="main-container">
-        <div class="main-nav-container">
-            <ul>
-                <li><a href="/counselor/free/freeMate" id="main-nav-button">무료 상담사</a></li>
-                <li><a href="/counselor/pay/payMate" id="main-nav-button">유료 상담사</a></li>
-            </ul>
-        </div>
-
-        <!-- ... 메인 내비게이션 ... -->
+<!-- 메인 시작-->
+<div class="main-container">
+    <div class="main-nav-container">
+        <ul>
+            <li><a href="/counselor/free/freeMate" id="main-nav-button">무료 상담사</a></li>
+            <li><a href="/counselor/pay/payMate" id="main-nav-button">유료 상담사</a></li>
+        </ul>
     </div>
+
+    <!-- ... 메인 내비게이션 ... -->
+</div>
 <div class="main-content">
     <table class="counselor-table"  >
         <!-- 첫 번째 행 -->
@@ -31,9 +31,9 @@
 
                 <!-- 이미지 -->
                 <a th:href="@{/counselor/pay/counselorProfilePay(profileNumber=${profile.profileNumber})}">
-                <div class="info-img">
-                    <img src="https://p9kr-stage-public.s3.ap-northeast-2.amazonaws.com/counselor/hd/1001-211129.jpg" alt="" width="100%" height="200px" class="img-counselor">
-                </div>
+                    <div class="info-img">
+                        <img src="https://p9kr-stage-public.s3.ap-northeast-2.amazonaws.com/counselor/hd/1001-211129.jpg" alt="" width="100%" height="200px" class="img-counselor">
+                    </div>
                 </a>
                 <!-- 상담자 이름 -->
                 <div class="counselor-name">
@@ -64,90 +64,14 @@
                     </div>
                 </div>
 
-</td>
-
-</tr>
-<!-- 다른 행들도 동일한 방식으로 추가 -->
-        <tr>
-            <!-- 상담자 정보 추가 (예시 데이터) -->
-
-            <td th:each="profile : ${profileList}">
-
-                <!-- 이미지 -->
-                <a th:href="@{/counselor/pay/counselorProfilePay(profileNumber=${profile.profileNumber})}">
-                    <div class="info-img">
-                        <img src="https://p9kr-stage-public.s3.ap-northeast-2.amazonaws.com/counselor/hd/1001-211129.jpg" alt="" width="100%" height="200px" class="img-counselor">
-                    </div>
-                </a>
-                <!-- 상담자 이름 -->
-                <div class="counselor-name">
-                    <b th:text="${profile.userName}">노의진</b>
-                    <img src="/img/flower.png" alt="목화꽃" style="width: 17px; height: 17px; margin-top: 8px;">
-                </div>
-
-
-                <!-- 기타 정보 (경력, 비용, 대상, 영역 등) -->
-                <div class="counselor-details">
-                    <div class="divsum">
-                        <div class="left">경력</div><div th:text="${profile.profileCareer}" class="right"></div>
-                    </div>
-
-                    <div class="divsum">
-                        <div th:if="${profile.profileFee == null ? '무료' : profile.profileFee}" class="right"></div>
-                    </div>
-                    <div class="divsum">
-                        <div class="left">대상</div><div th:text="${profile.profileTarget}" class="right"></div>
-                    </div>
-
-                    <div class="divsum">
-                        <div class="left">영역</div><div th:text="${profile.profileArea}" class="right"></div>
-                    </div>
-                </div>
-
             </td>
 
         </tr>
-
-        <tr>
-            <!-- 상담자 정보 추가 (예시 데이터) -->
-
-            <td th:each="profile : ${profileList}">
-
-                <!-- 이미지 -->
-                <a th:href="@{/counselor/pay/counselorProfilePay(profileNumber=${profile.profileNumber})}">
-                    <div class="info-img">
-                        <img src="https://p9kr-stage-public.s3.ap-northeast-2.amazonaws.com/counselor/hd/1001-211129.jpg" alt="" width="100%" height="200px" class="img-counselor">
-                    </div>
-                </a>
-                <!-- 상담자 이름 -->
-                <div class="counselor-name">
-                    <b th:text="${profile.userName}">노의진</b>
-                    <img src="/img/flower.png" alt="목화꽃" style="width: 17px; height: 17px; margin-top: 8px;">
-                </div>
+        <!-- 다른 행들도 동일한 방식으로 추가 -->
 
 
-                <!-- 기타 정보 (경력, 비용, 대상, 영역 등) -->
-                <div class="counselor-details">
-                    <div class="divsum">
-                        <div class="left">경력</div><div th:text="${profile.profileCareer}" class="right"></div>
-                    </div>
 
-                    <div class="divsum">
-                        <div class="left">비용</div><div th:text="${profile.profileFee}" class="right"></div>
-                    </div>
-                    <div class="divsum">
-                        <div class="left">대상</div><div th:text="${profile.profileTarget}" class="right"></div>
-                    </div>
-
-                    <div class="divsum">
-                        <div class="left">영역</div><div th:text="${profile.profileArea}" class="right"></div>
-                    </div>
-                </div>
-
-            </td>
-
-        </tr>
-</table>
+    </table>
 </div>
 <!-- 메인 끝-->
 <!-- 후터 시작-->
