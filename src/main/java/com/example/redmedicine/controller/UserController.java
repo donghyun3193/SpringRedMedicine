@@ -70,4 +70,16 @@ public class UserController {
 //        model.addAttribute("user",userDto);
 //
 //    }
+
+    //아이디찾기 페이지
+    @GetMapping("/findId")
+    public String showFindIdPage(){ return "user/findId";}
+
+    //비밀번호찾기 페이지
+    @GetMapping("/findPw")
+    public String showFindPwPage(){ return "user/findPw";}
+
+    //비밀번호 변경 페이지
+    @GetMapping("/changePw")
+    public String showChangePwPage(){return "user/changePw";}
 }
