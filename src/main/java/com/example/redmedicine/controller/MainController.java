@@ -34,4 +34,10 @@ public class MainController {
     public String showMusicPage(){
        return "main/music";
     }
+
+    //센터
+    @GetMapping("/map")
+    public String showMapPage(){
+        return "main/map";
+    }
 }

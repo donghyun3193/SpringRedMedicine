@@ -22,6 +22,7 @@ class UserMapperTest {
     @BeforeEach
     void setUp(){
         userDto = new UserDto();
+        userDto.setUserNumber(1L);
         userDto.setUserId("testId");
         userDto.setUserPassword("1234");
         userDto.setUserName("태스트");
@@ -30,7 +31,6 @@ class UserMapperTest {
         userDto.setUserBirth("2023-09-18");
         userDto.setUserGender("M");
         userDto.setUserLevel(1L);
-
     }
 
     @Test
@@ -42,16 +42,22 @@ class UserMapperTest {
     void selectUserNumber() {
         userMapper.selectUserNumber("testId","1234");
     }
+    
     @Test
     void update(){
-        userDto.setUserId("updateTest");
+        //수정
+        userDto.setUserName("이동현");
+
+        //DB에 저장
         userMapper.update(userDto);
         /*
         ↑ userDto 객체를 사용하여 데이터베이스 내의 회원 정보를 업데이트하려는 것
         업데이트 작업은 userDto 객체의 내용을 데이터베이스의 해당 레코드에 반영합니다.
         */
-        userDto = userMapper.select();
 
-        Assertions.assertThat(userDto.getUserNumber()).isEqualTo("updateTest");
+        //userDto에 Mapper에서 작성한 select()를 실행시키면 수정된 값이 저장 될 것
+        userDto = userMapper.selectAll();
+//                                    수정 후 Id
+        Assertions.assertThat(userDto.getUserName()).isEqualTo("이동현");
     }
 }

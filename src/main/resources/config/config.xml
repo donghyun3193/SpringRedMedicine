@@ -5,8 +5,10 @@
     <typeAliases>
         <typeAlias type="com.example.redmedicine.domain.dto.UserDto" alias="userDto"/>
         <typeAlias type="com.example.redmedicine.domain.dto.CounselorDto" alias="counselorDto"/>
+        <typeAlias type="com.example.redmedicine.domain.dto.DiaryDto" alias="diaryDto"/>
 
         <typeAlias type="com.example.redmedicine.domain.vo.CounselorVo" alias="counselorVo"/>
+        <typeAlias type="com.example.redmedicine.domain.vo.UserVo" alias="userVo"/>
 
 <!--        <typeAlias type="com.example.redmedicine.domain.vo.Criteria" alias="criteria"/>-->
     </typeAliases>
