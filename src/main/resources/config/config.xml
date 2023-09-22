@@ -5,6 +5,7 @@
     <typeAliases>
         <typeAlias type="com.example.redmedicine.domain.dto.UserDto" alias="userDto"/>
         <typeAlias type="com.example.redmedicine.domain.dto.ProfileDto" alias="profileDto"/>
+        <typeAlias type="com.example.redmedicine.domain.dto.PfFileDto" alias="profileDto"/>
 
         <typeAlias type="com.example.redmedicine.domain.vo.ProfileVo" alias="profileVo"/>
 
