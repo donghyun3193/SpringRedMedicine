@@ -105,131 +105,100 @@ a{
 /* 헤더 끝 */
 
 /* 메인 시작 */
-
-.img-counselor{
-border-top-left-radius: 10px;
-border-top-right-radius: 10px;
-}
-
-.main-container{
-  width: 100vw;
-  height: 1800px;
-  /* background-color: #e9f4d9; */
-  /* border-top: 0.5px solid rgb(219, 217, 217); */
-}
-
-
 .main-nav-container{
-width: 100%;
-height: 30px;
-background-color: rgb(249, 147, 37);
+  width: 100%;
+  height: 30px;
+  background-color: rgb(249, 147, 37);
 
-display: flex;
-justify-content: center;
+  display: flex;
+  justify-content: center;
 
 }
 
 .main-nav-container ul{
-list-style: none;
-display: flex;
-margin: 0 400px;
-line-height: 30px;
-margin-left: -260px;
+  list-style: none;
+  display: flex;
+  margin: 0 400px;
+  line-height: 30px;
+  margin-left: -260px;
 }
 .main-nav-container ul li{
-font-size: 14px;
-margin: 0 10px;
-text-align: center;
-/* font-weight: bold; */
+  font-size: 14px;
+  margin: 0 10px;
+  text-align: center;
+  /* font-weight: bold; */
 }
 #main-nav-button{
-color: white;
+  color: white;
 }
-#nav-title{
-margin: 20px 20px;
-font-size: 23px;
-padding: 20px 0;
-font-weight: bold;
-}
-.main-content{
-  width: 100%;
-  height: 1600px;
-  /* background-color: white; */
+/*  */
+.counselor-table{
   display: flex;
-  flex-direction: column;
-}
-.main-content-contaniner1{
-  width: 1300px;
-  height: 500px;
-  margin: 20px auto;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  /* margin: 50px; */
+  font-weight: bold;
 
-  border-style: none;
-  border-radius: 10px;
-  padding: 10px 0;
-  background-color: white;
-  display: flex;
+  /*width: 100%;*/
+  /* 테이블 전체 너비를 100%로 설정 */
+  /*table-layout: fixed;*/
+  /* 테이블 너비를 고정으로 설정 */
 }
+td{
+  /*width: calc(100% / 3);*/
+  /* 테이블의 셀을 3개로 나누어 가로로 고르게 배치 */
+  /*box-sizing: border-box;*/
+  /* 테이블 셀 너비를 내부 패딩과 테두리까지 포함하여 설정 */
 
-.main-container-section1{
   width: 400px;
   height: 500px;
-  margin: 0 10px;
+
   border: 1px solid rgb(241, 234, 234);
+  border-top: white;
   border-radius: 10px;
-  /* border-style: none; */
-  box-shadow:4px 4px 4px 4px rgb(216, 214, 214, 0.6) ;
+  box-shadow: 4px 4px 4px 4px rgb(216, 214, 214, 0.6);
+  border-radius: 10px;
+  /*margin: 10px auto;*/
+
+  position: relative
 }
-.main-container-section1-img{
-  width: 100%;
-  height: 200px;
-  border-style: none;
-  /* background-color: aquamarine; */
+
+td img {
+  margin-top: -100px; /* 원하는 여백 값을 지정합니다. */
+  border-radius: 12px;
 }
-.main-container-section1-info{
-  width: 100%;
-  height: 300px;
-  /* background-color:yellowgreen; */
-} 
-.main-container-section1-info-up{
-display: flex;
-align-items: center;
-width: 200px;
-height: 50px;
-}
+
 .counselor-name{
-margin-top: 15px;
-margin-left: 18px;
-font-size: 24px;
+  font-size: 24px;
+  display: flex;
+  /* margin-left: 20px; */
+  margin :30px
 }
-.counselor-flower{
-margin-top: 30px;
-height: 50px;
-margin-bottom: 5px;
-align-items: center;
-}
-.main-container-section1-info-down{
-width: 100%;
-height: 250px;
 
 
-display: flex;
-flex-direction: column;
-text-align: left;
+.left{
+  width: 90px;
 }
-.counselor-down-section{
 
-margin-left: 20px;
-margin-top: 10px;
-display:flex;
+.right{
+  /* width: 300px; */
+  /* margin-right: 5px; */
 }
-.counselor-down-section1-left{
-width: 50px;
-color: rgb(69, 71, 73);
+
+.divsum{
+  /* margin-left: 20px; */
+  font-size: 15px;
+  margin-top: 26px;
+  display: flex;
+
+
 }
-.counselor-down-section1-right{
-width: 300px;
-margin-right: 5px
+
+.counselor-table {
+  border-spacing: 50px; /* 원하는 간격으로 조절하세요 */
 }
+
 
 /* 푸터 시작 */
 

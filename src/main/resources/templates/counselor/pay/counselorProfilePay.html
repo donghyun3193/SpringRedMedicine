@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/counselor/pay/counselorProfilePay.css">
+    <title>counselorProfilePay</title>
+</head>
+<body>
+<!-- 헤더 시작-->
+<header class="header" th:replace="fragments/header :: header"></header>
+<!-- 헤더 종료-->
+<!-- councelorProfile 메인 페이지 시작 -->
+<div class="main-nav-container">
+    <ul>
+        <li><a href="/counselor/free/freeMate" id="main-nav-button">무료 상담사</a></li>
+        <li><a href="/counselor/pay/payMate" id="main-nav-button">유료 상담사</a></li>
+    </ul>
+</div>
+<!-- 내가 원하는 장소 아무곳에나 모달창을 삽입해도 무관하더라 -->
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <h2>알림</h2>
+        <p style="margin-top: 5px; color: rgb(164, 164, 164);">
+        목화 꽃의 개수는 상담사가 몽글몽글의 상담사 육성 프로그램과 슈퍼비전에 얼마나 오랫동안 참여했는지를 나타냅니다.<br><br>
+        2년 이하는 1개, 2년 ~ 5년은 2개, 5년 이상은 3개의 목화 꽃이 표시됩니다.
+        </p>
+        <span class="close">확 인</span>
+    </div>
+</div>
+<!-- 모달창 종료 -->
+<!-- 이번에는 세션 시간 설명 모달창을 만들어 보겠다 -->
+<div id="sessionModal" class="sModal">
+    <div class="sModal-content">
+        <h2>알림</h2>
+        <p style="margin-top: 5px; color: rgb(164, 164, 164);">
+            성인 개인 및 아동 개인의 1세션은 50분간 진행되며 필요시 더블 세션을 예약할 수 있습니다.<br><br>
+            부부·커플 상담의 경우 더블 세션으로만 진행되며 90분 동안 진행됩니다.
+        </p>
+        <span class="sModal-close">확 인</span>
+    </div>
+</div>
+<!-- 세션 모달창 종료 -->
+<main class="profile">
+    <div class="profile-container">
+        <div class="profile-img">
+            <img src="/img/councelor01.jpg" alt="인물01"
+            style="width: 600px; height: 340px; border-radius: 5px;">
+        </div>
+        <div class="profile-namebox">
+            <div class="profile-name">
+                <h2>상담사</h2>
+                <img src="/img/flower.png" alt="목화꽃" style="width: 17px; height: 17px; margin-top: 14px; margin-left: 3px;">
+                <img src="/img/flower.png" alt="목화꽃" style="width: 17px; height: 17px; margin-top: 14px;">
+                <button class="cotton-question" style="border: none; background-color: white;" onclick="openModal()">
+                    <img src="/img/question-mark.png" alt="물음표" style="width: 17px; height: 17px; margin-top: 14px; margin-left: 2px; cursor: pointer;">
+                </button>
+            </div>
+            <div>
+<!--                <button class="btn-modify" type="submit" th:data-number="${profile.profileNumber}">수정</button>-->
+<!--                <button class="btn-remove" type="submit"  th:data-number="${profile.profileNumber}">삭제</button>-->
+                <button class="profile-button" type="submit" onclick="reservation()">예약</button>
+            </div>
+        </div>
+        <div class="profile-careerbox">
+            <div class="profile-super">
+                <p>슈퍼비전</p>
+                <b style="font-size: 20px;" th:text="${profile.profileSuper} + ' 년 ' ">1</b>
+            </div>
+            <div class="profile-career">
+                <p>상담경력</p>
+                <b style="font-size: 20px;" th:text="${profile.profileCareer} + ' 년 '">1</b>
+            </div>
+            <div class="profile-price">
+                <p>세션당 비용</p>
+                <b  style="font-size: 20px;" th:text=" ' 세션 당 / ' + ${profile.profileFee} + ' 원 ' ">1</b>
+            </div>
+        </div>
+        <div class="profile-sessionbox">
+            <button class="session" onclick="openSessionModal()">세션 시간 안내</button>
+        </div>
+        <div class="councel-target">
+            <div class="councel-target-title"><h2>상담대상</h2></div>
+            <div class="councel-target-content" th:text="${profile.profileTarget}"><p>성인, 아동/청소년, 부부/커플</p></div>
+        </div>
+        <div class="councel-area">
+            <br>
+            <div class="councel-area-title" ><h2>상담영역</h2></div>
+            <div class="councel-area-content">
+                <p th:text="${profile.profileArea}">
+                    분노조절, 불안, 양극성장애, 의존성, 우울증, 섭식장애, 상실/애도, 충동조절, 
+                    외도, 기분장애, 자기애성 인격장애, 강박증, 공황장애, 트라우마/PTSD, 관계, 
+                    자존감, 자해/자살 사고, 성문제, 사회불안증, 영성, 스트레스 조절, 
+                    직장/학교 스트레스
+                </p>
+                <br>
+            </div>
+        </div>
+
+        <div class="councel-total">
+            <div class="councel-total-content" th:text="${profile.profileContent}"></div>
+
+        <br>
+        <br>
+        <div class="profile-commentbox">
+            <div class="reply-wrap">
+                <h3>후기 작성</h3>
+                <div class="reply-wrap__box">
+                  <div class="reply-content__box">
+                    <div class="reply-writer">작성자</div>
+                    <textarea name="replyContent" id="reply-content" cols="30" rows="10"></textarea>
+                  </div>
+                  <div class="reply-btn-wrap">
+                    <button type="button" class="btn-reply">작성 완료</button>
+                  </div>
+                </div>
+          
+                <!-- 댓글 리스트 -->
+                <div class="reply-list-wrap">
+                  <!-- 리플 예시 -->
+                  <div class="reply">
+                    <div class="reply-box">
+                      <div class="reply-box__writer">김철수</div>
+                      <div class="reply-box__content">안녕하세요!</div>
+                    </div>
+                    <div class="reply-btn-box">
+                      <span class="reply-btns"></span>
+                      <div class="reply-btns__box none">
+                        <div class="reply-remove-btn">삭제</div>
+                        <div class="reply-modify-btn">수정</div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- /리플 예시 -->
+        </div>
+    </div>
+    <div class="emptybox"></div>
+</main>
+
+<!-- councelorProfile 종료 -->
+<!-- =====풋터 시작===== -->
+<footer class="footer" th:replace="fragments/footer :: footer"></footer>
+<!-- =====풋터 종료====== -->
+<script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+<script src="/js/counselor/pay/counselorProfilePay.js"></script>
+</body>
+</html>
