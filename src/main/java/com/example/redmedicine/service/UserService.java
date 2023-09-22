@@ -32,4 +32,10 @@ public class UserService {
                 .orElseThrow(()-> {throw new IllegalArgumentException("아이디와 패스워드가 일치하는 회원 정보가 없습니다.");
                 });
     }
+
+    //회원 정보 수정
+    public void modify(UserDto userDto){
+        userMapper.update(userDto);
+    }
+
 }

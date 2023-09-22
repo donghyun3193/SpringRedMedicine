@@ -18,11 +18,11 @@
                         <li><a href="/test/diagnosis.html">자가진단테스트</a></li>
                         <li><a href="/counselor/pay/payMate.html">비대면상담받기</a></li>
                         <li><a href="/counselor/pay/Registration.html">상담사등록</a></li>
-                        <li><a href="/main/map.html">상담센터찾기</a></li>
+                        <li><a href="/main/map">상담센터찾기</a></li>
                     </ul>
                 </div>
             </div>
-            <div class="header-nav2">
+            <form class="header-nav2">
                 <div class="nav2-box">
                     <ul th:if="${session.userNumber == null}">
                         <li><a href="/user/login">로그인</a></li>
@@ -33,7 +33,8 @@
                             <li><a href="/user/join">회원가입</a></li>
                     </ul>
                 </div>
-            </div>
+<!--                <input type="hidden" th:value="${user.userNumber}" name="userNumber" >-->
+            </form>
         </div>
     </div>
 <!--=======헤더 종료=======-->

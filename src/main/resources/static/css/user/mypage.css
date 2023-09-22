@@ -387,7 +387,8 @@ a{
   font-size: 12px;
 }
 
-.btn-join{
+.btn-join,
+.btn-join-update{
   width: 45%;
   height: 40px;
 
