@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/registration.css">
+    <link rel="stylesheet" href="/css/counselor/pay/registration.css">
     <title>무료상담사등록02</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
@@ -20,24 +20,24 @@
         </div>
         <div class="main-content-container">
             <div class="main-content-title">유료 상담사 등록</div>
-            <form action="">
+            <form action="/counselor/pay/registration" method="get" >
                 <table>
                     <tr class="content01">
                         <th>슈퍼비전</th>
-                        <td><input type="number" class="content01-input">년</td>
+                        <td><input name="profileSuper" type="text" class="content01-input">년</td>
                         <th>상담경력</th>
-                        <td><input type="number" class="content01-input">년</td>
+                        <td><input name="profileCareer" type="text" class="content01-input">년</td>
                         <th>세션당 비용</th>
-                        <td><input type="number" class="content01-input" >원</td>
+                        <td><input name="profileFee" type="text" class="content01-input" >원</td>
                     </tr>
                     <tr class="content01">
                         <th>상담 대상</th>
                         <td colspan="5" class="content01-checkboxes">
-                            <input type="checkbox">전체
-                            <input type="checkbox">성인
-                            <input type="checkbox">아동/청소년
-                            <input type="checkbox">가족
-                            <input type="checkbox">부부/커플
+                            <input namge=target type="checkbox" value="전체">전체
+                            <input namge=target type="checkbox" value="성인">성인
+                            <input namge=target type="checkbox" value="아동/청소년">아동/청소년
+                            <input namge=target type="checkbox" value="가족">가족
+                            <input namge=target type="checkbox" value="부부/커플">부부/커플
                         </td>
                     </tr>
                     <tr class="content02">
@@ -94,12 +94,12 @@
                     </tr>
                     <tr class="content01">
                         <th>이름</th>
-                        <td colspan="5" class="writer"><input type="text" name="" id=""></td>
+                        <td colspan="5" class="writer"><input type="text" name="userName" id=""></td>
                     </tr>
                     <tr>
                         <th>내용</th>
                         <td colspan="5" class="content-text">
-                            <textarea name="" id="">
+                            <textarea name="profileContent" id="">
     
 ※자격※
 
@@ -144,8 +144,8 @@
                     </tr>
                 </table>
                 <div class="main-buttons">
-                    <button><a href="" id="main-buttons-button">취소</a></button>
-                    <button><a href="" id="main-buttons-button">등록</a></button>
+                    <button><a href="" id="main-buttons-button" type="button" onclick="getSelectedTargets()">취소</a></button>
+                    <button><a href="" id="main-buttons-button" type="button" onclick="getSelectedTargets()">등록</a></button>
                 </div>
             </form>
         </div>

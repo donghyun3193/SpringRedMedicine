@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.redmedicine.mapper.CounselorMapper">
+<mapper namespace="com.example.redmedicine.mapper.ProfileMapper">
     <insert id="insert">
         <selectKey keyProperty="profileNumber" order="BEFORE" resultType="long">
-            SELECT SEQ_PROFILE.NEXTVAL FROM DUAL
+        SELECT SEQ_PROFILE.NEXTVAL FROM DUAL
         </selectKey>
         insert into TBL_PROFILE (PROFILE_NUMBER, USER_NUMBER, PROFILE_SUPER, PROFILE_CAREER, PROFILE_FEE, PROFILE_TARGET, PROFILE_AREA, PROFILE_DAY, PROFILE_TIME, PROFILE_CONTENT)
         values (#{profileNumber},#{userNumber},#{profileSuper},#{profileCareer},#{profileFee},#{profileTarget},#{profileArea},#{profileDay},#{profileTime},#{profileContent})
@@ -11,7 +11,7 @@
 
     <insert id="insertProfileFree">
         <selectKey keyProperty="profileNumber" order="BEFORE" resultType="long">
-            SELECT SEQ_PROFILE.NEXTVAL FROM DUAL
+        SELECT SEQ_PROFILE.NEXTVAL FROM DUAL
         </selectKey>
         insert into TBL_PROFILE (PROFILE_NUMBER, USER_NUMBER, PROFILE_SUPER, PROFILE_CAREER, PROFILE_TARGET, PROFILE_AREA, PROFILE_DAY, PROFILE_TIME, PROFILE_CONTENT)
         values (#{profileNumber},#{userNumber},#{profileSuper},#{profileCareer},#{profileTarget},#{profileArea},#{profileDay},#{profiletTime},#{profileContent})
@@ -24,30 +24,27 @@
 
     <update id="update">
         UPDATE TBL_PROFILE
-        SET PROFILE_SUPER = #{profileSuper}, PROFILE_CAREER = #{profileCareer}, PROFILE_TARGET = #{profileTarGet},
-            PROFILE_AREA = #{profileArea}, PROFILE_DAY = #{profileDay}, PROFILE_TIME = #{profileTime}, PROFILE_CONTENT = #{profileContent}
+        SET PROFILE_SUPER = #{profileSuper}, PROFILE_CAREER = #{profileCareer}, PROFILE_TARGET = #{profileTarget},
+        PROFILE_AREA = #{profileArea}, PROFILE_DAY = #{profileDay}, PROFILE_TIME = #{profileTime}, PROFILE_CONTENT = #{profileContent}
         WHERE PROFILE_NUMBER = #{profileNumber}
     </update>
 
-    <select id="selectProfilePayNumber" resultType="counselorVo">
-        SELECT PROFILE_NUMBER, U.USER_NAME, PROFILE_FEE, PROFILE_TARGET, PROFILE_AREA
+    <select id="selectProfilePayNumber" resultType="profileVo">
+        SELECT PROFILE_NUMBER, U.USER_NAME, PROFILE_CAREER, PROFILE_FEE, PROFILE_TARGET, PROFILE_AREA
         FROM TBL_PROFILE P JOIN TBL_USER U
-                                ON P.USER_NUMBER = U.USER_NUMBER
+        ON P.USER_NUMBER = U.USER_NUMBER
+        WHERE PROFILE_FEE IS NOT NULL
         ORDER BY PROFILE_NUMBER
     </select>
 
-    <select id="selectProfileFreeNumber" resultType="counselorVo">
-        SELECT PROFILE_NUMBER, U.USER_NAME, PROFILE_FEE, PROFILE_TARGET, PROFILE_AREA
+    <select id="selectProfileFreeNumber" resultType="profileVo">
+        SELECT PROFILE_NUMBER, U.USER_NAME, PROFILE_CAREER, PROFILE_FEE, PROFILE_TARGET, PROFILE_AREA
         FROM TBL_PROFILE P JOIN TBL_USER U
         ON P.USER_NUMBER = U.USER_NUMBER
         WHERE PROFILE_FEE IS NULL
         ORDER BY PROFILE_NUMBER
     </select>
 
-<!--    <select id="selectProfileNumber" resultType="counselorDto">-->
-<!--        SELECT PROFILE_NUMBER, USER_NUMBER, PROFILE_SUPER, PROFILE_CAREER, PROFILE_FEE, PROFILE_TARGET, PROFILE_AREA, PROFILE_DAY, PROFILE_TIME, PROFILE_CONTENT-->
-<!--        FROM TBL_PROFILE-->
-<!--        WHERE PROFILE_NUMBER = #{profileNumber}-->
-<!--    </select>-->
+
 </mapper>
 

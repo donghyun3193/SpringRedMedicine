@@ -1,7 +1,15 @@
 // JavaScript 함수를 정의하여 페이지 이동을 처리
 function reservation() {
     // 페이지 이동을 원하는 URL로 변경
-    window.location.href = '/src/main/resources/templates/counselor/book/bookingDetails.html'; // 이동하려는 URL을 여기에 입력
+    window.location.href = '/counselor/book/bookingDetails'; // 이동하려는 URL을 여기에 입력
+}
+function modifybtn() {
+    // 페이지 이동을 원하는 URL로 변경
+    window.location.href = '/counselor/pay/registration'; // 이동하려는 URL을 여기에 입력
+}
+function removebtn() {
+    // 페이지 이동을 원하는 URL로 변경
+    window.location.href = '/counselor/pay/payMate'; // 이동하려는 URL을 여기에 입력
 }
 
 //강사님의 js입니다. 

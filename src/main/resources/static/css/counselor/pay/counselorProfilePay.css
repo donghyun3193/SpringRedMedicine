@@ -249,6 +249,31 @@ a{
   border-radius: 5px;
   cursor: pointer;
 }
+.btn-modify{
+    width: 72px;
+    height: 35px;
+    background-color: orange;
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.btn-remove{
+    width: 72px;
+    height: 35px;
+    background-color: orange;
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+
 .profile-careerbox{
     width: 600px;
     height: 110px;
