@@ -1,6 +1,7 @@
 package com.example.redmedicine.mapper;
 
 import com.example.redmedicine.domain.dto.UserDto;
+import com.example.redmedicine.domain.vo.UserVo;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -13,7 +14,10 @@ public interface UserMapper {
     public Long selectUserNumber(@Param("userId") String userId, @Param("userPassword") String userPassword);
 
     //회원 정보 조회
-    public UserDto select();
+    public UserDto selectAll();
+
+    //조회
+//    public UserVo select(Long userNumber);
 
     //회원 정보 수정 - update
     public void update(UserDto userDto);
