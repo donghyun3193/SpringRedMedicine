@@ -105,6 +105,11 @@ a{
 /* 헤더 끝 */
 
 /* 메인 시작 */
+.main-content{
+  width: 1200px;
+  margin : 0 auto;
+}
+
 .main-nav-container{
   width: 100%;
   height: 30px;
@@ -137,13 +142,32 @@ a{
   text-align: center;
   align-items: center;
   justify-content: center;
-  /* margin: 50px; */
+  margin: 30px;
   font-weight: bold;
+
+  /*width: 100%;*/
+  /* 테이블 전체 너비를 100%로 설정 */
+  /*table-layout: fixed;*/
+  /* 테이블 너비를 고정으로 설정 */
+}
+tr{
+  width: 1200px;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-row-gap: 30px;
+  grid-gap: 30px;
 }
 td{
 
+  /*width: calc(100% / 3);*/
+  /* 테이블의 셀을 3개로 나누어 가로로 고르게 배치 */
+  /*box-sizing: border-box;*/
+  /* 테이블 셀 너비를 내부 패딩과 테두리까지 포함하여 설정 */
+
   width: 400px;
   height: 500px;
+
   border: 1px solid rgb(241, 234, 234);
   border-top: white;
   border-radius: 10px;
@@ -155,7 +179,7 @@ td{
 }
 
 td img {
-  margin-top: -100px; /* 원하는 여백 값을 지정합니다. */
+  /*margin-top: -100px; !* 원하는 여백 값을 지정합니다. *!*/
   border-radius: 12px;
 }
 
@@ -181,10 +205,14 @@ td img {
   font-size: 15px;
   margin-top: 26px;
   display: flex;
+
+
 }
 
 .counselor-table {
   border-spacing: 50px; /* 원하는 간격으로 조절하세요 */
+
+
 }
 
 

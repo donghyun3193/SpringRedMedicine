@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/counselor/pay/counselorProfilePay.css">
+    <script defer src="/js/counselor/pay/counselorProfilePay.js"></script>
     <title>counselorProfilePay</title>
 </head>
 <body>
@@ -49,7 +50,7 @@
         </div>
         <div class="profile-namebox">
             <div class="profile-name">
-                <h2>상담사</h2>
+                <h2 th:text="${profile.userName}"></h2>
                 <img src="/img/flower.png" alt="목화꽃" style="width: 17px; height: 17px; margin-top: 14px; margin-left: 3px;">
                 <img src="/img/flower.png" alt="목화꽃" style="width: 17px; height: 17px; margin-top: 14px;">
                 <button class="cotton-question" style="border: none; background-color: white;" onclick="openModal()">
@@ -59,7 +60,12 @@
             <div>
 <!--                <button class="btn-modify" type="submit" th:data-number="${profile.profileNumber}">수정</button>-->
 <!--                <button class="btn-remove" type="submit"  th:data-number="${profile.profileNumber}">삭제</button>-->
-                <button class="profile-button" type="submit" onclick="reservation()">예약</button>
+
+                <th:block th:if="${session.userNumber == profile.userNumber}">
+                <button class="profile-button" type="button" th:data-number="${profile.profileNumber}">삭제</button>
+                </th:block>
+                <button class="profile-button" type="button" onclick="reservation()">예약</button>
+
             </div>
         </div>
         <div class="profile-careerbox">
@@ -73,7 +79,7 @@
             </div>
             <div class="profile-price">
                 <p>세션당 비용</p>
-                <b  style="font-size: 20px;" th:text=" ' 세션 당 / ' + ${profile.profileFee} + ' 원 ' ">1</b>
+                <b  style="font-size: 20px;" th:text=" ' 세션 당 / ' + ${profile.profileFee} + ' 원 ' "></b>
             </div>
         </div>
         <div class="profile-sessionbox">
@@ -81,17 +87,13 @@
         </div>
         <div class="councel-target">
             <div class="councel-target-title"><h2>상담대상</h2></div>
-            <div class="councel-target-content" th:text="${profile.profileTarget}"><p>성인, 아동/청소년, 부부/커플</p></div>
+            <div class="councel-target-content" ><p th:text="${profile.profileTarget}"></p></div>
         </div>
         <div class="councel-area">
             <br>
             <div class="councel-area-title" ><h2>상담영역</h2></div>
             <div class="councel-area-content">
                 <p th:text="${profile.profileArea}">
-                    분노조절, 불안, 양극성장애, 의존성, 우울증, 섭식장애, 상실/애도, 충동조절, 
-                    외도, 기분장애, 자기애성 인격장애, 강박증, 공황장애, 트라우마/PTSD, 관계, 
-                    자존감, 자해/자살 사고, 성문제, 사회불안증, 영성, 스트레스 조절, 
-                    직장/학교 스트레스
                 </p>
                 <br>
             </div>

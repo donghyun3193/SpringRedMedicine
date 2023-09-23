@@ -29,14 +29,14 @@
             <td th:each="profile : ${profileList}">
 
                 <!-- 이미지 -->
-                <a th:href="@{/counselor/pay/counselorProfilePay(profileNumber=${profile.profileNumber})}">
+                <a th:href="@{/counselor/free/counselorProfileFree(profileNumber=${profile.profileNumber})}">
                     <div class="info-img">
                         <img src="https://p9kr-stage-public.s3.ap-northeast-2.amazonaws.com/counselor/hd/1001-211129.jpg" alt="" width="100%" height="200px" class="img-counselor">
                     </div>
                 </a>
                 <!-- 상담자 이름 -->
                 <div class="counselor-name">
-                    <b th:text="${profile.userName}">노의진</b>
+                    <b th:text="${profile.userName}"></b>
                     <img src="/img/flower.png" alt="목화꽃" style="width: 17px; height: 17px; margin-top: 8px;">
                 </div>
 
@@ -67,85 +67,9 @@
 
         </tr>
         <!-- 다른 행들도 동일한 방식으로 추가 -->
-        <tr>
-            <!-- 상담자 정보 추가 (예시 데이터) -->
-
-            <td th:each="profile : ${profileList}">
-
-                <!-- 이미지 -->
-                <a th:href="@{/counselor/pay/counselorProfilePay(profileNumber=${profile.profileNumber})}">
-                    <div class="info-img">
-                        <img src="https://p9kr-stage-public.s3.ap-northeast-2.amazonaws.com/counselor/hd/1001-211129.jpg" alt="" width="100%" height="200px" class="img-counselor">
-                    </div>
-                </a>
-                <!-- 상담자 이름 -->
-                <div class="counselor-name">
-                    <b th:text="${profile.userName}">노의진</b>
-                    <img src="/img/flower.png" alt="목화꽃" style="width: 17px; height: 17px; margin-top: 8px;">
-                </div>
 
 
-                <!-- 기타 정보 (경력, 비용, 대상, 영역 등) -->
-                <div class="counselor-details">
-                    <div class="divsum">
-                        <div class="left">경력</div><div th:text="${profile.profileCareer}" class="right"></div>
-                    </div>
 
-                    <div class="divsum">
-                        <div th:if="${profile.profileFee == null ? '무료' : profile.profileFee}" class="right"></div>
-                    </div>
-                    <div class="divsum">
-                        <div class="left">대상</div><div th:text="${profile.profileTarget}" class="right"></div>
-                    </div>
-
-                    <div class="divsum">
-                        <div class="left">영역</div><div th:text="${profile.profileArea}" class="right"></div>
-                    </div>
-                </div>
-
-            </td>
-
-        </tr>
-
-        <tr>
-            <!-- 상담자 정보 추가 (예시 데이터) -->
-
-            <td th:each="profile : ${profileList}">
-
-                <!-- 이미지 -->
-                <a th:href="@{/counselor/pay/counselorProfilePay(profileNumber=${profile.profileNumber})}">
-                    <div class="info-img">
-                        <img src="https://p9kr-stage-public.s3.ap-northeast-2.amazonaws.com/counselor/hd/1001-211129.jpg" alt="" width="100%" height="200px" class="img-counselor">
-                    </div>
-                </a>
-                <!-- 상담자 이름 -->
-                <div class="counselor-name">
-                    <b th:text="${profile.userName}">노의진</b>
-                    <img src="/img/flower.png" alt="목화꽃" style="width: 17px; height: 17px; margin-top: 8px;">
-                </div>
-
-
-                <!-- 기타 정보 (경력, 비용, 대상, 영역 등) -->
-                <div class="counselor-details">
-                    <div class="divsum">
-                        <div class="left">경력</div><div th:text="${profile.profileCareer}" class="right"></div>
-                    </div>
-
-                    <div class="divsum">
-                        <div class="left">비용</div><div th:text="${profile.profileFee}" class="right"></div>
-                    </div>
-                    <div class="divsum">
-                        <div class="left">대상</div><div th:text="${profile.profileTarget}" class="right"></div>
-                    </div>
-
-                    <div class="divsum">
-                        <div class="left">영역</div><div th:text="${profile.profileArea}" class="right"></div>
-                    </div>
-                </div>
-
-            </td>
-
-        </tr>
     </table>
 </div>
 <!-- 메인 끝-->

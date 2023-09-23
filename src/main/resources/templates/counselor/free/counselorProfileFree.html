@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/counselor/free/counselorProfileFree.css">
-    <title>councelorProfileFree</title>
+    <script defer src="/js/counselor/free/counselorProfileFree.js"></script>
+    <title>counselorProfileFree</title>
 </head>
 <body>
 <!-- 헤더 시작-->
@@ -49,7 +50,7 @@
         </div>
         <div class="profile-namebox">
             <div class="profile-name">
-                <h2>상담사</h2>
+                <h2 th:text="${profile.userName}"></h2>
                 <img src="/img/flower.png" alt="목화꽃" style="width: 17px; height: 17px; margin-top: 14px; margin-left: 3px;">
                 <img src="/img/flower.png" alt="목화꽃" style="width: 17px; height: 17px; margin-top: 14px;">
                 <button class="cotton-question" style="border: none; background-color: white;" onclick="openModal()">
@@ -57,7 +58,7 @@
                 </button>
             </div>
             <div>
-                <button class="profile-button" type="submit" >수정</button>
+<!--                <button class="profile-button" type="submit" >수정</button>-->
                 <button class="profile-button" type="submit" >삭제</button>
                 <button class="profile-button" type="submit" onclick="reservation()">예약</button>
             </div>
@@ -65,12 +66,12 @@
         <div class="profile-careerbox">
             <div class="profile-super">
                 <p>슈퍼비전</p>
-                <b style="font-size: 20px;">1년</b>
+                <b style="font-size: 20px;" th:text="${profile.profileSuper} + ' 년 ' "></b>
             </div>
             <div class="createLine"></div>
             <div class="profile-career">
                 <p>상담경력</p>
-                <b style="font-size: 20px;">3년</b>
+                <b style="font-size: 20px;" th:text="${profile.profileCareer} + ' 년 '"></b>
             </div>
             <!-- <div class="profile-price">
                 <p>세션당 비용</p>
@@ -82,67 +83,19 @@
         </div>
         <div class="councel-target">
             <div class="councel-target-title"><h2>상담대상</h2></div>
-            <div class="councel-target-content"><p>성인, 아동/청소년, 부부/커플</p></div>
+            <div class="councel-target-content"><p th:text="${profile.profileTarget}"></p></div>
         </div>
         <div class="councel-area">
             <br>
             <div class="councel-area-title"><h2>상담영역</h2></div>
             <div class="councel-area-content">
-                <p>
-                    분노조절, 불안, 양극성장애, 의존성, 우울증, 섭식장애, 상실/애도, 충동조절, 
-                    외도, 기분장애, 자기애성 인격장애, 강박증, 공황장애, 트라우마/PTSD, 관계, 
-                    자존감, 자해/자살 사고, 성문제, 사회불안증, 영성, 스트레스 조절, 
-                    직장/학교 스트레스
+                <p th:text="${profile.profileArea}">
                 </p>
                 <br>
             </div>
         </div>
         <div class="councel-total">
-            <div class="councel-total-content">
-                <h2>자격</h2>
-청소년상담사 1급 (여성가족부, 2018)<br>
-임상심리사 2급 (보건복지부, 2016)<br>
-상담심리사 2급 (한국상담심리학회, 2014)
-<br><br><br>
-<h2>학위</h2>
-서울상담심리대학원대학교 상담심리학 박사 과정 재학 중 (2023)<br>
-전남대학교 생활환경복지학 박사 과정 수료 (2013)<br>
-전남대학교 생활환경복지학 석사 (2011)<br><br><br>
-
-<h2>싸이칼러지 코리아 이수훈련</h2>
-IFS 심리치료 - 레벨1 (Einat Bronstein, 84시간, 2022)<br>
-플래쉬 테크닉 - 기본과정 (Philip Manfield, 8시간, 2021)<br>
-LGBTAIQ+에 대한 이해와 젠더 감수성 훈련 (한채윤, 8시간, 2021)<br>
-자해 및 자살사고 심리치료 (Kathy Steele, 8시간, 2021)<br>
-복합해리의 진단과 치료 (Kathy Steele, 8시간, 2021)<br>
-심리치료사가 반드시 알아야 할 정신과 약물 (Frank Anderson, 6시간, 2020)<br>
-IFS와 복합외상 심리치료 (Frank Anderson, 9시간, 2020)<br>
-복합외상 심리치료 (권혜경, 14시간, 2018)<br>
-애착 트라우마 심리치료 (권혜경, 14시간, 2017)<br>
-Somatic Experiencing (SE) (Peter Levine, 3시간)<br>
-트라우마 치료의 과거, 현재, 그리고 미래 (Bessel van der Kolk, 2시간)<br><br><br>
-
-<h2>소개</h2><br><br>
-<b>지금까지 어떤 길을 걸어오셨나요?</b>
-<br>
-안녕하세요! 상담사 입니다. 저는 2008년도부터 현재까지 다양한 장면에서 상담을 해왔는데요. 청소년상담복지센터에서의 청소년 동반자로, 그리고 여성가족부 산하의 성 외상 심리 상담 기관인 해바라기센터에서 트라우마 심리상담사로 10년 이상 상담을 해왔습니다. 그리고 아동 놀이 상담, 청소년, 성인 상담, 커플 상담을 하고 있습니다. 주로 트라우마 내담자와 그의 가족분들을 가장 많이 만나고 있구요, 아울러, 이주여성과 북한이탈주민의 심리지원을 담당하는 상담사로 협력하고 있습니다.<br>
-<br><br>
-<b>주로 사용하는 상담 기법은 무엇이고 어떤 스타일로 상담을 하시는지 궁금해요.</b><br>
-
-저는 근거 기반의 인지행동상담(CBT), 변증법적 행동상담(DBT), 더 나아가 심리도식상담과 더불어 수용전념 상담기법을 내담자의 주 호소에 맞게 적용하고 있습니다. 2016년도부터 권혜경 박사님께 통합적 트라우마 심리상담 이론을 배우고, 다양한 기법을 트레이닝 받게 되면서, 저의 상담이 더 깊어지고 넓어지는 경험을 하고 있습니다. 최신 활발하게 연구가 이루어지고, 또 상담에서의 높은 효과성이 검증되고 있는 뇌과학 기반의 상담이론과 상담기법들, 그리고 신체 심리 기반의 이론들을 통합하면서 지속적으로 업그레이드하고 있습니다. EMDR, EMDR 플래쉬 테크닉, 소매틱 접근의 SE, SP, 그리고 IFS내면가족체계 상담기법을 배우고 익히면서 이를 상담 세션에서 내담자에게 적합한 방식을 통합적으로 적용하고 있습니다. 이렇게 훌륭하고 안전한 심리 상담기법들을 실제 상담 세션에서 잘 사용하게 되면, 상담사와 내담자 간의 신뢰로운 관계 형성과 더불어 치유적 공명을 경험할 수 있구요, 내담자께서 원하시는 수준의 아주 만족할만한 상담의 성과를 경험하실 수 있습니다.<br>
-<br><br>
-<b>상담에서 가장 중요하게 생각하는 부분은 무엇인가요?</b><br>
-
-저는 상담을 하면서 제 앞에 계시는 내담자를 만나는 그 순간은, 그야말로 하나의 또 다른 우주를 마주한다고 생각합니다. 그리고, 제 자신이 하나의 치유의 도구가 되어야 한다고 생각하기 때문에, 저절로 겸허한 자세를 가지게 됩니다. 내담자분의 인생에 적극적인 호기심을 가지면서도, 각자에게 적절한 속도를 조절하고자 노력하는데요. 특히 상담의 사례 개념화를 하거나 상담의 목표를 세울 때에도 상담자인 저의 아젠다보다는, 내담자의 의견을 존중하고 아주 세밀하게 조율해 나가고자 합니다. 또한 저는 상담사로서 윤리강령을 준수하고, 인간 존중의 올바른 가치를 지향하며, 내담자와 함께 걸어가는 동반자적 상담을 지향하고 있습니다. 저는 이렇게 귀하고 소중한 일을 하는 상담사로서의 직업윤리와 소명 의식을 가지고 있고요. 제가 좋아하고 사랑하는 이 일을, 전문가로서 정말 오래토록 하고 싶은 소망이 있습니다.<br>
-<br><br>
-<b>선생님과의 상담을 통해 내담자들은 어떤 도움을 받을 수 있나요?</b><br>
-
-저와 함께 상담을 하시는 내담자분들께서 상담이 종결될 즈음이면, 주변에 계신 친구나 가족, 지인들에게, ‘꼭 한번 상담을 받아보라’고 제안을 하시는 분들이 종종 계십니다. 실제로 자신과 타인이 더 이해되면서 대인관계에서는 편안함을 느끼시고, 일상생활에서도 자신의 감정 조절력 또한 향상되는 경험을 하시게 되는데요. 이는 상담의 과정을 통해서 자신이 충분히 수용되어지며 존중받는 경험을 하고, 그 새로운 경험은 지난날 고통스러웠던 자신의 모습을 마주하도록 내담자분께 힘과 용기를 주기도 합니다. 결국에는 자신에 대한 호기심과 연민이 생겨나게 되구요, 그 어떤 것도 비판하거나 판단하지 않으면서 마음의 평온함을 찾아가시게 됩니다. 그 과정에서 상담사인 저는 아주 안전한 상담 장면을 구성하고, 또한 든든히 담아내고 버티어 갑니다. 내담자분들께서 이러한 회복과 치유의 경험을 하실 수 있도록 든든한 조력자가 되어 드리겠습니다.<br>
-<br><br>
-<b>내담자분들에게 하고 싶은 말이 있다면?</b><br>
-
-이 상담실의 문을 노크하고자 고민하고 계시는 여러분을 존중하고 응원합니다. 마음의 어떠한 고민과 갈등 또는 여러 가지 삶의 다양한 문제들도 진심으로 함께 나누겠습니다. 여러분의 그 귀한 치유의 여정에 기꺼이 동참하는, 친절하고 따뜻한 상담사가 되겠습니다. 그럼, 저희는 카운슬러 코리아의 상담실에서 뵙겠습니다. 감사합니다.<br>
-            </div>
+            <div class="councel-total-content" th:text="${profile.profileContent}"></div>
         </div>
         <br>
         <br>
