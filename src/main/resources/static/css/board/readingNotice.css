@@ -193,6 +193,9 @@ a{
 .content{
     width: 1000px;
     height: 500px;
+    box-sizing: border-box;
+    padding: 15px;
+    resize: none;
     background-color: rgb(243, 241, 241);
 }
 .buttons{
