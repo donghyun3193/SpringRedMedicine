@@ -6,8 +6,13 @@
         <typeAlias type="com.example.redmedicine.domain.dto.UserDto" alias="userDto"/>
         <typeAlias type="com.example.redmedicine.domain.dto.ProfileDto" alias="profileDto"/>
         <typeAlias type="com.example.redmedicine.domain.dto.PfFileDto" alias="pfFileDto"/>
+<<<<<<< HEAD
+=======
+        <typeAlias type="com.example.redmedicine.domain.dto.NoticeDto" alias="noticeDto"/>
+>>>>>>> jiyoon0922_02
 
         <typeAlias type="com.example.redmedicine.domain.vo.ProfileVo" alias="profileVo"/>
+        <typeAlias type="com.example.redmedicine.domain.vo.NoticeVo" alias="noticeVo"/>
 
         <typeAlias type="com.example.redmedicine.domain.vo.Criteria" alias="criteria"/>
     </typeAliases>

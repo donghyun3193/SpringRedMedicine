@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,17 +24,17 @@
             <div class="main-content-contaniner">
                 <div class="main-title">공지사항</div>
                 <form action="">
-                    <div class="title">공지사항 입니다.</div>
+                    <div class="title" th:text="${notice.noticeTitle}">공지사항 입니다.</div>
                     <div class="writer-date">
-                        <div class="writer">관리자</div>
-                        <div class="date">2023-09-14</div>
+                        <div class="writer" th:text="${notice.userName}">관리자</div>
+                        <div class="date" th:text="${notice.noticeDate}">2023-09-14</div>
                     </div>
                     <div class="content">
-                        <div class="content-text"></div>
+                        <div class="content-text" th:text="${notice.noticeContent}"></div>
                         <div class="content-img"></div>
                     </div>
                     <div class="buttons">
-                        <button><a href="" id="list-button">목록</a></button>
+                        <button id="list-button">목록</button>
                     </div>
                 </form>
                 <!-- <div class="reply-container">
