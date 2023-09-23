@@ -1,7 +1,5 @@
 package com.example.redmedicine.controller;
 
-import com.example.redmedicine.domain.dto.UserDto;
-import com.example.redmedicine.domain.vo.Criteria;
 import com.example.redmedicine.service.AdminService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,10 +20,7 @@ public class AdmianController {
     // 회원정보 관리
     @GetMapping("/memberShipMm")
     public String showMemberShipMm(Model model){
-        model.addAttribute("userList", adminService.getUserNumber(Long userNumber));
-
+        model.addAttribute("userList", adminService.findAll());
         return "admin/memberShipMm";
     }
-
-
 }

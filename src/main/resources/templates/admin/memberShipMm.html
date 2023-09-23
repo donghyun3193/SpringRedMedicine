@@ -51,27 +51,36 @@
                 </div>
 
 
-                        <th:block th:each="user : ${userDto}">
-                            <table>
-                                <th>번호</th>
-                                <th>이메일</th>`
-                                <th>이름</th>
-                                <th>가입일</th>
-                                <th>상태</th>
-                                <th>관리</th>
-                                <tr>
-                                    <td th:text="${user.userNumber}"></td>
-                                    <td th:text="${user.userEmail}"></td>
-                                    <td th:text="${user.userName}"></td>
-                                    <td th:text="${user.userJoindate}"></td>
-                                    <td th:text="${user.userLevel}"></td>
-                                    <td>
-                                        <button class="td-button" type="button" onclick="call_confirm()">탈퇴</button>
-                                    </td>
-                                </tr>
-                            </table>
-                        </th:block>
-
+                    <table class="table-container">
+                        <thead>
+                        <tr>
+                            <th>번호</th>
+                            <th>이메일</th>
+                            <th>이름</th>
+                            <th>가입일</th>
+                            <th>상태</th>
+                            <th>관리</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <div th:each="user, iterStat : ${userList}">
+                            <tr th:if="${iterStat.index < 10}">
+                                <td th:text="${user.userNumber}"></td>
+                                <td th:text="${user.userEmail}"></td>
+                                <td th:text="${user.userName}"></td>
+                                <td th:text="${user.userJoindate}"></td>
+                                <td>
+                                    <span th:if="${user.userLevel == 1}">일반회원</span>
+                                    <span th:if="${user.userLevel == 2}">무료상담사</span>
+                                    <span th:if="${user.userLevel == 3}">유료상담사</span>
+                                </td>
+                                <td>
+                                    <button class="td-button" type="button" onclick="call_confirm()">탈퇴</button>
+                                </td>
+                            </tr>
+                        </div>
+                        </tbody>
+                    </table>
                 </div>
 
                 <div class="paging-container">

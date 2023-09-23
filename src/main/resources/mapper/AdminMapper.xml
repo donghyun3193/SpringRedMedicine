@@ -9,9 +9,8 @@
     </select>
 
     <!-- 회원 정보 조회 (관리자에서 쓸것만 추리기)-->
-    <select id="selectUserNumber" resultType="userDto">
+    <select id="selectAll" resultType="userDto">
         SELECT USER_NUMBER, USER_EMAIL, USER_NAME, USER_JOINDATE, USER_LEVEL
         FROM TBL_USER
-        WHERE USER_NUMBER = #{userNumber}
     </select>
 </mapper>

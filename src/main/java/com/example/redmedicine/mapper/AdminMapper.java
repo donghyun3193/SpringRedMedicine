@@ -10,8 +10,10 @@ import java.util.List;
 @Mapper
 public interface AdminMapper {
     //회원 정보 조회
-//    public void select(Long userNumber);
+    public UserDto select(Long userNumber);
 
-    //유저 넘버 뽑아오기
-    UserDto getUserNumber(Long userNumber);
+    //전체 회원 조회
+    public List<UserDto> selectAll();
+
+
 }
