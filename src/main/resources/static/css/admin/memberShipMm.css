@@ -302,20 +302,20 @@ button{
   margin: 0 auto;
   /* background-color: paleturquoise; */
 }
-.main-content-list table{
-  /* border-top: 0.5px solid #8ecc32; */
-  border-collapse: collapse;
+/*.main-content-list table{*/
+/*  !* border-top: 0.5px solid #8ecc32; *!*/
+/*  border-collapse: collapse;*/
 
-}
-.main-content-list table th{
-  height: 50px;
-  border-bottom: 1px solid #bebebe;
+/*}*/
+/*.main-content-list table th{*/
+/*  height: 50px;*/
+/*  border-bottom: 1px solid #bebebe;*/
 
-  background-color: seashell;
-}
-.main-content-list table td{
-  border-bottom: 0.5px solid #bebebe;
-}
+/*  background-color: seashell;*/
+/*}*/
+/*.main-content-list table td{*/
+/*  border-bottom: 0.5px solid #bebebe;*/
+/*}*/
 
 .td-button{
   width: 60px;
@@ -327,6 +327,27 @@ button{
   font-weight: bold;
   border-radius: 4px;
 }
+
+.table-container {
+  width: 100%;
+}
+
+.table-container table {
+  width: 100%;
+  border-collapse: collapse;
+  height: 500px;
+}
+
+.table-container table th, .table-container table td {
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+.table-container table th {
+  background-color: #f0f0f0;
+}
+
+
 
 
 

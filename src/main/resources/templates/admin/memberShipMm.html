@@ -51,116 +51,36 @@
                 </div>
 
 
-                  <table>
-                    <th>번호</th>
-                    <th>이메일</th>
-                    <th>이름</th>
-                    <th>가입일</th>
-                    <th>상태</th>
-                    <th>관리</th>
-                    <tr>
-                        <td>1</td>
-                        <td><a href="">asdf@naver.com</a></td>
-                        <td>김레인</td>
-                        <td>2023-09-10</td>
-                        <td>일반회원</td>
-                        <td>
-                            <button class="td-button" type="button" onclick="call_confirm()">탈퇴</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td><a href="">nanana123@gmail.com</a></td>
-                        <td>하리보</td>
-                        <td>2023-09-10</td>
-                        <td>상담사</td>
-                        <td>
-                            <button class="td-button" type="button">탈퇴</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td><a href="">gradle@dreamwize.com</a></td>
-                        <td>김솔라</td>
-                        <td>2023-09-08</td>
-                        <td>일반회원</td>
-                        <td>
-                            <button class="td-button" type="button">탈퇴</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td><a href="">slamdunk@gamil.com</a></td>
-                        <td>서장훈</td>
-                        <td>2023-08-05</td>
-                        <td>일반회원</td>
-                        <td>
-                            <button class="td-button" type="button">탈퇴</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td><a href="">basketball@dreamwize.com</a></td>
-                        <td>하승진</td>
-                        <td>2023-07-18</td>
-                        <td>일반회원</td>
-                        <td>
-                            <button class="td-button" type="button">탈퇴</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>6</td>
-                        <td><a href="">JDK11@gmail.com</a></td>
-                        <td>김종국</td>
-                        <td>2023-07-07</td>
-                        <td>일반회원</td>
-                        <td>
-                            <button class="td-button" type="button">탈퇴</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>7</td>
-                        <td><a href="">spring@naver.com</a></td>
-                        <td>유재석</td>
-                        <td>2023-06-22</td>
-                        <td>일반회원</td>
-                        <td>
-                            <button class="td-button" type="button">탈퇴</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>8</td>
-                        <td><a href="">wrap111@gmail.com</a></td>
-                        <td>신정환</td>
-                        <td>2023-05-04</td>
-                        <td>일반회원</td>
-                        <td>
-                            <button class="td-button" type="button">탈퇴</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>9</td>
-                        <td><a href="">samba77@gmail.com</a></td>
-                        <td>성시경</td>
-                        <td>2023-04-08</td>
-                        <td>일반회원</td>
-                        <td>
-                            <button class="td-button" type="button">탈퇴</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>10</td>
-                        <td><a href="">kimme123@naver.com</a></td>
-                        <td>신동엽</td>
-                        <td>2022-01-08</td>
-                        <td>상담사</td>
-                        <td>
-                            <button class="td-button" type="button">탈퇴</button>
-                        </td>
-                    </tr>
-    
-                </table>
-
+                    <table class="table-container">
+                        <thead>
+                        <tr>
+                            <th>번호</th>
+                            <th>이메일</th>
+                            <th>이름</th>
+                            <th>가입일</th>
+                            <th>상태</th>
+                            <th>관리</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <div th:each="user, iterStat : ${userList}">
+                            <tr th:if="${iterStat.index < 10}">
+                                <td th:text="${user.userNumber}"></td>
+                                <td th:text="${user.userEmail}"></td>
+                                <td th:text="${user.userName}"></td>
+                                <td th:text="${user.userJoindate}"></td>
+                                <td>
+                                    <span th:if="${user.userLevel == 1}">일반회원</span>
+                                    <span th:if="${user.userLevel == 2}">무료상담사</span>
+                                    <span th:if="${user.userLevel == 3}">유료상담사</span>
+                                </td>
+                                <td>
+                                    <button class="td-button" type="button" onclick="call_confirm()">탈퇴</button>
+                                </td>
+                            </tr>
+                        </div>
+                        </tbody>
+                    </table>
                 </div>
 
                 <div class="paging-container">
