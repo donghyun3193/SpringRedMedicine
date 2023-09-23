@@ -9,10 +9,14 @@ import org.springframework.stereotype.Component;
 @NoArgsConstructor
 public class ProfileVo {
     private Long profileNumber;
+    private Long userNumber;
     private String userName;
+    private Long profileSuper;
     private Long profileCareer;
     private Long profileFee;
     private String profileTarget;
     private String profileArea;
     private String profileDay;
+    private String profileTime;
+    private String profileContent;
 }

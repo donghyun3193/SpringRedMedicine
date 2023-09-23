@@ -45,6 +45,14 @@
         ORDER BY PROFILE_NUMBER
     </select>
 
+    <select id="selectProfileNumber">
+        SELECT PROFILE_NUMBER, U.USER_NAME, PROFILE_SUPER, PROFILE_CAREER, PROFILE_FEE, PROFILE_TARGET,
+               PROFILE_AREA, PROFILE_CONTENT
+        FROM TBL_PROFILE P JOIN TBL_USER U
+                                ON P.USER_NUMBER = U.USER_NUMBER
+        WHERE P.PROFILE_NUMBER = #{profileNumber};
+    </select>
+
 
 </mapper>
 

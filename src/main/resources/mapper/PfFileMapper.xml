@@ -19,4 +19,5 @@
         FROM TBL_PF_FILE
         WHERE PROFILE_NUMBER = #{profileNumber}
     </select>
+
 </mapper>
