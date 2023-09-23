@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
@@ -32,27 +33,41 @@ public class ProfileController {
     }
 
     //유료 상담사 상세 페이지
-    @GetMapping("/pay/counselorProfilePay")
-    public String showCounselorDetailPage(Model model, ProfileVo profileVo){
-        model.addAttribute("profile", profileService.findProfilePayNumber());
-        return "counselor/pay/counselorProfilePay";
+    @GetMapping(value = "/pay/counselorProfilePay")
+    public void showCounselorDetailPage(Model model, Long profileNumber){
+        ProfileVo profileVo = profileService.findProfilePay(profileNumber);
+        model.addAttribute("profile", profileVo);
     }
+
 
     //무료 상담사 상세 페이지
     @GetMapping("/free/counselorProfileFree")
-    public String showCounselorDetailPag(){
-        return "counselor/free/counselorProfileFree";
+    public void showCounselorDetailPag(Model model, Long profileNumber){
+        ProfileVo profileVo = profileService.findProfileFree(profileNumber);
+        model.addAttribute("profile", profileVo);
     }
 
-//    @GetMapping(value = {"/detail", "/modify"})
-//    public void showDetailPage(Long profileNumber, Model model){
-//        ProfileVo profileVo = profileService.findProfilePay(profileNumber);
-//        model.addAttribute("profile", profileVo);
-//
-//    }
+    //상담사 등록 페이지 삭제 
+    @GetMapping("/remove")
+    public RedirectView remove(Long profileNumber) {
+        ProfileVo profile = profileService.findProfilePay(profileNumber);
+        if (profile.getProfileFee() == null) {
+            return new RedirectView("/counselor/free/freeMate");
+            //삭제시 비용이 무료면 무료 상담 페이지 로 이동
+        } else {
+            return new RedirectView("/counselor/pay/payMate");
+            //삭제시 비용이 유료면 유료 상담 페이지 로 이동
+        }
+    }
 
-
-
+    //상담사 예약 페이지로 이동
+    @GetMapping("/book/bookingDetails")
+    public String showBookingDetailsPage(){
+        return "counselor/book/bookingDetails";
+    }
+    
+    
+    
 
     @GetMapping("/pay/registration")
     public String showRegistrationPage(){//HttpServletRequest req)
@@ -72,11 +87,7 @@ public class ProfileController {
         return "counselor/free/freeRegistration";
     }
 
-    @GetMapping("/remove")
-    public RedirectView remove(Long profileNumber){
-        profileService.remove(profileNumber);
-        return new RedirectView("/counselor/free/freeRegistration");
-    }
+
 
 
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.redmedicine.mapper.ProfileMapper">
-    <insert id="insert">
+    <insert id="insertProfilePay">
         <selectKey keyProperty="profileNumber" order="BEFORE" resultType="long">
         SELECT SEQ_PROFILE.NEXTVAL FROM DUAL
         </selectKey>
@@ -14,7 +14,7 @@
         SELECT SEQ_PROFILE.NEXTVAL FROM DUAL
         </selectKey>
         insert into TBL_PROFILE (PROFILE_NUMBER, USER_NUMBER, PROFILE_SUPER, PROFILE_CAREER, PROFILE_TARGET, PROFILE_AREA, PROFILE_DAY, PROFILE_TIME, PROFILE_CONTENT)
-        values (#{profileNumber},#{userNumber},#{profileSuper},#{profileCareer},#{profileTarget},#{profileArea},#{profileDay},#{profiletTime},#{profileContent})
+        values (#{profileNumber},#{userNumber},#{profileSuper},#{profileCareer},#{profileTarget},#{profileArea},#{profileDay},#{profileTime},#{profileContent})
     </insert>
 
     <delete id="delete">
@@ -44,14 +44,22 @@
         WHERE PROFILE_FEE IS NULL
         ORDER BY PROFILE_NUMBER
     </select>
-
-    <select id="selectProfileNumber">
-        SELECT PROFILE_NUMBER, U.USER_NAME, PROFILE_SUPER, PROFILE_CAREER, PROFILE_FEE, PROFILE_TARGET,
+    <select id="selectProfilePay" resultType="profileVo">
+        SELECT PROFILE_NUMBER, U.USER_NAME, PROFILE_SUPER, PROFILE_FEE, PROFILE_CAREER, PROFILE_TARGET,
                PROFILE_AREA, PROFILE_CONTENT
         FROM TBL_PROFILE P JOIN TBL_USER U
-                                ON P.USER_NUMBER = U.USER_NUMBER
-        WHERE P.PROFILE_NUMBER = #{profileNumber};
+        ON P.USER_NUMBER = U.USER_NUMBER
+        WHERE PROFILE_NUMBER = #{profileNumber}
     </select>
+
+    <select id="selectProfileFree" resultType="profileVo">
+        SELECT PROFILE_NUMBER, U.USER_NAME, PROFILE_SUPER, PROFILE_CAREER, PROFILE_TARGET,
+               PROFILE_AREA, PROFILE_CONTENT
+        FROM TBL_PROFILE P JOIN TBL_USER U
+        ON P.USER_NUMBER = U.USER_NUMBER
+        WHERE PROFILE_NUMBER = #{profileNumber}
+    </select>
+
 
 
 </mapper>
