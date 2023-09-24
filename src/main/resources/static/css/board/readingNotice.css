@@ -214,8 +214,9 @@ a{
     font-size: 17px;
     margin: 0 10px;
 }
-#list-button{
+#list-button, #modify-button, #remove-button{
     color: white;
+    cursor: pointer;
 }
 .reply-container{
     width: 1000px;
