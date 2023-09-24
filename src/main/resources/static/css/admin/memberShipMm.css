@@ -297,7 +297,7 @@ button{
 
 .main-content-list table{
   width: 950px;
-  height: 600px;
+  /*height: 600px;*/
   text-align: center;
   margin: 0 auto;
   /* background-color: paleturquoise; */
@@ -317,6 +317,7 @@ button{
 /*  border-bottom: 0.5px solid #bebebe;*/
 /*}*/
 
+
 .td-button{
   width: 60px;
   height: 25px;
@@ -335,39 +336,73 @@ button{
 .table-container table {
   width: 100%;
   border-collapse: collapse;
-  height: 500px;
 }
 
 .table-container table th, .table-container table td {
   border: 1px solid #ccc;
   padding: 10px;
+  box-sizing: border-box;
 }
 
 .table-container table th {
   background-color: #f0f0f0;
 }
+/* 각 행의 높이를 설정합니다. */
+.table-container tbody tr {
+  height: 55.5px; /* 원하는 행 높이를 설정합니다. */
+}
 
-
-
+.table-wrap{
+  height: 600px;
+}
 
 
 
 /* 페이지관리 */
 
-.paging-container{
+.page-container{
   width: 200px;
   height: 10px;
   margin: 140px auto;
 }
-.paging-container ul{
-  list-style: none;
-  display: flex;
-  justify-content: center;
-}
-.paging-container ul li{
-  margin: 0 5px;
+/*.paging-container ul{*/
+/*  list-style: none;*/
+/*  display: flex;*/
+/*  justify-content: center;*/
+/*}*/
+/*.paging-container ul li{*/
+/*  margin: 0 5px;*/
+/*}*/
+/* 페이징 */
+.page-a {
+  text-decoration: none;
+  color: #00c7ae;
 }
 
+.page-box {
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.page-num {
+  border: 1px solid #00c7ae;
+  width: 30px;
+  height: 40px;
+  border-radius: 5px;
+  margin: 0 10px;
+  text-align: center;
+  line-height: 40px;
+  background-color: white;
+  cursor: pointer;
+}
+
+.active,
+.page-num:hover {
+  background-color: #00c7ae;
+  color: white;
+}
 
 
 /* 푸터 시작 */

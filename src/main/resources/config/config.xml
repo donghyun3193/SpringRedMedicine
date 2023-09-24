@@ -11,7 +11,9 @@
 
         <typeAlias type="com.example.redmedicine.domain.vo.ProfileVo" alias="profileVo"/>
         <typeAlias type="com.example.redmedicine.domain.vo.NoticeVo" alias="noticeVo"/>
+        <typeAlias type="com.example.redmedicine.domain.vo.PageVo" alias="PageVo"/>
         <typeAlias type="com.example.redmedicine.domain.vo.UserVo" alias="userVo"/>
+
 
         <typeAlias type="com.example.redmedicine.domain.vo.Criteria" alias="criteria"/>
     </typeAliases>

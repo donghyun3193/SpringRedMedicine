@@ -13,7 +13,10 @@ public interface AdminMapper {
     public UserDto select(Long userNumber);
 
     //전체 회원 조회
-    public List<UserDto> selectAll();
+    public List<UserDto> selectAll(Criteria criteria);
+
+//    전체 회원 수 조회
+    public int selectTotal();
 
 
 }

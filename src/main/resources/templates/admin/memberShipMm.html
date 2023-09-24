@@ -50,7 +50,7 @@
                     </div>
                 </div>
 
-
+                <div class="table-wrap">
                     <table class="table-container">
                         <thead>
                         <tr>
@@ -63,7 +63,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <div th:each="user, iterStat : ${userList}">
+                        <th:block th:each="user, iterStat : ${userList}">
                             <tr th:if="${iterStat.index < 10}">
                                 <td th:text="${user.userNumber}"></td>
                                 <td th:text="${user.userEmail}"></td>
@@ -78,23 +78,34 @@
                                     <button class="td-button" type="button" onclick="call_confirm()">탈퇴</button>
                                 </td>
                             </tr>
-                        </div>
+                        </th:block>
                         </tbody>
                     </table>
                 </div>
+                </div>
+            <!-- 페이징 처리 -->
+                <div class="page-container">
+                  <ul class="page-box">
+                      <a th:href="@{/admin/memberShipMm(page=${pageinfo.startPage-1})}" class="page-a" th:if="${pageInfo.prev}">
+                         <li class="page-num prev">&lt</li>
+                      </a>
 
-                <div class="paging-container">
-                  <ul>
-                      <li><a href="">&lt; 이전</a></li>
-                      <li><a href="">1</a></li>
-                      <li><a href="">2</a></li>
-                      <li><a href="">3</a></li>
-                      <li><a href="">다음 &gt;</a></li>
+                        <!-- 1부터 5까지 반복-->
+                    <!--  numbers라는 객체가 제공하는 sequence(시작값, 끝값)라는 메소드를 이용한다.-->
+                      <th:block th:each="i : ${#numbers.sequence(pageInfo.startPage, pageInfo.endPage)}">
+                      <a th:href="@{/admin/memberShipMm(page=${i})}" class="page-a">
+                          <li class="page-num" th:text="${i}" th:if="${i != pageInfo.criteria.page}"></li>
+                          <li class="page-num active" th:text="${i}" th:unless="${i != pageInfo.criteria.page}"></li>
+                      </a>
+                      </th:block>
+
+                      <a th:href="@{/admin/memberShipMm(page=${pageInfo.endPage+1})}" class="page-a" th:if="${pageInfo.next}">
+                          <li class="page-num next">&gt</li>
+                      </a>
                   </ul>
               </div>
 
-
-            
+            <!-- 페이징 처리 끝-->
         </div>
     </div>
 
