@@ -40,9 +40,9 @@ class UserMapperTest {
 
     @Test
     void selectUserNumber() {
-        userMapper.selectUserNumber("testId","1234");
+        userMapper.selectUserNumber("testId","123");
     }
-    
+
     @Test
     void update(){
         //수정

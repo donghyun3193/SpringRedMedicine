@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,115 +10,120 @@
 <!-- 헤더 시작-->
 <header class="header" th:replace="fragments/header :: header"></header>
 <!-- 헤더 종료-->
-    <div class="main-container">
-        <div class="main-nav-container">
-            <!-- <div class="main-nav"> -->
-                <ul>
-                    <li><a href="/html/notice.html" id="main-nav-button">공지사항</a></li>
-                    <li><a href="/html/counselBoard.html" id="main-nav-button">상담게시판</a></li>
-                    <li><a href="/html/diary.html" id="main-nav-button">일기쓰기</a></li>
-                </ul>
-            <!-- </div> -->
-        </div>
-        <div class="main-content">
-            <div class="main-content-contaniner">
-                <div class="main-content-title">
-                    <div class="title-info">
-                        <div class="main-content-title-text01">상담게시판</div>
-                        <div class="main-content-title-text02">
-                            <div>상담사님께 상담받고 싶은 내용을 자유롭게 올려주세요.</div>
-                            <div>모든 게시물은 작성자 본인과 상담사 회원분들만 볼 수 있습니다.</div> 
-                        </div>
+
+<div class="main-container">
+    <div class="main-nav-container">
+        <!-- <div class="main-nav"> -->
+        <ul>
+            <li><a href="/board/notice" id="main-nav-button">공지사항</a></li>
+            <li><a href="/board/counselBoard" id="main-nav-button">상담게시판</a></li>
+            <li><a href="/board/diary" id="main-nav-button">일기쓰기</a></li>
+        </ul>
+        <!-- </div> -->
+    </div>
+    <div class="main-content">
+        <div class="main-content-contaniner">
+            <div class="main-content-title">
+                <div class="title-info">
+                    <div class="main-content-title-text01">상담게시판</div>
+                    <div class="main-content-title-text02">
+                        <div>상담사님께 상담받고 싶은 내용을 자유롭게 올려주세요.</div>
+                        <div>모든 게시물은 작성자 본인과 상담사 회원분들만 볼 수 있습니다.</div>
                     </div>
-                    <img src="../img/counseling_img.png" alt="">
                 </div>
-                <div class="main-content-list">
-                    <table>
-                        <th>번호</th>
-                        <th id="main-content-list-title">제목</th>
-                        <th>작성자</th>
-                        <th>작성일</th>
-                        <tr>
-                            <td>1</td>
-                            <td><a href="/html/readingCounsel.html">상담받고 싶어요.</a></td>
-                            <td>이지윤</td>
-                            <td>2023-09-09</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td><a href="/html/readingCounsel.html">상담받고 싶어요.</a></td>
-                            <td>유대훈</td>
-                            <td>2023-09-09</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td><a href="/html/readingCounsel.html">상담받고 싶어요.</a></td>
-                            <td>이지윤</td>
-                            <td>2023-09-09</td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td><a href="/html/readingCounsel.html">상담받고 싶어요.</a></td>
-                            <td>이동현</td>
-                            <td>2023-09-09</td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td><a href="/html/readingCounsel.html">상담받고 싶어요.</a></td>
-                            <td>유대훈</td>
-                            <td>2023-09-09</td>
-                        </tr>
-                        <tr>
-                            <td>6</td>
-                            <td><a href="/html/readingCounsel.html">상담받고 싶어요.</a></td>
-                            <td>노의진</td>
-                            <td>2023-09-09</td>
-                        </tr>
-                        <tr>
-                            <td>7</td>
-                            <td><a href="/html/readingCounsel.html">상담받고 싶어요.</a></td>
-                            <td>이지윤</td>
-                            <td>2023-09-09</td>
-                        </tr>
-                        <tr>
-                            <td>8</td>
-                            <td><a href="/html/readingCounsel.html">상담받고 싶어요.</a></td>
-                            <td>이동현</td>
-                            <td>2023-09-09</td>
-                        </tr>
-                        <tr>
-                            <td>9</td>
-                            <td><a href="/html/readingCounsel.html">상담받고 싶어요.</a></td>
-                            <td>유대훈</td>
-                            <td>2023-09-09</td>
-                        </tr>
-                        <tr>
-                            <td>10</td>
-                            <td><a href="/html/readingCounsel.html">상담받고 싶어요.</a></td>
-                            <td>노의진</td>
-                            <td>2023-09-09</td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="paging-container">
-                    <ul>
-                        <li><a href="">&lt; 이전</a></li>
-                        <li><a href="">1</a></li>
-                        <li><a href="">2</a></li>
-                        <li><a href="">3</a></li>
-                        <li><a href="">4</a></li>
-                        <li><a href="">5</a></li>
-                        <li><a href="">다음 &gt;</a></li>
-                    </ul>
-                </div>
-                <div class="button-container">
-                    <button type="button"><a href="/html/writingCounsel.html" id="writing-button">글쓰기</a></button>
-                </div>
+                <img src="/img/counseling_img.png" alt="상담 게시판 베너이미지">
+            </div>
+            <div class="main-content-list">
+                <table>
+                    <th>번호</th>
+                    <th id="main-content-list-title">제목</th>
+                    <th>작성자</th>
+                    <th>작성일</th>
+                    <tr th:each="counselor : ${counselor}">
+                        <td th:text="${counselor.counselorNumber}">1</td>
+                        <td>
+                            <a th:href="@{/board/readingCounsel(counselorNumber=${counselor.counselorNumber})}">
+                                <h3 class="board-item-title" th:text="${counselor.counselorTitle}">게시글 제목</h3>
+                            </a>
+                        </td>
+                        <td th:text="${counselor.userName}">이지윤</td>
+                        <td th:text="${counselor.counselorDate}">2023-09-09</td>
+                    </tr>
+                    <!--                        <tr>-->
+                    <!--                            <td>2</td>-->
+                    <!--                            <td><a href="/html/readingCounsel.html">상담받고 싶어요.</a></td>-->
+                    <!--                            <td>유대훈</td>-->
+                    <!--                            <td>2023-09-09</td>-->
+                    <!--                        </tr>-->
+                    <!--                        <tr>-->
+                    <!--                            <td>3</td>-->
+                    <!--                            <td><a href="/html/readingCounsel.html">상담받고 싶어요.</a></td>-->
+                    <!--                            <td>이지윤</td>-->
+                    <!--                            <td>2023-09-09</td>-->
+                    <!--                        </tr>-->
+                    <!--                        <tr>-->
+                    <!--                            <td>4</td>-->
+                    <!--                            <td><a href="/html/readingCounsel.html">상담받고 싶어요.</a></td>-->
+                    <!--                            <td>이동현</td>-->
+                    <!--                            <td>2023-09-09</td>-->
+                    <!--                        </tr>-->
+                    <!--                        <tr>-->
+                    <!--                            <td>5</td>-->
+                    <!--                            <td><a href="/html/readingCounsel.html">상담받고 싶어요.</a></td>-->
+                    <!--                            <td>유대훈</td>-->
+                    <!--                            <td>2023-09-09</td>-->
+                    <!--                        </tr>-->
+                    <!--                        <tr>-->
+                    <!--                            <td>6</td>-->
+                    <!--                            <td><a href="/html/readingCounsel.html">상담받고 싶어요.</a></td>-->
+                    <!--                            <td>노의진</td>-->
+                    <!--                            <td>2023-09-09</td>-->
+                    <!--                        </tr>-->
+                    <!--                        <tr>-->
+                    <!--                            <td>7</td>-->
+                    <!--                            <td><a href="/html/readingCounsel.html">상담받고 싶어요.</a></td>-->
+                    <!--                            <td>이지윤</td>-->
+                    <!--                            <td>2023-09-09</td>-->
+                    <!--                        </tr>-->
+                    <!--                        <tr>-->
+                    <!--                            <td>8</td>-->
+                    <!--                            <td><a href="/html/readingCounsel.html">상담받고 싶어요.</a></td>-->
+                    <!--                            <td>이동현</td>-->
+                    <!--                            <td>2023-09-09</td>-->
+                    <!--                        </tr>-->
+                    <!--                        <tr>-->
+                    <!--                            <td>9</td>-->
+                    <!--                            <td><a href="/html/readingCounsel.html">상담받고 싶어요.</a></td>-->
+                    <!--                            <td>유대훈</td>-->
+                    <!--                            <td>2023-09-09</td>-->
+                    <!--                        </tr>-->
+                    <!--                        <tr>-->
+                    <!--                            <td>10</td>-->
+                    <!--                            <td><a href="/html/readingCounsel.html">상담받고 싶어요.</a></td>-->
+                    <!--                            <td>노의진</td>-->
+                    <!--                            <td>2023-09-09</td>-->
+                    <!--                        </tr>-->
+                </table>
+            </div>
+            <div class="paging-container">
+                <ul>
+                    <li><a href="">&lt; 이전</a></li>
+                    <li><a href="">1</a></li>
+                    <li><a href="">2</a></li>
+                    <li><a href="">3</a></li>
+                    <li><a href="">4</a></li>
+                    <li><a href="">5</a></li>
+                    <li><a href="">다음 &gt;</a></li>
+                </ul>
+            </div>
+            <div class="button-container">
+                <button type="button"><a href="/board/writingCounsel" id="writing-button">글쓰기</a></button>
             </div>
         </div>
     </div>
-    <!-- 후터 시작-->
-    <footer class="footer" th:replace="fragments/footer :: footer"></footer>
-    <!-- 후터 끝-->
+</div>
+<!-- 후터 시작-->
+<footer class="footer" th:replace="fragments/footer :: footer"></footer>
+<!-- 후터 끝-->
 </body>
 </html>
