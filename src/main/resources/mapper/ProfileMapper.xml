@@ -22,13 +22,6 @@
         WHERE PROFILE_NUMBER = #{profileNumber}
     </delete>
 
-    <update id="update">
-        UPDATE TBL_PROFILE
-        SET PROFILE_SUPER = #{profileSuper}, PROFILE_CAREER = #{profileCareer}, PROFILE_TARGET = #{profileTarget},
-        PROFILE_AREA = #{profileArea}, PROFILE_DAY = #{profileDay}, PROFILE_TIME = #{profileTime}, PROFILE_CONTENT = #{profileContent}
-        WHERE PROFILE_NUMBER = #{profileNumber}
-    </update>
-
     <select id="selectProfilePayNumber" resultType="profileVo">
         SELECT PROFILE_NUMBER, U.USER_NAME, PROFILE_CAREER, PROFILE_FEE, PROFILE_TARGET, PROFILE_AREA
         FROM TBL_PROFILE P JOIN TBL_USER U

@@ -4,14 +4,17 @@
 <configuration>
     <typeAliases>
         <typeAlias type="com.example.redmedicine.domain.dto.UserDto" alias="userDto"/>
+        <typeAlias type="com.example.redmedicine.domain.dto.AdminDto" alias="adminDto"/>
         <typeAlias type="com.example.redmedicine.domain.dto.ProfileDto" alias="profileDto"/>
         <typeAlias type="com.example.redmedicine.domain.dto.PfFileDto" alias="pfFileDto"/>
         <typeAlias type="com.example.redmedicine.domain.dto.NoticeDto" alias="noticeDto"/>
         <typeAlias type="com.example.redmedicine.domain.dto.DiaryDto" alias="diaryDto"/>
+        <typeAlias type="com.example.redmedicine.domain.dto.PfCommentDto" alias="pfCommentDto"/>
 
+        <typeAlias type="com.example.redmedicine.domain.vo.PfCommentVo" alias="pfCommentVo"/>
         <typeAlias type="com.example.redmedicine.domain.vo.ProfileVo" alias="profileVo"/>
         <typeAlias type="com.example.redmedicine.domain.vo.NoticeVo" alias="noticeVo"/>
-        <typeAlias type="com.example.redmedicine.domain.vo.PageVo" alias="PageVo"/>
+        <typeAlias type="com.example.redmedicine.domain.vo.PageVo" alias="pageVo"/>
         <typeAlias type="com.example.redmedicine.domain.vo.UserVo" alias="userVo"/>
 
 

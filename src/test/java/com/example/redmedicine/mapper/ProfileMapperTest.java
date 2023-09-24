@@ -95,13 +95,6 @@ class ProfileMapperTest {
     }
 
     @Test
-    void updateTest() {
-        profileDto.setProfileContent("update test");
-
-        profileMapper.update(profileDto);
-    }
-
-    @Test
     @DisplayName("유료상담사목록조회")
     void selectProfilePayNumberTest() {
         List<ProfileVo> counselorList = profileMapper.selectProfilePayNumber();

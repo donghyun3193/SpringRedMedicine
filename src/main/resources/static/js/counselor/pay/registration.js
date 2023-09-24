@@ -13,49 +13,48 @@ function call_confirm2(){
     }
 }
 
+// input 상담 대상 데이터 뽑기
 $('.btn').on('click', function() {
-
-    makeCheck1();
-    makeCheck2();
-    makeCheck3();
-    makeCheck4();
-
-    $('.frm').submit();
-})
-
-function makeCheck1(){
+    console.log($('.ch:checked'));
     let result = [];
     $('.ch:checked').each((i, ele) => {
         result.push($(ele).val());
     });
 
     $('.num').val(result.join(', '));
-}
-
-
-function makeCheck2(){
+    // $('.frm').submit();
+})
+// input 상담 영역 데이터 뽑기
+$('.btn').on('click', function() {
+    console.log($('.ch1:checked'));
     let result = [];
     $('.ch1:checked').each((i, ele) => {
         result.push($(ele).val());
     });
 
     $('.num1').val(result.join(', '));
-}
-
-function makeCheck3(){
+    // $('.frm').submit();
+})
+// input 상담 가능 요일 데이터 뽑기
+$('.btn').on('click', function() {
+    console.log($('.ch2:checked'));
     let result = [];
     $('.ch2:checked').each((i, ele) => {
         result.push($(ele).val());
     });
 
     $('.num2').val(result.join(', '));
-}
-
-function makeCheck4(){
+    // $('.frm').submit();
+})
+// input 상담 가능 시간 데이터 뽑기
+$('.btn').on('click', function() {
+    console.log($('.ch3:checked'));
     let result = [];
     $('.ch3:checked').each((i, ele) => {
         result.push($(ele).val());
     });
 
     $('.num3').val(result.join(', '));
-}
+    // $('.frm').submit();
+})
+
