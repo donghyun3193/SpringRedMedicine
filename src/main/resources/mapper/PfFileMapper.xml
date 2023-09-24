@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.redmedicine.mapper.PfFileMapper">
-    <insert id="insert">
+    <insert id="insertFile">
         <selectKey keyProperty="pfFileNumber" order="BEFORE" resultType="long">
             SELECT SEQ_PF_FILE.NEXTVAL FROM DUAL
         </selectKey>
@@ -20,4 +20,9 @@
         WHERE PROFILE_NUMBER = #{profileNumber}
     </select>
 
+    <select id="selectOldList" resultType="pfFileDto">
+        SELECT PF_FILE_NUMBER, PROFILE_NUMBER, PF_FILE_ROUTE, PF_FILE_NAME, PF_FILE_UUID
+        FROM TBL_PF_FILE
+        WHERE PF_FILE_ROUTE = TO_CHAR(SYSDATE - 6, 'YYYY/MM/DD')
+    </select>
 </mapper>

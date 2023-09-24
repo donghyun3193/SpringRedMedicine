@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.redmedicine.mapper.PfCommentMapper">
+    <insert id="isertPfComment">
+        <selectKey keyProperty="pfCommentNumber" resultType="long" order="BEFORE">
+            SELECT SEQ_PF_COMENT.NEXTVAL FROM DUAL
+        </selectKey>
+        insert into TBL_PF_COMMENT (PF_COMMENT_NUMBER, USER_NUMBER, PROFILE_NUMBER, PF_COMMENT_CONTENT, PF_COMMENT_DATE)
+        values (#{pfCommentNumber}, #{userNumber}, #{profileNumber}, #{pfCommentContent},#{pfCommentDate})
+    </insert>
+
+    <select id="selectPfCommentList" resultType="pfCommentVo">
+        SELECT PF_COMMENT_NUMBER, PF_COMMENT_CONTENT, PF_COMMENT_DATE, PROFILE_NUMBER, P.USER_NUMBER,
+               USER_NAME
+        FROM TBL_PF_COMMENT P JOIN TBL_USER U
+        ON PROFILE_NUMBER = #{profileNumber} AND P.USER_NUMBER = U.USER_NUMBER
+        ORDER BY PF_COMMENT_NUMBER DESC
+    </select>
+
+    <select id="selectPfComment" resultType="pfCommentVo">
+        SELECT PF_COMMENT_NUMBER, PF_COMMENT_CONTENT, PF_COMMENT_DATE, PROFILE_NUMBER, P.USER_NUMBER,
+               USER_NAME
+        FROM TBL_PF_COMMENT P JOIN TBL_USER U
+        ON PF_COMMENT_NUMBER = #{pfCommentNumber} AND P.USER_NUMBER = U.USER_NUMBER
+    </select>
+
+    <update id="updatePfComment">
+        UPDATE TBL_PF_COMMENT
+        SET PF_COMMENT_CONTENT = #{replyContent}, PF_COMMENT_DATE = SYSDATE
+        WHERE PF_COMMENT_NUMBER = #{pfCommentNumber}
+    </update>
+
+    <delete id="deletePfComment">
+        DELETE FROM TBL_PF_COMMENT
+        WHERE PF_COMMENT_NUMBER = #{pfCommentNumber}
+    </delete>
+
+    <select id="selectPfCommentListPage" resultType="pfCommentVo">
+        SELECT PF_COMMENT_NUMBER, PF_COMMENT_CONTENT, PF_COMMENT_DATE, PROFILE_NUMBER, P.USER_NUMBER,
+               USER_NAME
+        FROM (
+                 SELECT ROWNUM RNUM, PF_COMMENT_NUMBER, PF_COMMENT_CONTENT, PF_COMMENT_DATE, PROFILE_NUMBER, P.USER_NUMBER,
+                        USER_NAME
+                 FROM (
+                          SELECT PF_COMMENT_NUMBER, PF_COMMENT_CONTENT, PF_COMMENT_DATE, PROFILE_NUMBER, P.USER_NUMBER,
+                                 USER_NAME
+                          FROM TBL_PF_COMMENT P JOIN TBL_USER U
+                          ON PROFILE_NUMBER = #{profileNumber} AND P.USER_NUMBER = U.USER_NUMBER
+                          ORDER BY PF_COMMENT_NUMBER DESC
+                      )
+            <![CDATA[
+                 WHERE ROWNUM <= #{criteria.page} * #{criteria.amount}
+            ]]>
+        )
+        WHERE RNUM > (#{criteria.page} - 1) * #{criteria.amount}
+    </select>
+
+    <select id="selectPfCommentTotal" resultType="_int">
+        SELECT COUNT(PF_COMMENT_NUMBER) FROM TBL_PF_COMMENT
+        WHERE PROFILE_NUMBER = #{profileNumber}
+    </select>
+</mapper>

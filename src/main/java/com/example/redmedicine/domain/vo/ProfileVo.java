@@ -19,4 +19,7 @@ public class ProfileVo {
     private String profileDay;
     private String profileTime;
     private String profileContent;
+    private String pfFileName;
+    private String pfFileUuid;
+    private String pfFileUploadPath;
 }

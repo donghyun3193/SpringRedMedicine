@@ -6,7 +6,9 @@ import com.example.redmedicine.mapper.ProfileMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -15,6 +17,7 @@ import java.util.Optional;
 @Transactional
 public class ProfileService {
     private final ProfileMapper profileMapper;
+    private final PfFileService pfFileService;
 
     //유료상담사등록
     public void profilePayRegister(ProfileDto profileDto){
@@ -31,11 +34,9 @@ public class ProfileService {
         if (profileNumber == null) {
             throw new IllegalArgumentException("상담사 등록 번호 누락!");
         }
+        pfFileService.remove(profileNumber);
         profileMapper.delete(profileNumber);
-    }
-    //상담사 수정
-    public void modify(ProfileDto profileDto){
-        profileMapper.update(profileDto);
+
     }
 
     //유료상담사목록
@@ -67,6 +68,32 @@ public class ProfileService {
         }
         return Optional.ofNullable(profileMapper.selectProfileFree(profileNumber))
                 .orElseThrow(() -> { throw new IllegalArgumentException("존재하지 않는 프로필 번호 누락!!"); });
+    }
+
+    //유료상담사등록(파일처리 포함)
+    public void profilePayRegisterAndFileProc(ProfileDto profileDto, List<MultipartFile> files){
+        profilePayRegister(profileDto);
+
+        if(files.isEmpty()) { return; }
+
+        try {
+            pfFileService.registerAndSaveFile(files, profileDto.getProfileNumber());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    //무료상담사등록(파일처리 포함)
+    public void profileFreeRegisterAndFileProc(ProfileDto profileDto, List<MultipartFile> files){
+        profileFreeRegister(profileDto);
+
+        if(files.isEmpty()) { return; }
+
+        try {
+            pfFileService.registerAndSaveFile(files, profileDto.getProfileNumber());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 

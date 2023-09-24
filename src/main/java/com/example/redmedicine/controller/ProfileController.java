@@ -1,5 +1,6 @@
 package com.example.redmedicine.controller;
 
+import com.example.redmedicine.domain.dto.ProfileDto;
 import com.example.redmedicine.domain.vo.ProfileVo;
 import com.example.redmedicine.service.ProfileService;
 import lombok.RequiredArgsConstructor;
@@ -7,9 +8,15 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 @Controller
 @RequestMapping("/counselor/*")
@@ -68,18 +75,29 @@ public class ProfileController {
     
     
     
-
+    //유료 상담사 등록 페이지
     @GetMapping("/pay/registration")
-    public String showRegistrationPage(){//HttpServletRequest req)
-//        Long profileFee = (Long)req.getSession().getAttribute("uprofileFee");
-//
-//        if (profileFee == null) {
-//            // 로그인되지 않은 경우 로그인 페이지로 이동
-//            return "redirect:/login"; // 로그인 페이지 경로에 따라서 수정해야 합니다.
-//        } else {
-//            // 로그인된 경우 프로필 등록 페이지로 이동
+    public String showRegistrationPage(){
             return "counselor/pay/registration";
-    //    }
+    }
+
+    //유료 상담사 등록 페이지(값 받아 오기)
+    @PostMapping("/pay/registration")
+    public RedirectView registration(ProfileDto profileDto, HttpServletRequest req, RedirectAttributes redirectAttributes,
+                                     @RequestParam("pfFile") List<MultipartFile> files){
+        Long profileNumber = (Long)req.getSession().getAttribute("profileNumber");
+        Long userNumber = (Long)req.getSession().getAttribute("userNumber");
+
+        profileDto.setUserNumber(userNumber);
+        profileDto.setProfileNumber(profileNumber);
+
+        profileService.profilePayRegisterAndFileProc(profileDto, files);
+
+        log.info("====================================={}", profileDto.toString());
+
+        redirectAttributes.addFlashAttribute("profileNumber",profileNumber);
+
+        return new RedirectView("/counselor/pay/payMate");
     }
 
     @GetMapping("/free/freeRegistration")
@@ -87,6 +105,24 @@ public class ProfileController {
         return "counselor/free/freeRegistration";
     }
 
+    //무료 상담사 등록 페이지(값 받아 오기)
+    @PostMapping("/free/freeRegistration")
+    public RedirectView freeRegistration(ProfileDto profileDto, HttpServletRequest req, RedirectAttributes redirectAttributes,
+                                         @RequestParam("pfFile") List<MultipartFile> files){
+        Long profileNumber = (Long)req.getSession().getAttribute("profileNumber");
+        Long userNumber = (Long)req.getSession().getAttribute("userNumber");
+
+        profileDto.setUserNumber(userNumber);
+        profileDto.setProfileNumber(profileNumber);
+
+        profileService.profileFreeRegisterAndFileProc(profileDto, files);
+
+//        log.info("====================================={}", profileDto.toString());
+
+        redirectAttributes.addFlashAttribute("profileNumber",profileNumber);
+
+        return new RedirectView("/free/freeMate");
+    }
 
 
 

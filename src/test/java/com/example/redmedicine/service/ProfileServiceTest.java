@@ -109,17 +109,6 @@ class ProfileServiceTest {
     }
 
     @Test
-    void modify() {
-        doNothing().when(profileMapper).update((any(ProfileDto.class)));
-
-        profileService.modify(new ProfileDto());
-
-        verify(profileMapper, times(1)).update(any(ProfileDto.class));
-
-    }
-
-
-    @Test
     void findProfilePay(){
         doReturn(profileVo).when(profileMapper).selectProfilePay(any(Long.class));
 
