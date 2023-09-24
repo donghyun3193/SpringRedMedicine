@@ -208,6 +208,7 @@ a{
 .main-content-list table{
   width: 950px;
   height: 600px;
+  table-layout: fixed;
   text-align: center;
   margin: 0 auto;
   border-top: 0.5px solid rgb(183, 182, 182);
@@ -223,6 +224,7 @@ a{
   width: 550px;
 }
 .main-content-list table td{
+  max-height: 55px;
   border-bottom: 0.5px solid rgb(183, 182, 182);
   /* background-color: yellow; */
 }
@@ -241,6 +243,10 @@ a{
 }
 .paging-container ul li{
   margin: 0 5px;
+}
+.active,
+.page-num:hover {
+  font-weight: bolder;
 }
 .footer{
   width: 100vw;

@@ -14,7 +14,7 @@
         <div class="main-nav-container">
             <!-- <div class="main-nav"> -->
                 <ul>
-                    <li><a href="" id="main-nav-button">공지사항</a></li>
+                    <li><a href="/notice/list" id="main-nav-button">공지사항</a></li>
                     <li><a href="" id="main-nav-button">상담게시판</a></li>
                     <li><a href="" id="main-nav-button">일기쓰기</a></li>
                 </ul>
@@ -23,7 +23,7 @@
         <div class="main-content">
             <div class="main-content-contaniner">
                 <div class="main-title">공지사항</div>
-                <form action="">
+<!--                <form action=>-->
                     <div class="title" th:text="${notice.noticeTitle}">공지사항 입니다.</div>
                     <div class="writer-date">
                         <div class="writer" th:text="${notice.userName}">관리자</div>
@@ -35,58 +35,18 @@
                     </div>
                     <div class="buttons">
                         <button id="list-button">목록</button>
+                        <th:block th:if="${session.userNumber == 1}">
+                            <button id="modify-button" th:data-number="${notice.noticeNumber}">수정</button>
+                            <button id="remove-button" th:data-number="${notice.noticeNumber}">삭제</button>
+                        </th:block>
                     </div>
-                </form>
-                <!-- <div class="reply-container">
-                    <div class="reply-writing">
-                        <div class="reply-writerName">이지윤</div>
-                        <div class="reply-textarea">
-                            <textarea name="" id=""></textarea>
-                        </div>
-                        <div class="reply-button">
-                            <button><a href="" id="reply-button">등록</a></button>
-                        </div>
-                    </div>
-                    <div class="reply-reading">
-                        <div class="reply-reading-box">
-                            <div class="reply-name">유대훈</div>
-                            <div class="reply-date">2023-09-16 12:07</div>
-                            <div class="reply-content-and-menu">
-                                <div class="reply-content">댓글댓글댓글</div>
-                                <div class="reply-menu">
-                                    <div class="reply-menu-img">
-                                        <a href=""><img src="../img/menu (2).png" alt=""></a>
-                                    </div>
-                                    <div class="reply-menu-contents">
-                                        <a href="" id="menu1">수정</a>
-                                        <a href="">삭제</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="reply-reading-box">
-                            <div class="reply-name">유대훈</div>
-                            <div class="reply-date">2023-09-16 12:07</div>
-                            <div class="reply-content-and-menu">
-                                <div class="reply-content">댓글댓글댓글</div>
-                                <div class="reply-menu">
-                                    <div class="reply-menu-img">
-                                        <a href=""><img src="../img/menu (2).png" alt=""></a>
-                                    </div>
-                                    <div class="reply-menu-contents">
-                                        <a href="" id="menu1">수정</a>
-                                        <a href="">삭제</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
             </div>
         </div>
     </div>
 <!-- 후터 시작-->
 <footer class="footer" th:replace="fragments/footer :: footer"></footer>
 <!-- 후터 끝-->
+<script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+<script defer src="/js/board/readingNotice.js"></script>
 </body>
 </html>

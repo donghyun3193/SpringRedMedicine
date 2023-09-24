@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>(수정)공지사항</title>
+    <link rel="stylesheet" href="/css/board/writingNotice.css">
+</head>
+<body>
+<!-- 헤더 시작-->
+<header class="header" th:replace="fragments/header :: header"></header>
+<!-- 헤더 종료-->
+    <div class="main-container">
+        <div class="main-nav-container">
+            <!-- <div class="main-nav"> -->
+                <ul>
+                    <li><a href="/html/notice.html" id="main-nav-button">공지사항</a></li>
+                    <li><a href="/html/" id="main-nav-button">상담게시판</a></li>
+                    <li><a href="" id="main-nav-button">일기쓰기</a></li>
+                </ul>
+            <!-- </div> -->
+        </div>
+        <div class="main-content">
+            <div class="main-content-container">
+                <div class="content-title-box">
+                    <div>공지사항</div>
+                </div>
+                <div class="main-content-list">
+                    <form action="/notice/modify" method="post">
+                        <input type="hidden" th:value="${notice.noticeNumber}" name="noticeNumber"/>
+                        <table>
+                            <tr class="content-name">
+                                <th>이름</th>
+                                <td><input type="text" name="userName"  value="관리자" readonly></td>
+                            </tr>
+                            <tr class="content-title">
+                                <th>제목</th>
+                                <td><input type="text" name="noticeTitle" th:value="${notice.noticeTitle}" required ></td>
+                            </tr>
+                            <tr class="content-text">
+                                <th>내용</th>
+                                <td><textarea name="noticeContent" th:text="${notice.noticeContent}" required ></textarea></td>
+                            </tr>
+                        </table>
+                        <div class="buttons">
+                            <button type="submit" id="main-buttons">등록</button>
+                            <button id="main-buttons">취소</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- 후터 시작-->
+<footer class="footer" th:replace="fragments/footer :: footer"></footer>
+<!-- 후터 끝-->
+</body>
+</html>

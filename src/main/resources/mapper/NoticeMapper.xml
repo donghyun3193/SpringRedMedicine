@@ -17,5 +17,41 @@
         WHERE N.NOTICE_NUMBER = #{noticeNumber}
     </select>
 
+    <select id="selectAll" resultType="noticeVo">
+        SELECT RNUM, NOTICE_NUMBER, USER_NUMBER, NOTICE_TITLE, NOTICE_CONTENT, NOTICE_DATE,
+        USER_NAME
+        FROM (
+            SELECT ROWNUM AS RNUM, NOTICE_NUMBER, USER_NUMBER, NOTICE_TITLE, NOTICE_CONTENT, NOTICE_DATE,
+            USER_NAME
+            FROM(
+                SELECT NOTICE_NUMBER, N.USER_NUMBER, NOTICE_TITLE, NOTICE_CONTENT, NOTICE_DATE,
+                U.USER_NAME
+                FROM TBL_NOTICE N JOIN TBL_USER U
+                ON N.USER_NUMBER = U.USER_NUMBER
+                ORDER BY NOTICE_NUMBER DESC
+            ) X
+            <![CDATA[
+            WHERE ROWNUM <= #{page} * #{amount}
+            ]]>
+        ) Y
+        WHERE RNUM > (#{page} - 1) * #{amount}
+    </select>
+
+    <select id="selectTotal" resultType="_int">
+        SELECT COUNT(NOTICE_NUMBER)
+        FROM TBL_NOTICE
+    </select>
+
+    <delete id="delete">
+        DELETE FROM TBL_NOTICE
+        WHERE NOTICE_NUMBER = #{noticeNumber}
+    </delete>
+
+    <update id="update">
+        UPDATE TBL_NOTICE
+        SET NOTICE_TITLE = #{noticeTitle}, NOTICE_CONTENT = #{noticeContent}, NOTICE_DATE = SYSDATE
+        WHERE NOTICE_NUMBER = #{noticeNumber}
+    </update>
+
 
 </mapper>
