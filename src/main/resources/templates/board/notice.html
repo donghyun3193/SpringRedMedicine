@@ -38,77 +38,34 @@
                         <th>제목</th>
                         <th>작성자</th>
                         <th>작성일</th>
-                        <tr>
-                            <td>1</td>
-                            <td><a href="">[공지사항]공지사항입니다</a></td>
+                        <tr th:each="notice, i : ${noticeList}">
+                            <td th:text="${i.index+1}"></td>
+                            <td>
+                                <a th:href="@{/notice/detail(noticeNumber=${notice.noticeNumber})}">
+                                   <span th:text="${notice.noticeTitle}">제목</span>
+                                </a>
+                            </td>
                             <td>관리자</td>
-                            <td>2023-09-09</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td><a href="">[공지사항]공지사항입니다</a></td>
-                            <td>관리자</td>
-                            <td>2023-09-09</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td><a href="">[공지사항]공지사항입니다</a></td>
-                            <td>관리자</td>
-                            <td>2023-09-09</td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td><a href="">[공지사항]공지사항입니다</a></td>
-                            <td>관리자</td>
-                            <td>2023-09-09</td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td><a href="">[공지사항]공지사항입니다</a></td>
-                            <td>관리자</td>
-                            <td>2023-09-09</td>
-                        </tr>
-                        <tr>
-                            <td>6</td>
-                            <td><a href="">[공지사항]공지사항입니다</a></td>
-                            <td>관리자</td>
-                            <td>2023-09-09</td>
-                        </tr>
-                        <tr>
-                            <td>7</td>
-                            <td><a href="">[공지사항]공지사항입니다</a></td>
-                            <td>관리자</td>
-                            <td>2023-09-09</td>
-                        </tr>
-                        <tr>
-                            <td>8</td>
-                            <td><a href="">[공지사항]공지사항입니다</a></td>
-                            <td>관리자</td>
-                            <td>2023-09-09</td>
-                        </tr>
-                        <tr>
-                            <td>9</td>
-                            <td><a href="">[공지사항]공지사항입니다</a></td>
-                            <td>관리자</td>
-                            <td>2023-09-09</td>
-                        </tr>
-                        <tr>
-                            <td>10</td>
-                            <td><a href="">[공지사항]공지사항입니다</a></td>
-                            <td>관리자</td>
-                            <td>2023-09-09</td>
+                            <td th:text="${notice.noticeDate}"></td>
                         </tr>
                     </table>
                 </div>
               <div class="paging-container">
                     <ul>
-                        <li><a href="">&lt; 이전</a></li>
-                        <li><a href="">1</a></li>
-                        <li><a href="">2</a></li>
-                        <li><a href="">3</a></li>
-                        <li><a href="">4</a></li>
-                        <li><a href="">5</a></li>
-                        <li><a href="">다음 &gt;</a></li>
+                        <a th:href="@{/notice/list(page=${pageInfo.startPage-1})}" th:if="${pageInfo.prev}">
+                            <li>&lt 이전</li>
+                        </a>
+
+                        <th:block th:each="i : ${#numbers.sequence(pageInfo.startPage, pageInfo.endPage)}">
+                            <a th:href="@{/notice/list(page=${i})}">
+                                <li th:text="${i}" class="page-num active" th:if="${i == pageInfo.criteria.page}"></li>
+                                <li th:text="${i}" class="page-num" th:unless="${i == pageInfo.criteria.page}"></li>
+                            </a>
+                        </th:block>
+
+                        <a th:href="@{/notice/list(page=${pageInfo.endPage+1})}" th:if="${pageInfo.next}">
+                            <li>다음 &gt</li>
+                        </a>
                     </ul>
                 </div>
             </div>
