@@ -1,99 +1,100 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>mypage</title>
     <link rel="stylesheet" href="/css/user/mypage.css">
-    
+
 </head>
 <body>
 <!-- 헤더 시작-->
 <header class="header" th:replace="fragments/header :: header"></header>
 <!-- 헤더 종료-->
-    <!-- 메인 시작-->
-    <div class="main-container">
-        <div class="main-nav-container">
-        
-        </div>
-        <div class="main-content">
-            <div class="main-content-contaniner">
-                <div class="main-content-title">회원정보 수정</div>
-                
-                <form class="content-box" action="/user/modify" method="post">
-<!--                    <input type="hidden" th:value="${user.userNumber}" name="userNumber"/>-->
-                    <!--↑히든으로 숨겨서 컨트롤러의 Dto에 꽂히도록!<-컨트롤러에서 왔음-->
-                    <div class="main-container-section1">
-                        <div class="input-name">아이디</div>
-                        <input class="inputid" type="text" placeholder="아이디"
-                               id="userId" name="userId" readonly
-                                th:value="${user.userId}"><br>
-                        <div class="input-name">수정할 비밀번호</div>
-                        <input class="inputpw" type="password" placeholder="비밀번호"
-                               id="userPassword" name="userPassword" required><br>
-                        <div class="input-name">비밀번호확인</div>
-                        <input class="inputpw2" type="password" placeholder="비밀번호확인"
-                               id="confirm-password" name="confirm-password" required><br>
-                        <div class="input-name">이름</div>
-                        <input class="inputname" type="test" placeholder="이름"
-                               id="userName" name="userName" readonly
-                               th:value="${user.userName}"><br>
-                        <div class="input-name">새로운 이메일</div>
-                        <input class="inputemail" type="email" placeholder="이메일"
-                               id="userEmail" name="userEmail" required
-                               th:value="${user.userEmail}"><br>
-                        <div class="input-name">휴대전화</div>
-                        
-                        <div>
-                            <input class="inputphone" type="text" placeholder="휴대폰번호"
-                                   id="userPhone" name="userPhone" required>
-                            <button class="btn-auth" type="button">전송</button>
-                        </div><br>
-                        <div class="main-c-s-d1">
-                            <div class="main-time" id="time"></div>
-                        </div>
-                        <div>
-<!--                            <input class="phone-auth" type="text" placeholder="인증번호입력" >-->
-<!--                            <button class="btn-auth" type="submit">인증</button>-->
-                        </div><br>
-                        
-                        <div class="input-name">새로운 생년월일</div><br>
-                        <div class="info" id="info__birth">
-                            <select class="box" id="birth-year">
-                                <option disabled selected required >출생 연도</option>
+<!-- 메인 시작-->
+<div class="main-container">
+    <div class="main-nav-container">
 
-                            </select>
-                            <select class="box" id="birth-month">
-                                <option disabled selected required>월</option>
-                            </select>
-                            <select class="box" id="birth-day">
-                                <option disabled selected required>일</option>
-                                <input type="hidden" id="userBirth" name="userBirth"/>
-                            </select>
+    </div>
+    <div class="main-content">
+        <div class="main-content-contaniner">
+            <div class="main-content-title">회원정보 수정</div>
 
-                        </div><br>
-                        <div class="input-name">성별</div>
-                        <div class="radio-gender">
-                            <input type='radio' name='userGender' value='M'
-                                   id="gender-m" required/>남
-                            <input type='radio' name='userGender' value='F'
-                                   id="gender-f" margin-left="10px" required/>여
-                        </div>
+            <form class="content-box" action="/user/mypage" method="post">
+                <input type="hidden" th:value="${user.userNumber}" name="userNumber"/>
+                <!--↑히든으로 숨겨서 컨트롤러의 Dto에 꽂히도록!<-컨트롤러에서 왔음-->
+                <div class="main-container-section1">
+                    <div class="input-name">아이디</div>
+                    <input class="inputid" type="text" placeholder="아이디"
+                           id="userId" name="userId" readonly
+                           th:value="${user.userId}"><br>
+                    <div class="input-name">수정할 비밀번호</div>
+                    <input class="inputpw" type="password" placeholder="비밀번호"
+                           id="userPassword" name="userPassword" required><br>
+                    <div class="input-name">비밀번호확인</div>
+                    <input class="inputpw2" type="password" placeholder="비밀번호확인"
+                           id="confirm-password" name="confirm-password" required><br>
+                    <div class="input-name">이름</div>
+                    <input class="inputname" type="test" placeholder="이름"
+                           id="userName" name="userName" readonly
+                           th:value="${user.userName}"><br>
+                    <div class="input-name">새로운 이메일</div>
+                    <input class="inputemail" type="email" placeholder="이메일"
+                           id="userEmail" name="userEmail" required
+                           th:value="${user.userEmail}"><br>
+                    <div class="input-name">휴대전화</div>
+
+                    <div>
+                        <input class="inputphone" type="text" placeholder="휴대폰번호"
+                               id="userPhone" name="userPhone" required>
+                        <button class="btn-auth" type="button">전송</button>
+                    </div><br>
+                    <div class="main-c-s-d1">
+                        <div class="main-time" id="time"></div>
                     </div>
-                    <div class="main-container-section3">
-                        <button class="btn-join">취소</button>
-                        <button class="btn-join-update">수정</button>
-                    </div>
-                </form>
+                    <div>
+                        <!--                            <input class="phone-auth" type="text" placeholder="인증번호입력" >-->
+                        <!--                            <button class="btn-auth" type="submit">인증</button>-->
+                    </div><br>
 
-            </div>
+                    <div class="input-name">새로운 생년월일</div><br>
+                    <div class="info" id="info__birth">
+                        <select class="box" id="birth-year">
+                            <option disabled selected required >출생 연도</option>
+                        </select>
+                        <select class="box" id="birth-month">
+                            <option disabled selected required>월</option>
+                        </select>
+                        <select class="box" id="birth-day">
+                            <option disabled selected required>일</option>
+                            <input type="hidden" id="userBirth" name="userBirth"/>
+                        </select>
+
+                    </div><br>
+                    <div class="input-name">성별</div>
+                    <div class="radio-gender">
+                        <input type='radio' name='userGender' value='M'
+                               id="gender-m" required/>남
+                        <input type='radio' name='userGender' value='F'
+                               id="gender-f" margin-left="10px" required/>여
+                    </div>
+                </div>
+                <div class="main-container-section3">
+                    <button class="btn-join" type="button">취소</button>
+                    <button class="btn-join-update" type="submit">수정</button>
+                    <!-- '수정'버튼을 클릭했을 때의 경로를 join과 마찬가지로 controller를 통해서 조정-->
+                </div>
+            </form>
+
         </div>
     </div>
-    <!-- 메인 끝-->
+</div>
+<!-- 메인 끝-->
 <!-- 후터 시작-->
 <footer class="footer" th:replace="fragments/footer :: footer"></footer>
 <!-- 후터 끝-->
-    <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
-    <script src="/js/user/mypage.js"></script>
+<!--    <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>-->
+<script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+<script src="/js/user/mypage.js"></script>
 </body>
 </html>

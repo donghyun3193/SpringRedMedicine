@@ -17,7 +17,7 @@ public interface UserMapper {
     public UserDto selectAll();
 
     //조회
-//    public UserVo select(Long userNumber);
+    public UserDto select(Long userNumber);
 
     //회원 정보 수정 - update
     public void update(UserDto userDto);

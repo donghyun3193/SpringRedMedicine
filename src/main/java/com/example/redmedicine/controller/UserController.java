@@ -20,6 +20,7 @@ import javax.servlet.http.HttpServletRequest;
 public class UserController {
 
     private final UserService userService;
+    private final UserDto userDto;
 
     //로그인페이지
     @GetMapping("/login")
@@ -54,22 +55,45 @@ public class UserController {
         return "user/login";
     }
 
-    @PostMapping("/modify")//회원정보수정 후 저장위해서 post방식!<-modify에서 왔어요[이미 수정은 가능한 상태에서 저장만 안돼는]~~
-    public RedirectView modify(UserDto userDto, RedirectAttributes redirectAttributes){
+    @GetMapping("/mypage")
+    public String showloginPage2(HttpServletRequest req, Model model){
+        Long userNumber = (Long) req.getSession().getAttribute("userNumber");//세션을 통해서 userNumber를 불러오고
+        //불러온 userNumber를 통해서 모든 정보를 가져올 수 있나? -> select를해서 세션을 통해서 받아 올 userNumber를 사용해서
 
-        userService.modify(userDto);//리다이렉트뷰를 사용해서 header로 부터 정보를 받아와
+        //Model에 저장 후 사용해보자!
+//        UserDto userDto = userService.find((Long) userNumber);
+//        model.addAttribute("user",userService.find(userNumber));
+        //이거먼 세션을 통해서 가져온 userNumber를 사용해 userService의 find메서드를 사용할 수 있는 것 아닌가?
 
-        redirectAttributes.addAttribute("userNumber", userDto.getUserNumber());
-
-        return new RedirectView("/user/join");//리다이렉트시 요청한 정보 날라가니 쿼리스트링을 통해서 받아와야지!
+//        return userNumber == null ? "user/login" : "user/mypage";
+        if(userNumber == null){
+            return "user/login";
+        }else{
+            model.addAttribute("user",userService.find(userNumber));
+            return "user/mypage";
+        }
     }
+    /*
+        @PostMapping("/mypage")//수정 자체는 join과 마찬가지로 post방식으로
+        public RedirectView modify(UserDto userDto, RedirectAttributes redirectAttributes){
 
-//    @GetMapping("/modify")
-//    public void showloginPage2(HttpServletRequest req, Model model){
-//        req.getSession().
-//        model.addAttribute("user",userDto);
-//
-//    }
+            userService.modify(userDto);//getMapping을 통해서 userNumber를 넘겨받고 관련 정보를 넣은 후
+
+            redirectAttributes.addAttribute("userNumber", userDto.getUserNumber());
+
+    //       리다이렉션 시 데이터 전달: RedirectView를 사용하여 리다이렉션 시 데이터를 전달할 수 있습니다.
+    //       이를 통해 리다이렉션된 페이지로 데이터를 전송하거나, 쿼리 문자열에 데이터를 추가하여 다음 요청에서 사용할 수 있습니다.
+
+
+            return new RedirectView("/user/login");//리다이렉트시 요청한 정보 날라가니 쿼리스트링을 통해서 받아와야지!
+        }
+       */
+    @PostMapping("/mypage")
+    public String modify(UserDto userDto, Model model) {
+        userService.modify(userDto);
+        model.addAttribute("userNumber", userDto.getUserNumber());
+        return "redirect:/user/login?userNumber=" + userDto.getUserNumber();
+    }
 
     //아이디찾기 페이지
     @GetMapping("/findId")

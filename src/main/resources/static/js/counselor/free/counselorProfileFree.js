@@ -1,10 +1,10 @@
 // JavaScript 함수를 정의하여 페이지 이동을 처리
 function reservation() {
     // 페이지 이동을 원하는 URL로 변경
-    window.location.href = '/src/main/resources/templates/counselor/book/bookingDetails.html'; // 이동하려는 URL을 여기에 입력
+    window.location.href = '/counselor/book/bookingDetails'; // 이동하려는 URL을 여기에 입력
 }
 
-//강사님의 js입니다. 
+//강사님의 js입니다.
 $('.reply-list-wrap').on('click', '.reply-btns', function () {
     let $replyBtnBox = $(this).closest('.reply-btn-box').find('.reply-btns__box');
 
@@ -58,37 +58,37 @@ $('.reply-list-wrap').on('click', '.modify-content-btn', function () {
 function openModal() {
     var modal = document.getElementById("myModal");
     modal.style.display = "block";
-  }
-  
-  // 모달 닫기
-  function closeModal() {
+}
+
+// 모달 닫기
+function closeModal() {
     var modal = document.getElementById("myModal");
     modal.style.display = "none";
-  }
-  
-  // 모달 닫기 버튼에 이벤트 리스너 추가
-  var closeBtn = document.querySelector(".close");
-  closeBtn.addEventListener("click", closeModal);
-  
-  // 모달 열기 함수 호출 (예를 들어, 버튼을 클릭할 때 호출)
-  // openModal();
+}
+
+// 모달 닫기 버튼에 이벤트 리스너 추가
+var closeBtn = document.querySelector(".close");
+closeBtn.addEventListener("click", closeModal);
+
+// 모달 열기 함수 호출 (예를 들어, 버튼을 클릭할 때 호출)
+// openModal();
 
 /**session 모달창 입니다. */
 // 모달 열기
 function openSessionModal() {
     var sModal = document.getElementById("sessionModal");
     sModal.style.display = "block";
-  }
-  
-  // 모달 닫기
-  function closeSessionModal() {
+}
+
+// 모달 닫기
+function closeSessionModal() {
     var sModal = document.getElementById("sessionModal");
     sModal.style.display = "none";
-  }
-  
-  // 모달 닫기 버튼에 이벤트 리스너 추가
-  var closeSBtn = document.querySelector(".sModal-close");
-  closeSBtn.addEventListener("click", closeSessionModal);
-  
-  // 모달 열기 함수 호출 (예를 들어, 버튼을 클릭할 때 호출)
-  // openModal();
+}
+
+// 모달 닫기 버튼에 이벤트 리스너 추가
+var closeSBtn = document.querySelector(".sModal-close");
+closeSBtn.addEventListener("click", closeSessionModal);
+
+// 모달 열기 함수 호출 (예를 들어, 버튼을 클릭할 때 호출)
+// openModal();
