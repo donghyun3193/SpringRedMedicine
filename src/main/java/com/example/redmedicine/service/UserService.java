@@ -32,6 +32,14 @@ public class UserService {
                 .orElseThrow(()-> {throw new IllegalArgumentException("아이디와 패스워드가 일치하는 회원 정보가 없습니다.");
                 });
     }
+    //회원 정보 조회
+    public UserDto find(Long userNumber){//세션에서 받을 userNumber를 가지고 모든 정보를 조회 후 꽂겠다
+        if(userNumber == null){
+            throw new IllegalArgumentException("회원 번호 누락!");
+        }
+        return Optional.ofNullable(userMapper.select(userNumber))
+                .orElseThrow(()->{throw new IllegalArgumentException("존재하지 않는 회원번호");});
+    }
 
     //회원 정보 수정
     public void modify(UserDto userDto){
