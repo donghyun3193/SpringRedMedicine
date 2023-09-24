@@ -10,12 +10,14 @@
         <typeAlias type="com.example.redmedicine.domain.dto.NoticeDto" alias="noticeDto"/>
         <typeAlias type="com.example.redmedicine.domain.dto.DiaryDto" alias="diaryDto"/>
         <typeAlias type="com.example.redmedicine.domain.dto.PfCommentDto" alias="pfCommentDto"/>
+        <typeAlias type="com.example.redmedicine.domain.dto.CounselorDto" alias="counselorDto"/>
 
         <typeAlias type="com.example.redmedicine.domain.vo.PfCommentVo" alias="pfCommentVo"/>
         <typeAlias type="com.example.redmedicine.domain.vo.ProfileVo" alias="profileVo"/>
         <typeAlias type="com.example.redmedicine.domain.vo.NoticeVo" alias="noticeVo"/>
         <typeAlias type="com.example.redmedicine.domain.vo.PageVo" alias="pageVo"/>
         <typeAlias type="com.example.redmedicine.domain.vo.UserVo" alias="userVo"/>
+        <typeAlias type="com.example.redmedicine.domain.vo.CounselorVo" alias="counselorVo"/>
 
         <typeAlias type="com.example.redmedicine.domain.vo.Criteria" alias="criteria"/>
     </typeAliases>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.redmedicine.mapper.CounselorMapper">
+    <insert id="insert">
+        <selectKey keyProperty="counselorNumber" order="BEFORE" resultType="long">
+            SELECT SEQ_COUNSELOR.NEXTVAL FROM DUAL
+        </selectKey>
+        insert into TBL_COUNSELOR (COUNSELOR_NUMBER, USER_NUMBER, COUNSELOR_TITLE, COUNSELOR_DATE, COUNSELOR_CONTENT)
+        values (#{counselorNumber}, #{counselorTitle}, #{counselorContent}, #{userNumber}, TO_CHAR(SYSDATE, 'YYYY-MM-DD'))
+    </insert>
+
+    <delete id="delete">
+        DELETE FROM TBL_COUNSELOR
+        WHERE COUNSELOR_NUMBER = #{counselorNumber}
+    </delete>
+
+    <update id="update">
+        UPDATE TBL_COUNSELOR
+        SET COUNSELOR_TITLE = #{counselorTitle}, COUNSELOR_CONTENT = #{counselorContent}
+        WHERE COUNSELOR_NUMBER = #{counselorNumber}
+    </update>
+
+    <select id="select" resultType="counselorVo">
+        SELECT COUNSELOR_NUMBER, COUNSELOR_TITLE, COUNSELOR_CONTENT, C.USER_NUMBER,
+               COUNSELOR_DATE, U.USER_NAME
+        FROM TBL_COUNSELOR C JOIN TBL_USER U
+        ON C.USER_NUMBER = U.USER_NUMBER
+        WHERE C.COUNSELOR_NUMBER = #{counselorNumber}
+    </select>
+
+    <select id="selectAll" resultType="counselorVo">
+        SELECT COUNSELOR_NUMBER, COUNSELOR_TITLE, COUNSELOR_CONTENT, C.USER_NUMBER,
+               COUNSELOR_DATE, U.USER_NAME
+        FROM TBL_COUNSELOR C JOIN TBL_USER U
+        ON C.USER_NUMBER = U.USER_NUMBER
+        ORDER BY COUNSELOR_NUMBER DESC
+    </select>
+
+    <!--최신글이 가장 위로 올라가도록 수정해도 상관없이하기 위해서 DESC 설정-->
+    <select id="selectTotal" resultType="_int">
+        SELECT COUNT(COUNSELOR_NUMBER)
+        FROM TBL_COUNSELOR
+    </select>
+</mapper>
