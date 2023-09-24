@@ -20,7 +20,7 @@
         <div class="main-content-contaniner">
             <div class="main-content-title">회원정보 수정</div>
 
-            <form class="content-box" action="/user/modify" method="post">
+            <form class="content-box" action="/user/mypage" method="post">
                 <input type="hidden" th:value="${user.userNumber}" name="userNumber"/>
                 <!--↑히든으로 숨겨서 컨트롤러의 Dto에 꽂히도록!<-컨트롤러에서 왔음-->
                 <div class="main-container-section1">
