@@ -1,7 +1,9 @@
 package com.example.redmedicine.controller;
 
 import com.example.redmedicine.domain.dto.NoticeDto;
+import com.example.redmedicine.domain.vo.Criteria;
 import com.example.redmedicine.domain.vo.NoticeVo;
+import com.example.redmedicine.domain.vo.PageVo;
 import com.example.redmedicine.service.NoticeService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -25,9 +27,9 @@ public class NoticeController {
 
     private final NoticeService noticeService;
 
-    //공지사항 페이지
-    @GetMapping("/noticePage")
-    public String showNoticePage(){return "board/notice";}
+//    //공지사항 페이지
+//    @GetMapping("/noticePage")
+//    public String showNoticePage(){return "board/notice";}
 
     //글쓰기
     @GetMapping("/write")
@@ -63,5 +65,34 @@ public class NoticeController {
         log.info(noticeVo.toString());
         model.addAttribute("notice", noticeVo);
         return "board/readingNotice";
+    }
+
+    @GetMapping("/list")
+    public String showListPage(Criteria criteria, Model model){
+        model.addAttribute("noticeList", noticeService.findAll(criteria));
+        model.addAttribute("pageInfo", new PageVo(noticeService.getTotal(), criteria));
+        return "board/notice";
+    }
+
+    @GetMapping("/remove")
+    public RedirectView remove(Long noticeNumber){
+        noticeService.remove(noticeNumber);
+        return new RedirectView("/notice/list");
+    }
+
+    @GetMapping( "/modify")
+    public String showModifyPage(Long noticeNumber, Model model){
+        NoticeVo noticeVo = noticeService.find(noticeNumber);
+        model.addAttribute("notice", noticeVo);
+        return "board/modifyNotice";
+    }
+
+    @PostMapping("/modify")
+    public RedirectView modify(NoticeDto noticeDto, RedirectAttributes redirectAttributes){
+        noticeService.modify(noticeDto);
+
+        redirectAttributes.addAttribute("noticeNumber", noticeDto.getNoticeNumber());
+
+        return new RedirectView("/notice/detail");
     }
 }

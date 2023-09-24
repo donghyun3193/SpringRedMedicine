@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 @Component
 @Data
 public class PageVo {
+<<<<<<< HEAD
 //    페이지 세트당 표시될 수
     private int pageCount;
 //    페이지 세트의 시작 숫자
@@ -21,6 +22,23 @@ public class PageVo {
 //    전체 게시글 수
     private int total;
 //    화면에서 전달받은 page, amount를 저장하는 객체
+=======
+    //    페이지 세트당 표시될 수
+    private int pageCount;
+    //    페이지 세트의 시작 숫자
+    private int startPage;
+    //    페이지 세트의 마지막 숫자
+    private int endPage;
+    //    실제 가장 마지막 페이지
+    private int realEnd;
+    //    이전 버튼 표시 여부
+    private boolean prev;
+    //    다음 버튼 표시 여부
+    private boolean next;
+    //    전체 게시글 수
+    private int total;
+    //    화면에서 전달받은 page, amount를 저장하는 객체
+>>>>>>> jiyoon0924
     private Criteria criteria;
 
     public PageVo() {}
@@ -54,6 +72,7 @@ public class PageVo {
 
 
 }
+<<<<<<< HEAD
 
 
 
@@ -72,3 +91,5 @@ public class PageVo {
 
 
 
+=======
+>>>>>>> jiyoon0924
