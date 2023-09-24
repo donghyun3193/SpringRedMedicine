@@ -1,6 +1,7 @@
 package com.example.redmedicine.service;
 
 import com.example.redmedicine.domain.dto.UserDto;
+import com.example.redmedicine.domain.vo.Criteria;
 import com.example.redmedicine.mapper.AdminMapper;
 import com.example.redmedicine.mapper.UserMapper;
 import lombok.RequiredArgsConstructor;
@@ -29,8 +30,13 @@ public class AdminService {
     }
 
 //    전체회원 조회
-    public List<UserDto> findAll(){
-        return adminMapper.selectAll();
+    public List<UserDto> findAll(Criteria criteria){
+        return adminMapper.selectAll(criteria);
+    }
+
+//    전체 회원 수 조회
+    public int getTotal(){
+        return adminMapper.selectTotal();
     }
 
 }

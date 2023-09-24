@@ -11,6 +11,6 @@ public class Criteria {
 
     public Criteria() {
         this.page = 1;
-        this.amount = 12;
+        this.amount = 10;
     }
 }
