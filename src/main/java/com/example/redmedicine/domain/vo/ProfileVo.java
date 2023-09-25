@@ -8,9 +8,9 @@ import org.springframework.stereotype.Component;
 @Data
 @NoArgsConstructor
 public class ProfileVo {
-    private Long profileNumber;
     private Long userNumber;
     private String userName;
+    private Long profileNumber;
     private Long profileSuper;
     private Long profileCareer;
     private Long profileFee;
@@ -19,7 +19,9 @@ public class ProfileVo {
     private String profileDay;
     private String profileTime;
     private String profileContent;
+    private Long pfFileNumber;
+    private String pfFileRoute;
     private String pfFileName;
     private String pfFileUuid;
-    private String pfFileUploadPath;
+
 }

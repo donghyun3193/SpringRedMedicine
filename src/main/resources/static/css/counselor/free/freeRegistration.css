@@ -10,6 +10,9 @@
     font-weight: normal;
     font-style: normal;
 }
+label{
+    cursor: pointer;
+}
 button{
     cursor: pointer;
 }

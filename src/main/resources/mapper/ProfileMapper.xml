@@ -22,20 +22,45 @@
         WHERE PROFILE_NUMBER = #{profileNumber}
     </delete>
 
+
+    <select id="findUserName" resultType="String">
+        SELECT USER_NAME
+        FROM  TBL_USER
+        WHERE USER_NUMBER = #{userNumber}
+    </select>
+
     <select id="selectProfilePayNumber" resultType="profileVo">
-        SELECT PROFILE_NUMBER, U.USER_NAME, PROFILE_CAREER, PROFILE_FEE, PROFILE_TARGET, PROFILE_AREA
+        SELECT P.PROFILE_NUMBER, U.USER_NAME, PROFILE_CAREER, PROFILE_FEE, PROFILE_TARGET, PROFILE_AREA, PF_FILE_ROUTE, PF_FILE_NAME, PF_FILE_UUID
         FROM TBL_PROFILE P JOIN TBL_USER U
-        ON P.USER_NUMBER = U.USER_NUMBER
+                                ON P.USER_NUMBER = U.USER_NUMBER
+                           LEFT OUTER JOIN (
+            SELECT PROFILE_NUMBER, PF_FILE_ROUTE, PF_FILE_NAME, PF_FILE_UUID
+            FROM (
+                     SELECT PROFILE_NUMBER, PF_FILE_ROUTE, PF_FILE_NAME, PF_FILE_UUID,
+                            RANK() OVER(PARTITION BY PROFILE_NUMBER ORDER BY PF_FILE_NUMBER) RK
+                     FROM TBL_PF_FILE
+                 )
+            WHERE RK = 1
+        ) J1 ON P.PROFILE_NUMBER = J1.PROFILE_NUMBER
         WHERE PROFILE_FEE IS NOT NULL
-        ORDER BY PROFILE_NUMBER
+        ORDER BY P.PROFILE_NUMBER
     </select>
 
     <select id="selectProfileFreeNumber" resultType="profileVo">
-        SELECT PROFILE_NUMBER, U.USER_NAME, PROFILE_CAREER, PROFILE_FEE, PROFILE_TARGET, PROFILE_AREA
+        SELECT P.PROFILE_NUMBER, U.USER_NAME, PROFILE_CAREER, PROFILE_FEE, PROFILE_TARGET, PROFILE_AREA, PF_FILE_ROUTE, PF_FILE_NAME, PF_FILE_UUID
         FROM TBL_PROFILE P JOIN TBL_USER U
-        ON P.USER_NUMBER = U.USER_NUMBER
+                                ON P.USER_NUMBER = U.USER_NUMBER
+                           LEFT OUTER JOIN (
+            SELECT PROFILE_NUMBER, PF_FILE_ROUTE, PF_FILE_NAME, PF_FILE_UUID
+            FROM (
+                     SELECT PROFILE_NUMBER, PF_FILE_ROUTE, PF_FILE_NAME, PF_FILE_UUID,
+                            RANK() OVER(PARTITION BY PROFILE_NUMBER ORDER BY PF_FILE_NUMBER) RK
+                     FROM TBL_PF_FILE
+                 )
+            WHERE RK = 1
+        ) J1 ON P.PROFILE_NUMBER = J1.PROFILE_NUMBER
         WHERE PROFILE_FEE IS NULL
-        ORDER BY PROFILE_NUMBER
+        ORDER BY P.PROFILE_NUMBER
     </select>
     <select id="selectProfilePay" resultType="profileVo">
         SELECT PROFILE_NUMBER, U.USER_NAME, PROFILE_SUPER, PROFILE_FEE, PROFILE_CAREER, PROFILE_TARGET,

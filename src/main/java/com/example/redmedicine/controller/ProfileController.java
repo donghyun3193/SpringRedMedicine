@@ -2,7 +2,9 @@ package com.example.redmedicine.controller;
 
 import com.example.redmedicine.domain.dto.ProfileDto;
 import com.example.redmedicine.domain.vo.ProfileVo;
+import com.example.redmedicine.domain.vo.UserVo;
 import com.example.redmedicine.service.ProfileService;
+import com.example.redmedicine.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -27,7 +29,7 @@ public class ProfileController {
 
     //유료 상담사 페이지
     @GetMapping("/pay/payMate")
-    public String showCounselorPayLitPage(Model model, ProfileVo profileVo){
+    public String showCounselorPayLitPage(Model model){
         model.addAttribute("profileList", profileService.findProfilePayNumber());
         return "counselor/pay/payMate";
     }
@@ -41,7 +43,7 @@ public class ProfileController {
 
     //유료 상담사 상세 페이지
     @GetMapping(value = "/pay/counselorProfilePay")
-    public void showCounselorDetailPage(Model model, Long profileNumber){
+    public void showCounselorDetailPage(Model model, Long profileNumber, Long userNumber){
         ProfileVo profileVo = profileService.findProfilePay(profileNumber);
         model.addAttribute("profile", profileVo);
     }
@@ -77,7 +79,9 @@ public class ProfileController {
     
     //유료 상담사 등록 페이지
     @GetMapping("/pay/registration")
-    public String showRegistrationPage(){
+    public String showRegistrationPage(Model model, HttpServletRequest req){
+        Long userNumber = (Long)req.getSession().getAttribute("userNumber");
+        model.addAttribute("userName",profileService.findUserName(userNumber));
             return "counselor/pay/registration";
     }
 
@@ -85,23 +89,27 @@ public class ProfileController {
     @PostMapping("/pay/registration")
     public RedirectView registration(ProfileDto profileDto, HttpServletRequest req, RedirectAttributes redirectAttributes,
                                      @RequestParam("pfFile") List<MultipartFile> files){
-        Long profileNumber = (Long)req.getSession().getAttribute("profileNumber");
         Long userNumber = (Long)req.getSession().getAttribute("userNumber");
 
         profileDto.setUserNumber(userNumber);
-        profileDto.setProfileNumber(profileNumber);
-
         profileService.profilePayRegisterAndFileProc(profileDto, files);
+        //호출하여 profileDto와 files를 매개변수로 전달하여 유료상담사 등록 및 파일 처리를 수행
+
+        Long profileNumber = profileDto.getProfileNumber();
+        //등록된 프로필 번호인 profileNumber을 가져옴
 
         log.info("====================================={}", profileDto.toString());
 
         redirectAttributes.addFlashAttribute("profileNumber",profileNumber);
+        //프로필 번호를 리다이렉트 시에도 유지되도록 설정
 
         return new RedirectView("/counselor/pay/payMate");
     }
 
     @GetMapping("/free/freeRegistration")
-    public String showRegistrationFreePage(){
+    public String showRegistrationFreePage(Model model, HttpServletRequest req){
+        Long userNumber = (Long)req.getSession().getAttribute("userNumber");
+        model.addAttribute("userName",profileService.findUserName(userNumber));
         return "counselor/free/freeRegistration";
     }
 
@@ -109,19 +117,20 @@ public class ProfileController {
     @PostMapping("/free/freeRegistration")
     public RedirectView freeRegistration(ProfileDto profileDto, HttpServletRequest req, RedirectAttributes redirectAttributes,
                                          @RequestParam("pfFile") List<MultipartFile> files){
-        Long profileNumber = (Long)req.getSession().getAttribute("profileNumber");
         Long userNumber = (Long)req.getSession().getAttribute("userNumber");
 
         profileDto.setUserNumber(userNumber);
-        profileDto.setProfileNumber(profileNumber);
-
         profileService.profileFreeRegisterAndFileProc(profileDto, files);
+        //호출하여 profileDto와 files를 매개변수로 전달하여 유료상담사 등록 및 파일 처리를 수행
+
+        Long profileNumber = profileDto.getProfileNumber();
+        //등록된 프로필 번호인 profileNumber을 가져옴
 
 //        log.info("====================================={}", profileDto.toString());
 
         redirectAttributes.addFlashAttribute("profileNumber",profileNumber);
 
-        return new RedirectView("/free/freeMate");
+        return new RedirectView("/counselor/free/freeMate");
     }
 
 

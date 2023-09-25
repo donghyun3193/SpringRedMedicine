@@ -15,46 +15,60 @@ function call_confirm2(){
 
 // input 상담 대상 데이터 뽑기
 $('.btn').on('click', function() {
-    console.log($('.ch:checked'));
+
+    makeCheck1();
+    makeCheck2();
+    makeCheck3();
+    makeCheck4();
+
+    $('.frm').submit();
+})
+
+function makeCheck1(){
     let result = [];
     $('.ch:checked').each((i, ele) => {
         result.push($(ele).val());
     });
 
     $('.num').val(result.join(', '));
-    // $('.frm').submit();
-})
-// input 상담 영역 데이터 뽑기
-$('.btn').on('click', function() {
-    console.log($('.ch1:checked'));
+}
+
+
+function makeCheck2(){
     let result = [];
     $('.ch1:checked').each((i, ele) => {
         result.push($(ele).val());
     });
 
     $('.num1').val(result.join(', '));
-    // $('.frm').submit();
-})
-// input 상담 가능 요일 데이터 뽑기
-$('.btn').on('click', function() {
-    console.log($('.ch2:checked'));
+}
+
+function makeCheck3(){
     let result = [];
     $('.ch2:checked').each((i, ele) => {
         result.push($(ele).val());
     });
 
     $('.num2').val(result.join(', '));
-    // $('.frm').submit();
-})
-// input 상담 가능 시간 데이터 뽑기
-$('.btn').on('click', function() {
-    console.log($('.ch3:checked'));
+}
+
+function makeCheck4(){
     let result = [];
     $('.ch3:checked').each((i, ele) => {
         result.push($(ele).val());
     });
 
     $('.num3').val(result.join(', '));
-    // $('.frm').submit();
-})
+}
 
+//    파일처리
+
+//파일 길이 체크 함수(체크할 files객체, 제한할 길이)
+function checkLength(files, num) {
+    if (files.length > num) {
+        alert(`파일은 최대 ${num}개까지만 첨부 가능합니다.`);
+        // 최대 수를 넘으면 비어있는 files객체 반환
+        return new DataTransfer().files;
+    }
+    return files;
+}
