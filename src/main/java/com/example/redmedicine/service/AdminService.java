@@ -2,6 +2,7 @@ package com.example.redmedicine.service;
 
 import com.example.redmedicine.domain.dto.UserDto;
 import com.example.redmedicine.domain.vo.Criteria;
+import com.example.redmedicine.domain.vo.SearchVo;
 import com.example.redmedicine.mapper.AdminMapper;
 import com.example.redmedicine.mapper.UserMapper;
 import lombok.RequiredArgsConstructor;
@@ -30,8 +31,8 @@ public class AdminService {
     }
 
 //    전체회원 조회
-    public List<UserDto> findAll(Criteria criteria){
-        return adminMapper.selectAll(criteria);
+    public List<UserDto> findAll(Criteria criteria, SearchVo searchVo){
+        return adminMapper.selectAll(criteria, searchVo);
     }
 
 //    전체 회원 수 조회
@@ -39,4 +40,11 @@ public class AdminService {
         return adminMapper.selectTotal();
     }
 
+//    회원 삭제
+    public void remove(Long userNumber){
+        if (userNumber == null){
+            throw new IllegalArgumentException("유저 넘버 누락!!");
+        }
+        adminMapper.delete(userNumber);
+    }
 }

@@ -48,4 +48,10 @@
             USER_BIRTH = #{userBirth}, USER_GENDER= #{userGender}
         WHERE USER_NUMBER = #{userNumber}
     </update>
+
+    <update id="updatePw">
+        UPDATE TBL_USER
+        SET USER_PASSWORD = #{userPassword}
+        WHERE USER_NUMBER = #{userNumber}
+    </update>
 </mapper>

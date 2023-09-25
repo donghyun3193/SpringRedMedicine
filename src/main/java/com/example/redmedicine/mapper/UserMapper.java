@@ -22,5 +22,8 @@ public interface UserMapper {
     //회원 정보 수정 - update
     public void update(UserDto userDto);
 
+    //비밀번호 변경
+    public void updatePw(Long userNumber, String userPassword);
+
 
 }
