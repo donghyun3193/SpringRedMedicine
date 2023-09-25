@@ -46,4 +46,7 @@ public class UserService {
         userMapper.update(userDto);
     }
 
+    //비밀번호 변경
+    public void modifyPw(Long userNumber,String userPassword){ userMapper.updatePw(userNumber, userPassword);}
+
 }

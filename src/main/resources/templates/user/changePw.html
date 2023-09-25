@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,25 +31,29 @@
                       <div class="findpw">
                         <a class="findpwa" href="/html/findPw.html">비밀번호 찾기</a>
                       </div> -->
+                        <form method="post" action="/user/changePw">
+                            <input type="hidden" th:value="${session.userNumber}" name="userNumber">
+                          <div class="div1">
 
-                      <div class="div1">
-                        <input class="inputpw" type="password" placeholder="새로운 비밀번호" id="nameInput">
-                        <input class="inputpw2" type="password" placeholder="새로운 비밀번호 확인" id="phoneInput">
-                      </div>
+                            <input class="inputpw" type="password" placeholder="새로운 비밀번호" name="userPassword" id="nameInput"
+                            th:value="${userPassword}">
+                            <input class="inputpw2" type="password" placeholder="새로운 비밀번호 확인" id="phoneInput">
 
-                      <div class="inputresult" style="display: none;">
-                        <strong>
-                          비밀번호가 일치하지 않습니다.
-                        </strong>
+                          </div>
 
-                      </div>
+                          <div class="inputresult" style="display: none;">
+                            <strong>
+                              비밀번호가 일치하지 않습니다.
+                            </strong>
 
-                      <hr style="margin-top: 50px; border:1px solid #ffe4cb;">
+                          </div>
 
-                      <button class="idfindbutton" onclick="checkInput()">
-                        비밀번호 변경하기
-                      </button>
+                          <hr style="margin-top: 50px; border:1px solid #ffe4cb;">
 
+                          <button class="idfindbutton" type="submit">
+                            비밀번호 변경하기
+                          </button>
+                        </form>
                     </div>
 
                 </div>
