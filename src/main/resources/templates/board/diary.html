@@ -32,97 +32,55 @@
                     <img src="../img/diary_img.png" alt="">
                 </div>
                 <div class="main-content-list">
-                    <table>
-                        <th>번호</th>
-                        <th id="main-content-list-title">제목</th>
-                        <th>작성자</th>
-                        <th>작성일</th>
-                        <th>공개여부</th>
-                        <tr>
-                            <td>1</td>
-                            <td><a href="/html/readingDiary.html">오늘의 기록</a></td>
-                            <td>이지윤</td>
-                            <td>2023-09-09</td>
-                            <td>공개</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td><a href="/html/readingDiary.html">오늘의 기록</a></td>
-                            <td>유대훈</td>
-                            <td>2023-09-09</td>
-                            <td>비공개</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td><a href="/html/readingDiary.html">오늘의 기록</a></td>
-                            <td>이지윤</td>
-                            <td>2023-09-09</td>
-                            <td>공개</td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td><a href="/html/readingDiary.html">오늘의 기록</a></td>
-                            <td>이동현</td>
-                            <td>2023-09-09</td>
-                            <td>비공개</td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td><a href="/html/readingDiary.html">오늘의 기록</a></td>
-                            <td>유대훈</td>
-                            <td>2023-09-09</td>
-                            <td>공개</td>
-                        </tr>
-                        <tr>
-                            <td>6</td>
-                            <td><a href="/html/readingDiary.html">오늘의 기록</a></td>
-                            <td>노의진</td>
-                            <td>2023-09-09</td>
-                            <td>비공개</td>
-                        </tr>
-                        <tr>
-                            <td>7</td>
-                            <td><a href="/html/readingDiary.html">오늘의 기록</a></td>
-                            <td>이지윤</td>
-                            <td>2023-09-09</td>
-                            <td>공개</td>
-                        </tr>
-                        <tr>
-                            <td>8</td>
-                            <td><a href="/html/readingDiary.html">오늘의 기록</a></td>
-                            <td>이동현</td>
-                            <td>2023-09-09</td>
-                            <td>비공개</td>
-                        </tr>
-                        <tr>
-                            <td>9</td>
-                            <td><a href="/html/readingDiary.html">오늘의 기록</a></td>
-                            <td>유대훈</td>
-                            <td>2023-09-09</td>
-                            <td>공개</td>
-                        </tr>
-                        <tr>
-                            <td>10</td>
-                            <td><a href="/html/readingDiary.html">오늘의 기록</a></td>
-                            <td>노의진</td>
-                            <td>2023-09-09</td>
-                            <td>비공개</td>
-                        </tr>
-                    </table>
+                    <div class="table-wrap">
+                        <table>
+                            <th>번호</th>
+                            <th id="main-content-list-title">제목</th>
+                            <th>작성자</th>
+                            <th>작성일</th>
+                            <th>공개여부</th>
+                            <tbody>
+                                <tr th:each="diary, i : ${diaryList}">
+                                    <td th:text="${i.index+1}">1</td>
+                                    <td th:if="${diary.diaryOpen == 0}">
+                                        <a th:href="@{/diary/detail(diaryNumber=${diary.diaryNumber})}">
+                                            <span th:text="${diary.diaryTitle}">제목</span>
+                                        </a>
+                                    </td>
+                                    <td th:unless="${diary.diaryOpen == 1}">
+<!--                                        <a th:href="@{/diary/detail(diaryNumber=${diary.diaryNumber})}">-->
+                                            <span th:text="${diary.diaryTitle}">제목</span>
+<!--                                        </a>-->
+                                    </td>
+                                    <td th:text="${diary.userName}">이지윤</td>
+                                    <td th:text="${diary.diaryDate}">2023-09-09</td>
+                                    <td th:text="${diary.diaryOpen}">공개</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
                 <div class="paging-container">
                     <ul>
-                        <li><a href="">&lt; 이전</a></li>
-                        <li><a href="">1</a></li>
-                        <li><a href="">2</a></li>
-                        <li><a href="">3</a></li>
-                        <li><a href="">4</a></li>
-                        <li><a href="">5</a></li>
-                        <li><a href="">다음 &gt;</a></li>
+                        <a th:href="@{/notice/list(page=${pageInfo.startPage-1})}" th:if="${pageInfo.prev}">
+                            <li>&lt 이전</li>
+                        </a>
+
+                        <th:block th:each="i : ${#numbers.sequence(pageInfo.startPage, pageInfo.endPage)}">
+                            <a th:href="@{/diary/list(page=${i})}">
+                                <li th:text="${i}" class="page-num active" th:if="${i == pageInfo.criteria.page}"></li>
+                                <li th:text="${i}" class="page-num" th:unless="${i == pageInfo.criteria.page}"></li>
+                            </a>
+                        </th:block>
+
+                        <a th:href="@{/diary/list(page=${pageInfo.endPage+1})}" th:if="${pageInfo.next}">
+                            <li>다음 &gt</li>
+                        </a>
                     </ul>
                 </div>
+                <input class="diary-num" type="hidden" th:value="${userNumber}">
                 <div class="button-container">
-                    <button type="button"><a href="/html/writingDiary.html" id="writing-button">글쓰기</a></button>
+                    <button type="button" id="writing-button">글쓰기</button>
                 </div>
             </div>
         </div>

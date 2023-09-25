@@ -59,3 +59,15 @@ function makeCheck4(){
 
     $('.num3').val(result.join(', '));
 }
+
+//    파일처리
+
+//파일 길이 체크 함수(체크할 files객체, 제한할 길이)
+function checkLength(files, num) {
+    if (files.length > num) {
+        alert(`파일은 최대 ${num}개까지만 첨부 가능합니다.`);
+        // 최대 수를 넘으면 비어있는 files객체 반환
+        return new DataTransfer().files;
+    }
+    return files;
+}

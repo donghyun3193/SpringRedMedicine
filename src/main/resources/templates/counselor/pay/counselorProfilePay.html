@@ -45,8 +45,12 @@
 <main class="profile">
     <div class="profile-container">
         <div class="profile-img">
-            <img src="/img/councelor01.jpg" alt="인물01"
-            style="width: 600px; height: 340px; border-radius: 5px;">
+<!--            <img src="/img/councelor01.jpg" alt="인물01"-->
+<!--            style="width: 600px; height: 340px; border-radius: 5px;">-->
+
+            <div th:if="${profile.pfFileName == null}" class="board-item-image" style="background-image: url(https://via.placeholder.com/300x200)"></div>
+            <div th:unless="${profile.pfFileName == null}" class="board-item-image" th:style="'background-image: url(/upload/' + ${profile.pfFileRoute} + '/th_' + ${profile.pfFileUuid} + '_' + ${profile.pfFileName} + ')'"></div>
+
         </div>
         <div class="profile-namebox">
             <div class="profile-name">
@@ -105,31 +109,34 @@
         <br>
         <br>
         <div class="profile-commentbox">
+
             <div class="reply-wrap">
                 <h3>후기 작성</h3>
                 <div class="reply-wrap__box">
                   <div class="reply-content__box">
-                    <div class="reply-writer">작성자</div>
+                    <div class="reply-writer" >작성자</div>
                     <textarea name="replyContent" id="reply-content" cols="30" rows="10"></textarea>
                   </div>
                   <div class="reply-btn-wrap">
                     <button type="button" class="btn-reply">작성 완료</button>
                   </div>
                 </div>
-          
+
                 <!-- 댓글 리스트 -->
                 <div class="reply-list-wrap">
                   <!-- 리플 예시 -->
                   <div class="reply">
                     <div class="reply-box">
-                      <div class="reply-box__writer">김철수</div>
+                      <div class="reply-box__writer" th:text="${profile.userName}"></div>
                       <div class="reply-box__content">안녕하세요!</div>
                     </div>
                     <div class="reply-btn-box">
                       <span class="reply-btns"></span>
                       <div class="reply-btns__box none">
-                        <div class="reply-remove-btn">삭제</div>
-                        <div class="reply-modify-btn">수정</div>
+                          <th:block th:if="${session.userNumber == profile.userNumber}">
+                              <button type="button" class="reply-modify-btn" th:data-number="${profile.profileNumber}">수정</button>
+                              <button type="button" class="reply-remove-btn" th:data-number="${profile.profileNumber}">삭제</button>
+                          </th:block>
                       </div>
                     </div>
                   </div>
@@ -145,5 +152,12 @@
 <!-- =====풋터 종료====== -->
 <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
 <script src="/js/counselor/pay/counselorProfilePay.js"></script>
+
+<script th:inline="javascript"> // 타임리프 문법을 자바스크립트에서 사용하기 위한 설정
+let loginNumber = [[${session.userNumber}]]; // 타임리프 문법은 [] 2개로 감싸줘야 한다.
+</script>
+
+<script type="module" src="/js/counselor/counselorProfilePay.js"></script>
+
 </body>
 </html>

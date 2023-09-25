@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.redmedicine.mapper.PfCommentMapper">
-    <insert id="isertPfComment">
+    <insert id="insertPfComment">
         <selectKey keyProperty="pfCommentNumber" resultType="long" order="BEFORE">
-            SELECT SEQ_PF_COMENT.NEXTVAL FROM DUAL
+            SELECT SEQ_PF_COMMENT.NEXTVAL FROM DUAL
         </selectKey>
         insert into TBL_PF_COMMENT (PF_COMMENT_NUMBER, USER_NUMBER, PROFILE_NUMBER, PF_COMMENT_CONTENT, PF_COMMENT_DATE)
         values (#{pfCommentNumber}, #{userNumber}, #{profileNumber}, #{pfCommentContent},#{pfCommentDate})

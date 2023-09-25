@@ -50,8 +50,8 @@ public class PfFileService {
         List<PfFileDto> pfFileList = pfFileList(pfFileNumber);
 
         for(PfFileDto file : pfFileList){
-            File target = new File(fileDir, file.getPfFileUploadPath() + "/" + file.getPfFileUuid() + "_" + file.getPfFileName());
-            File thumbnail = new File(fileDir, file.getPfFileUploadPath() + "/th_" + file.getPfFileUuid() + "_" + file.getPfFileName());
+            File target = new File(fileDir, file.getPfFileRoute() + "/" + file.getPfFileUuid() + "_" + file.getPfFileName());
+            File thumbnail = new File(fileDir, file.getPfFileRoute() + "/th_" + file.getPfFileUuid() + "_" + file.getPfFileName());
 
             if(target.exists()){
                 target.delete();
@@ -110,7 +110,7 @@ public class PfFileService {
         PfFileDto pfFileDto = new PfFileDto();
         pfFileDto.setPfFileName(originName);
         pfFileDto.setPfFileUuid(uuid.toString());
-        pfFileDto.setPfFileUploadPath(getUploadPath());
+        pfFileDto.setPfFileRoute(getUploadPath());
 
         return pfFileDto;
     }
@@ -128,7 +128,7 @@ public class PfFileService {
     public void registerAndSaveFile(List<MultipartFile> files, Long profileNumber) throws IOException {
         for(MultipartFile file : files){
             PfFileDto fileDto = saveFile(file);
-            fileDto.setPfFileNumber(profileNumber);
+            fileDto.setProfileNumber(profileNumber);
             registerFile(fileDto);
         }
     }
