@@ -14,6 +14,8 @@ public interface ProfileMapper {
     public void insertProfileFree(ProfileDto profileDto);
     //상담사 삭제
     public void delete(Long profileNumber);
+    //후기 유저 이름 찾기
+    public String findUserName(Long userNumber);
     //유료상담사목록
     public List<ProfileVo> selectProfilePayNumber();
     //무료상담사목록

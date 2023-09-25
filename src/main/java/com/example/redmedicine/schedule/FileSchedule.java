@@ -38,10 +38,10 @@ public class FileSchedule {
 
 //        이전 파일들의 전체경로를 List<Path>타입으로 저장한다..
         List<Path> fileListPath = oldList.stream()
-                .map(pfFileDto -> Paths.get(fileDir, pfFileDto.getPfFileUploadPath(), pfFileDto.getPfFileUuid() + "_" + pfFileDto.getPfFileName()))
+                .map(pfFileDto -> Paths.get(fileDir, pfFileDto.getPfFileRoute(), pfFileDto.getPfFileUuid() + "_" + pfFileDto.getPfFileName()))
                 .collect(Collectors.toList());
 //        이전 썸네일 파일들의 전체 경로를 fileListPath에 추가한다.
-        oldList.stream().map(pfFileDto -> Paths.get(fileDir, pfFileDto.getPfFileUploadPath(), "th_" + pfFileDto.getPfFileUuid() + "_" + pfFileDto.getPfFileName()))
+        oldList.stream().map(pfFileDto -> Paths.get(fileDir, pfFileDto.getPfFileRoute(), "th_" + pfFileDto.getPfFileUuid() + "_" + pfFileDto.getPfFileName()))
                 .collect(Collectors.toList()).forEach(path -> fileListPath.add(path));
 
 //        이전 파일들이 들어있는 경로(파일이름은 제외한)를 파일객체로 저장한다.

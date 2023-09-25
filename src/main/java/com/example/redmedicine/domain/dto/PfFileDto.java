@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 public class PfFileDto {
     private Long pfFileNumber;
     private String pfFileName;
-    private String pfFileUploadPath;
+    private String pfFileRoute;
     private String pfFileUuid;
     private Long profileNumber;
 }

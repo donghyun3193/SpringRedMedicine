@@ -11,7 +11,7 @@ import java.util.List;
 @Mapper
 public interface PfCommentMapper {
     //    삽입
-    public void isertPfComment(PfCommentDto pfCommentDto);
+    public void insertPfComment(PfCommentDto pfCommentDto);
     //    리스트 조회
     public List<PfCommentVo> selectPfCommentList(Long profileNumber);
     //    단건 조회
