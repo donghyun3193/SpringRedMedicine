@@ -219,6 +219,9 @@ th{
     margin: 10px;
     padding: 10px;
     resize: none;
+    padding: 10px;
+    font-size: 18px;
+    font-weight: 400;
 }
 .addfile{
     height: 50px;

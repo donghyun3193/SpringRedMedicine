@@ -17,7 +17,7 @@
         <ul>
             <li><a href="/board/notice" id="main-nav-button">공지사항</a></li>
             <li><a href="/board/counselBoard" id="main-nav-button">상담게시판</a></li>
-            <li><a href="/board/diary" id="main-nav-button">일기쓰기</a></li>
+            <li><a href="/diary/list" id="main-nav-button">일기쓰기</a></li>
         </ul>
         <!-- </div> -->
     </div>
@@ -40,108 +40,40 @@
                     <th>작성자</th>
                     <th>작성일</th>
                     <tr th:each="counselor : ${counselor}">
-                        <td th:text="${counselor.counselorNumber}">1</td>
+                        <td th:text="${counselor.counselorNumber}"></td>
                         <td>
                             <a th:href="@{/board/readingCounsel(counselorNumber=${counselor.counselorNumber})}">
-                                <h3 class="board-item-title" th:text="${counselor.counselorTitle}">게시글 제목</h3>
+                                <h3 class="board-item-title" th:text="${counselor.counselorTitle}"></h3>
                             </a>
                         </td>
-                        <td th:text="${counselor.userName}">이지윤</td>
-                        <td th:text="${counselor.counselorDate}">2023-09-09</td>
+                        <td th:text="${counselor.userName}"></td>
+                        <td th:text="${counselor.counselorDate}"></td>
                     </tr>
-                    <!--                        <tr>-->
-                    <!--                            <td>2</td>-->
-                    <!--                            <td><a href="/html/readingCounsel.html">상담받고 싶어요.</a></td>-->
-                    <!--                            <td>유대훈</td>-->
-                    <!--                            <td>2023-09-09</td>-->
-                    <!--                        </tr>-->
-                    <!--                        <tr>-->
-                    <!--                            <td>3</td>-->
-                    <!--                            <td><a href="/html/readingCounsel.html">상담받고 싶어요.</a></td>-->
-                    <!--                            <td>이지윤</td>-->
-                    <!--                            <td>2023-09-09</td>-->
-                    <!--                        </tr>-->
-                    <!--                        <tr>-->
-                    <!--                            <td>4</td>-->
-                    <!--                            <td><a href="/html/readingCounsel.html">상담받고 싶어요.</a></td>-->
-                    <!--                            <td>이동현</td>-->
-                    <!--                            <td>2023-09-09</td>-->
-                    <!--                        </tr>-->
-                    <!--                        <tr>-->
-                    <!--                            <td>5</td>-->
-                    <!--                            <td><a href="/html/readingCounsel.html">상담받고 싶어요.</a></td>-->
-                    <!--                            <td>유대훈</td>-->
-                    <!--                            <td>2023-09-09</td>-->
-                    <!--                        </tr>-->
-                    <!--                        <tr>-->
-                    <!--                            <td>6</td>-->
-                    <!--                            <td><a href="/html/readingCounsel.html">상담받고 싶어요.</a></td>-->
-                    <!--                            <td>노의진</td>-->
-                    <!--                            <td>2023-09-09</td>-->
-                    <!--                        </tr>-->
-                    <!--                        <tr>-->
-                    <!--                            <td>7</td>-->
-                    <!--                            <td><a href="/html/readingCounsel.html">상담받고 싶어요.</a></td>-->
-                    <!--                            <td>이지윤</td>-->
-                    <!--                            <td>2023-09-09</td>-->
-                    <!--                        </tr>-->
-                    <!--                        <tr>-->
-                    <!--                            <td>8</td>-->
-                    <!--                            <td><a href="/html/readingCounsel.html">상담받고 싶어요.</a></td>-->
-                    <!--                            <td>이동현</td>-->
-                    <!--                            <td>2023-09-09</td>-->
-                    <!--                        </tr>-->
-                    <!--                        <tr>-->
-                    <!--                            <td>9</td>-->
-                    <!--                            <td><a href="/html/readingCounsel.html">상담받고 싶어요.</a></td>-->
-                    <!--                            <td>유대훈</td>-->
-                    <!--                            <td>2023-09-09</td>-->
-                    <!--                        </tr>-->
-                    <!--                        <tr>-->
-                    <!--                            <td>10</td>-->
-                    <!--                            <td><a href="/html/readingCounsel.html">상담받고 싶어요.</a></td>-->
-                    <!--                            <td>노의진</td>-->
-                    <!--                            <td>2023-09-09</td>-->
-                    <!--                        </tr>-->
                 </table>
             </div>
-<!--            <div class="paging-container">-->
-<!--                <ul>-->
-<!--                    <li><a href="">&lt; 이전</a></li>-->
-<!--                    <li><a href="">1</a></li>-->
-<!--                    <li><a href="">2</a></li>-->
-<!--                    <li><a href="">3</a></li>-->
-<!--                    <li><a href="">4</a></li>-->
-<!--                    <li><a href="">5</a></li>-->
-<!--                    <li><a href="">다음 &gt;</a></li>-->
-<!--                </ul>-->
-<!--            </div>-->
             <!-- 페이징 처리 -->
-            <div class="page-container">
-                <ul class="page-box">
-                    <a th:href="@{/board/counselBoard(page=${pageInfo.startPage-1})}" class="page-a" th:if="${pageInfo.prev}">
-                        <li class="page-num prev">&lt</li>
+            <div class="paging-container">
+                <ul>
+                    <a th:href="@{/board/counselBoard(page=${pageInfo.startPage-1})}" th:if="${pageInfo.prev}">
+                        <li>&lt 이전</li>
                     </a>
-                    <!--
-                        페이징 처리는 시작번호~끝번호까지 반복을 돌려야 하므로 빠른 for문으로만 처리할 수 없다.
-                        그렇기 때문에 타임리프에서 제공해주는 객체를 사용하여 처리한다. #을 붙이면 타임리프에서 제공해주는 객체를 사용한다.
-                        numbers라는 객체가 제공하는 sequence(시작값, 끝값)라는 메소드를 이용한다. 1, 5 -> 1,2,3,4,5
-                    -->
+
                     <th:block th:each="i : ${#numbers.sequence(pageInfo.startPage, pageInfo.endPage)}">
-                        <a th:href="@{/board/list(page=${i})}" class="page-a">
-                            <li class="page-num" th:text="${i}" th:if="${i != pageInfo.criteria.page}"></li>
-                            <li class="page-num active" th:text="${i}" th:unless="${i != pageInfo.criteria.page}"></li>
+                        <a th:href="@{/board/counselBoard(page=${i})}">
+                            <li th:text="${i}" class="page-num active" th:if="${i == pageInfo.criteria.page}"></li>
+                            <li th:text="${i}" class="page-num" th:unless="${i == pageInfo.criteria.page}"></li>
                         </a>
                     </th:block>
 
-                    <a th:href="@{/board/counselBoard(page=${pageInfo.endPage+1})}" class="page-a" th:if="${pageInfo.next}">
-                        <li class="page-num next">&gt</li>
+                    <a th:href="@{/board/counselBoard(page=${pageInfo.endPage+1})}" th:if="${pageInfo.next}">
+                        <li>다음 &gt</li>
                     </a>
                 </ul>
             </div>
-            <!-- /페이징 처리 -->
+
+            <!-- 글쓰기 버튼 -->
             <div class="button-container">
-                <button type="button"><a href="/board/writingCounsel" id="writing-button">글쓰기</a></button>
+                <button type="submit"><a href="/board/writingCounsel" id="writing-button">글쓰기</a></button>
             </div>
         </div>
     </div>
@@ -149,5 +81,6 @@
 <!-- 후터 시작-->
 <footer class="footer" th:replace="fragments/footer :: footer"></footer>
 <!-- 후터 끝-->
+<script src="https://code.jquery.com/jquery-3.6.4.js"></script>
 </body>
 </html>

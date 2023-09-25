@@ -39,16 +39,13 @@ public class CounselorBoardController {
         model.addAttribute("counselor", counselorVo);
         return "board/readingCounsel";
     }
+
     @GetMapping("/writingCounsel")
     public String showWritePage(HttpServletRequest req, Model model){
 //        Long userNumber = (Long)req.getSession().getAttribute("userNumber");//세션을 가져오고
-//
 //        CounselorVo counselorVo = counselorService.findName(userNumber);
-//
 //        model.addAttribute("counselor", counselorVo);
-//
 //        return userNumber == null ? "user/login":"board/writingCounsel";
-
         Long userNumber = (Long)req.getSession().getAttribute("userNumber");//세션을 가져오고
         UserDto userDto = userService.find(userNumber);
         model.addAttribute("user",userDto);
@@ -62,6 +59,6 @@ public class CounselorBoardController {
         counselorDto.setUserNumber(userNumber);
         counselorService.register(counselorDto);
 
-        return new RedirectView("/board/writingCounsel");
+        return new RedirectView("/board/counselBoard");
     }
 }
