@@ -24,20 +24,24 @@
     <div class="main-content">
         <div class="main-content-contaniner">
             <div class="main-title">상담게시판</div>
-            <!--                <form action="">-->
-            <div class="title" th:text="${counsel.counselorTitle}">상담을 받고 싶습니다</div>
+<!--                            <form action="/board/readingCounsel" method="get">-->
+            <div class="title" name="counselorTitle" id="counselorTitle"
+                 th:text="${counselor.counselorTitle}">상담을 받고 싶습니다</div>
             <div class="writer-date">
-                <div class="writer" th:text="${counsel.userName}" >이지윤</div>
-                <div class="date" th:text="${counsel.counselorDate}">2023-09-14</div>
+                <div class="writer" name="userName" id="userName"
+                     th:text="${counselor.userName}" >이지윤</div>
+                <div class="date" name="counselorDate" id="counselorDate"
+                     th:text="${counselor.counselorDate}">2023-09-14</div>
             </div>
-            <div class="content" th:text="${counsel.counselorContent}">
-                <div class="content-text" ></div>
-                <div class="content-img"></div>
+            <div class="content" >
+                <div class="content-text" name="counselorContent" id="counselorContent"
+                     th:text="${counselor.counselorContent}"></div>
+<!--                <div class="content-img"></div>-->
             </div>
             <div class="buttons">
                 <button type="button"><a href="/board/counselBoard" id="list-button">목록</a></button>
             </div>
-            <!--                </form>-->
+<!--                            </form>-->
             <!--===댓글 시작합니다.===-->
             <div class="reply-container">
                 <div class="reply-writing">
@@ -91,7 +95,7 @@
 <!-- 후터 시작-->
 <footer class="footer" th:replace="fragments/footer :: footer"></footer>
 <!-- 후터 끝-->
-<input type="hidden" class="counsel-num" th:value="${counsel.counselorNumber}" >
+<input type="hidden" class="counsel-num" th:value="${counselor.counselorNumber}" >
 <!--json을로 가져올 Number가 필요했기에
 로그인을 안해도 통신이 잘 될 것!-->
 <script src="https://code.jquery.com/jquery-3.6.4.js"></script>

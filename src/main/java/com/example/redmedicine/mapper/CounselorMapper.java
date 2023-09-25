@@ -12,6 +12,9 @@ public interface CounselorMapper {
     //    추가
     public void insert(CounselorDto counselorDto);
 
+    //     추가
+    public void insertVo(CounselorVo counselorVo);
+
     //    삭제
     public void delete(Long counselorNumber);
 
@@ -20,9 +23,12 @@ public interface CounselorMapper {
 
     //    조회 userName의 정보가 필요했다
     public CounselorVo select(Long counselorNumber);
+    
+    // 이름을 조회
+    public CounselorVo selectName(Long userNumber);
 
     //    전체조회
-    public List<CounselorVo> selectAll();
+    public List<CounselorVo> selectAll(Criteria criteria);
 
     //    전체 게시물 수 조회
     public int selectTotal();
