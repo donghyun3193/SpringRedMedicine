@@ -207,8 +207,8 @@ a{
 }
 .main-content-list table{
   width: 950px;
-  height: 600px;
-  table-layout: fixed;
+  /*height: 600px;*/
+  /*table-layout: fixed;*/
   text-align: center;
   margin: 0 auto;
   border-top: 0.5px solid rgb(183, 182, 182);
@@ -216,7 +216,7 @@ a{
   /* background-color: paleturquoise; */
 }
 .main-content-list table th{
-  height: 40px;
+  /*height: 40px;*/
   border-bottom: 1px solid rgb(183, 182, 182);
   background-color: seashell;
 }
@@ -224,9 +224,15 @@ a{
   width: 550px;
 }
 .main-content-list table td{
-  max-height: 55px;
+  /*max-height: 55px;*/
   border-bottom: 0.5px solid rgb(183, 182, 182);
   /* background-color: yellow; */
+}
+.table-wrap tbody tr{
+  height: 55.5px;
+}
+.table-wrap{
+  height: 600px;
 }
 #main-content-list-title{
     width: 550px;
@@ -247,6 +253,26 @@ a{
 .active,
 .page-num:hover {
   font-weight: bolder;
+}
+.buttons{
+  width: 1000px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.buttons button{
+  width: 70px;
+  height: 35px;
+  background-color: orange;
+  border-radius: 3px;
+  border: none;
+  font-size: 17px;
+  margin: 0 10px;
+}
+#writing-button{
+  color: white;
+  cursor: pointer;
 }
 .footer{
   width: 100vw;

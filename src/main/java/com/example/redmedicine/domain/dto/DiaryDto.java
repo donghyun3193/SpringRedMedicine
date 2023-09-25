@@ -19,7 +19,7 @@ public class DiaryDto {
         private Long diaryNumber;
         private Long userNumber;
         private String diaryTitle;
-        private Date diaryDate;
+        private String diaryDate;
         private String diaryContent;
         private String diaryOpen;
 }

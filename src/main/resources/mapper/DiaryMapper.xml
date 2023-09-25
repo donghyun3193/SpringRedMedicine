@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.redmedicine.mapper.DiaryMapper">
+    <insert id="insert">
+        <selectKey keyProperty="diaryNumber" order="BEFORE" resultType="long">
+            SELECT SEQ_DIARY.NEXTVAL FROM DUAL
+        </selectKey>
+        insert into TBL_DIARY (DIARY_NUMBER, USER_NUMBER, DIARY_TITLE, DIARY_CONTENT, DIARY_OPEN)
+        values (#{diaryNumber}, #{userNumber}, #{diaryTitle}, #{diaryContent}, #{diaryOpen})
+    </insert>
+
+    <select id="select" resultType="diaryVo">
+        SELECT DIARY_NUMBER, DIARY_TITLE, DIARY_CONTENT, DIARY_OPEN, D.USER_NUMBER, USER_NAME,
+               DIARY_DATE, U.USER_ID
+        FROM TBL_DIARY D JOIN TBL_USER U
+                              ON D.USER_NUMBER = U.USER_NUMBER
+        WHERE D.DIARY_NUMBER = #{diaryNumber}
+    </select>
+
+    <select id="selectUserName" resultType="string">
+        SELECT USER_NAME
+        FROM TBL_USER
+        WHERE USER_NUMBER = #{userNumber}
+    </select>
+
+    <select id="selectAll" resultType="diaryVo">
+        SELECT RNUM, DIARY_NUMBER, USER_NUMBER, DIARY_TITLE, DIARY_CONTENT, DIARY_DATE, DIARY_OPEN,
+        USER_NAME
+        FROM (
+            SELECT ROWNUM AS RNUM, DIARY_NUMBER, USER_NUMBER, DIARY_TITLE, DIARY_CONTENT, DIARY_DATE, DIARY_OPEN,
+            USER_NAME
+            FROM(
+                SELECT DIARY_NUMBER, D.USER_NUMBER, DIARY_TITLE, DIARY_CONTENT, DIARY_DATE, DIARY_OPEN,
+                U.USER_NAME
+                FROM TBL_DIARY D JOIN TBL_USER U
+                ON D.USER_NUMBER = U.USER_NUMBER
+                ORDER BY DIARY_NUMBER DESC
+            ) X
+            <![CDATA[
+            WHERE ROWNUM <= #{page} * #{amount}
+            ]]>
+        ) Y
+        WHERE RNUM > (#{page} - 1) * #{amount}
+    </select>
+
+    <select id="selectTotal" resultType="_int">
+        SELECT COUNT(DIARY_NUMBER)
+        FROM TBL_DIARY
+    </select>
+
+    <delete id="delete">
+        DELETE FROM TBL_DIARY
+        WHERE DIARY_NUMBER = #{diaryNumber}
+    </delete>
+
+    <update id="update">
+        UPDATE TBL_DIARY
+        SET DIARY_TITLE = #{diaryTitle}, DIARY_CONTENT = #{diaryContent}, DIARY_DATE = SYSDATE,
+            DIARY_OPEN = #{diaryOpen}
+        WHERE DIARY_NUMBER = #{diaryNumber}
+    </update>
+
+
+</mapper>

@@ -9,12 +9,13 @@ import java.util.Date;
 @Component
 @Data
 @NoArgsConstructor
-public class NoticeVo {
-    private Long noticeNumber;
+public class DiaryVo {
+    private Long diaryNumber;
     private Long userNumber;
-    private String noticeTitle;
-    private String noticeDate;
-    private String noticeContent;
+    private String diaryTitle;
+    private String diaryDate;
+    private String diaryContent;
+    private String diaryOpen;
     private String userId;
     private String userName;
 }
