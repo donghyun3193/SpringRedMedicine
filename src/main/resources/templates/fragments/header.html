@@ -22,19 +22,19 @@
                     </ul>
                 </div>
             </div>
-            <form class="header-nav2">
-                <div class="nav2-box">
-                    <ul th:if="${session.userNumber == null}">
-                        <li><a href="/user/login">로그인</a></li>
-                        <li><a href="/user/join">회원가입</a></li>
-                    </ul>
-                    <ul th:unless="${session.userNumber == null}">
-<!--                            <li><a href="/user/login" th:value="${userNumber}"></a></li>-->
-                            <li><a href="/user/logout">로그아웃</a></li>
-                    </ul>
-                </div>
+    <form class="header-nav2">
+        <div class="nav2-box">
+            <ul th:if="${session.userNumber == null}">
+                <li><a href="/user/login">로그인</a></li>
+                <li><a href="/user/join">회원가입</a></li>
+            </ul>
+            <ul th:unless="${session.userNumber == null}">
+                <li><a href="/user/login" th:value="${userName} + ' 상담사 님 '">로그인</a></li>
+                <li><a href="/user/logout">로그아웃</a></li>
+            </ul>
+        </div>
 <!--                <input type="hidden" th:value="${user.userNumber}" name="userNumber" >-->
-            </form>
+    </form>
         </div>
     </div>
 <!--=======헤더 종료=======-->
