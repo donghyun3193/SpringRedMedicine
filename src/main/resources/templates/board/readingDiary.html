@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,70 +23,54 @@
         <div class="main-content">
             <div class="main-content-contaniner">
                 <div class="main-title">일기쓰기</div>
-                <form action="">
-                    <div class="title">오늘의 일기</div>
+
+                    <div class="title" th:text="${diary.diaryTitle}">오늘의 일기</div>
                     <div class="writer-date">
-                        <div class="writer">이지윤</div>
-                        <div class="date">2023-09-14</div>
+                        <div class="writer" th:text="${diary.userName}">이지윤</div>
+                        <div class="date" th:text="${diary.diaryDate}">2023-09-14</div>
                     </div>
                     <div class="content">
-                        <div class="content-text"></div>
-                        <div class="content-img"></div>
+                        <div class="content-text" th:text="${diary.diaryContent}"></div>
+                    </div>
+                    <div class="private">
+                        <div class="private-title">공개여부</div>
+                        <div class="private-text" th:text="${diary.diaryOpen}"></div>
                     </div>
                     <div class="buttons">
-                        <button><a href="" id="list-button">목록</a></button>
+                        <button id="list-button">목록</button>
+                        <th:block th:if="${session.userNumber == diary.userNumber}">
+                            <button  id="modify-button" th:data-number="${diary.diaryNumber}">수정</button>
+                            <button  id="remove-button" th:data-number="${diary.diaryNumber}">삭제</button>
+                        </th:block>
                     </div>
-                </form>
-                <!-- <div class="reply-container">
-                    <div class="reply-writing">
-                        <div class="reply-writerName">이지윤</div>
-                        <div class="reply-textarea">
-                            <textarea name="" id=""></textarea>
-                        </div>
-                        <div class="reply-button">
-                            <button><a href="" id="reply-button">등록</a></button>
-                        </div>
-                    </div>
-                    <div class="reply-reading">
-                        <div class="reply-reading-box">
-                            <div class="reply-name">유대훈</div>
-                            <div class="reply-date">2023-09-16 12:07</div>
-                            <div class="reply-content-and-menu">
-                                <div class="reply-content">댓글댓글댓글</div>
-                                <div class="reply-menu">
-                                    <div class="reply-menu-img">
-                                        <a href=""><img src="../img/menu (2).png" alt=""></a>
-                                    </div>
-                                    <div class="reply-menu-contents">
-                                        <a href="" id="menu1">수정</a>
-                                        <a href="">삭제</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="reply-reading-box">
-                            <div class="reply-name">유대훈</div>
-                            <div class="reply-date">2023-09-16 12:07</div>
-                            <div class="reply-content-and-menu">
-                                <div class="reply-content">댓글댓글댓글</div>
-                                <div class="reply-menu">
-                                    <div class="reply-menu-img">
-                                        <a href=""><img src="../img/menu (2).png" alt=""></a>
-                                    </div>
-                                    <div class="reply-menu-contents">
-                                        <a href="" id="menu1">수정</a>
-                                        <a href="">삭제</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
+
+                </div>
             </div>
         </div>
     </div>
 <!-- 후터 시작-->
 <footer class="footer" th:replace="fragments/footer :: footer"></footer>
 <!-- 후터 끝-->
+<script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+<script>
+    // 목록 버튼
+    $('#list-button').on('click', function (){
+        window.location.href = '/diary/list';
+    })
+
+    // 수정 버튼
+    $('#modify-button').on('click', function (){
+        let diaryNumber = $(this).data('number');
+        window.location.href = '/diary/modify?diaryNumber=' + diaryNumber;
+    });
+
+    //삭제 버튼
+    $('#remove-button').on('click', function () {
+        let diaryNumber = $(this).data('number');
+        if(confirm("글을 삭제 하시겠습니끼?")){
+            window.location.href = '/diary/remove?diaryNumber=' + diaryNumber;
+        }
+    });
+</script>
 </body>
 </html>

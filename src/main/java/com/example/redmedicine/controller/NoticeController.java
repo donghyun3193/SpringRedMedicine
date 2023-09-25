@@ -20,16 +20,12 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Controller
-@RequestMapping("/notice/*")
+@RequestMapping(value = {"/notice/*","/board/*"})
 @RequiredArgsConstructor
 @Slf4j
 public class NoticeController {
 
     private final NoticeService noticeService;
-
-//    //공지사항 페이지
-//    @GetMapping("/noticePage")
-//    public String showNoticePage(){return "board/notice";}
 
     //글쓰기
     @GetMapping("/write")
@@ -67,7 +63,7 @@ public class NoticeController {
         return "board/readingNotice";
     }
 
-    @GetMapping("/list")
+    @GetMapping(value = {"/list","/notice"})
     public String showListPage(Criteria criteria, Model model){
         model.addAttribute("noticeList", noticeService.findAll(criteria));
         model.addAttribute("pageInfo", new PageVo(noticeService.getTotal(), criteria));

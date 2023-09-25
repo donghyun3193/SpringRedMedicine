@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>(작성)일기쓰기</title>
+    <title>(수정)일기쓰기</title>
     <link rel="stylesheet" href="/css/board/writingDiary.css">
 </head>
 <body>
@@ -14,8 +14,8 @@
         <div class="main-nav-container">
             <!-- <div class="main-nav"> -->
                 <ul>
-                    <li><a href="" id="main-nav-button">공지사항</a></li>
-                    <li><a href="" id="main-nav-button">상담게시판</a></li>
+                    <li><a href="/html/notice.html" id="main-nav-button">공지사항</a></li>
+                    <li><a href="/html/" id="main-nav-button">상담게시판</a></li>
                     <li><a href="" id="main-nav-button">일기쓰기</a></li>
                 </ul>
             <!-- </div> -->
@@ -26,27 +26,21 @@
                     <div>일기쓰기</div>
                 </div>
                 <div class="main-content-list">
-                    <form action="/diary/write" method="post">
+                    <form action="/diary/modify" method="post">
+                        <input type="hidden" th:value="${diary.diaryNumber}" name="diaryNumber"/>
                         <table>
                             <tr class="content-name">
                                 <th>이름</th>
-                                <td><input type="text" name="userName" readonly th:value="${userName}"></td>
+                                <td><input type="text" name="userName" th:value="${userName}" readonly></td>
                             </tr>
                             <tr class="content-title">
                                 <th>제목</th>
-                                <td><input type="text" name="diaryTitle" id="" ></td>
+                                <td><input type="text" name="diaryTitle" th:value="${diary.diaryTitle}" required ></td>
                             </tr>
                             <tr class="content-text">
                                 <th>내용</th>
-                                <td><textarea name="diaryContent" id="" ></textarea></td>
+                                <td><textarea name="diaryContent" th:text="${diary.diaryContent}" required ></textarea></td>
                             </tr>
-<!--                            <tr class="addfile">-->
-<!--                                <th rowspan="2">첨부파일</th>-->
-<!--                                <td colspan="2"><span>'png','gif','jpg','jpeg'파일만 업로드가 가능합니다.</span></td>-->
-<!--                            </tr>-->
-<!--                            <tr class="addfile">-->
-<!--                                <td><input type="file" name="" id=""></td>-->
-<!--                            </tr>-->
                             <tr class="private">
                                 <th>공개여부</th>
                                 <td>
@@ -56,7 +50,7 @@
                             </tr>
                         </table>
                         <div class="buttons">
-                            <button id="main-buttons" type="submit">등록</button>
+                            <button type="submit" id="main-buttons">등록</button>
                             <button id="main-buttons">취소</button>
                         </div>
                     </form>

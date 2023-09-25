@@ -33,22 +33,26 @@
                     <img src="../img/notice_img.png" alt="">
                 </div>
                 <div class="main-content-list">
-                    <table>
-                        <th>번호</th>
-                        <th>제목</th>
-                        <th>작성자</th>
-                        <th>작성일</th>
-                        <tr th:each="notice, i : ${noticeList}">
-                            <td th:text="${i.index+1}"></td>
-                            <td>
-                                <a th:href="@{/notice/detail(noticeNumber=${notice.noticeNumber})}">
-                                   <span th:text="${notice.noticeTitle}">제목</span>
-                                </a>
-                            </td>
-                            <td>관리자</td>
-                            <td th:text="${notice.noticeDate}"></td>
-                        </tr>
-                    </table>
+                    <div class="table-wrap">
+                        <table>
+                            <th>번호</th>
+                            <th>제목</th>
+                            <th>작성자</th>
+                            <th>작성일</th>
+                            <tbody>
+                                <tr th:each="notice, i : ${noticeList}">
+                                    <td th:text="${i.index+1}"></td>
+                                    <td>
+                                        <a th:href="@{/notice/detail(noticeNumber=${notice.noticeNumber})}">
+                                           <span th:text="${notice.noticeTitle}">제목</span>
+                                        </a>
+                                    </td>
+                                    <td>관리자</td>
+                                    <td th:text="${notice.noticeDate}"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
               <div class="paging-container">
                     <ul>
@@ -68,11 +72,18 @@
                         </a>
                     </ul>
                 </div>
+                <div class="buttons">
+                    <th:block th:if="${session.userNumber == 1}">
+                        <button id="writing-button">글쓰기</button>
+                    </th:block>
+                </div>
             </div>
         </div>
     </div>
 <!-- 후터 시작-->
 <footer class="footer" th:replace="fragments/footer :: footer"></footer>
 <!-- 후터 끝-->
+<script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+<script defer src="/js/board/notice.js"></script>
 </body>
 </html>
