@@ -12,22 +12,17 @@ public interface CounselorMapper {
     //    추가
     public void insert(CounselorDto counselorDto);
 
-    //     추가
-    public void insertVo(CounselorVo counselorVo);
-
     //    삭제
     public void delete(Long counselorNumber);
 
     //    수정
     public void update(CounselorDto counselorDto);
 
-    //    조회 userName의 정보가 필요했다
+    //    조회 -> counselorVo에 counselorNumber의 정보를 가져와 모든 정보를 확인하겠다
     public CounselorVo select(Long counselorNumber);
-    
-    // 이름을 조회
-    public CounselorVo selectName(Long userNumber);
 
-    //    전체조회
+    //    전체조회 -> counselBoard페이지에서 모든 게시글을 볼 수 있도록 List를 사용해서 뿌려주기 위함
+    //    이 때 페이징 처리를 위해서 Criteria매개 변수를 추가하였다
     public List<CounselorVo> selectAll(Criteria criteria);
 
     //    전체 게시물 수 조회
