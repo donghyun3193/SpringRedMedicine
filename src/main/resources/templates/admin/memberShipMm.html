@@ -35,18 +35,16 @@
 
                 <div class="content-search">
                     <div class="search-1">
-                        
                     <div class="main-box3-searchbox">
                         <span class="search-s">※ 검 색  : </span>
-                        <select name="search-target" id="">
-                            <option value="title">이름</option>
-                            <option value="name">상담사</option>
-                            <option value="name">일반회원</option>
+                        <select name="cate" class="cate">
+                            <option value="name">이름</option>
+                            <option value="counselor">상담사</option>
+                            <option value="member">일반회원</option>
                         </select>
-                        <input type="text">
-                        <button class="">검 색</button>
+                        <input type="text" name="keyword" class="keyword">
+                        <button type="button" class="btn-search">검 색</button>
                     </div>
-
                     </div>
                 </div>
 
@@ -75,7 +73,8 @@
                                     <span th:if="${user.userLevel == 3}">유료상담사</span>
                                 </td>
                                 <td>
-                                    <button class="td-button" type="button" onclick="call_confirm()">탈퇴</button>
+                                    <button class="td-button" type="button" th:data-number="${user.userNumber}">탈퇴</button>
+
                                 </td>
                             </tr>
                         </th:block>
@@ -86,7 +85,7 @@
             <!-- 페이징 처리 -->
                 <div class="page-container">
                   <ul class="page-box">
-                      <a th:href="@{/admin/memberShipMm(page=${pageinfo.startPage-1})}" class="page-a" th:if="${pageInfo.prev}">
+                      <a th:href="@{/admin/memberShipMm(page=${pageInfo.startPage - 1})}" class="page-a" th:if="${pageInfo.prev}">
                          <li class="page-num prev">&lt</li>
                       </a>
 
@@ -99,7 +98,7 @@
                       </a>
                       </th:block>
 
-                      <a th:href="@{/admin/memberShipMm(page=${pageInfo.endPage+1})}" class="page-a" th:if="${pageInfo.next}">
+                      <a th:href="@{/admin/memberShipMm(page=${pageInfo.endPage + 1})}" class="page-a" th:if="${pageInfo.next}">
                           <li class="page-num next">&gt</li>
                       </a>
                   </ul>
@@ -113,5 +112,29 @@
 <!-- 후터 시작-->
 <footer class="footer" th:replace="fragments/footer :: footer"></footer>
 <!-- 후터 끝-->
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous">
+</script>
+<script>
+    $('.btn-search').on('click',function (){
+        let keyword = $('.keyword').val();
+        let cate = $('.cate').val();
+
+        console.log(keyword);
+        console.log(cate);
+
+        $.ajax({
+            url : `/admin/memberShipMm/${page}`,
+            type : 'get',
+            dataType : 'json',
+            success : function (result){
+                console.log(result);
+            },
+            error: function (a,b,c){
+                console.log(c);
+            }
+
+        });
+    });
+</script>
 </body>
 </html>

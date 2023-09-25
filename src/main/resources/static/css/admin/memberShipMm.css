@@ -360,48 +360,23 @@ button{
 
 /* 페이지관리 */
 
+
 .page-container{
-  width: 200px;
-  height: 10px;
+  width: 300px;
+  height: 30px;
   margin: 140px auto;
 }
-/*.paging-container ul{*/
-/*  list-style: none;*/
-/*  display: flex;*/
-/*  justify-content: center;*/
-/*}*/
-/*.paging-container ul li{*/
-/*  margin: 0 5px;*/
-/*}*/
-/* 페이징 */
-.page-a {
-  text-decoration: none;
-  color: #00c7ae;
-}
-
-.page-box {
-  list-style-type: none;
+.page-container ul{
+  list-style: none;
   display: flex;
-  align-items: center;
   justify-content: center;
 }
-
-.page-num {
-  border: 1px solid #00c7ae;
-  width: 30px;
-  height: 40px;
-  border-radius: 5px;
-  margin: 0 10px;
-  text-align: center;
-  line-height: 40px;
-  background-color: white;
-  cursor: pointer;
+.page-container ul li{
+  margin: 0 5px;
 }
-
 .active,
 .page-num:hover {
-  background-color: #00c7ae;
-  color: white;
+  font-weight: bolder;
 }
 
 
