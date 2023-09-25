@@ -193,7 +193,34 @@ a{
 .content{
     width: 1000px;
     height: 500px;
+    box-sizing: border-box;
+    padding: 15px;
+    resize: none;
     background-color: rgb(243, 241, 241);
+}
+.private{
+    width: 1000px;
+    height: 50px;
+    display: flex;
+}
+.private-title{
+    width: 80px;
+    background-color: seashell;
+    text-align: center;
+    padding: 15px 0;
+    box-sizing: border-box;
+    resize: none;
+    font-size: 14px;
+}
+.private-text{
+    width: 920px;
+    background-color: rgb(243, 241, 241);
+    border-top:1px solid white;
+    text-indent: 10px;
+    padding: 15px 0;
+    box-sizing: border-box;
+    resize: none;
+    font-size: 14px;
 }
 .buttons{
     width: 1000px;
@@ -211,8 +238,9 @@ a{
     font-size: 17px;
     margin: 0 10px;
 }
-#list-button{
+#list-button, #modify-button, #remove-button{
     color: white;
+    cursor: pointer;
 }
 .reply-container{
     width: 1000px;
