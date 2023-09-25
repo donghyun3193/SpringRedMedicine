@@ -13,7 +13,7 @@ public class CounselorVo {
     private Long counselorNumber;
     private Long userNumber;
     private String counselorTitle;
-    private Date counselorDate;
+    private String counselorDate;
     private String counselorContent;
 
     private String userName;//write에 필요 단 수정은 불가능하도록

@@ -29,8 +29,8 @@
                         <li><a href="/user/join">회원가입</a></li>
                     </ul>
                     <ul th:unless="${session.userNumber == null}">
-                            <li><a href="/user/login">로그인</a></li>
-                            <li><a href="/user/join">회원가입</a></li>
+<!--                            <li><a href="/user/login" th:value="${userNumber}"></a></li>-->
+                            <li><a href="/user/logout">로그아웃</a></li>
                     </ul>
                 </div>
 <!--                <input type="hidden" th:value="${user.userNumber}" name="userNumber" >-->

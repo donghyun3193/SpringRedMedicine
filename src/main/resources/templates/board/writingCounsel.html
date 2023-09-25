@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,9 +14,9 @@
         <div class="main-nav-container">
             <!-- <div class="main-nav"> -->
                 <ul>
-                    <li><a href="" id="main-nav-button">공지사항</a></li>
-                    <li><a href="" id="main-nav-button">상담게시판</a></li>
-                    <li><a href="" id="main-nav-button">일기쓰기</a></li>
+                    <li><a href="/board/notice" id="main-nav-button">공지사항</a></li>
+                    <li><a href="/board/counselBoard" id="main-nav-button">상담게시판</a></li>
+                    <li><a href="/board/diary" id="main-nav-button">일기쓰기</a></li>
                 </ul>
             <!-- </div> -->
         </div>
@@ -26,19 +26,21 @@
                     <div>상담게시판</div>
                 </div>
                 <div class="main-content-list">
-                    <form action="">
+                    <form action="/board/writingCounsel" method="post">
+<!--                        <input type="hidden" th:value="${user.userNumber}" name="userNumber"/>-->
                         <table>
                             <tr class="content-name">
                                 <th>이름</th>
-                                <td><input type="text" name="" id=""></td>
+                                <td><input type="text" name="userName" id="userName" readonly
+                                           th:value="${user.userName}"></td>
                             </tr>
                             <tr class="content-title">
                                 <th>제목</th>
-                                <td><input type="text" name="" id="" ></td>
+                                <td><input type="text" name="counselorTitle" id="counselorTitle" required></td>
                             </tr>
                             <tr class="content-text">
                                 <th>내용</th>
-                                <td><textarea name="" id="" ></textarea></td>
+                                <td><textarea name="counselorContent" id="counselorContent" required></textarea></td>
                             </tr>
                             <!-- <tr class="addfile">
                                 <th rowspan="2">첨부파일</th>
@@ -56,8 +58,8 @@
                             </tr> -->
                         </table>
                         <div class="buttons">
-                            <button><a href="" id="main-buttons">등록</a></button>
-                            <button><a href="" id="main-buttons">취소</a></button>
+                            <button type="submit" id="main-buttons">등록</button>
+                            <button type="button"><a href="/board/counselBoard" id="main-buttons">취소</a></button>
                         </div>
                     </form>
                 </div>
