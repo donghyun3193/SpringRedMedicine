@@ -14,6 +14,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -30,6 +32,7 @@ public class CounselorBoardController {
     public String showListPage(Model model, Criteria criteria){
         model.addAttribute("counselor",  counselorService.findAll(criteria));
         model.addAttribute("pageInfo", new PageVo(counselorService.getTotal(), criteria));
+
         return "board/counselBoard";
     }
 
@@ -38,6 +41,14 @@ public class CounselorBoardController {
         CounselorVo counselorVo = counselorService.find(counselorNumber);//find에게 counselorNumber넘겨줘
         model.addAttribute("counselor", counselorVo);
         return "board/readingCounsel";
+    }
+
+    @GetMapping("/modifyCounsel")
+    //일단 수정 버튼 클릭 후 이동하게 될 수정 페이지로 이동할 것
+    public String showModifyPage(Long counselorNumber, Model model){
+        CounselorVo counselorVo = counselorService.find(counselorNumber);//find에게 counselorNumber넘겨줘
+        model.addAttribute("counselor", counselorVo);
+        return "board/modifyCounsel";
     }
 
     @GetMapping("/writingCounsel")
@@ -60,5 +71,18 @@ public class CounselorBoardController {
         counselorService.register(counselorDto);
 
         return new RedirectView("/board/counselBoard");
+    }
+    @GetMapping("/removeCounsel")
+    public RedirectView remove(Long counselorNumber){
+        counselorService.remove(counselorNumber);
+        return new RedirectView("/board/counselBoard");
+    }
+    @PostMapping("/modifyCounsel")//수정 후 저장위해서 post방식!
+    public RedirectView modify(CounselorDto counselorDto, RedirectAttributes redirectAttributes){
+        counselorService.modify(counselorDto);//리다이렉트뷰를 사용해서 detail로 부터 정보를 받아와 날짜 작성자 등등
+
+        redirectAttributes.addAttribute("counselor", counselorDto.getCounselorNumber());
+
+        return new RedirectView("/board/counselBoard");//리다이렉트시 요청한 정보 날라가니 쿼리스트링을 통해서 받아와야지!
     }
 }

@@ -21,6 +21,12 @@
         WHERE COUNSELOR_NUMBER = #{counselorNumber}
     </update>
 
+<!--    <update id="updateName">-->
+<!--        UPDATE TBL_COUNSELOR-->
+<!--        SET COUNSELOR_TITLE = #{counselorTitle}, COUNSELOR_CONTENT = #{counselorContent}-->
+<!--        WHERE COUNSELOR_NUMBER = #{counselorNumber}-->
+<!--    </update>-->
+
     <select id="select" resultType="counselorVo">
         SELECT COUNSELOR_NUMBER, COUNSELOR_TITLE, COUNSELOR_CONTENT, C.USER_NUMBER,
                COUNSELOR_DATE, U.USER_NAME

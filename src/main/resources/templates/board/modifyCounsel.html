@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>(작성)상담게시판</title>
+    <link rel="stylesheet" href="/css/board/writingCounsel.css">
+</head>
+<body>
+<!-- 헤더 시작-->
+<header class="header" th:replace="fragments/header :: header"></header>
+<!-- 헤더 종료-->
+
+    <div class="main-container">
+        <div class="main-nav-container">
+            <!-- <div class="main-nav"> -->
+                <ul>
+                    <li><a href="/board/notice" id="main-nav-button">공지사항</a></li>
+                    <li><a href="/board/counselBoard" id="main-nav-button">상담게시판</a></li>
+                    <li><a href="/board/diary" id="main-nav-button">일기쓰기</a></li>
+                </ul>
+            <!-- </div> -->
+        </div>
+        <div class="main-content">
+            <div class="main-content-container">
+                <div class="content-title-box">
+                    <div>상담 게시글 수정</div>
+                </div>
+                <div class="main-content-list">
+                    <form action="/board/modifyCounsel" method="post"><!--post방식의 컨트롤러에 접속-->
+                        <input type="hidden" th:value="${counselor.counselorNumber}" name="counselorNumber"/>
+                        <table>
+                            <tr class="content-name">
+                                <th>이름</th>
+                                <td><input type="text" name="userName" id="userName" readonly
+                                           th:value="${counselor.userName}"></td>
+                            </tr>
+                            <tr class="content-title">
+                                <th>제목</th>
+                                <td><input type="text" name="counselorTitle" id="counselorTitle" required
+                                           th:value="${counselor.counselorTitle}"></td>
+                            </tr>
+                            <tr class="content-text">
+                                <th>내용</th>
+                                <td><textarea name="counselorContent" id="counselorContent" required
+                                              th:text="${counselor.counselorContent}"></textarea></td>
+                            </tr>
+                            <!-- <tr class="addfile">
+                                <th rowspan="2">첨부파일</th>
+                                <td colspan="2"><span>'png','gif','jpg','jpeg'파일만 업로드가 가능합니다.</span></td>
+                            </tr>
+                            <tr class="addfile">
+                                <td><input type="file" name="" id=""></td>
+                            </tr>
+                            <tr class="private">
+                                <th>공개여부</th>
+                                <td>
+                                    <input type="radio" name="private" id="">공개
+                                    <input type="radio" name="private" id="">비공개
+                                </td>
+                            </tr> -->
+                        </table>
+                        <div class="buttons">
+                            <button type="submit" id="main-buttons">수정</button>
+                            <button type="button"><a href="/board/counselBoard" id="main-buttons">취소</a></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- 후터 시작-->
+<footer class="footer" th:replace="fragments/footer :: footer"></footer>
+<!-- 후터 끝-->
+</body>
+</html>

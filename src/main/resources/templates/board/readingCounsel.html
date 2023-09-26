@@ -26,12 +26,12 @@
             <div class="main-title">상담게시판</div>
 <!--                            <form action="/board/readingCounsel" method="get">-->
             <div class="title" name="counselorTitle" id="counselorTitle"
-                 th:text="${counselor.counselorTitle}">상담을 받고 싶습니다</div>
+                 th:text="${counselor.counselorTitle}"></div>
             <div class="writer-date">
                 <div class="writer" name="userName" id="userName"
-                     th:text="${counselor.userName}" >이지윤</div>
+                     th:text="${counselor.userName}" ></div>
                 <div class="date" name="counselorDate" id="counselorDate"
-                     th:text="${counselor.counselorDate}">2023-09-14</div>
+                     th:text="${counselor.counselorDate}"></div>
             </div>
             <div class="content" >
                 <div class="content-text" name="counselorContent" id="counselorContent"
@@ -40,6 +40,12 @@
             </div>
             <div class="buttons">
                 <button type="button"><a href="/board/counselBoard" id="list-button">목록</a></button>
+                <th:block th:if="${session.userNumber == counselor.userNumber}">
+                    <button  class="modify-button" id="modify-button" type="button"
+                             th:data-number="${counselor.counselorNumber}">수정</button>
+                    <button  class="remove-button" id="remove-button" type="button"
+                             th:data-number="${counselor.counselorNumber}">삭제</button>
+                </th:block>
             </div>
 <!--                            </form>-->
             <!--===댓글 시작합니다.===-->
@@ -102,5 +108,6 @@
 <script th:inline="javascript">//타임리프 문법을 자바스크립트에서 사용하기 위한 설정
 let loginNumber = [[${session.userNumber}]];//타임리프 문법은 [] 2개로 감싸줘야 한다.
 </script><!--script session의 선언이 아래것보다 더 위에 위치해야!!!!!!-->
+<script src="/js/board/readingCounsel.js"></script>
 </body>
 </html>
