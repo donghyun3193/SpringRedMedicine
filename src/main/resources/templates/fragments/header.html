@@ -25,16 +25,27 @@
 
         <form class="header-nav2">
 
-            <div class="nav2-box">
-                <ul th:if="${session.userNumber == null}">
-                    <li><a href="/user/login">로그인</a></li>
-                    <li><a href="/user/join">회원가입</a></li>
-                </ul>
-                <ul th:unless="${session.userNumber == null}">
-                    <li><a href="" th:text="${session.userName} + ' 상담사 님 '"></a>                </li>
+            <div class="nav2-box" >
 
-                    <li><a href="/user/logout">로그아웃</a></li>
-                </ul>
+                <div  th:if="${session.userNumber == null}">
+                    <a class="nav2-box-a" href="/user/login">로그인</a>
+                    <a href="/user/join">회원가입</a>
+                </div>
+
+
+                <div th:unless="${session.userNumber == null}">
+                    <div>
+                        <a href="" th:text="${session.userName} + ' 님 '" class="loginName"></a>
+                    </div>
+                    <div class="myList">
+                        <a href="">내 글 목록</a>
+                        <a href="/user/mypage">회원정보 수정</a>
+                        <a href="/memberShipMm/admin/memberShipMm">회원정보 관리</a>
+                        <a href="">상담사 등록</a>
+                        <a href="/user/logout">로그아웃</a>
+                    </div>
+                </div>
+
             </div>
 
         </form>

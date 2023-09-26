@@ -24,9 +24,20 @@
             </div>
 
             <form class="header-nav2">
-                <div class="nav2-box">
+
+
+
+            <div class="nav2-box" >
+
+                <div th:if="${session.userNumber == null}">
+                    <a href="/user/login">로그인</a>
+                    <a href="/user/join">회원가입</a>
+                </div>
+
+
+                <div th:unless="${session.userNumber == null}">
                     <div>
-                        <a href="" class="loginName">이지윤<span>님</span></a>
+                        <a href="" th:text="${session.userName} + ' 님 '" class="loginName"></a>
                     </div>  
                     <div class="myList">
                         <a href="">내 글 목록</a>
@@ -34,7 +45,12 @@
                         <a href="">상담사 등록</a>
                         <a href="">로그아웃</a>
                     </div>
+                    <div>
+                        <a href="/user/logout">로그아웃</a>
+                    </div>
                 </div>
+
+            </div>
 
             </form>
 
