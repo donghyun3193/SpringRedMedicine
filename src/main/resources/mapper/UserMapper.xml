@@ -15,6 +15,12 @@
         WHERE USER_ID = #{userId} AND USER_PASSWORD = #{userPassword}
     </select>
 
+    <select id="selectUserName" resultType="string">
+        SELECT USER_NAME
+        FROM  TBL_USER
+        WHERE USER_NUMBER = #{userNumber}
+    </select>
+
 <!--    <select id="selectUserName" resultType="string">-->
 <!--        SELECT USER_NAME FROM TBL_USER-->
 <!--        WHERE USER_ID = #{userId} AND USER_PASSWORD = #{userPassword}-->

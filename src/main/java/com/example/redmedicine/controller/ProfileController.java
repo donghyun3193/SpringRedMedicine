@@ -94,36 +94,40 @@ public class ProfileController {
 
     //무료 상담사 페이지
     @GetMapping("/free/freeMate")
-    public String showCounselorFreeLitPage(Model model, ProfileVo profileVo){
+    public String showCounselorFreeLitPage(Model model){
         model.addAttribute("profileList", profileService.findProfileFreeNumber());
         return "counselor/free/freeMate";
     }
 
     //유료 상담사 상세 페이지
     @GetMapping(value = "/pay/counselorProfilePay")
-    public void showCounselorDetailPage(Model model, Long profileNumber, HttpServletRequest req){
+    public String showCounselorDetailPage(Model model, Long profileNumber, HttpServletRequest req){
         Long userNumber = (Long)req.getSession().getAttribute("userNumber");
+        if (userNumber == null) {
+            return "user/login";
+        }
+
         model.addAttribute("userName",profileService.findUserName(userNumber));
         ProfileVo profileVo = profileService.findProfilePay(profileNumber);
         model.addAttribute("profile", profileVo);
+
+        return "counselor/pay/counselorProfilePay";
     }
 
 
     //무료 상담사 상세 페이지
     @GetMapping("/free/counselorProfileFree")
-    public void showCounselorDetailPag(Model model, Long profileNumber, HttpServletRequest req){
+    public String showCounselorDetailPag(Model model, Long profileNumber, HttpServletRequest req){
         Long userNumber = (Long)req.getSession().getAttribute("userNumber");
+        if (userNumber == null) {
+            return "user/login";
+        }
         model.addAttribute("userName",profileService.findUserName(userNumber));
         ProfileVo profileVo = profileService.findProfileFree(profileNumber);
         model.addAttribute("profile", profileVo);
+
+        return "counselor/free/counselorProfileFree";
     }
-
-
-    
-    
-    
-
-
 
     //상담사 등록 페이지 삭제
     @GetMapping("/remove")

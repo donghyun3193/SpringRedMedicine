@@ -16,6 +16,9 @@ public interface UserMapper {
     //회원 정보 조회
     public UserDto selectAll();
 
+    //유저 이름 찾기
+    public String selectUserName(Long userNumber);
+
     //조회
     public UserDto select(Long userNumber);
 

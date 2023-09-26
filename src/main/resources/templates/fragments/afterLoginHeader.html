@@ -4,25 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>로그인 후 헤더</title>
-    <link rel="stylesheet" href="/css/fragments/afterLoginHeader.css" >
+    <link rel="stylesheet" href="/css/fragments/header.css" >
 </head>
 <body>
-    <div class="header">
+    <div class="header" th:fragment="header">
         <div class="header-container">
             <div class="header-nav1">
-                <div class="logo"><a href="#"><img src="../img/logo.png" alt=""></a></div>
+                <div class="logo"><a href="/main/index"><img src="/img/logo.png" alt="로고"></a></div>
                 <div class="nav1">
                     <ul>
-                        <li><a href="">힐링음악</a></li>
-                        <li><a href="">커뮤니티</a></li>
-                        <li><a href="">자가진단테스트</a></li>
-                        <li><a href="">비대면상담받기</a></li>
-                        <li><a href="">상담사등록</a></li>
-                        <li><a href="">상담센터찾기</a></li>
+                        <li><a href="/main/music">힐링음악</a></li>
+                        <li><a href="/board/notice">커뮤니티</a></li>
+                        <li><a href="/test/diagnosis">자가진단테스트</a></li>
+                        <li><a href="/counselor/pay/payMate">비대면상담받기</a></li>
+                        <li><a href="/counselor/pay/registration">상담사등록</a></li>
+                        <li><a href="/main/map">상담센터찾기</a></li>
                     </ul>
                 </div>
             </div>
-            <div class="header-nav2">
+
+            <form class="header-nav2">
                 <div class="nav2-box">
                     <div>
                         <a href="" class="loginName">이지윤<span>님</span></a>
@@ -34,7 +35,9 @@
                         <a href="">로그아웃</a>
                     </div>
                 </div>
-            </div>
+
+            </form>
+
         </div>
     </div>
 </body>

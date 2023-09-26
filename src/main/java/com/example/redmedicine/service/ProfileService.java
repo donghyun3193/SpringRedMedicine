@@ -53,7 +53,7 @@ public class ProfileService {
         if (userNumber == null) {
             throw new IllegalArgumentException("유저 번호 누락!!");
         }
-        return Optional.ofNullable(profileMapper.findUserName(userNumber))
+        return Optional.ofNullable(profileMapper.selectUserName(userNumber))
                 .orElseThrow(() -> { throw new IllegalArgumentException("존재하지 않는 유저 번호 누락!!"); });
     }
 

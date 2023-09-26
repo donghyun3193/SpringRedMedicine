@@ -23,7 +23,7 @@
     </delete>
 
 
-    <select id="findUserName" resultType="String">
+    <select id="selectUserName" resultType="string">
         SELECT USER_NAME
         FROM  TBL_USER
         WHERE USER_NUMBER = #{userNumber}
