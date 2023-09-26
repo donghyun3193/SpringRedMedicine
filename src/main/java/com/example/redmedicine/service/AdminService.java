@@ -40,6 +40,11 @@ public class AdminService {
         return adminMapper.selectTotal();
     }
 
+//    검색 결과 회원 수 조회
+    public int searchTotal(SearchVo searchVo){
+        return adminMapper.searchTotal(searchVo);
+    }
+
 //    회원 삭제
     public void remove(Long userNumber){
         if (userNumber == null){

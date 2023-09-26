@@ -60,24 +60,24 @@
                             <th>관리</th>
                         </tr>
                         </thead>
-                        <tbody>
-                        <th:block th:each="user, iterStat : ${userList}">
-                            <tr th:if="${iterStat.index < 10}">
-                                <td th:text="${user.userNumber}"></td>
-                                <td th:text="${user.userEmail}"></td>
-                                <td th:text="${user.userName}"></td>
-                                <td th:text="${user.userJoindate}"></td>
-                                <td>
-                                    <span th:if="${user.userLevel == 1}">일반회원</span>
-                                    <span th:if="${user.userLevel == 2}">무료상담사</span>
-                                    <span th:if="${user.userLevel == 3}">유료상담사</span>
-                                </td>
-                                <td>
-                                    <button class="td-button" type="button" th:data-number="${user.userNumber}">탈퇴</button>
+                        <tbody class="content">
+<!--                        <th:block th:each="user, iterStat : ${userList}">-->
+<!--                            <tr th:if="${iterStat.index < 10}">-->
+<!--                                <td th:text="${user.userNumber}"></td>-->
+<!--                                <td th:text="${user.userEmail}"></td>-->
+<!--                                <td th:text="${user.userName}"></td>-->
+<!--                                <td th:text="${user.userJoindate}"></td>-->
+<!--                                <td>-->
+<!--                                    <span th:if="${user.userLevel == 1}">일반회원</span>-->
+<!--                                    <span th:if="${user.userLevel == 2}">무료상담사</span>-->
+<!--                                    <span th:if="${user.userLevel == 3}">유료상담사</span>-->
+<!--                                </td>-->
+<!--                                <td>-->
+<!--                                    <button class="td-button" type="button" th:data-number="${user.userNumber}">탈퇴</button>-->
 
-                                </td>
-                            </tr>
-                        </th:block>
+<!--                                </td>-->
+<!--                            </tr>-->
+<!--                        </th:block>-->
                         </tbody>
                     </table>
                 </div>
@@ -85,22 +85,7 @@
             <!-- 페이징 처리 -->
                 <div class="page-container">
                   <ul class="page-box">
-                      <a th:href="@{/admin/memberShipMm(page=${pageInfo.startPage - 1})}" class="page-a" th:if="${pageInfo.prev}">
-                         <li class="page-num prev">&lt</li>
-                      </a>
 
-                        <!-- 1부터 5까지 반복-->
-                    <!--  numbers라는 객체가 제공하는 sequence(시작값, 끝값)라는 메소드를 이용한다.-->
-                      <th:block th:each="i : ${#numbers.sequence(pageInfo.startPage, pageInfo.endPage)}">
-                      <a th:href="@{/admin/memberShipMm(page=${i})}" class="page-a">
-                          <li class="page-num" th:text="${i}" th:if="${i != pageInfo.criteria.page}"></li>
-                          <li class="page-num active" th:text="${i}" th:unless="${i != pageInfo.criteria.page}"></li>
-                      </a>
-                      </th:block>
-
-                      <a th:href="@{/admin/memberShipMm(page=${pageInfo.endPage + 1})}" class="page-a" th:if="${pageInfo.next}">
-                          <li class="page-num next">&gt</li>
-                      </a>
                   </ul>
               </div>
 
@@ -114,27 +99,6 @@
 <!-- 후터 끝-->
 <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous">
 </script>
-<script>
-    $('.btn-search').on('click',function (){
-        let keyword = $('.keyword').val();
-        let cate = $('.cate').val();
 
-        console.log(keyword);
-        console.log(cate);
-
-        $.ajax({
-            url : `/admin/memberShipMm/${page}`,
-            type : 'get',
-            dataType : 'json',
-            success : function (result){
-                console.log(result);
-            },
-            error: function (a,b,c){
-                console.log(c);
-            }
-
-        });
-    });
-</script>
 </body>
 </html>
