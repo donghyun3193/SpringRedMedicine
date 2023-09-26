@@ -25,7 +25,7 @@ public class PfCommentController {
 //        RequestBody는 json형식의 데이터를 자동으로 객체 필드에 매핑시켜준다.
 
         pfCommentService.registerPfComment(pfCommentDto);
-        return "작성 성공!";
+        return "댓글 성공!";
     }
 
     @GetMapping("/list/{profileNumber}")

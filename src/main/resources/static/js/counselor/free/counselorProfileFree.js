@@ -1,14 +1,116 @@
-// JavaScript 함수를 정의하여 페이지 이동을 처리
-function reservation() {
-    // 페이지 이동을 원하는 URL로 변경
-    window.location.href = '/counselor/book/bookingDetails'; // 이동하려는 URL을 여기에 입력
+//댓글 관련 js
+
+import * as reply from '../../module/reply.js';
+//모듈 경로는 상대경로로 접근해야한다.
+// 파일명 뒤에 반드시 확장자를 작성한다!!!!!!!!!
+let profileNumber = $('.profile-num').val();
+
+
+//리플 작성 완료 처리
+$('.btn-reply').on('click', function () {
+    let content = $('#reply-content').val();
+
+    if(!(content && loginNumber)){
+        alert('입력을 해라!');
+        return;
+    }
+
+    let replyObj = {
+        pfCommentContent : content,
+        profileNumber : profileNumber,
+        userNumber : loginNumber
+    };
+
+    reply.add(replyObj, function(){
+        reply.getList(profileNumber, showReply);
+    });
+
+    $('#reply-content').val('');
+});
+
+
+
+// reply.getList(profileNumber, showReply);
+let page = 1;
+
+reply.getListPage({profileNumber:profileNumber, page : page}, appendReply);
+
+
+function appendReply(map){
+    console.log(map);
+
+    let text = '';
+
+    map.replyList.forEach( r => {
+        text += `
+            <div class="reply" data-num="${r.pfCommentNumber}">
+              <div class="reply-box">
+                <div class="reply-box__writer">${r.userName}</div>
+                <div class="reply-box__content">${r.pfCommentContent}</div>
+              </div>
+            
+              <div class="reply-btn-box">
+              `;
+
+        if(r.userNumber == loginNumber) {
+            text += `<span class="reply-btns"></span>
+                <div class="reply-btns__box none">
+                  <div class="btn-remove">삭제</div>
+                  <div class="btn-modify">수정</div>
+                </div>`;
+        }
+
+        text +=`</div>
+            </div>`;
+    } );
+
+    $('.reply-list-wrap').append(text);
+}
+/**
+ * 리플 목록을 만들어주는 콜백 함수
+ *
+ * @param result 리플 정보를 가진 배열객체
+ */
+function showReply(result){
+    console.log(result);
+
+    let text = '';
+
+    result.forEach( r => {
+        text += `
+            <div class="reply" data-num="${r.pfCommentNumber}">
+              <div class="reply-box">
+                <div class="reply-box__writer">${r.userName}</div>
+                <div class="reply-box__content">${r.pfCommentContent}</div>
+              </div>
+              
+              <div class="reply-btn-box">
+              `;
+
+        if(r.userNumber == loginNumber) {
+            text += `<span class="reply-btns"></span>
+                <div class="reply-btns__box none">
+                  <div class="btn-remove">삭제</div>
+                  <div class="btn-modify">수정</div>
+                </div>`;
+        }
+
+        text +=`</div>
+            </div>`;
+    } );
+
+    $('.reply-list-wrap').html(text);
 }
 
-//강사님의 js입니다.
+
+
 $('.reply-list-wrap').on('click', '.reply-btns', function () {
     let $replyBtnBox = $(this).closest('.reply-btn-box').find('.reply-btns__box');
 
+    $('.reply-btns__box').addClass('none');
+
     $replyBtnBox.toggleClass('none');
+
 });
 
 $('body').click(function (e) {
@@ -21,18 +123,19 @@ $('body').click(function (e) {
     }
 });
 
-$('.btn-back').on('click', function (){
-    window.location.href = '/board/boardList';
-})
 
-// 리플 작성 완료 처리
-$('.btn-reply').on('click', function (){
 
-});
+
 
 // 리플 삭제 버튼 처리
 $('.reply-list-wrap').on('click', '.reply-remove-btn', function () {
     $('.reply-btns__box').addClass('none');
+
+    let pfCommentNumber = $(this).closest('.reply').data('num');
+
+    reply.remove(pfCommentNumber, function (){
+        reply.getList(profileNumber, showReply);
+    });
 });
 
 // 리플 수정 버튼 처리
@@ -50,45 +153,35 @@ $('.reply-list-wrap').on('click', '.reply-modify-btn', function () {
 // 리플 수정 완료 처리
 $('.reply-list-wrap').on('click', '.modify-content-btn', function () {
     console.log('modify!!!');
+    let pfCommentNumber = $(this).closest('.reply').data('num');
+    let pfCommentContent = $(this).closest('.modify-box').find('.modify-content').val();
+    // console.log(replyContent);
+    let replyObj = {pfCommentContent : pfCommentContent};
+
+    reply.modify(pfCommentNumber, replyObj, function (){
+        reply.getList(profileNumber, showReply);
+    });
 });
 
 
-/*모달창 시작합니다.*/
-// 모달 열기
-function openModal() {
-    var modal = document.getElementById("myModal");
-    modal.style.display = "block";
-}
 
-// 모달 닫기
-function closeModal() {
-    var modal = document.getElementById("myModal");
-    modal.style.display = "none";
-}
 
-// 모달 닫기 버튼에 이벤트 리스너 추가
-var closeBtn = document.querySelector(".close");
-closeBtn.addEventListener("click", closeModal);
 
-// 모달 열기 함수 호출 (예를 들어, 버튼을 클릭할 때 호출)
-// openModal();
 
-/**session 모달창 입니다. */
-// 모달 열기
-function openSessionModal() {
-    var sModal = document.getElementById("sessionModal");
-    sModal.style.display = "block";
-}
 
-// 모달 닫기
-function closeSessionModal() {
-    var sModal = document.getElementById("sessionModal");
-    sModal.style.display = "none";
-}
 
-// 모달 닫기 버튼에 이벤트 리스너 추가
-var closeSBtn = document.querySelector(".sModal-close");
-closeSBtn.addEventListener("click", closeSessionModal);
 
-// 모달 열기 함수 호출 (예를 들어, 버튼을 클릭할 때 호출)
-// openModal();
+
+
+
+
+
+
+
+
+
+
+
+
+
+

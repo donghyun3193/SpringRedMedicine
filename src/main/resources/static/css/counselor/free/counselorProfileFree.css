@@ -136,6 +136,7 @@ a{
 
     border-radius: 12px;
 }
+
 /*===footer가 시작되는 CSS===*/
 .footer{
     width: 100vw;
@@ -178,50 +179,50 @@ a{
     margin: 8px 10px;
 }
 .container2-01-content>a{
-  color: rgb(169, 168, 168);
+    color: rgb(169, 168, 168);
 }
 /*===footer가 종료되는 CSS===*/
 
 /* 서브 메인 나브바  */
 .main-nav-container{
-width: 100%;
-height: 30px;
-background-color: rgb(249, 147, 37);
+    width: 100%;
+    height: 30px;
+    background-color: rgb(249, 147, 37);
 
-display: flex;
-justify-content: center;
+    display: flex;
+    justify-content: center;
 
 }
 
 .main-nav-container ul{
-list-style: none;
-display: flex;
-margin: 0 400px;
-line-height: 30px;
-margin-left: -260px;
+    list-style: none;
+    display: flex;
+    margin: 0 400px;
+    line-height: 30px;
+    margin-left: -260px;
 }
 .main-nav-container ul li{
-font-size: 14px;
-margin: 0 10px;
-text-align: center;
-/* font-weight: bold; */
+    font-size: 14px;
+    margin: 0 10px;
+    text-align: center;
+    /* font-weight: bold; */
 }
 #main-nav-button{
-color: white;
+    color: white;
 }
 #nav-title{
-margin: 20px 20px;
-font-size: 23px;
-padding: 20px 0;
-font-weight: bold;
+    margin: 20px 20px;
+    font-size: 23px;
+    padding: 20px 0;
+    font-weight: bold;
 }
-  .main-nav-container5 ul li :hover{
+.main-nav-container5 ul li :hover{
     border-bottom: 4px solid white;
     padding-bottom: 5px;
     font-weight: bold;
-    
-  }
-  /*  */
+
+}
+/*  */
 
 /* ===councelorProfile 시작합니다.=== */
 .profile{
@@ -465,9 +466,9 @@ font-weight: bold;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.6);
-  }
-  
-  .modal-content {
+}
+
+.modal-content {
     background-color: white;
     margin: 15% auto;
     padding: 20px;
@@ -477,9 +478,9 @@ font-weight: bold;
     height: 180px;
     text-align: center;
     position: relative;
-  }
-  
-  .close {
+}
+
+.close {
     position: absolute;
     width: 100px;
     height: 30px;
@@ -490,8 +491,8 @@ font-weight: bold;
     cursor: pointer;
     background-color: rgb(255, 198, 93);
     border-radius: 5px;
-  }
-  .close:hover{
+}
+.close:hover{
     position: absolute;
     width: 100px;
     height: 30px;
@@ -502,7 +503,7 @@ font-weight: bold;
     cursor: pointer;
     background-color: orange;
     border-radius: 5px;
-  }
+}
 /*자꾸 모다창이 인식을 못하여 2개로 나눴다*/
 .sModal {
     display: none;
@@ -512,9 +513,9 @@ font-weight: bold;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.6);
-  }
-  
-  .sModal-content {
+}
+
+.sModal-content {
     background-color: white;
     margin: 15% auto;
     padding: 20px;
@@ -524,9 +525,9 @@ font-weight: bold;
     height: 180px;
     text-align: center;
     position: relative;
-  }
-  
-  .sModal-close {
+}
+
+.sModal-close {
     position: absolute;
     width: 100px;
     height: 30px;
@@ -538,8 +539,8 @@ font-weight: bold;
     background-color: rgb(255, 198, 93);
     border-radius: 5px;
 
-  }
-  .sModal-close:hover{
+}
+.sModal-close:hover{
     position: absolute;
     width: 100px;
     height: 30px;
@@ -550,6 +551,6 @@ font-weight: bold;
     cursor: pointer;
     background-color: orange;
     border-radius: 5px;
-  }
+}
 
 /* 모달창 종료 */

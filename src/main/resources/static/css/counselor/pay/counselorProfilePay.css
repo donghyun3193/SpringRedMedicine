@@ -278,29 +278,34 @@ a{
   border-radius: 5px;
   cursor: pointer;
 }
-.btn-modify{
-    width: 72px;
-    height: 35px;
-    background-color: orange;
-    color: white;
-    font-weight: bold;
-    font-size: 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-.btn-remove{
-    width: 72px;
-    height: 35px;
-    background-color: orange;
-    color: white;
-    font-weight: bold;
-    font-size: 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
+/*.btn-modify{*/
+/*    width: 72px;*/
+/*    height: 35px;*/
+/*    background-color: orange;*/
+/*    color: white;*/
+/*    font-weight: bold;*/
+/*    font-size: 15px;*/
+/*    border: none;*/
+/*    border-radius: 5px;*/
+/*    cursor: pointer;*/
+/*}*/
+/*.btn-remove{*/
+/*    width: 72px;*/
+/*    height: 35px;*/
+/*    background-color: orange;*/
+/*    color: white;*/
+/*    font-weight: bold;*/
+/*    font-size: 15px;*/
+/*    border: none;*/
+/*    border-radius: 5px;*/
+/*    cursor: pointer;*/
+/*}*/
+/*.btn-modify:hover,*/
+/*.btn-remove:hover,*/
+/*.btn-back:hover {*/
+/*    background-color: #00c7ae;*/
+/*    color: white;*/
+/*}*/
 
 
 .profile-careerbox{
@@ -361,6 +366,10 @@ a{
     height: auto;
     display: block;
 }
+
+
+
+
 /* 강사님의 리플입니다. */
 /* ======== 리플 스타일 ======= */
 
@@ -403,15 +412,15 @@ a{
     color: white;
     text-decoration: none;
     margin-left: 20px;
-    border: 1px solid rgb(8, 20, 73);
+    border: 1px solid #00c7ae;
     padding: 7px;
     cursor: pointer;
     height: 40px;
-    background-color: rgb(8, 20, 73);
+    background-color: #00c7ae;
 }
 
 .btn-reply:hover {
-    background-color: rgb(8, 20, 73);
+    background-color: #00a792;
 }
 
 /* 댓글 목록 스타일 */
@@ -582,3 +591,39 @@ a{
   }
 
 /* 모달창 종료 */
+
+.btn-wrap{
+    display: flex;
+    justify-content: right;
+}
+
+
+
+/* 버튼 스타일 */
+.btn-modify,
+.btn-remove,
+.btn-back {
+    font-size: 16px;
+    color: #00c7ae;
+    text-decoration: none;
+    margin-left: 20px;
+    border: 1px solid #00c7ae;
+    border-radius: 5px;
+    padding: 7px;
+    cursor: pointer;
+}
+
+.btn-modify:hover,
+.btn-remove:hover,
+.btn-back:hover {
+    background-color: #00c7ae;
+    color: white;
+}
+
+
+.reply-time{
+    font-size: 15px;
+    color: #777777;
+    min-width: 80px;
+}
+

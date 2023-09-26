@@ -9,9 +9,10 @@ import org.springframework.stereotype.Component;
 @NoArgsConstructor
 public class PfCommentDto {
     private Long pfCommentNumber;
+    private Long profileNumber;
     private Long userNumber;
     private Long pfFileNumber;
     private String pfCommentContent;
-    private String pfCommnetDate;
+    private String pfCommentDate;
 
 }
