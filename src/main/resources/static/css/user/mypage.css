@@ -1,11 +1,10 @@
+/*공통 부분*/
 @font-face {
   font-family: 'SUITE-Regular';
   src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/SUITE-Regular.woff2') format('woff2');
   font-weight: 600;
   font-style: normal;
 }
-
-
 
 *{
   margin: 0;
@@ -15,14 +14,17 @@ a{
   text-decoration: none;
   color: black;
 }
+/*/공통 부분*/
 
-/* 헤더 시작 */
+/*===헤더가 시작되는 CSS===*/
 .header{
-  width: 100vw;
+  width: 100%;
   display: flex;
   justify-content: center;
   /* height: 120px; */
   /* background-color: antiquewhite; */
+
+  border-bottom: 1px solid #f1f1f1;
 }
 .header-container{
   width: 1200px;
@@ -73,7 +75,7 @@ a{
   margin: 0 10px;
 }
 .header-nav2{
-  width: 180px;
+  width: 300px;
   height: 120px;
   display: flex;
   justify-content: center;
@@ -84,7 +86,7 @@ a{
   /* background-color: blueviolet; */
 }
 .nav2-box{
-  width: 180px;
+  width: 300px;
   height: 90px;
   /* background-color: green; */
   display: flex;
@@ -101,8 +103,7 @@ a{
   margin: 0 10px;
   /* background-color: antiquewhite; */
 }
-
-/* 헤더 끝 */
+/*===헤더가 종료되는 CSS===*/
 
 /* 메인 시작 */
 .main-container{
