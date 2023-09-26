@@ -40,6 +40,14 @@ public class UserService {
         return Optional.ofNullable(userMapper.select(userNumber))
                 .orElseThrow(()->{throw new IllegalArgumentException("존재하지 않는 회원번호");});
     }
+    //유저 이름 찾기
+    public String findUserName(Long userNumber){
+        if (userNumber == null) {
+            throw new IllegalArgumentException("회원 번호 누락");
+        }
+        return Optional.ofNullable(userMapper.selectUserName(userNumber))
+                .orElseThrow(() -> { throw new IllegalArgumentException("존재하지 않는 유저 번호 누락!!"); });
+    }
 
     //회원 정보 수정
     public void modify(UserDto userDto){

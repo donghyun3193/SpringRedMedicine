@@ -27,6 +27,8 @@ public class UserController {
     public String showLoginPage() {
         return "user/login";
     }
+
+
     @GetMapping("/join")
     public String showJoinPage(){
         return "user/join";
@@ -42,9 +44,13 @@ public class UserController {
 
         //↑세션 객체를 사용하여 사용자 번호를 "userNumber"라는 이름으로 세션에 저장합니다.
         // 이렇게 하면 로그인한 사용자의 정보를 세션에 유지하게 됩니다.
-        return new RedirectView("/main/index");//즉 메인 페이지에서 로그인한 상태에서는 세션정보 존재함
 
+        String userName = userService.findUserName(userNumber);
+        req.getSession().setAttribute("userName",userName);
+
+        return new RedirectView("/main/index");//즉 메인 페이지에서 로그인한 상태에서는 세션정보 존재함
     }
+
 
     @PostMapping("join")//회원가입시 postMapping
     public RedirectView join(UserDto userDto){

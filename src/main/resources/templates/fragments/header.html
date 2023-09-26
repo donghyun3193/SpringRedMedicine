@@ -7,36 +7,40 @@
     <title>header</title>
 </head>
 <body>
-    <div class="header" th:fragment="header">
-        <div class="header-container">
-            <div class="header-nav1">
-                <div class="logo"><a href="/main/index"><img src="/img/logo.png" alt="로고"></a></div>
-                <div class="nav1">
-                    <ul>
-                        <li><a href="/main/music">힐링음악</a></li>
-                        <li><a href="/board/notice">커뮤니티</a></li>
-                        <li><a href="/test/diagnosis">자가진단테스트</a></li>
-                        <li><a href="/counselor/pay/payMate">비대면상담받기</a></li>
-                        <li><a href="/counselor/pay/registration">상담사등록</a></li>
-                        <li><a href="/main/map">상담센터찾기</a></li>
-                    </ul>
-                </div>
+<div class="header" th:fragment="header">
+    <div class="header-container">
+        <div class="header-nav1">
+            <div class="logo"><a href="/main/index"><img src="/img/logo.png" alt="로고"></a></div>
+            <div class="nav1">
+                <ul>
+                    <li><a href="/main/music">힐링음악</a></li>
+                    <li><a href="/board/notice">커뮤니티</a></li>
+                    <li><a href="/test/diagnosis">자가진단테스트</a></li>
+                    <li><a href="/counselor/pay/payMate">비대면상담받기</a></li>
+                    <li><a href="/counselor/pay/registration">상담사등록</a></li>
+                    <li><a href="/main/map">상담센터찾기</a></li>
+                </ul>
             </div>
-            <form class="header-nav2">
-                <div class="nav2-box">
-                    <ul th:if="${session.userNumber == null}">
-                        <li><a href="/user/login">로그인</a></li>
-                        <li><a href="/user/join">회원가입</a></li>
-                    </ul>
-                    <ul th:unless="${session.userNumber == null}">
-<!--                            <li><a href="/user/login" th:value="${userNumber}"></a></li>-->
-                            <li><a href="/user/logout">로그아웃</a></li>
-                    </ul>
-                </div>
-<!--                <input type="hidden" th:value="${user.userNumber}" name="userNumber" >-->
-            </form>
         </div>
+
+        <form class="header-nav2">
+
+            <div class="nav2-box">
+                <ul th:if="${session.userNumber == null}">
+                    <li><a href="/user/login">로그인</a></li>
+                    <li><a href="/user/join">회원가입</a></li>
+                </ul>
+                <ul th:unless="${session.userNumber == null}">
+                    <li><a href="" th:text="${session.userName} + ' 상담사 님 '"></a>                </li>
+
+                    <li><a href="/user/logout">로그아웃</a></li>
+                </ul>
+            </div>
+
+        </form>
+
     </div>
+</div>
 <!--=======헤더 종료=======-->
 </body>
 </html>

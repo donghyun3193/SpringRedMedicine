@@ -1,5 +1,6 @@
 package com.example.redmedicine.controller;
 
+import com.example.redmedicine.service.UserService;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;

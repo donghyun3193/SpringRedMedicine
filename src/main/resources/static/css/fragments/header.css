@@ -25,7 +25,7 @@ a{
     justify-content: center;
     /* height: 120px; */
     /* background-color: antiquewhite; */
-  
+
     border-bottom: 1px solid #f1f1f1;
   }
   .header-container{
@@ -46,7 +46,7 @@ a{
     margin: 0 10px 0 20px;
     /* background-color: pink; */
   }
-  
+
   .logo{
     width: 100px;
     height: 120px;
@@ -77,7 +77,7 @@ a{
     margin: 0 10px;
   }
   .header-nav2{
-    width: 180px;
+    width: 300px;
     height: 120px;
     display: flex;
     justify-content: center;
@@ -88,7 +88,7 @@ a{
     /* background-color: blueviolet; */
   }
   .nav2-box{
-    width: 180px;
+    width: 300px;
     height: 90px;
     /* background-color: green; */
     display: flex;
@@ -106,3 +106,12 @@ a{
     /* background-color: antiquewhite; */
   }
 /*===헤더가 종료되는 CSS===*/
+
+
+/*드롭다운 CSS*/
+
+
+
+
+
+

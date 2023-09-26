@@ -114,7 +114,7 @@
                 <h3>후기 작성</h3>
                 <div class="reply-wrap__box">
                   <div class="reply-content__box">
-                    <div class="reply-writer" >작성자</div>
+                    <div class="reply-writer" th:text="${userName}"></div>
                     <textarea name="replyContent" id="reply-content" cols="30" rows="10"></textarea>
                   </div>
                   <div class="reply-btn-wrap">
@@ -127,7 +127,7 @@
                   <!-- 리플 예시 -->
                   <div class="reply">
                     <div class="reply-box">
-                      <div class="reply-box__writer" th:text="${profile.userName}"></div>
+                      <div class="reply-box__writer" th:text="${userName}"></div>
                       <div class="reply-box__content">안녕하세요!</div>
                     </div>
                     <div class="reply-btn-box">
