@@ -10,9 +10,9 @@ import org.springframework.stereotype.Component;
 public class PfCommentVo {
     private Long pfCommentNumber;
     private Long userNumber;
-    private Long prfileNumber;
+    private Long pfFileNumber;
     private String pfCommentContent;
-    private String pfCommnetDate;
+    private String pfCommentDate;
     private String userName;
 
 }
