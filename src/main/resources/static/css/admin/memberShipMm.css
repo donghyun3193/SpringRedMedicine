@@ -18,6 +18,8 @@ button{
   cursor: pointer;
 }
 
+/*헤더 시작*/
+
 .header{
   width: 100%;
   display: flex;
@@ -374,6 +376,10 @@ button{
 .page-container ul li{
   margin: 0 5px;
 }
+
+.page-num{
+  cursor: pointer;
+}
 .active,
 .page-num:hover {
   font-weight: bolder;
@@ -422,5 +428,6 @@ button{
 .container2-01-content{
   margin: 8px 10px;
 }
+
 
 
