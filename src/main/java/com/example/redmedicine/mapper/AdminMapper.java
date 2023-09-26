@@ -24,5 +24,8 @@ public interface AdminMapper {
 //    회원 삭제
     public void delete(Long userNumber);
 
+//    검색 결과 회원 수 조회
+    public int searchTotal(SearchVo searchVo);
+
 
 }
