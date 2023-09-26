@@ -6,7 +6,7 @@
             SELECT SEQ_PF_COMMENT.NEXTVAL FROM DUAL
         </selectKey>
         insert into TBL_PF_COMMENT (PF_COMMENT_NUMBER, USER_NUMBER, PROFILE_NUMBER, PF_COMMENT_CONTENT, PF_COMMENT_DATE)
-        values (#{pfCommentNumber}, #{userNumber}, #{profileNumber}, #{pfCommentContent},#{pfCommentDate})
+        values (#{pfCommentNumber}, #{userNumber}, #{profileNumber}, #{pfCommentContent},sysdate)
     </insert>
 
     <select id="selectPfCommentList" resultType="pfCommentVo">
@@ -26,7 +26,7 @@
 
     <update id="updatePfComment">
         UPDATE TBL_PF_COMMENT
-        SET PF_COMMENT_CONTENT = #{replyContent}, PF_COMMENT_DATE = SYSDATE
+        SET PF_COMMENT_CONTENT = #{pfCommentContent}, PF_COMMENT_DATE = SYSDATE
         WHERE PF_COMMENT_NUMBER = #{pfCommentNumber}
     </update>
 

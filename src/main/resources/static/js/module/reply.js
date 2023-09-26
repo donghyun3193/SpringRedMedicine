@@ -115,7 +115,7 @@ export function getListPage(pageInfo, callback){
 }
 
 
-
+// 안쓸꺼임
 export function timeForToday(value){
     const today = new Date(); //현재 날짜와 시간을 가진 객체
     const timeValue = new Date(value);

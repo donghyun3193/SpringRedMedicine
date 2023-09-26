@@ -107,7 +107,7 @@
                 <div class="reply-wrap__box">
                   <div class="reply-content__box">
                       <div class="reply-writer" th:text="${userName}"></div>
-                    <textarea name="replyContent" id="reply-content" cols="30" rows="10"></textarea>
+                    <textarea name="pfCommentContent" id="reply-content" cols="30" rows="10"></textarea>
                   </div>
                   <div class="reply-btn-wrap">
                     <button type="button" class="btn-reply">작성 완료</button>
@@ -150,7 +150,7 @@
 let loginNumber = [[${session.userNumber}]]; // 타임리프 문법은 [] 2개로 감싸줘야 한다.
 </script>
 
-<script type="module" src="/js/counselor/counselorProfilePay.js"></script>
+<script type="module" src="/js/counselor/free/counselorProfileFree.js"></script>
 
 
 
