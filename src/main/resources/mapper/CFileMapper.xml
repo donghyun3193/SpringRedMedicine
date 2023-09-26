@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.redmedicine.mapper.PfFileMapper">
+    <insert id="insertF">
+        <selectKey keyProperty="cFileNumber" order="BEFORE" resultType="long">
+            SELECT SEQ_C_FILE.NEXTVAL FROM DUAL
+        </selectKey>
+        insert into TBL_C_FILE (C_FILE_NUMBER, COUNSELOR_NUMBER, C_FILE_NAME, C_FILE_ROUTE, C_FILE_UUID)
+        values (#{cFileNumber}, #{counselorNumber}, #{cFileName}, #{cFileRoute}, #{cFileUuid})
+    </insert>
+
+    <delete id="deleteF">
+        DELETE FROM TBL_C_FILE
+        WHERE COUNSELOR_NUMBER = #{counselorNumber}
+    </delete>
+
+    <select id="selectListF" resultType="cFileDto">
+        SELECT C_FILE_NUMBER, COUNSELOR_NUMBER, C_FILE_NAME, C_FILE_ROUTE, C_FILE_UUID
+        FROM TBL_C_FILE
+        WHERE COUNSELOR_NUMBER = #{counselorNumber}
+    </select>
+
+    <select id="selectOldListF" resultType="cFileDto">
+        SELECT C_FILE_NUMBER, COUNSELOR_NUMBER, C_FILE_NAME, C_FILE_ROUTE, C_FILE_UUID
+        FROM TBL_C_FILE
+        WHERE C_FILE_ROUTE = TO_CHAR(SYSDATE - 6, 'YYYY/MM/DD')
+    </select>
+</mapper>

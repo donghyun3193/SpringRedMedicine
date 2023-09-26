@@ -15,10 +15,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 @Controller
 @RequestMapping("/board/*")
@@ -64,11 +66,15 @@ public class CounselorBoardController {
     }
 
     @PostMapping("/writingCounsel")
-    public RedirectView boardWrite(CounselorDto counselorDto, HttpServletRequest req){
+    public RedirectView boardWrite(CounselorDto counselorDto, HttpServletRequest req,
+                                   RedirectAttributes redirectAttributes,
+                                   @RequestParam("counselorFile") List<MultipartFile> files){
         Long userNumber = (Long)req.getSession().getAttribute("userNumber");
-
         counselorDto.setUserNumber(userNumber);
-        counselorService.register(counselorDto);
+        counselorService.registerAndFileProc(counselorDto, files);
+
+        Long counselorNumber = counselorDto.getCounselorNumber();
+        redirectAttributes.addFlashAttribute("counselor", counselorNumber);
 
         return new RedirectView("/board/counselBoard");
     }

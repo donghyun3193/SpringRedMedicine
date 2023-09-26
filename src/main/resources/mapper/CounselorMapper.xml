@@ -36,21 +36,31 @@
     </select><!--즉, -->
 
     <select id="selectAll" resultType="counselorVo">
-        SELECT RNUM, COUNSELOR_NUMBER, USER_NUMBER, COUNSELOR_TITLE, COUNSELOR_CONTENT,
-               COUNSELOR_DATE, USER_NAME
+        SELECT RNUM, COUNSELOR_NUMBER, COUNSELOR_TITLE, COUNSELOR_CONTENT, COUNSELOR_DATE, USER_NUMBER,
+               USER_NAME, C_FILE_ROUTE, C_FILE_UUID, C_FILE_NAME
         FROM (
-             SELECT ROWNUM AS RNUM, COUNSELOR_NUMBER, USER_NUMBER, COUNSELOR_TITLE, COUNSELOR_CONTENT,
-                    COUNSELOR_DATE, USER_NAME
-             FROM(
-                     SELECT COUNSELOR_NUMBER, C.USER_NUMBER, COUNSELOR_TITLE, COUNSELOR_CONTENT,
-                            COUNSELOR_DATE, U.USER_NAME
-                     FROM TBL_COUNSELOR C JOIN TBL_USER U
-                     ON C.USER_NUMBER = U.USER_NUMBER
-                     ORDER BY COUNSELOR_NUMBER DESC
+                 SELECT ROWNUM AS RNUM, COUNSELOR_NUMBER, COUNSELOR_TITLE, COUNSELOR_CONTENT, COUNSELOR_DATE, USER_NUMBER,
+                        USER_NAME, C_FILE_ROUTE, C_FILE_UUID, C_FILE_NAME
+                 FROM (
+                          SELECT C.COUNSELOR_NUMBER, COUNSELOR_TITLE, COUNSELOR_CONTENT, COUNSELOR_DATE, C.USER_NUMBER,
+                                 U.USER_NAME, C_FILE_ROUTE, C_FILE_UUID, C_FILE_NAME
+                          FROM TBL_COUNSELOR C JOIN TBL_USER U
+                          ON C.USER_NUMBER = U.USER_NUMBER
+                          LEFT OUTER JOIN (
+                              SELECT C_FILE_ROUTE, C_FILE_UUID, C_FILE_NAME, COUNSELOR_NUMBER
+                              FROM (
+                                       SELECT C_FILE_ROUTE, C_FILE_UUID, C_FILE_NAME, COUNSELOR_NUMBER,
+                                              RANK() OVER(PARTITION BY COUNSELOR_NUMBER ORDER BY C_FILE_NUMBER) RK
+                                       FROM TBL_C_FILE
+                                   )
+                              WHERE RK = 1
+                          ) J1
+                 ON C.COUNSELOR_NUMBER = J1.COUNSELOR_NUMBER
+                 ORDER BY C.COUNSELOR_NUMBER DESC
                  ) X
-             <![CDATA[
-             WHERE ROWNUM <= #{page} * #{amount}
-             ]]>
+                 <![CDATA[
+                 WHERE ROWNUM <= #{page}*#{amount}
+                 ]]>
         ) Y
         WHERE RNUM > (#{page} - 1) * #{amount}
     </select>
