@@ -6,7 +6,9 @@ import com.example.redmedicine.domain.vo.Criteria;
 import com.example.redmedicine.mapper.CounselorMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,6 +16,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class CounselorService {
     private final CounselorMapper counselorMapper;//메퍼를 가지고 오겠다!
+    private final CFileService cFileService;
 
     //    추가
     public void register(CounselorDto counselorDto){
@@ -60,5 +63,19 @@ public class CounselorService {
     //    전체조회
     public List<CounselorVo> findAll(Criteria criteria){
         return counselorMapper.selectAll(criteria);
+    }
+    
+    //게시물 작성 최종(파일처리가 추가된 형태 실행 쿼리를 2개로 만들기 위한 작업)
+    public void registerAndFileProc(CounselorDto counselorDto, List<MultipartFile> files) {
+        register(counselorDto);
+
+        if (files.isEmpty()) {
+            return;
+        }
+        try {
+            cFileService.registerAndSaveFile(files, counselorDto.getCounselorNumber());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

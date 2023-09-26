@@ -306,3 +306,39 @@ th{
 .container2-01-content{
     margin: 8px 10px;
 }
+
+/*첨부파일 관련 CSS 구성*/
+.form-group {
+    margin-bottom: 20px;
+}
+
+.file-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.file-wrap > li {
+    list-style-type: none;
+    width: 90px;
+    height: 90px;
+    margin: 0.5rem;
+    border: 0.0625rem dashed #e1e1e1;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.file-wrap > li:first-child {
+    position: relative;
+    cursor: pointer;
+    background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNiIgaGVpZ2h0PSIzNiI+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48cGF0aCBkPSJNMCAwaDM2djM2SDB6Ii8+PGcgc3Ryb2tlPSIjMDBDN0FFIiBzdHJva2Utd2lkdGg9IjEuNSIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNCA0KSI+PHBhdGggc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBkPSJNMTQgN3YxNG03LTdINyIvPjxjaXJjbGUgY3g9IjE0IiBjeT0iMTQiIHI9IjE0Ii8+PC9nPjwvZz48L3N2Zz4=)
+    no-repeat 50%;
+}
+
+.img-list {
+    cursor: default;
+    background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNiIgaGVpZ2h0PSIzNiI+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48ZyBzdHJva2U9IiNCNUI1QjUiIHN0cm9rZS13aWR0aD0iMS41IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSg0IDQpIj48cmVjdCB3aWR0aD0iMjgiIGhlaWdodD0iMjgiIHJ4PSIzLjUiLz48Y2lyY2xlIGN4PSI4LjU1NiIgY3k9IjguNTU2IiByPSIyLjMzMyIvPjxwYXRoIGQ9Ik0yOCAxOC42NjdsLTcuNzc3LTcuNzc4TDMuMTExIDI4Ii8+PC9nPjxwYXRoIGQ9Ik0wIDBoMzZ2MzZIMHoiLz48L2c+PC9zdmc+)
+    no-repeat 50% #f2f2f2;
+    position: relative;
+}
+/*첨부 파일 종료!*/

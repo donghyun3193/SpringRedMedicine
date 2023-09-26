@@ -43,11 +43,16 @@
                         <td th:text="${counselor.counselorNumber}"></td>
                         <td>
                             <a th:href="@{/board/readingCounsel(counselorNumber=${counselor.counselorNumber})}">
-                                <h3 class="board-item-title" th:text="${counselor.counselorTitle}"></h3>
+                                <h3 class="board-item-title" th:text="${counselor.counselorTitle}">글제목</h3>
+                                <!--https://via.placeholder.com/300x200는 이미지가 존제하지 않을경우 존재하는 기본상태 x 표시 이미지-->
+                                <div th:if="${counselor.cFileName == null}" class="board-item-image" style="background-image: url(https://via.placeholder.com/25x25)"></div>
+                                <div th:unless="${counselor.cFileName == null}" class="board-item-image"
+                                     th:style="'background-image: url(/upload/'
+                                     + ${counselor.cFileRoute} + '/th_'+ ${counselor.cFileUuid} + '_' + ${counselor.cFileName} +')'"></div>
                             </a>
                         </td>
-                        <td th:text="${counselor.userName}"></td>
-                        <td th:text="${counselor.counselorDate}"></td>
+                        <td th:text="${counselor.userName}">작성자</td>
+                        <td th:text="${counselor.counselorDate}">작성일</td>
                     </tr>
                 </table>
             </div>
