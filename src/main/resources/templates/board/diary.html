@@ -42,15 +42,20 @@
                             <tbody>
                                 <tr th:each="diary, i : ${diaryList}">
                                     <td th:text="${i.index+1}">1</td>
-                                    <td th:if="${diary.diaryOpen == 0}">
+                                    <td th:if="${diary.diaryOpen == 1 && diary.userNumber == session.userNumber}">
                                         <a th:href="@{/diary/detail(diaryNumber=${diary.diaryNumber})}">
                                             <span th:text="${diary.diaryTitle}">제목</span>
                                         </a>
                                     </td>
-                                    <td th:unless="${diary.diaryOpen == 1}">
+                                    <td th:unless="${diary.diaryOpen == 1 && diary.userNumber != session.userNumber}">
 <!--                                        <a th:href="@{/diary/detail(diaryNumber=${diary.diaryNumber})}">-->
                                             <span th:text="${diary.diaryTitle}">제목</span>
 <!--                                        </a>-->
+                                    </td>
+                                    <td th:unless="${diary.diaryOpen == 0}">
+                                        <a th:href="@{/diary/detail(diaryNumber=${diary.diaryNumber})}">
+                                            <span th:text="${diary.diaryTitle}">제목</span>
+                                        </a>
                                     </td>
                                     <td th:text="${diary.userName}">이지윤</td>
                                     <td th:text="${diary.diaryDate}">2023-09-09</td>
@@ -80,7 +85,7 @@
                 </div>
                 <input class="diary-num" type="hidden" th:value="${userNumber}">
                 <div class="button-container">
-                    <button type="button" id="writing-button">글쓰기</button>
+                    <button type="button" id="writing-button" style="cursor: pointer">글쓰기</button>
                 </div>
             </div>
         </div>
@@ -88,5 +93,12 @@
 <!-- 후터 시작-->
 <footer class="footer" th:replace="fragments/footer :: footer"></footer>
 <!-- 후터 끝-->
+<script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+<script>
+    // 글쓰기 버튼
+    $('#writing-button').on('click', function (){
+        window.location.href = '/diary/write';
+    })
+</script>
 </body>
 </html>

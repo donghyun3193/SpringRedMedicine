@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -32,32 +32,31 @@
                         <a class="findpwa" href="/user/findPw">비밀번호 찾기</a>
                       </div>
 
-                      <div class="div1">
-                        <input class="inputid" type="text" placeholder="이름" id="nameInput">
-                        <input class="inputphonenumber" type="text" placeholder="휴대폰 번호" id="phoneInput">
-                      </div>
+                      <form action="/user/findId" method="post">
+                          <div class="div1">
+                            <input class="inputid" type="text" placeholder="이름" id="nameInput" name="userName" required>
+                            <input class="inputphonenumber" type="text" placeholder="휴대폰 번호" id="phoneInput" name="userPhone" required>
+                          </div>
 
-                      <div class="inputresult" style="display: none;"><strong>                        "이름" 또는 "휴대폰 번호" 가 일치 하지 않습니다.</strong>
+                          <div class="inputresult" style="display: none">
+                          </div>
 
-                      </div>
+                          <hr style="margin-top: 50px; border:1px solid #ffe4cb;">
 
-                      <hr style="margin-top: 50px; border:1px solid #ffe4cb;">
-
-                      <button class="idfindbutton" onclick="checkInput()">
-                        아이디 찾기
-                      </button>
-
+                          <button class="idfindbutton" type="button">
+                            아이디 찾기
+                          </button>
+                      </form>
                     </div>
 
                 </div>
             </div>
         </div>
     </div>
-
-
-<div class="footer">
 <!-- 후터 시작-->
 <footer class="footer" th:replace="fragments/footer :: footer"></footer>
 <!-- 후터 끝-->
+<script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+<script defer src="/js/user/findId.js"></script>
 </body>
 </html>
