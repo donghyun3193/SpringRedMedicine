@@ -16,3 +16,31 @@ $('#remove-button').on('click', function () {
         window.location.href = '/board/removeCounsel?counselorNumber=' + counselorNumber;
     }
 });
+
+
+
+//detail페이지 이미지 띄우기 처리
+displayAjax();
+
+function displayAjax(){
+    let counselorNumber = $('.counsel-num').val();
+
+    $.ajax({
+        url : '/cFiles/imgList',
+        type : 'get',
+        data : {counselorNumber : counselorNumber},
+        success : function (cFileList) {
+            let text = '';
+
+            cFileList.forEach(file => {
+                // console.log(file);
+                let cFileName = file.cFileRoute + '/' + file.cFileUuid + '_' + file.cFileName;
+
+                text += `<img src="/cFiles/display?cFileName=${cFileName}" data-number=${file.cFileNumber} />`;
+
+            });
+
+            $('.post-images').html(text);
+        }
+    });
+}

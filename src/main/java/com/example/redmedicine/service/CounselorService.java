@@ -26,16 +26,26 @@ public class CounselorService {
     //    삭제
     public void remove(Long counselorNumber){
         if(counselorNumber == null){
-            throw new IllegalArgumentException("상담 게시판 번호 누락!");
+            throw new IllegalArgumentException("게시판 번호 누락!");
         }
+//        fileService.remove(boardNumber);//첨부파일존재해도 지워지도록 단 c드라이브의 실제 파일은 안 지워짐
+        cFileService.remove(counselorNumber);
         counselorMapper.delete(counselorNumber);
     }
 
     //    수정
-    public void modify(CounselorDto counselorDto){
+    public void modify(CounselorDto counselorDto, List<MultipartFile> files){
+        cFileService.remove(counselorDto.getCounselorNumber());//수정 전 일단 지우고
+        if (!files.isEmpty() && !files.get(0).isEmpty()) {//비어있지 않다면, files 넘어온 정보가 정말 없다면
+//cFileService.remove(counselorDto.getCounselorNumber());위의 것을 여기에 넣으면 지워지지 않을 수 있다 단 지우고 싶을 때는 다른 방법!
+            try {
+                cFileService.registerAndSaveFile(files, counselorDto.getCounselorNumber());//새로 인설트
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
         counselorMapper.update(counselorDto);
     }
-
     //    조회
     public CounselorVo find(Long counselorNumber){
         if(counselorNumber == null){
@@ -64,7 +74,9 @@ public class CounselorService {
     public List<CounselorVo> findAll(Criteria criteria){
         return counselorMapper.selectAll(criteria);
     }
-    
+
+
+
     //게시물 작성 최종(파일처리가 추가된 형태 실행 쿼리를 2개로 만들기 위한 작업)
     public void registerAndFileProc(CounselorDto counselorDto, List<MultipartFile> files) {
         register(counselorDto);

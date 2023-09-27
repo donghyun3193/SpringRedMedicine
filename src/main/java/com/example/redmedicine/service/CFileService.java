@@ -26,29 +26,29 @@ import java.util.UUID;
 public class CFileService {
     private final CFileMapper cFileMapper;
 
-    @Value("C:/upload/")
+    @Value("${file.dir}")
     private String fileDir;
 
     //삽입
-    public void registerF(CFileDto cFileDto){
-        cFileMapper.insertF(cFileDto);
+    public void register(CFileDto cFileDto){
+        cFileMapper.insert(cFileDto);
     }
 
     //파일 리스트 조회
-    public List<CFileDto> pfFileList(Long cFileNumber){
+    public List<CFileDto> cFileList(Long cFileNumber){
         if (cFileNumber == null) {
-            throw new IllegalArgumentException("게시물 번호 누락");
+            throw new IllegalArgumentException("첨부파일 번호 누락");
         }
-        return  cFileMapper.selectListF(cFileNumber);
+        return  cFileMapper.selectList(cFileNumber);
     }
 
     //삭제
     public void remove(Long cFileNumber){
         if (cFileNumber == null) {
-            throw new IllegalArgumentException("게시물 번호 누락");
+            throw new IllegalArgumentException("첨부파일 번호 누락");
         }
 
-        List<CFileDto> cFileList = pfFileList(cFileNumber);
+        List<CFileDto> cFileList = findCFileList(cFileNumber);
 
         for(CFileDto file : cFileList){
             File target = new File(fileDir, file.getCFileRoute() + "/" + file.getCFileUuid() + "_" + file.getCFileName());
@@ -69,9 +69,9 @@ public class CFileService {
     //파일리스트조회
     public List<CFileDto> findCFileList(Long cFileNumber){
         if (cFileNumber == null) {
-            throw new IllegalArgumentException("게시물 번호 누락!!");
+            throw new IllegalArgumentException("첨부파일 번호 누락!!");
         }
-        return cFileMapper.selectListF(cFileNumber);
+        return cFileMapper.selectList(cFileNumber);
     }
 
 
@@ -104,7 +104,7 @@ public class CFileService {
 //        이미지 파일인 경우에만 썸네일을 저장해야한다.
         if(Files.probeContentType(uploadFile.toPath()).startsWith("image") ){
             FileOutputStream out = new FileOutputStream(new File(uploadPath, "th_" + sysName));
-            Thumbnailator.createThumbnail(file.getInputStream(), out, 300, 200);
+            Thumbnailator.createThumbnail(file.getInputStream(), out, 25, 25);
             out.close();
         }
 
@@ -130,7 +130,7 @@ public class CFileService {
         for(MultipartFile file : files){
             CFileDto cFileDto = saveFile(file);
             cFileDto.setCounselorNumber(counselorNumber);
-            registerF(cFileDto);
+            register(cFileDto);
         }
     }
 
@@ -141,6 +141,6 @@ public class CFileService {
 
     //전날 파일 목록
     public List<CFileDto> findOldList(){
-        return cFileMapper.selectOldListF();
+        return cFileMapper.selectOldList();
     }
 }
