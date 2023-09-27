@@ -1,6 +1,8 @@
 package com.example.redmedicine.controller;
 
 import com.example.redmedicine.domain.dto.DiaryDto;
+import com.example.redmedicine.domain.vo.Criteria;
+import com.example.redmedicine.domain.vo.PageVo;
 import com.example.redmedicine.mapper.MyDaybookMapper;
 import com.example.redmedicine.service.MyDaybookService;
 import lombok.RequiredArgsConstructor;
@@ -20,17 +22,19 @@ public class MyDaybookController {
 
 //    내글보기 -> 나의 일기장
     @GetMapping("/myDaybook")
-    public String showMydiary(Model model, HttpServletRequest req){
+    public String showMydiary(Model model, HttpServletRequest req, Criteria criteria){
         Long userNumber = (Long)req.getSession().getAttribute("userNumber");
-        model.addAttribute("diaryList", myDaybookService.myDiary(userNumber));
+        model.addAttribute("diaryList", myDaybookService.myDiary(criteria, userNumber));
+        model.addAttribute("pageInfo", new PageVo(myDaybookService.getTotalDiary(), criteria));
         return "user/myDaybook";
     }
 
 //    내글보기 -> 나의 상담글
     @GetMapping("/myCounselor")
-    public String showMycounselor(Model model, HttpServletRequest req){
+    public String showMycounselor(Model model, HttpServletRequest req, Criteria criteria){
         Long userNumber = (Long)req.getSession().getAttribute("userNumber");
-        model.addAttribute("counselorList", myDaybookService.myCounsel(userNumber));
+        model.addAttribute("counselorList", myDaybookService.myCounselor(criteria, userNumber));
+        model.addAttribute("pageInfo", new PageVo(myDaybookService.getTotalCounselor(), criteria));
         return "user/myCounselor";
     }
 

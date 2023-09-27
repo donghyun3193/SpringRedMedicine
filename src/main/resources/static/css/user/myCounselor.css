@@ -17,12 +17,6 @@
     font-weight: 600;
     font-style: normal;
 }
-@font-face {
-    font-family: 'iceJaram-Rg';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/iceJaram-Rg.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
-}
 
 *{
     margin: 0;
@@ -131,6 +125,8 @@ a{
 .nav2-box:hover .myList{
     display: block;
 }
+
+/* 헤더 영역 끝 */
 
 /* 헤더 영역 끝 */
 

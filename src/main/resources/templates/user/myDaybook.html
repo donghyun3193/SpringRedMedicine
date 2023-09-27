@@ -71,13 +71,20 @@
                 <!-- 페이징 처리가 들어가는 공간입니다. -->
                 <div class="paging-container">
                     <ul>
-                        <li><a href="">&lt; 이전</a></li>
-                        <li><a href="">1</a></li>
-                        <li><a href="">2</a></li>
-                        <li><a href="">3</a></li>
-                        <li><a href="">4</a></li>
-                        <li><a href="">5</a></li>
-                        <li><a href="">다음 &gt;</a></li>
+                        <a th:href="@{/user/myDaybook(page=${pageInfo.startPage-1})}" th:if="${pageInfo.prev}">
+                            <li>&lt 이전</li>
+                        </a>
+
+                        <th:block th:each="i : ${#numbers.sequence(pageInfo.startPage, pageInfo.endPage)}">
+                            <a th:href="@{/user/myDaybook(page=${i})}">
+                                <li th:text="${i}" class="page-num active" th:if="${i == pageInfo.criteria.page}"></li>
+                                <li th:text="${i}" class="page-num" th:unless="${i == pageInfo.criteria.page}"></li>
+                            </a>
+                        </th:block>
+
+                        <a th:href="@{/user/myDaybook(page=${pageInfo.endPage+1})}" th:if="${pageInfo.next}">
+                            <li>다음 &gt</li>
+                        </a>
                     </ul>
                 </div>
                 <!-- 페이징 처리 완료 -->

@@ -2,15 +2,46 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.redmedicine.mapper.MyDaybookMapper">
     <select id="selectDiary" resultType="DiaryDto">
-        SELECT DIARY_NUMBER, USER_NUMBER, DIARY_TITLE, DIARY_DATE, DIARY_OPEN
-        FROM TBL_DIARY
-        WHERE USER_NUMBER = #{userNumber}
+        SELECT RNUM,DIARY_NUMBER, USER_NUMBER, DIARY_TITLE, DIARY_DATE, DIARY_OPEN
+        FROM(
+                SELECT ROWNUM AS RNUM, DIARY_NUMBER, USER_NUMBER, DIARY_TITLE, DIARY_DATE, DIARY_OPEN
+                FROM (
+                SELECT DIARY_NUMBER, USER_NUMBER, DIARY_TITLE, DIARY_DATE, DIARY_OPEN
+                    FROM TBL_DIARY
+                    ORDER BY DIARY_NUMBER DESC
+                ) X
+                <![CDATA[
+                WHERE ROWNUM <= #{criteria.page} * #{criteria.amountMypage}
+                ]]>
+            ) Y
+        WHERE RNUM > (#{criteria.page} - 1) * #{criteria.amountMypage}
     </select>
 
     <select id="selectCounselor" resultType="CounselorDto">
-        SELECT COUNSELOR_NUMBER, USER_NUMBER, COUNSELOR_TITLE, COUNSELOR_DATE
+        SELECT RNUM,COUNSELOR_NUMBER, USER_NUMBER, COUNSELOR_TITLE, COUNSELOR_DATE
+        FROM(
+                SELECT ROWNUM AS RNUM, COUNSELOR_NUMBER, USER_NUMBER, COUNSELOR_TITLE, COUNSELOR_DATE
+                FROM (
+                         SELECT COUNSELOR_NUMBER, USER_NUMBER, COUNSELOR_TITLE, COUNSELOR_DATE
+                         FROM TBL_COUNSELOR
+                         ORDER BY COUNSELOR_NUMBER DESC
+                     ) X
+                <![CDATA[
+                WHERE ROWNUM <= #{criteria.page} * #{criteria.amountMypage}
+                ]]>
+            ) Y
+        WHERE RNUM > (#{criteria.page} - 1) * #{criteria.amountMypage}
+    </select>
+
+<!--    글 갯수 세기-->
+    <select id="countDiary" resultType="_int">
+        SELECT COUNT(DIARY_NUMBER)
+        FROM TBL_DIARY
+    </select>
+
+    <select id="countCounselor" resultType="_int">
+        SELECT COUNT(COUNSELOR_NUMBER)
         FROM TBL_COUNSELOR
-        WHERE USER_NUMBER = #{userNumber}
     </select>
 
 </mapper>
