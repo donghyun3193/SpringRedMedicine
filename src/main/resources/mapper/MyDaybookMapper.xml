@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.redmedicine.mapper.MyDaybookMapper">
+    <select id="selectDiary" resultType="DiaryDto">
+        SELECT DIARY_NUMBER, USER_NUMBER, DIARY_TITLE, DIARY_DATE, DIARY_OPEN
+        FROM TBL_DIARY
+        WHERE USER_NUMBER = #{userNumber}
+    </select>
+
+    <select id="selectCounselor" resultType="CounselorDto">
+        SELECT COUNSELOR_NUMBER, USER_NUMBER, COUNSELOR_TITLE, COUNSELOR_DATE
+        FROM TBL_COUNSELOR
+        WHERE USER_NUMBER = #{userNumber}
+    </select>
+
+</mapper>

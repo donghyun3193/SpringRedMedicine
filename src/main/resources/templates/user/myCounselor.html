@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/counselor/book/myCounselor.css">
+    <link rel="stylesheet" href="/css/user/myCounselor.css">
     <title>My Counselor</title>
 </head>
 <body>
@@ -23,7 +23,7 @@
     <div class="edge">
         <div class="img-container">
             <div class="img-container-title">
-                <h2>상담 게시판</h2>
+                <h2>나의 상담록</h2>
                 <br>
                 <p>나의 상담 내용을 관리해 보세요.</p>
             </div>
@@ -35,7 +35,7 @@
         <div class="article-container">
             <div class="article-container-title">
                 <div class="daybook-title">
-                    <a href="/user/myDaybook.html"style="color:#a1a1a1;"><h2>나의 일기</h2></a>
+                    <a href="/user/myDaybook"style="color:#a1a1a1;"><h2>나의 일기</h2></a>
                 </div>
                 <div class="counselor-title">
                     <h2>나의 상담록</h2>
@@ -43,41 +43,28 @@
             </div>
             <div class="article-container-community">
                 <div class="main-content-list">
-                    <table>
-                        <th id="main-content-list-title">제목</th>
-                        <th>작성일</th>
-                        <th>공개여부</th>
-                        <tr>
-                            <td><a href="/board/readingCounsel.html">오늘의 기록</a></td>
-                            <td>2023-09-09</td>
-                            <td>비공개</td>
-                        </tr>
-                        <tr>
-                            <td><a href="/board/readingCounsel.html">오늘의 기록</a></td>
-                            <td>2023-09-09</td>
-                            <td>비공개</td>
-                        </tr>
-                        <tr>
-                            <td><a href="/board/readingCounsel.html">오늘의 기록</a></td>
-                            <td>2023-09-09</td>
-                            <td>비공개</td>
-                        </tr>
-                        <tr>
-                            <td><a href="">오늘의 기록</a></td>
-                            <td>2023-09-09</td>
-                            <td>비공개</td>
-                        </tr>
-                        <tr>
-                            <td><a href="">오늘의 기록</a></td>
-                            <td>2023-09-09</td>
-                            <td>비공개</td>
-                        </tr>
-                        <tr>
-                            <td><a href="">오늘의 기록</a></td>
-                            <td>2023-09-09</td>
-                            <td>비공개</td>
-                        </tr>
-                    </table>
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>작성일</th>
+                                    <th>제목</th>
+                                    <th>공개여부</th>
+                                </tr>
+                            </thead>
+                            <tbody class="content">
+                                <th:block th:each="counsel : ${counselorList}">
+                                    <tr>
+                                        <td th:text="${counsel.counselorDate}"></td>
+                                        <td th:text="${counsel.counselorTitle}"></td>
+                                        <td>
+                                            <span>비공개</span>
+                                        </td>
+                                    </tr>
+                                </th:block>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
                 <!-- main-content-list 종료합니다. -->
                 <!-- 페이징 처리가 들어가는 공간입니다. -->

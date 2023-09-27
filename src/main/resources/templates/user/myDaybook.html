@@ -23,7 +23,7 @@
     <div class="edge">
         <div class="img-container">
             <div class="img-container-title">
-                <h2>일기장</h2>
+                <h2>나의 일기</h2>
                 <br>
                 <p>나의 일기장을 관리해 보세요.</p>
             </div>
@@ -38,46 +38,34 @@
                     <h2>나의 일기</h2>
                 </div>
                 <div class="counselor-title">
-                    <a href="/counselor/book/myCounselor.html"style="color:#a1a1a1;"><h2>나의 상담록</h2></a>
+                    <a href="/user/myCounselor"style="color:#a1a1a1;"><h2>나의 상담록</h2></a>
                 </div>
             </div>
             <div class="article-container-community">
                 <div class="main-content-list">
-                    <table>
-                        <th id="main-content-list-title">제목</th>
-                        <th>작성일</th>
-                        <th>공개여부</th>
-                        <tr>
-                            <td><a href="/board/readingDiary.html">오늘의 기록</a></td>
-                            <td>2023-09-09</td>
-                            <td><button id="toggleButton" class="t-btn">공개</button></td>
-                        </tr>
-                        <tr>
-                            <td><a href="/board/readingDiary.html">오늘의 기록</a></td>
-                            <td>2023-09-09</td>
-                            <td><button id="toggleButton">비공개</button></td>
-                        </tr>
-                        <tr>
-                            <td><a href="/board/readingDiary.html">오늘의 기록</a></td>
-                            <td>2023-09-09</td>
-                            <td><button id="toggleButton">비공개</button></td>
-                        </tr>
-                        <tr>
-                            <td><a href="">오늘의 기록</a></td>
-                            <td>2023-09-09</td>
-                            <td><button id="toggleButton">비공개</button></td>
-                        </tr>
-                        <tr>
-                            <td><a href="">오늘의 기록</a></td>
-                            <td>2023-09-09</td>
-                            <td><button id="toggleButton">비공개</button></td>
-                        </tr>
-                        <tr>
-                            <td><a href="">오늘의 기록</a></td>
-                            <td>2023-09-09</td>
-                            <td><button id="toggleButton">공개</button></td>
-                        </tr>
-                    </table>
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>작성일</th>
+                                    <th>제목</th>
+                                    <th>공개여부</th>
+                                </tr>
+                            </thead>
+                            <tbody class="content">
+                            <th:block th:each="diary : ${diaryList}" th:if="${session.userNumber == diary.userNumber}">
+                                <tr>
+                                    <td th:text="${diary.diaryDate}"></td>
+                                    <td th:text="${diary.diaryTitle}"></td>
+                                    <td>
+                                        <span th:if="${diary.diaryOpen == '0'}">공개</span>
+                                        <span th:if="${diary.diaryOpen == '1'}">비공개</span>
+                                    </td>
+                                </tr>
+                            </th:block>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
                 <!-- main-content-list 종료합니다. -->
                 <!-- 페이징 처리가 들어가는 공간입니다. -->
