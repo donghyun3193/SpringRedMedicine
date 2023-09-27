@@ -57,4 +57,17 @@ public class UserService {
     //비밀번호 변경
     public void modifyPw(Long userNumber,String userPassword){ userMapper.updatePw(userNumber, userPassword);}
 
+    //아이디 찾기
+    public String findId(String userName, String userPhone){
+        String resultText ="";
+        String result =userMapper.selectUserId(userName,userPhone);
+
+         if(result == null){
+            resultText = "일치하는 회원정보가 없습니다.";
+        }else{
+             resultText = "회원님의 아이디는 " + result + " 입니다";
+         }
+        return resultText;
+    }
+
 }

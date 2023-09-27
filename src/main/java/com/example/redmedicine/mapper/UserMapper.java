@@ -28,5 +28,8 @@ public interface UserMapper {
     //비밀번호 변경
     public void updatePw(Long userNumber, String userPassword);
 
+    //아이디 찾기
+    public String selectUserId(String userName, String userPhone);
+
 
 }
