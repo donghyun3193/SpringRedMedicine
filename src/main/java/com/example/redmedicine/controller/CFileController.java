@@ -24,7 +24,7 @@ public class CFileController {
 
     @GetMapping("/imgList")
     public List<CFileDto> imgList(Long counselorNumber){
-        return cFileService.cFileList(counselorNumber);
+        return cFileService.findCFileList(counselorNumber);
     }
 
     @GetMapping("/display")

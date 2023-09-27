@@ -34,21 +34,13 @@ public class CFileService {
         cFileMapper.insert(cFileDto);
     }
 
-    //파일 리스트 조회
-    public List<CFileDto> cFileList(Long cFileNumber){
-        if (cFileNumber == null) {
-            throw new IllegalArgumentException("첨부파일 번호 누락");
-        }
-        return  cFileMapper.selectList(cFileNumber);
-    }
-
     //삭제
-    public void remove(Long cFileNumber){
-        if (cFileNumber == null) {
-            throw new IllegalArgumentException("첨부파일 번호 누락");
+    public void remove(Long counselorNumber){
+        if (counselorNumber == null) {
+            throw new IllegalArgumentException("게시물 번호 누락");
         }
 
-        List<CFileDto> cFileList = findCFileList(cFileNumber);
+        List<CFileDto> cFileList = findCFileList(counselorNumber);
 
         for(CFileDto file : cFileList){
             File target = new File(fileDir, file.getCFileRoute() + "/" + file.getCFileUuid() + "_" + file.getCFileName());
@@ -63,18 +55,18 @@ public class CFileService {
             }
         }
 
-        cFileMapper.delete(cFileNumber);
+        cFileMapper.delete(counselorNumber);
     }
 
     //파일리스트조회
-    public List<CFileDto> findCFileList(Long cFileNumber){
-        if (cFileNumber == null) {
-            throw new IllegalArgumentException("첨부파일 번호 누락!!");
+    public List<CFileDto> findCFileList(Long counselorNumber){
+        if (counselorNumber == null) {
+            throw new IllegalArgumentException("게시물 번호 누락!!");
         }
-        return cFileMapper.selectList(cFileNumber);
+        return cFileMapper.selectList(counselorNumber);
     }
 
-
+    @Transactional
     //    파일 저장 처리
     public CFileDto saveFile(MultipartFile file) throws IOException {
 //        사용자가 올린 파일 이름(확장자를 포함)
@@ -133,7 +125,6 @@ public class CFileService {
             register(cFileDto);
         }
     }
-
 
     private String getUploadPath(){
         return new SimpleDateFormat("yyyy/MM/dd").format(new Date());

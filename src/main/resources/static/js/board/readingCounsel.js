@@ -19,7 +19,7 @@ $('#remove-button').on('click', function () {
 
 
 
-//detail페이지 이미지 띄우기 처리
+// detail페이지 이미지 띄우기 처리
 displayAjax();
 
 function displayAjax(){
@@ -31,13 +31,13 @@ function displayAjax(){
         data : {counselorNumber : counselorNumber},
         success : function (cFileList) {
             let text = '';
-
+            console.log(cFileList);
             cFileList.forEach(file => {
-                // console.log(file);
-                let cFileName = file.cFileRoute + '/' + file.cFileUuid + '_' + file.cFileName;
-
-                text += `<img src="/cFiles/display?cFileName=${cFileName}" data-number=${file.cFileNumber} />`;
-
+                let cFileName = file.cfileRoute + '/' + file.cfileUuid + '_' + file.cfileName;
+                console.log(cFileName);
+                text += `<img src="/cFiles/display?cFileName=${cFileName}" data-number=${file.cfileNumber} />`;
+                // <img src="/cFiles/display?cFileName=undefined/undefined_undefined" data-number="undefined">
+                console.log(file);
             });
 
             $('.post-images').html(text);

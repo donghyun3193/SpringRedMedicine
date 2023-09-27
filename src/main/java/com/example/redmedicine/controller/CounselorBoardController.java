@@ -73,11 +73,19 @@ public class CounselorBoardController {
     public RedirectView boardWrite(CounselorDto counselorDto, HttpServletRequest req,
                                    RedirectAttributes redirectAttributes,
                                    @RequestParam("counselorFile") List<MultipartFile> files){
+
+        log.info("===============================", files.toString());
+
         Long userNumber = (Long)req.getSession().getAttribute("userNumber");//세션을 통해서 userNumber를 받겠다
+
         counselorDto.setUserNumber(userNumber);//받은 userNumber를 통해서 counselorDto에 저장하겠다
+
         counselorService.registerAndFileProc(counselorDto, files);
+
         Long counselorNumber = counselorDto.getCounselorNumber();
-        redirectAttributes.addFlashAttribute("counselor", counselorNumber);
+
+        redirectAttributes.addFlashAttribute("counselorNumber", counselorNumber);
+
         return new RedirectView("/board/counselBoard");
     }
 
@@ -88,13 +96,17 @@ public class CounselorBoardController {
         counselorService.remove(counselorNumber);
         return new RedirectView("/board/counselBoard");
     }
+
     @PostMapping("/modifyCounsel")//수정 후 저장위해서 post방식!
     public RedirectView modify(CounselorDto counselorDto, RedirectAttributes redirectAttributes,
+                               HttpServletRequest req,
                                @RequestParam("counselorFile")List<MultipartFile> files){
+
         log.info("===============================", files.toString());
+
         counselorService.modify(counselorDto, files);//리다이렉트뷰를 사용해서 detail로 부터 정보를 받아와 날짜 작성자 등등
 
-        redirectAttributes.addAttribute("counselor", counselorDto.getCounselorNumber());
+        redirectAttributes.addAttribute("counselorNumber", counselorDto.getCounselorNumber());
 
         return new RedirectView("/board/counselBoard");//리다이렉트시 요청한 정보 날라가니 쿼리스트링을 통해서 받아와야지!
     }
