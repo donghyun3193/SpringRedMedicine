@@ -423,12 +423,14 @@ a{
 
 /*첨부파일 이미지 설정*/
 .post-images {
+    width: 1000px;
+    height: auto;
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
 }
 
 .post-images img {
-    max-width: 23%;
+    max-width: 50%;
     border-radius: 5px;
 }

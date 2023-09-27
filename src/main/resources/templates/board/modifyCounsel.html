@@ -27,7 +27,7 @@
                     <div>상담 게시글 수정</div>
                 </div>
                 <div class="main-content-list">
-                    <form action="/board/modifyCounsel" method="post"><!--post방식의 컨트롤러에 접속-->
+                    <form action="/board/writingCounsel" method="post" enctype="multipart/form-data"><!--post방식의 컨트롤러에 접속-->
                         <input type="hidden" th:value="${counselor.counselorNumber}" name="counselorNumber"/>
                         <table>
                             <tr class="content-name">
@@ -45,20 +45,29 @@
                                 <td><textarea name="counselorContent" id="counselorContent" required
                                               th:text="${counselor.counselorContent}"></textarea></td>
                             </tr>
-                            <!-- <tr class="addfile">
+                            <tr class="addfile">
                                 <th rowspan="2">첨부파일</th>
-                                <td colspan="2"><span>'png','gif','jpg','jpeg'파일만 업로드가 가능합니다.</span></td>
                             </tr>
                             <tr class="addfile">
-                                <td><input type="file" name="" id=""></td>
-                            </tr>
-                            <tr class="private">
-                                <th>공개여부</th>
-                                <td>
-                                    <input type="radio" name="private" id="">공개
-                                    <input type="radio" name="private" id="">비공개
+                                <td class="form-group">
+                                    <ul class="file-wrap">
+                                        <li>
+                                            <input type="file" id="post-image" name="counselorFile" accept="image/*" multiple />
+                                        </li>
+                                        <li class="img-list"></li>
+                                        <li class="img-list"></li>
+                                        <li class="img-list"></li>
+                                        <li class="img-list"></li>
+                                    </ul>
                                 </td>
-                            </tr> -->
+                            </tr>
+<!--                            <tr class="private">-->
+<!--                                <th>공개여부</th>-->
+<!--                                <td>-->
+<!--                                    <input type="radio" name="private" id="">공개-->
+<!--                                    <input type="radio" name="private" id="">비공개-->
+<!--                                </td>-->
+<!--                            </tr>-->
                         </table>
                         <div class="buttons">
                             <button type="submit" id="main-buttons">수정</button>
@@ -72,5 +81,7 @@
 <!-- 후터 시작-->
 <footer class="footer" th:replace="fragments/footer :: footer"></footer>
 <!-- 후터 끝-->
+<script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+<script src="/js/board/writingCounsel.js"></script>
 </body>
 </html>
