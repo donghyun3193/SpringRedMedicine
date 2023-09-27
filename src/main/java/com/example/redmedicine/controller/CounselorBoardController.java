@@ -9,6 +9,7 @@ import com.example.redmedicine.domain.vo.UserVo;
 import com.example.redmedicine.service.CounselorService;
 import com.example.redmedicine.service.UserService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,6 +26,7 @@ import java.util.List;
 @Controller
 @RequestMapping("/board/*")
 @RequiredArgsConstructor
+@Slf4j
 public class CounselorBoardController {
     private final CounselorService counselorService;
     private final UserService userService;
@@ -65,27 +67,32 @@ public class CounselorBoardController {
         return userNumber == null ? "user/login":"board/writingCounsel";
     }
 
+
+
     @PostMapping("/writingCounsel")
     public RedirectView boardWrite(CounselorDto counselorDto, HttpServletRequest req,
                                    RedirectAttributes redirectAttributes,
                                    @RequestParam("counselorFile") List<MultipartFile> files){
-        Long userNumber = (Long)req.getSession().getAttribute("userNumber");
-        counselorDto.setUserNumber(userNumber);
+        Long userNumber = (Long)req.getSession().getAttribute("userNumber");//세션을 통해서 userNumber를 받겠다
+        counselorDto.setUserNumber(userNumber);//받은 userNumber를 통해서 counselorDto에 저장하겠다
         counselorService.registerAndFileProc(counselorDto, files);
-
         Long counselorNumber = counselorDto.getCounselorNumber();
         redirectAttributes.addFlashAttribute("counselor", counselorNumber);
-
         return new RedirectView("/board/counselBoard");
     }
+
+
+
     @GetMapping("/removeCounsel")
     public RedirectView remove(Long counselorNumber){
         counselorService.remove(counselorNumber);
         return new RedirectView("/board/counselBoard");
     }
     @PostMapping("/modifyCounsel")//수정 후 저장위해서 post방식!
-    public RedirectView modify(CounselorDto counselorDto, RedirectAttributes redirectAttributes){
-        counselorService.modify(counselorDto);//리다이렉트뷰를 사용해서 detail로 부터 정보를 받아와 날짜 작성자 등등
+    public RedirectView modify(CounselorDto counselorDto, RedirectAttributes redirectAttributes,
+                               @RequestParam("counselorFile")List<MultipartFile> files){
+        log.info("===============================", files.toString());
+        counselorService.modify(counselorDto, files);//리다이렉트뷰를 사용해서 detail로 부터 정보를 받아와 날짜 작성자 등등
 
         redirectAttributes.addAttribute("counselor", counselorDto.getCounselorNumber());
 

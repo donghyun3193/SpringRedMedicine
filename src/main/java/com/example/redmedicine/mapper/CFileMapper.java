@@ -9,11 +9,11 @@ import java.util.List;
 @Mapper
 public interface CFileMapper {
     //삽입
-    public void insertF(CFileDto cFileDto);
+    public void insert(CFileDto cFileDto);
     //삭제
     public void delete(Long cFileNumber);
     //파일리스트조회
-    public List<CFileDto> selectListF(Long cFileNumber);
+    public List<CFileDto> selectList(Long cFileNumber);
     //전날 파일 목록
-    public List<CFileDto> selectOldListF();
+    public List<CFileDto> selectOldList();
 }

@@ -26,7 +26,7 @@
                     <div>상담게시판</div>
                 </div>
                 <div class="main-content-list">
-                    <form action="/board/writingCounsel" method="post">
+                    <form action="/board/writingCounsel" method="post" enctype="multipart/form-data">
 <!--                        <input type="hidden" th:value="${user.userNumber}" name="userNumber"/>-->
                         <table>
                             <tr class="content-name">
@@ -49,7 +49,7 @@
                                 <td class="form-group">
                                     <ul class="file-wrap">
                                         <li>
-                                            <input type="file" id="post-image" name="boardFile" accept="image/*" multiple />
+                                            <input type="file" id="post-image" name="counselorFile" accept="image/*" multiple />
                                         </li>
                                         <li class="img-list"></li>
                                         <li class="img-list"></li>
