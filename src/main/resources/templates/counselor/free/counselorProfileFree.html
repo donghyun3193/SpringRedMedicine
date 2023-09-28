@@ -59,10 +59,11 @@
                     <img src="/img/question-mark.png" alt="물음표" style="width: 17px; height: 17px; margin-top: 14px; margin-left: 2px; cursor: pointer;">
                 </button>
             </div>
-            <div>
-<!--                <button class="profile-button" type="submit" >수정</button>-->
-                <button class="profile-button" type="submit" >삭제</button>
-                <button class="profile-button" type="submit" onclick="reservation()">예약</button>
+            <div style="display: flex;">
+                <div th:if="${session.userName == profile.userName}">
+                    <button style="margin-right: 10px" class="profile-button" type="button" th:data-number="${profile.profileNumber}">삭제</button>
+                </div>
+                <button class="profile-button" type="button" onclick="reservation()">예약</button>
             </div>
         </div>
         <div class="profile-careerbox">
@@ -124,10 +125,10 @@
                     </div>
                     <div class="reply-btn-box">
                       <span class="reply-btns"></span>
-                      <div class="reply-btns__box none">
+                      <div class="btn-wra">
                           <th:block th:if="${session.userNumber == profile.userNumber}">
-                              <button type="button" class="reply-modify-btn" th:data-number="${profile.profileNumber}">수정</button>
-                              <button type="button" class="reply-remove-btn" th:data-number="${profile.profileNumber}">삭제</button>
+                              <button type="button" class="btn-modify" th:data-number="${profile.profileNumber}">수정</button>
+                              <button type="button" class="btn-remove" th:data-number="${profile.profileNumber}">삭제</button>
                           </th:block>
                       </div>
                     </div>
@@ -139,19 +140,61 @@
 </main>
 
 <!-- councelorProfile 종료 -->
+<input type="hidden" th:value="${profile.profileNumber}" class="profile-num">
 <!-- =====풋터 시작===== -->
 <footer class="footer" th:replace="fragments/footer :: footer"></footer>
 <!-- =====풋터 종료====== -->
 <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
-<script src="/js/counselor/free/counselorProfileFree.js"></script>
-
-
 <script th:inline="javascript"> // 타임리프 문법을 자바스크립트에서 사용하기 위한 설정
 let loginNumber = [[${session.userNumber}]]; // 타임리프 문법은 [] 2개로 감싸줘야 한다.
 </script>
-
 <script type="module" src="/js/counselor/free/counselorProfileFree.js"></script>
+<script>
+    // JavaScript 함수를 정의하여 페이지 이동을 처리
+    function reservation() {
+        // 페이지 이동을 원하는 URL로 변경
+        window.location.href = '/counselor/book/bookingDetails'; // 이동하려는 URL을 여기에 입력
+    }
+    /*모달창 시작합니다.*/
+    // 모달 열기
+    function openModal() {
+        let modal = document.getElementById("myModal");
+        modal.style.display = "block";
+    }
 
+    // 모달 닫기
+    function closeModal() {
+        let modal = document.getElementById("myModal");
+        modal.style.display = "none";
+    }
+
+    // 모달 닫기 버튼에 이벤트 리스너 추가
+    let closeBtn = document.querySelector(".close");
+    closeBtn.addEventListener("click", closeModal);
+
+    // 모달 열기 함수 호출 (예를 들어, 버튼을 클릭할 때 호출)
+    // openModal();
+
+    /**session 모달창 입니다. */
+// 모달 열기
+    function openSessionModal() {
+        let sModal = document.getElementById("sessionModal");
+        sModal.style.display = "block";
+    }
+
+    // 모달 닫기
+    function closeSessionModal() {
+        let sModal = document.getElementById("sessionModal");
+        sModal.style.display = "none";
+    }
+
+    // 모달 닫기 버튼에 이벤트 리스너 추가
+    let closeSBtn = document.querySelector(".sModal-close");
+    closeSBtn.addEventListener("click", closeSessionModal);
+
+    // 모달 열기 함수 호출 (예를 들어, 버튼을 클릭할 때 호출)
+    // openModal();
+</script>
 
 
 </body>

@@ -62,14 +62,13 @@
                 </button>
             </div>
             <div>
-<!--                <button class="btn-modify" type="submit" th:data-number="${profile.profileNumber}">수정</button>-->
-<!--                <button class="btn-remove" type="submit"  th:data-number="${profile.profileNumber}">삭제</button>-->
 
-                <th:block th:if="${session.userNumber == profile.userNumber}">
-                <button class="profile-button" type="button" th:data-number="${profile.profileNumber}">삭제</button>
-                </th:block>
+            <div style="display: flex;">
+                <div th:if="${session.userName == profile.userName}">
+                    <button style="margin-right: 10px" class="profile-rm-button" type="button" th:data-number="${profile.profileNumber}">삭제</button>
+                </div>
                 <button class="profile-button" type="button" onclick="reservation()">예약</button>
-
+            </div>
             </div>
         </div>
         <div class="profile-careerbox">
@@ -115,7 +114,7 @@
                 <div class="reply-wrap__box">
                   <div class="reply-content__box">
                     <div class="reply-writer" th:text="${userName}"></div>
-                    <textarea name="pfCommentContent" id="reply-content" cols="30" rows="10"></textarea>
+                    <textarea name="pfCommentContent" id="reply-content" cols="30" rows="10" style="resize: none;"></textarea>
                   </div>
                   <div class="reply-btn-wrap">
                     <button type="button" class="btn-reply">작성 완료</button>
@@ -128,7 +127,7 @@
                   <div class="reply">
                     <div class="reply-box">
                       <div class="reply-box__writer" th:text="${userName}"></div>
-                      <div class="reply-box__content">안녕하세요!</div>
+                      <div class="reply-box__content"></div>
                     </div>
                     <div class="reply-btn-box">
                       <span class="reply-btns"></span>
@@ -151,12 +150,10 @@
 <!-- =====풋터 시작===== -->
 <footer class="footer" th:replace="fragments/footer :: footer"></footer>
 <!-- =====풋터 종료====== -->
-
 <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
 <script th:inline="javascript"> // 타임리프 문법을 자바스크립트에서 사용하기 위한 설정
 let loginNumber = [[${session.userNumber}]]; // 타임리프 문법은 [] 2개로 감싸줘야 한다.
 </script>
-
 <script type="module" src="/js/counselor/pay/counselorProfilePay.js"></script>
 <script>
     // JavaScript 함수를 정의하여 페이지 이동을 처리

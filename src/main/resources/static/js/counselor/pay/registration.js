@@ -1,13 +1,13 @@
-function call_confirm1(){
-    if(confirm("등록을 취소 하시겠습니까?")){
-        alert("등록이 취소 되었습니다.");
-    }else{
-
-    }
-}
-function call_confirm2(){
-    if(confirm("등록 하시겠습니까?")){
-        alert("등록 되었습니다.");
+// function call_confirm1(){
+//     if(confirm("등록을 취소 하시겠습니까?")){
+//         alert("등록이 취소 되었습니다.");
+//     }else{
+//         window.location.href = '/counselor/pay/payMate'
+//     }
+// }
+function call_confirm(){
+    if(confirm("사진을 넣어주세요!")){
+        window.location.href = '/counselor/pay/registration'
     }else{
 
     }
@@ -24,14 +24,24 @@ $('.btn').on('click', function() {
     $('.frm').submit();
 })
 
-function makeCheck1(){
+// 'makeCheck1' 함수 정의
+function makeCheck1() {
+    // 빈 배열 'result'를 생성하여 선택된 체크박스의 값을 저장할 준비를 합니다.
     let result = [];
+
+    // 선택된 클래스 'ch'를 가진 체크박스 요소들을 찾아서 각각에 대해 다음 동작을 수행합니다.
     $('.ch:checked').each((i, ele) => {
+        // 'ele'은 현재 처리 중인 체크박스 요소를 나타냅니다.
+
+        // 선택된 체크박스 요소의 값을 가져와서 'result' 배열에 추가합니다.
         result.push($(ele).val());
     });
 
+    // 선택된 값들을 쉼표와 공백으로 구분된 문자열로 변환하고,
+    // 이 문자열을 클래스 'num'을 가진 입력란에 설정합니다.
     $('.num').val(result.join(', '));
 }
+
 
 
 function makeCheck2(){

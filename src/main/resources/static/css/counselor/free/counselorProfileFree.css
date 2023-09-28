@@ -17,7 +17,6 @@
     font-weight: normal;
     font-style: normal;
 }
-
 *{
     margin: 0;
     padding: 0;
@@ -26,6 +25,7 @@ a{
     text-decoration: none;
     color: black;
 }
+/*공통으로 사용되는 CSS 종료*/
 .header{
     width: 100vw;
     display: flex;
@@ -103,7 +103,7 @@ a{
     position: absolute;
     display: none;
     width: 100px;
-    height: 110px;
+    height: 130px;
     background-color: #f9f9f9;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 
@@ -132,11 +132,10 @@ a{
     height: 350px;
     background-size: cover;
     background-position: center;
-    transition: 0.5s;
+    /*transition: 0.5s;*/
 
     border-radius: 12px;
 }
-
 /*===footer가 시작되는 CSS===*/
 .footer{
     width: 100vw;
@@ -245,6 +244,7 @@ a{
 .profile-img{
     width: 600px;
     height: 340px;
+    /* border-radius: 5px; */
 }
 .profile-namebox{
     width: 600px;
@@ -269,6 +269,47 @@ a{
     border-radius: 5px;
     cursor: pointer;
 }
+.profile-rm-button{
+    width: 72px;
+    height: 35px;
+    background-color: orange;
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.modify-box{
+    display: flex;
+}
+
+.modify-content-btn{
+    font-size: 12px;
+    color: white;
+    text-decoration: none;
+    /*margin-left: 20px;*/
+    border: 1px solid #00c7ae;
+    padding: 7px;
+    cursor: pointer;
+    height: 42px;
+    background-color: #00c7ae;
+}
+.modify-content{
+    width: 400px;
+    height: 40px;
+    resize: none;
+    background-color: #f7f7f7;
+    border: 1px solid #ccc;
+    border-right: none;
+    border-bottom: none;
+    font-size: 17px;
+
+    white-space: break-spaces;
+}
+.modify-content-btn:hover {
+    background-color: #00a792;
+}
 .profile-careerbox{
     width: 600px;
     height: 110px;
@@ -287,24 +328,18 @@ a{
     justify-content: center;
     align-items: center;
 }
-.createLine{
-    width: 2px;
-    height: 90px;
+.profile-career{
     border-left: 1px solid #c0c0c0;
     border-right: 1px solid #c0c0c0;
 }
-/* .profile-career{
-    border-left: 1px solid #c0c0c0;
-    border-right: 1px solid #c0c0c0;
-} */
-/* .profile-price{
+.profile-price{
     width: 195px;
     height: 90px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-} */
+}
 .profile-sessionbox{
     width: 600px;
     height: 40px;
@@ -333,6 +368,10 @@ a{
     height: auto;
     display: block;
 }
+
+
+
+
 /* 강사님의 리플입니다. */
 /* ======== 리플 스타일 ======= */
 
@@ -375,15 +414,15 @@ a{
     color: white;
     text-decoration: none;
     margin-left: 20px;
-    border: 1px solid rgb(8, 20, 73);
+    border: 1px solid #00c7ae;
     padding: 7px;
     cursor: pointer;
     height: 40px;
-    background-color: rgb(8, 20, 73);
+    background-color: #00c7ae;
 }
 
 .btn-reply:hover {
-    background-color: rgb(8, 20, 73);
+    background-color: #00a792;
 }
 
 /* 댓글 목록 스타일 */
@@ -554,3 +593,41 @@ a{
 }
 
 /* 모달창 종료 */
+
+.btn-wrap{
+    display: flex;
+    justify-content: right;
+}
+
+
+
+/* 버튼 스타일 */
+.btn-modify,
+.btn-remove,
+.btn-back {
+    font-size: 16px;
+    color: #00c7ae;
+    text-decoration: none;
+    margin-left: 20px;
+    border: 1px solid #00c7ae;
+    border-radius: 5px;
+    padding: 7px;
+    cursor: pointer;
+}
+
+.btn-modify:hover,
+.btn-remove:hover,
+.btn-back:hover {
+    background-color: #00c7ae;
+    color: white;
+}
+
+
+.reply-time{
+    font-size: 12px;
+    color: #777777;
+    min-width: 80px;
+}
+.councel-total-content{
+    white-space: break-spaces;
+}
