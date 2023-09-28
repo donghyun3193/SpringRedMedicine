@@ -30,15 +30,25 @@ public class ProfileService {
         profileMapper.insertProfileFree(profileDto);
     }
 
-    //상담사 삭제
-    public void remove(Long profileNumber){
+    //유료 상담사 삭제
+    public void removeProfilePay(Long profileNumber){
         if (profileNumber == null) {
             throw new IllegalArgumentException("상담사 등록 번호 누락!");
         }
         pfFileService.remove(profileNumber);
-        profileMapper.delete(profileNumber);
-
+        profileMapper.deleteProfilePay(profileNumber);
     }
+    //무료 상담사 삭제
+    public void removeProfileFree(Long profileNumber){
+        if (profileNumber == null) {
+            throw new IllegalArgumentException("상담사 등록 번호 누락!");
+        }
+        pfFileService.remove(profileNumber);
+        profileMapper.deleteProfileFree(profileNumber);
+    }
+
+
+
 
     //유료상담사목록
     public List<ProfileVo> findProfilePayNumber(){

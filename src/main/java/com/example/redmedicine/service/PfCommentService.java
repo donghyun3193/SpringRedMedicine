@@ -28,7 +28,7 @@ public class PfCommentService {
         return pfCommentMapper.selectPfCommentList(profileNumber);
     }
     //    단건 조회
-    public PfCommentVo selectPfComment(Long pfCommentNumber){
+    public PfCommentVo findPfComment(Long pfCommentNumber){
         if (pfCommentNumber == null) {
             throw new IllegalArgumentException("게시물 번호 누락!!");
         }

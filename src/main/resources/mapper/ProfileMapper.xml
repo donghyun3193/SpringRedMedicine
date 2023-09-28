@@ -17,7 +17,11 @@
         values (#{profileNumber},#{userNumber},#{profileSuper},#{profileCareer},#{profileTarget},#{profileArea},#{profileDay},#{profileTime},#{profileContent})
     </insert>
 
-    <delete id="delete">
+    <delete id="deleteProfilePay">
+        DELETE FROM TBL_PROFILE
+        WHERE PROFILE_NUMBER = #{profileNumber}
+    </delete>
+    <delete id="deleteProfileFree">
         DELETE FROM TBL_PROFILE
         WHERE PROFILE_NUMBER = #{profileNumber}
     </delete>

@@ -42,6 +42,7 @@ public class ProfileController {
         Long userNumber = (Long)req.getSession().getAttribute("userNumber");
 
         profileDto.setUserNumber(userNumber);
+
         profileService.profilePayRegisterAndFileProc(profileDto, files);
         //호출하여 profileDto와 files를 매개변수로 전달하여 유료상담사 등록 및 파일 처리를 수행
 
@@ -110,6 +111,7 @@ public class ProfileController {
         model.addAttribute("userName",profileService.findUserName(userNumber));
         ProfileVo profileVo = profileService.findProfilePay(profileNumber);
         model.addAttribute("profile", profileVo);
+        model.addAttribute("user",profileVo);
 
         return "counselor/pay/counselorProfilePay";
     }
@@ -129,17 +131,21 @@ public class ProfileController {
         return "counselor/free/counselorProfileFree";
     }
 
-    //상담사 등록 페이지 삭제
-    @GetMapping("/remove")
-    public RedirectView remove(Long profileNumber) {
-        ProfileVo profile = profileService.findProfilePay(profileNumber);
-        if (profile.getProfileFee() == null) {
-            return new RedirectView("/counselor/free/freeMate");
-            //삭제시 비용이 무료면 무료 상담 페이지 로 이동
-        } else {
+    //유료 상담사 등록 페이지 삭제
+    @GetMapping("/pay/counselorProfilePay/remove")
+    public RedirectView removeProfilePay(Long profileNumber) {
+        profileService.removeProfilePay(profileNumber);
             return new RedirectView("/counselor/pay/payMate");
             //삭제시 비용이 유료면 유료 상담 페이지 로 이동
-        }
+
+    }
+
+    //무료상담사 등록 페이지 삭제
+    @GetMapping("/free/counselorProfileFree/remove")
+    public RedirectView removeProfileFree(Long profileNumber) {
+       profileService.removeProfileFree(profileNumber);
+            return new RedirectView("/counselor/free/freeMate");
+            //삭제시 비용이 무료면 무료 상담 페이지 로 이동
     }
 
     //상담사 예약 페이지로 이동
