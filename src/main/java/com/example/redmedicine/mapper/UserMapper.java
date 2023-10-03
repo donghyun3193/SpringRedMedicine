@@ -26,7 +26,7 @@ public interface UserMapper {
     public void update(UserDto userDto);
 
     //비밀번호 변경
-    public void updatePw(Long userNumber, String userPassword);
+    public void updatePw(String userName, String userPhone, String newPassword);
 
     //아이디 찾기
     public String selectUserId(String userName, String userPhone);

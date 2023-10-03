@@ -55,7 +55,7 @@ public class UserService {
     }
 
     //비밀번호 변경
-    public void modifyPw(Long userNumber,String userPassword){ userMapper.updatePw(userNumber, userPassword);}
+    public void modifyPw(String userName, String userPhone, String newPassword){ userMapper.updatePw(userName, userPhone, newPassword);}
 
     //아이디 찾기
     public String findId(String userName, String userPhone){

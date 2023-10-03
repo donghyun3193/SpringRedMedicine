@@ -111,13 +111,8 @@ public class UserController {
 
     //비밀번호 변경 페이지
     @GetMapping("/changePw")
-    public String showChangePwPage(HttpServletRequest req){
-        Long userNumber = (Long)req.getSession().getAttribute("userNumber");
+    public String showChangePwPage(){
         return "user/changePw";
     }
 
-    @PostMapping("/changePw")
-    public void modifyPw(Long userNumber, String userPassword){
-        userService.modifyPw(userNumber,userPassword);
-    }
 }
