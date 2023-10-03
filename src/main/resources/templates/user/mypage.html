@@ -20,7 +20,7 @@
         <div class="main-content-contaniner">
             <div class="main-content-title">회원정보 수정</div>
 
-            <form class="content-box" action="/user/mypage" method="post">
+            <form class="content-box" action="/user/mypage" method="post" name="updateForm">
                 <input type="hidden" th:value="${user.userNumber}" name="userNumber"/>
                 <!--↑히든으로 숨겨서 컨트롤러의 Dto에 꽂히도록!<-컨트롤러에서 왔음-->
                 <div class="main-container-section1">
@@ -43,18 +43,18 @@
                            id="userEmail" name="userEmail" required
                            th:value="${user.userEmail}"><br>
                     <div class="input-name">휴대전화</div>
-
                     <div>
                         <input class="inputphone" type="text" placeholder="휴대폰번호"
-                               id="userPhone" name="userPhone" required>
-                        <button class="btn-auth" type="button">전송</button>
+                               id="userPhone" name="userPhone" readonly
+                               th:value="${user.userPhone}">
+<!--                        <button class="btn-auth" type="button">전송</button>-->
                     </div><br>
-                    <div class="main-c-s-d1">
-                        <div class="main-time" id="time"></div>
-                    </div>
+<!--                    <div class="main-c-s-d1">-->
+<!--                        <div class="main-time" id="time"></div>-->
+<!--                    </div>-->
                     <div>
-                        <!--                            <input class="phone-auth" type="text" placeholder="인증번호입력" >-->
-                        <!--                            <button class="btn-auth" type="submit">인증</button>-->
+<!--                        <input class="phone-auth" type="text" placeholder="인증번호입력" >-->
+<!--                        <button class="btn-auth" type="submit">인증</button>-->
                     </div><br>
 
                     <div class="input-name">새로운 생년월일</div><br>
@@ -73,15 +73,19 @@
                     </div><br>
                     <div class="input-name">성별</div>
                     <div class="radio-gender">
-                        <input type='radio' name='userGender' value='M'
-                               id="gender-m" required/>남
-                        <input type='radio' name='userGender' value='F'
-                               id="gender-f" margin-left="10px" required/>여
+                        <label for="gender-m">
+                            <input type='radio' name='userGender' value='M'
+                                   id="gender-m" required/>남
+                        </label>
+                        <label for="gender-f">
+                            <input type='radio' name='userGender' value='F'
+                                   id="gender-f" required/>여
+                        </label>
                     </div>
                 </div>
                 <div class="main-container-section3">
                     <button class="btn-join" type="button">취소</button>
-                    <button class="btn-join-update" type="submit">수정</button>
+                    <button class="btn-join-update" type="button" onclick="Validation()">수정</button>
                     <!-- '수정'버튼을 클릭했을 때의 경로를 join과 마찬가지로 controller를 통해서 조정-->
                 </div>
             </form>

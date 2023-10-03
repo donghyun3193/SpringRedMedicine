@@ -19,7 +19,7 @@
             <div class="main-content-contaniner">
                 <div class="main-content-title">회원가입</div>
                 
-                <form class="content-box" action="/user/join" method="post" >
+                <form class="content-box" action="/user/join" method="post" name="joinForm">
                     <div class="main-container-section1">
                         <div class="input-name">아이디</div>
                         <input class="inputid" type="text" placeholder="아이디"
@@ -71,17 +71,24 @@
                         </div><br>
                         <div class="input-name">성별</div>
                         <div class="radio-gender">
-                            <input type='radio' name='userGender' value='M'
-                            id="gender-m" required/>남
-                            <input type='radio' name='userGender' value='F'
-                            id="gender-f" required/>여
+                            <label for="gender-m">
+                                <input type='radio' name='userGender' value='M'
+                                id="gender-m" required cursor="point"/>남
+                            </label>
+                            <label for="gender-f">
+                                <input type='radio' name='userGender' value='F'
+                                id="gender-f" required cursor="point"/>여
+                            </label>
                         </div>
+
                     </div>
                     <div class="main-container-section2"><br> 
                         <div class="input-name2">약관 동의</div>
                             <div class="checkbox-agree0">
-                            <input type="checkbox" value="false" class="section2-checkbox">
-                            <p class="span-p">전체동의</p><br><br>
+                                <label for="total-check">
+                                    <input type="checkbox" value="false" class="section2-checkbox" id="total-check" cursor="point">
+                                    <p class="span-p">전체동의</p><br><br>
+                                </label>
                             </div>
 
 <!-- 모달창1 시작 -->
@@ -92,7 +99,7 @@
                                 </div>
                             </section>
                             <div class="checkbox-agree">
-                                <input type="checkbox" value="false" class="main-checkbox" required>
+                                <input type="checkbox" value="false" class="main-checkbox" name="check-terms" required>
                                 <button type="button" class="btn-open-popup">이용약관<p class="span-p">(필수)</p></button>
                             </div>
                             
@@ -104,14 +111,15 @@
                                 </div>
                             </section>
                             <div class="checkbox-agree">
-                                <input type="checkbox" value="false" class="main-checkbox" required>
+                                <input type="checkbox" value="false" class="main-checkbox" name="check-privacy" required>
                                 <button type="button" class="btn-open-popup2">개인정보수집 및 이용동의<p class="span-p">(필수)</p></button>
                             </div>
                             <!-- 모달창2 끝-->
                     </div>
                     
                     <div class="main-container-section3">
-                        <button class="btn-join" type="submit">회원가입</button>
+<!--                        <button class="btn-join" type="submit" onclick="Validation()">회원가입</button>-->
+                        <button class="btn-join" type="button" onclick="Validation()" cursor="point">회원가입</button>
                     </div>
                     <div class="main-container-section4">
                         <a href="/user/login">이미 아이디가 있으신가요? <u>로그인</u></a>
