@@ -5,16 +5,16 @@ let cate = $('.cate').val();
 myModule(cate, keyword, showResult);
 
 //삭제 버튼
-$('.td-button').on('click', function () {
-
+$('.content').on('click', '.td-button', function () {
     if (confirm("정말로 탈퇴 시키겠습니까?")) {
         alert("탈퇴 처리 되었습니다!");
         let userNumber = $(this).data('number');
         window.location.href = '/admin/remove?userNumber=' + userNumber;
     } else {
-
     }
 });
+
+
 //검색 기능
 $('.btn-search').on('click', function () {
     page = 1;
@@ -39,11 +39,15 @@ function showResult(result) {
 									</span>
                 				</td>
                                 <td>
-                                    <button class="td-button" type="button" ${r.userNumber}>탈퇴</button>
+                                    <button class="td-button" type="button" data-number="${r.userNumber}">탈퇴</button>
                                 </td>
-                            </tr
+                            </tr>
 			`;
     });
+
+
+
+
     $('.content').html(text);
     let pageVo = result.pageVo;
     let block = '';

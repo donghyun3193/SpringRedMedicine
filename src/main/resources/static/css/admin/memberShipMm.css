@@ -270,7 +270,9 @@ a{
 .search-s{
   font-weight: bold;
 }
-
+.btn-search{
+ cursor: pointer;
+}
 
 .main-box3-searchbox select , .main-box3-searchbox input{
   margin: 0 10px;
@@ -340,6 +342,7 @@ a{
   color: white;
   font-weight: bold;
   border-radius: 4px;
+  cursor: pointer;
 }
 
 .table-container {

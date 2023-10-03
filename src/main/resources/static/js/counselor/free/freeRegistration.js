@@ -71,3 +71,29 @@ function checkLength(files, num) {
     }
     return files;
 }
+
+// 요일 선택 함수
+function choiceDay(checkbox) {
+    const day = checkbox.getAttribute('data-day');
+    const timeButtons = document.querySelectorAll('.btn-time');
+
+    if (checkbox.checked) {
+        timeButtons.forEach(button => {
+            if (!button.getAttribute('data-time').includes(day)) {
+                button.disabled = true;
+            }
+        });
+    } else {
+        timeButtons.forEach(button => {
+            button.disabled = false;
+        });
+    }
+}
+
+// 체크박스 상태 변화 감지
+const checkboxes = document.querySelectorAll('.ch2');
+checkboxes.forEach(checkbox => {
+    checkbox.addEventListener('change', () => {
+        choiceDay(checkbox);
+    });
+});

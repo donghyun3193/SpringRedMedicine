@@ -44,7 +44,7 @@
             <div class="article-container-community">
                 <div class="main-content-list">
                     <div class="table-wrap">
-                        <table>
+                        <table class="table-container">
                             <thead>
                                 <tr>
                                     <th>작성일</th>
@@ -58,8 +58,10 @@
                                     <td th:text="${diary.diaryDate}"></td>
                                     <td th:text="${diary.diaryTitle}"></td>
                                     <td>
-                                        <span th:if="${diary.diaryOpen == '0'}">공개</span>
-                                        <span th:if="${diary.diaryOpen == '1'}">비공개</span>
+                                        <button class="td-open" type="button">
+                                            <span th:if="${diary.diaryOpen == '0'}">공개</span>
+                                            <span th:if="${diary.diaryOpen == '1'}">비공개</span>
+                                        </button>
                                     </td>
                                 </tr>
                             </th:block>

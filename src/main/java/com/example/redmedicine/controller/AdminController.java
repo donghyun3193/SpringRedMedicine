@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.view.RedirectView;
 
+import javax.servlet.http.HttpServletRequest;
+
 @Controller
 @RequestMapping("/admin/*")
 @RequiredArgsConstructor
@@ -22,16 +24,21 @@ public class AdminController {
 
     // 회원정보 관리
     @GetMapping("/memberShipMm")
-    public String showMemberShipMm(Criteria criteria, Model model, SearchVo searchVo){
-        model.addAttribute("userList", adminService.findAll(criteria, searchVo));
-        model.addAttribute("pageInfo", new PageVo(adminService.getTotal(), criteria));
-        return "admin/memberShipMm";
+    public String showMemberShipMm(Criteria criteria, Model model, SearchVo searchVo, HttpServletRequest req) {
+        Long userNumber = (Long)req.getSession().getAttribute("userNumber");
+        if (userNumber != null && userNumber == 0) {
+            model.addAttribute("userList", adminService.findAll(criteria, searchVo));
+            model.addAttribute("pageInfo", new PageVo(adminService.getTotal(), criteria));
+            return "admin/memberShipMm";
+        } else {
+            return "error/404";
+        }
     }
 
 //    회원정보 삭제
     @GetMapping("/remove")
-    public RedirectView remove(Long userNumber){
-        adminService.remove(userNumber);
-        return new RedirectView("/admin/memberShipMm");
+    public String remove(Long userNumber){
+            adminService.remove(userNumber);
+            return "admin/memberShipMm";
     }
 }
