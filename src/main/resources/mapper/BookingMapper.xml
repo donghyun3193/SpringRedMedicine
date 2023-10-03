@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.redmedicine.mapper.BookingMapper">
+    <insert id="insert">
+        <selectKey keyProperty="bookNumber" order="BEFORE" resultType="long">
+            SELECT SEQ_BOOK.NEXTVAL FROM DUAL
+        </selectKey>
+        insert into TBL_BOOK (BOOK_NUMBER, USER_NUMBER, USER_C_NUMBER, BOOK_DATE, BOOK_TIME, BOOK_CONTENT)
+        VALUES (#{bookNumber}, #{userNumber},#{userCNumber}, #{bookDate}, #{bookTime}, #{bookContent})
+    </insert>
+</mapper>

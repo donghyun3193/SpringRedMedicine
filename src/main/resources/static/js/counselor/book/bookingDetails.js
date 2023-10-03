@@ -139,3 +139,32 @@ document.querySelector('.nextpage').addEventListener('click', function (event) {
         event.preventDefault(); // 링크의 기본 동작(페이지 이동)을 막음
     }
 });
+
+// "다음 단계" 링크 클릭 시 이벤트 핸들러
+document.querySelector('.btn-nextpage a').addEventListener('click', function (event) {
+    event.preventDefault();  // 기본 동작(링크 이동) 막기
+
+    // 다음 단계로 이동
+    window.location.href = this.getAttribute('href');
+});
+
+// 날짜를 클릭했을 때 선택 처리 및 비활성화 처리 추가
+function choiceDate(newDIV) {
+    if (document.querySelector('.choiceDay')) {
+        document.querySelector('.choiceDay').classList.remove('choiceDay');
+    }
+
+    if (!newDIV.classList.contains('disabled')) {
+        newDIV.classList.add('choiceDay');
+        disableOtherDates(newDIV);
+    }
+}
+
+function disableOtherDates(selectedDate) {
+    const dateCells = document.querySelectorAll('.Calendar td:not(.pastDay)');
+    dateCells.forEach(dateCell => {
+        if (dateCell !== selectedDate && !dateCell.classList.contains('disabled')) {
+            dateCell.classList.add('disabled');
+        }
+    });
+}

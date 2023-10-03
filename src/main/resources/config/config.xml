@@ -12,6 +12,7 @@
         <typeAlias type="com.example.redmedicine.domain.dto.PfCommentDto" alias="pfCommentDto"/>
         <typeAlias type="com.example.redmedicine.domain.dto.CounselorDto" alias="counselorDto"/>
         <typeAlias type="com.example.redmedicine.domain.dto.CFileDto" alias="cFileDto"/>
+        <typeAlias type="com.example.redmedicine.domain.dto.BookDto" alias="bookDto"/>
 
         <typeAlias type="com.example.redmedicine.domain.vo.PfCommentVo" alias="pfCommentVo"/>
         <typeAlias type="com.example.redmedicine.domain.vo.ProfileVo" alias="profileVo"/>
@@ -20,6 +21,7 @@
         <typeAlias type="com.example.redmedicine.domain.vo.UserVo" alias="userVo"/>
         <typeAlias type="com.example.redmedicine.domain.vo.CounselorVo" alias="counselorVo"/>
         <typeAlias type="com.example.redmedicine.domain.vo.DiaryVo" alias="diaryVo"/>
+        <typeAlias type="com.example.redmedicine.domain.vo.BookVo" alias="bookVo"/>
 
         <typeAlias type="com.example.redmedicine.domain.vo.Criteria" alias="criteria"/>
     </typeAliases>
