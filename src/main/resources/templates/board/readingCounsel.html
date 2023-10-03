@@ -59,48 +59,37 @@
             </div>
 <!--                            </form>-->
             <!--===댓글 시작합니다.===-->
-            <div class="reply-container">
-                <div class="reply-writing">
-                    <div class="reply-writerName">이지윤</div>
-                    <div class="reply-textarea">
-                        <textarea name="" id=""></textarea>
+            <div class="counsel-comment-box">
+                <div class="reply-wrap">
+                    <h3>댓글 작성</h3>
+                    <div class="reply-wrap__box">
+                        <div class="reply-content__box">
+                            <div class="reply-writer" th:text="${userName}"></div>
+                            <textarea name="cCommentContent" id="reply-content" cols="30" rows="10"></textarea>
+                        </div>
+                        <div class="reply-btn-wrap">
+                            <button type="button" class="btn-reply">작성 완료</button>
+                        </div>
                     </div>
-                    <div class="reply-button">
-                        <button><a href="" id="reply-button">등록</a></button>
-                    </div>
-                </div>
-                <div class="reply-reading">
-                    <div class="reply-reading-box">
-                        <div class="reply-name">유대훈</div>
-                        <div class="reply-date">2023-09-16 12:07</div>
-                        <div class="reply-content-and-menu">
-                            <div class="reply-content">댓글댓글댓글</div>
-                            <div class="reply-menu">
-                                <div class="reply-menu-img">
-                                    <img src="/img/menu (2).png" alt="">
-                                </div>
-                                <div class="reply-menu-contents">
-                                    <a href="" id="menu1">수정</a>
-                                    <a href="">삭제</a>
+                    <!-- 댓글 리스트 -->
+                    <div class="reply-list-wrap">
+                        <!-- 리플 예시 -->
+                        <div class="reply">
+                            <div class="reply-box">
+                                <div class="reply-box__writer" th:text="${userName}"></div>
+                                <div class="reply-box__content">내용</div>
+                            </div>
+                            <div class="reply-btn-box">
+                                <span class="reply-btns"></span>
+                                <div class="reply-btns__box none">
+                                    <th:block th:if="${session.userNumber == counselor.userNumber}">
+                                        <button type="button" class="reply-modify-btn" th:data-number="${counselor.counselorNumber}">수정</button>
+                                        <button type="button" class="reply-remove-btn" th:data-number="${counselor.counselorNumber}">삭제</button>
+                                    </th:block>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="reply-reading-box">
-                        <div class="reply-name">유대훈</div>
-                        <div class="reply-date">2023-09-16 12:07</div>
-                        <div class="reply-content-and-menu">
-                            <div class="reply-content">댓글댓글댓글</div>
-                            <div class="reply-menu">
-                                <div class="reply-menu-img">
-                                    <img src="/img/menu (2).png" alt="">
-                                </div>
-                                <div class="reply-menu-contents">
-                                    <a href="" id="menu1">수정</a>
-                                    <a href="">삭제</a>
-                                </div>
-                            </div>
-                        </div>
+                        <!-- /리플 예시 -->
                     </div>
                 </div>
             </div>
@@ -118,6 +107,6 @@
 <script th:inline="javascript">//타임리프 문법을 자바스크립트에서 사용하기 위한 설정
 let loginNumber = [[${session.userNumber}]];//타임리프 문법은 [] 2개로 감싸줘야 한다.
 </script><!--script session의 선언이 아래것보다 더 위에 위치해야!!!!!!-->
-<script src="/js/board/readingCounsel.js"></script>
+<script type="module" src="/js/board/readingCounsel.js"></script>
 </body>
 </html>

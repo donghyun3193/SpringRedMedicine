@@ -125,3 +125,55 @@ updateUserBirth();
 $('.btn-join').on('click',function(){
   window.location.href = '/main/index';
 })
+
+
+/*-----유효성 검사의 시작-----*/
+// 유효성 검사 메서드
+function Validation() {
+  //변수에 저장
+  let pw = document.getElementById("userPassword")
+  let cpw = document.getElementById("confirm-password")
+  let mail = document.getElementById("userEmail")
+  let updateForm = document.updateForm;
+
+  // 정규식
+  // id, pw
+  let regIdPw = /^[a-zA-Z0-9]{8,12}$/;
+  // 이메일
+  let regMail = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
+
+
+  //비밀번호 확인
+  if(pw.value == ""){
+    alert("새로운 비밀번호를 입력하세요.")
+    pw.focus();
+    return false;
+  }
+  //비밀번호 영어 대소문자 확인
+  else if(!regIdPw.test(pw.value)){
+    alert("비밀번호를 8~12자 영문 대소문자, 숫자만 입력하세요.")
+    pw.focus();
+    return false;
+  }
+  //비밀번호 확인
+  if(cpw.value !== pw.value){
+    alert("비밀번호가 일치하지 않습니다.")
+    cpw.focus();
+    return false;
+  }
+
+  //메일주소 확인
+  if(mail.value.length == 0){
+    alert("변경 할 메일주소를 입력하세요.")
+    mail.focus();
+    return false;
+  }else if(!regMail.test(mail.value)){
+    alert("잘못된 이메일 형식입니다.")
+    mail.focus();
+    return false;
+  }
+
+  // 유효성 문제 없을 시 폼에 submit
+  document.updateForm.submit();
+}
+/*-----유효성 검사의 종료-----*/
