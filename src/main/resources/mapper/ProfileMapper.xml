@@ -6,7 +6,7 @@
         SELECT SEQ_PROFILE.NEXTVAL FROM DUAL
         </selectKey>
         insert into TBL_PROFILE (PROFILE_NUMBER, USER_NUMBER, PROFILE_SUPER, PROFILE_CAREER, PROFILE_FEE, PROFILE_TARGET, PROFILE_AREA, PROFILE_DAY, PROFILE_TIME, PROFILE_CONTENT)
-        values (#{profileNumber},#{userNumber},#{profileSuper},#{profileCareer},#{profileFee},#{profileTarget},#{profileArea},#{profileDay},#{profileTime},#{profileContent})
+            values (#{profileNumber},#{userNumber},#{profileSuper},#{profileCareer},#{profileFee},#{profileTarget},#{profileArea},#{profileDay},#{profileTime},#{profileContent})
     </insert>
 
     <insert id="insertProfileFree">

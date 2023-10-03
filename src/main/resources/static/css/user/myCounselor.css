@@ -318,7 +318,7 @@ a{
 }
 .main-content-list table{
     width: 950px;
-    height: 400px;
+    /*height: 400px;*/
     text-align: center;
     margin: 0 auto;
     border-top: 0.5px solid silver;
@@ -336,6 +336,13 @@ a{
 .main-content-list table td{
     border-bottom: 0.5px solid silver;
     /* background-color: yellow; */
+}
+.table-container tbody tr {
+    height: 55.5px; /* 원하는 행 높이를 설정합니다. */
+}
+
+.table-wrap{
+    height: 360px;
 }
 /*페이징 처리를 할 공간입니다.*/
 .paging-container{
