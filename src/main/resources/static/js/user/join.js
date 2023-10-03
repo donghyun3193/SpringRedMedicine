@@ -156,3 +156,116 @@ birthDaySelect.addEventListener('change', updateUserBirth);
 
 // 초기화시에도 실행
 updateUserBirth();
+
+/*-----유효성 검사의 시작-----*/
+// 유효성 검사 메서드
+function Validation() {
+  //변수에 저장
+  let id = document.getElementById("userId")
+  let pw = document.getElementById("userPassword")
+  let cpw = document.getElementById("confirm-password")
+  let name = document.getElementById("userName")
+  let mail = document.getElementById("userEmail")
+  let privacy = document.getElementsByName("check-privacy")
+  let terms = document.getElementsByName("check-terms")
+  let joinForm = document.joinForm;
+
+  // 정규식
+  // id, pw
+  let regIdPw = /^[a-zA-Z0-9]{8,12}$/;
+  // 이름
+  let regName = /^[가-힣a-zA-Z]{2,15}$/;
+  // 이메일
+  let regMail = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
+
+
+  //아이디 확인
+  if(id.value.length == 0){
+    alert("아이디를 입력하세요.")
+    id.focus();
+    return false;
+  }
+  //비밀번호 영어 대소문자 확인
+  else if(!regIdPw.test(id.value)){
+    alert("아이디를 8~12자 영문 대소문자, 숫자만 입력하세요.")
+    id.focus();
+    return false;
+  }
+
+  //비밀번호 확인
+  if(pw.value == ""){
+    alert("비밀번호를 입력하세요.")
+    pw.focus();
+    return false;
+  }
+  //비밀번호 영어 대소문자 확인
+  else if(!regIdPw.test(pw.value)){
+    alert("비밀번호를 8~12자 영문 대소문자, 숫자만 입력하세요.")
+    pw.focus();
+    return false;
+  }
+  //비밀번호 확인
+  if(cpw.value !== pw.value){
+    alert("비밀번호가 동일하지 않습니다.")
+    cpw.focus();
+    return false;
+  }
+
+  //이름 확인 = 한글과 영어만 가능하도록
+  if(name.value == ""){
+    alert("이름을 입력해주세요")
+    name.focus();
+    return false;
+  } else if(!regName.test(name.value)){
+    alert("이름을 최소 2글자 이상, 한글과 영어만 입력하세요.")
+    name.focus();
+    return false;
+  }
+
+  //메일주소 확인
+  if(mail.value.length == 0){
+    alert("메일주소를 입력하세요.")
+    mail.focus();
+    return false;
+  }else if(!regMail.test(mail.value)){
+    alert("잘못된 이메일 형식입니다.")
+    mail.focus();
+    return false;
+  }
+
+  //이용약관 확인
+  if(!checkedTerms(terms)){
+    alert("이용약관을 체크하세요.")
+    terms.focus();
+    return false;
+  }
+  //이용약관 체크 확인
+  function checkedTerms(arr){
+    for(let i=0; i<arr.length; i++){
+      if(arr[i].checked == true){
+        return true;
+      }
+    }
+    return false;
+  }
+
+  //개인정보처리방침 확인
+  if(!checkedPrivacy(privacy)){
+    alert("개인정보처리방침을 체크하세요.")
+    privacy.focus();
+    return false;
+  }
+  //개인정보처리방침 체크 확인
+  function checkedPrivacy(arr){
+    for(let i=0; i<arr.length; i++){
+      if(arr[i].checked == true){
+        return true;
+      }
+    }
+    return false;
+  }
+
+  // 유효성 문제 없을 시 폼에 submit
+  document.joinForm.submit();
+}
+/*-----유효성 검사의 종료-----*/
