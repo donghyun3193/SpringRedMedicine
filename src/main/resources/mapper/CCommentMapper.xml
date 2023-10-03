@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.redmedicine.mapper.CCommentMapper">
+    <insert id="insertCComment">
+        <selectKey keyProperty="cCommentNumber" resultType="long" order="BEFORE">
+            SELECT SEQ_C_COMMENT.NEXTVAL FROM DUAL
+        </selectKey>
+        insert into TBL_C_COMMENT (C_COMMENT_NUMBER, USER_NUMBER, COUNSELOR_NUMBER, C_COMMENT_CONTENT, C_COMMENT_DATE)
+        values (#{cCommentNumber}, #{userNumber}, #{counselorNumber}, #{cCommentContent}, sysdate)
+    </insert>
+
+    <select id="selectCCommentList" resultType="cCommentVo">
+        SELECT C_COMMENT_NUMBER, C_COMMENT_CONTENT, C_COMMENT_DATE, COUNSELOR_NUMBER, U.USER_NUMBER,
+               USER_NAME
+        FROM TBL_C_COMMENT C JOIN TBL_USER U
+        ON COUNSELOR_NUMBER = #{counselorNumber} AND C.USER_NUMBER = U.USER_NUMBER
+        ORDER BY C_COMMENT_NUMBER DESC
+    </select>
+
+    <select id="selectCComment" resultType="cCommentVo">
+        SELECT C_COMMENT_NUMBER, C_COMMENT_CONTENT, C_COMMENT_DATE, COUNSELOR_NUMBER, U.USER_NUMBER,
+               USER_NAME
+        FROM TBL_C_COMMENT C JOIN TBL_USER U
+        ON C_COMMENT_NUMBER = #{cCommentNumber} AND P.USER_NUMBER = U.USER_NUMBER
+    </select>
+
+    <update id="updateCComment">
+        UPDATE TBL_C_COMMENT
+        SET C_COMMENT_CONTENT = #{cCommentContent}, C_COMMENT_DATE = SYSDATE
+        WHERE C_COMMENT_NUMBER = #{cCommentNumber}
+    </update>
+
+    <delete id="deleteCComment">
+        DELETE FROM TBL_C_COMMENT
+        WHERE C_COMMENT_NUMBER = #{cCommentNumber}
+    </delete>
+
+    <select id="selectCCommentListPage" resultType="cCommentVo">
+        SELECT C_COMMENT_NUMBER, C_COMMENT_CONTENT, C_COMMENT_DATE, COUNSELOR_NUMBER, U.USER_NUMBER,
+               USER_NAME
+        FROM (
+                 SELECT ROWNUM RNUM, C_COMMENT_NUMBER, C_COMMENT_CONTENT, C_COMMENT_DATE, COUNSELOR_NUMBER, U.USER_NUMBER,
+                        USER_NAME
+                 FROM (
+                          SELECT C_COMMENT_NUMBER, C_COMMENT_CONTENT, C_COMMENT_DATE, COUNSELOR_NUMBER, U.USER_NUMBER,
+                                 USER_NAME
+                          FROM TBL_C_COMMENT C JOIN TBL_USER U
+                          ON COUNSELOR_NUMBER = #{counselorNumber} AND P.USER_NUMBER = U.USER_NUMBER
+                          ORDER BY C_COMMENT_NUMBER DESC
+                      )
+            <![CDATA[
+                 WHERE ROWNUM <= #{criteria.page} * #{criteria.amount}
+            ]]>
+        )
+        WHERE RNUM > (#{criteria.page} - 1) * #{criteria.amount}
+    </select>
+
+    <select id="selectCCommentTotal" resultType="_int">
+        SELECT COUNT(C_COMMENT_NUMBER) FROM TBL_C_COMMENT
+        WHERE COUNSELOR_NUMBER = #{counselorNumber}
+    </select>
+</mapper>

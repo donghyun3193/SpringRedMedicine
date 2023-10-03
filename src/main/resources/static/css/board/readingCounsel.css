@@ -21,6 +21,7 @@ a{
     color: black;
 }
 /*/공통 부분*/
+
 /*===헤더 시작입니다.===*/
 .header{
     width: 100vw;
@@ -247,139 +248,265 @@ a{
 #list-button{
     color: white;
 }
-.reply-container{
-    width: 1000px;
-    height: auto;
-    margin: 0 auto;
-    /* background-color: pink; */
+/*댓글 시작입니다.*/
+/*.reply-container{*/
+/*    width: 1000px;*/
+/*    height: auto;*/
+/*    margin: 0 auto;*/
+/*    !* background-color: pink; *!*/
+/*}*/
+/*.reply-writing{*/
+/*    width: 990px;*/
+/*    height: 180px;*/
+/*    !* border: 1px solid gray; *!*/
+/*    border-radius: 5px;*/
+/*    margin: 0 auto;*/
+/*    margin-bottom: 30px;*/
+/*}*/
+/*.reply-writerName{*/
+/*    width: 990px;*/
+/*    height: 30px;*/
+/*    box-sizing: border-box;*/
+/*    padding:  5px 10px; */
+/*    !* background-color: yellow; *!*/
+/*}*/
+/*.reply-textarea{*/
+/*    width: 990px;*/
+/*    height: 100px;*/
+/*    !* background-color: green; *!*/
+/*    text-align: center;*/
+/*}*/
+/*.reply-textarea textarea{*/
+/*    width: 980px;*/
+/*    height: 100px;*/
+/*    border-radius: 5px;*/
+/*    box-sizing: border-box;*/
+/*    padding: 5px;*/
+/*    resize: none;*/
+/*}*/
+/*.reply-button{*/
+/*    width: 990px;*/
+/*    height: 30px;*/
+/*    text-align: end;*/
+/*    line-height: 30px;*/
+/*}*/
+/*.reply-button button{*/
+/*    width: 55px;*/
+/*    height: 25px;*/
+/*    background-color: orange;*/
+/*    border: none;*/
+/*    border-radius: 3px;*/
+/*    margin: 10px 10px;*/
+/*}*/
+/*#reply-button{*/
+/*    color: white;*/
+/*}*/
+/*.reply-reading{*/
+/*    width: 1000px;*/
+/*    height: auto;*/
+/*}*/
+/*.reply-reading-box{*/
+/*    width: 990px;*/
+/*    height: 130px;*/
+/*    margin: 0 auto;*/
+/*    margin-bottom: 10px;*/
+/*    border-top: 0.5px solid gray;*/
+/*    !* background-color: rgb(251, 245, 246); *!*/
+/*}*/
+/*.reply-name{*/
+/*    width: 990px;*/
+/*    height: 25px;*/
+/*    box-sizing: border-box;*/
+/*    padding: 3px;*/
+/*    !* background-color: yellow; *!*/
+/*   */
+/*}*/
+/*.reply-date{*/
+/*    width: 990px;*/
+/*    height: 20px;*/
+/*    font-size: 12px;*/
+/*    box-sizing: border-box;*/
+/*    padding: 2px 3px;*/
+/*    !* background-color: violet; *!*/
+/*}*/
+/*.reply-content-and-menu{*/
+/*    width: 990px;*/
+/*    height: 80px;*/
+/*    display: flex;*/
+/*    font-size: 14px;*/
+/*    box-sizing: border-box;*/
+/*    padding: 8px 3px;*/
+/*    !* background-color: blue; *!*/
+/*}*/
+/*.reply-content{*/
+/*    width: 950px;*/
+/*    height: 80px;*/
+/*    !* background-color: pink; *!*/
+/*}*/
+/*.reply-menu{*/
+/*    width: 15px;*/
+/*    height: 15px;*/
+/*    position: relative;*/
+/*    display: inline-block;*/
+/*    text-align: center;*/
+/*    font-family: 'SUITE-Regular';*/
+/*    !* background-color: yellow; *!*/
+/*}*/
+/*.reply-menu-img img{*/
+/*    width: 15px;*/
+/*    height: 15px;*/
+/*}*/
+/*.reply-menu-contents{*/
+/*    display: none;*/
+/*    position: absolute;*/
+/*    left: -7.5px;*/
+/*    width: 60px;*/
+/*    height: 80px;*/
+/*    background-color: #f9f9f9;*/
+/*    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);*/
+/*    !* border: 0.5px solid gray;*/
+/*    border-radius: 6px; *!*/
+/*}*/
+/*.reply-menu-contents a{*/
+/*    text-decoration: none;*/
+/*    display: block;*/
+/*    box-sizing: border-box;*/
+/*    padding: 10px 15px;*/
+/*}*/
+/*.reply-menu-contents a:hover{*/
+/*    background-color: #f1f1f1;*/
+/*}*/
+/*.reply-menu:hover .reply-menu-contents{*/
+/*    display: block;*/
+/*}*/
+
+
+.reply-wrap {
+    margin: 20px 0;
 }
-.reply-writing{
-    width: 990px;
-    height: 180px;
-    /* border: 1px solid gray; */
-    border-radius: 5px;
-    margin: 0 auto;
-    margin-bottom: 30px;
+
+.reply-wrap__box {
+    margin: 20px 0;
+    border: 1px solid #ccc;
 }
-.reply-writerName{
-    width: 990px;
-    height: 30px;
-    box-sizing: border-box;
-    padding:  5px 10px; 
-    /* background-color: yellow; */
+
+.reply-content__box {
+    border-bottom: 1px solid #ccc;
+    padding: 20px;
 }
-.reply-textarea{
-    width: 990px;
-    height: 100px;
-    /* background-color: green; */
-    text-align: center;
-}
-.reply-textarea textarea{
-    width: 980px;
-    height: 100px;
-    border-radius: 5px;
-    box-sizing: border-box;
-    padding: 5px;
+
+#reply-content {
+    margin: 10px 0;
+    width: 535px;
     resize: none;
-}
-.reply-button{
-    width: 990px;
-    height: 30px;
-    text-align: end;
-    line-height: 30px;
-}
-.reply-button button{
-    width: 55px;
-    height: 25px;
-    background-color: orange;
     border: none;
-    border-radius: 3px;
-    margin: 10px 10px;
-}
-#reply-button{
-    color: white;
-}
-.reply-reading{
-    width: 1000px;
-    height: auto;
-}
-.reply-reading-box{
-    width: 990px;
-    height: 130px;
-    margin: 0 auto;
-    margin-bottom: 10px;
-    border-top: 0.5px solid gray;
-    /* background-color: rgb(251, 245, 246); */
-}
-.reply-name{
-    width: 990px;
-    height: 25px;
-    box-sizing: border-box;
-    padding: 3px;
-    /* background-color: yellow; */
-   
-}
-.reply-date{
-    width: 990px;
-    height: 20px;
-    font-size: 12px;
-    box-sizing: border-box;
-    padding: 2px 3px;
-    /* background-color: violet; */
-}
-.reply-content-and-menu{
-    width: 990px;
+    background-color: #f7f7f7;
     height: 80px;
-    display: flex;
+    padding: 10px;
+}
+
+.reply-writer {
+    font-weight: bold;
     font-size: 14px;
-    box-sizing: border-box;
-    padding: 8px 3px;
-    /* background-color: blue; */
 }
-.reply-content{
-    width: 950px;
-    height: 80px;
-    /* background-color: pink; */
+
+.reply-btn-wrap {
+    text-align: right;
 }
-.reply-menu{
-    width: 15px;
-    height: 15px;
-    position: relative;
-    display: inline-block;
-    text-align: center;
-    font-family: 'SUITE-Regular';
-    /* background-color: yellow; */
-}
-.reply-menu-img img{
-    width: 15px;
-    height: 15px;
-}
-.reply-menu-contents{
-    display: none;
-    position: absolute;
-    left: -7.5px;
-    width: 60px;
-    height: 80px;
-    background-color: #f9f9f9;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    /* border: 0.5px solid gray;
-    border-radius: 6px; */
-}
-.reply-menu-contents a{
+
+.btn-reply {
+    font-size: 12px;
+    color: white;
     text-decoration: none;
-    display: block;
-    box-sizing: border-box;
-    padding: 10px 15px;
+    margin-left: 20px;
+    border: 1px solid rgb(8, 20, 73);
+    padding: 7px;
+    cursor: pointer;
+    height: 40px;
+    background-color: rgb(8, 20, 73);
 }
-.reply-menu-contents a:hover{
-    background-color: #f1f1f1;
+
+.btn-reply:hover {
+    background-color: rgb(8, 20, 73);
 }
-.reply-menu:hover .reply-menu-contents{
-    display: block;
+
+/* 댓글 목록 스타일 */
+.reply {
+    margin: 40px 0;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    justify-content: space-between;
 }
-/* #menu1{
-    border-bottom: 0.5px solid gray;
-} */
+
+.reply-box {
+    width: 95%;
+}
+
+.reply-box__writer {
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.reply-box__content {
+    margin-bottom: 20px;
+    padding-left: 5px;
+}
+
+.reply-btns {
+    background-image: linear-gradient(transparent, transparent), url(https://ssl.pstatic.net/static/comic/comment_new/sp_comment.svg);
+    display: inline-block;
+    overflow: hidden;
+    font-size: 0;
+    line-height: 0;
+    vertical-align: top;
+    background-position: -320px -96px;
+    background-repeat: no-repeat;
+    width: 10px;
+    height: 15px;
+    margin: 7px 0 0 13px;
+    cursor: pointer;
+}
+
+.reply-btn-box {
+    position: relative;
+}
+
+.reply-btns__box {
+    border: 1px solid #888;
+    border-radius: 5px;
+    width: 80px;
+    position: absolute;
+    top: 30px;
+    right: 0;
+    background-color: #f7f7f7;
+}
+
+.reply-btns__box > div {
+    text-align: center;
+    height: 40px;
+    line-height: 40px;
+    cursor: pointer;
+}
+
+.reply-remove-btn {
+    border-bottom: 1px solid #888;
+}
+
+.none {
+    display: none;
+}
+
+/* 추가추가! */
+
+/* 강사님의 리플입니다. */
+
+
+
+
+/*댓글 종료입니다.*/
+
+/*풋터 시작입니다.*/
 .footer{
     width: 100vw;
     height: 130px;
@@ -420,6 +547,7 @@ a{
 .container2-01-content{
     margin: 8px 10px;
 }
+/*풋터 종료입니다.*/
 
 /*첨부파일 이미지 설정*/
 .post-images {
