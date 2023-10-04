@@ -6,6 +6,7 @@ import com.example.redmedicine.domain.vo.Criteria;
 import com.example.redmedicine.domain.vo.PageVo;
 import com.example.redmedicine.service.CCommentService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -22,11 +23,12 @@ public class CCommentController {
     public String replyAdd(@RequestBody CCommentDto cCommentDto){
 //        RequestBody는 json형식의 데이터를 자동으로 객체 필드에 매핑시켜준다.
 
+        System.out.println(cCommentDto+"************************************************");
         cCommentService.registerCComment(cCommentDto);
         return "댓글 성공!";
     }
 
-    @GetMapping("/list/{counselorNumber}")
+    @GetMapping("/counselBoard/{counselorNumber}")
     public List<CCommentVo> showList(@PathVariable("counselorNumber") Long counselorNumber){
 //        url로 데이터를 넘겨받아 조회한다.
 //        url경로상의 데이터를 받기 위해서는 @PathVariable 어노테이션을 사용한다.
@@ -50,7 +52,7 @@ public class CCommentController {
         cCommentService.removeCComment(aa);
     }
 
-    @GetMapping("/list/{counselorNumber}/{page}")
+    @GetMapping("/counselBoard/{counselorNumber}/{page}")
     public Map<String, Object> replyListPage(@PathVariable("counselorNumber")Long counselorNumber,
                                              @PathVariable("page")Integer page){
         Criteria criteria = new Criteria();
