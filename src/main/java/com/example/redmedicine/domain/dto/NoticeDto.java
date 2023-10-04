@@ -18,6 +18,6 @@ public class NoticeDto {
     private Long noticeNumber;
     private Long userNumber;
     private String noticeTitle;
-    private String noticeDate;
+    private Date noticeDate;
     private String noticeContent;
 }

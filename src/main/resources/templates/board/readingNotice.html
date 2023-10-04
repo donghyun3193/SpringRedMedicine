@@ -27,7 +27,7 @@
                     <div class="title" th:text="${notice.noticeTitle}">공지사항 입니다.</div>
                     <div class="writer-date">
                         <div class="writer" th:text="${notice.userName}">관리자</div>
-                        <div class="date" th:text="${notice.noticeDate}">2023-09-14</div>
+                        <div class="date" th:text="${#dates.format(notice.noticeDate,'yyyy-MM-dd HH:mm')}">2023-09-14</div>
                     </div>
                     <div class="content">
                         <div class="content-text" th:text="${notice.noticeContent}"></div>
