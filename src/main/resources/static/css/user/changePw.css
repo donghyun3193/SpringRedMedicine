@@ -271,7 +271,12 @@ a{
 .findida{
   color: #ffa958;
 }
-
+.div1 p{
+  font-size: 15px;
+}
+.div1 input{
+  margin-top: 10px;
+}
 .findpw{
   margin-left: 250px;
   margin-bottom: 80px;

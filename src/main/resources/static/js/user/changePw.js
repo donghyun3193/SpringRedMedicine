@@ -32,15 +32,53 @@ let confirmPassword = $('.inputpw2').val();
 
 if(newPassword == "" || confirmPassword == "") {
     $('.inputresult').css('display', 'none');
+}else if(newPassword = ""){
+    $('.inputresult').css('display', 'none');
+    $('.inputpw2').css('display', 'none');
 }
+
+//유효성검사
+$('.inputpw').keypress(function () {
+    let newPassword = $('.inputpw').val();
+    let num = newPassword.search(/[0-9]/g);
+    let eng = newPassword.search(/[a-z]/ig);
+
+    if(newPassword.length < 8 || newPassword.length > 12){
+        $('.inputresult').css('display', 'block');
+        $('.inputresult').text("8자리 ~ 12자리 이내로 입력해주세요.");
+
+    }else if(newPassword.search(/\s/) != -1){
+        $('.inputresult').css('display', 'block');
+        $('.inputresult').text("비밀번호는 공백 없이 입력해주세요.");
+
+    }else if( (num < 0 || eng < 0)){
+        $('.inputresult').css('display', 'block');
+        $('.inputresult').text("영문 대소문자, 숫자를 혼합하여 입력해주세요.");
+
+    }else{
+        $('.inputpw2').css('display', 'block');
+    }
+
+    // if((newPassword.length > 7 && newPassword.length < 13) &&
+    //     (newPassword.search(/\s/) == -1) &&
+    //     (num > 0 && eng > 0)){
+    //
+    //     $('.inputpw2').css('display', 'block');
+    // }
+
+})
 
 $('.inputpw2').keyup(function () {
     let newPassword = $('.inputpw').val();
     let confirmPassword = $('.inputpw2').val();
 
+    let num = newPassword.search(/[0-9]/g);
+    let eng = newPassword.search(/[a-z]/ig);
+
     if (newPassword == confirmPassword) {
         $('.inputresult').css('display', 'block');
         $('.inputresult').text("비밀번호가 일치합니다");
+        $('.idfindbutton').attr('disabled',false);
 
     } else {
         $('.inputresult').css('display', 'block');
@@ -50,6 +88,12 @@ $('.inputpw2').keyup(function () {
 
 
 $('.idfindbutton').on('click', function () {
+    // let newPassword = $('.inputpw').val();
+    // let confirmPassword = $('.inputpw2').val();
+    //
+    // if(newPassword != confirmPassword){
+    //     alert("비밀번호가 일치하지 않습니다")
+    // }
     if(confirm("비밀번호를 변경하시겠습니까?")){
         let newPassword = $('.inputpw').val();
         let param = {
@@ -71,4 +115,4 @@ $('.idfindbutton').on('click', function () {
 
 })
 
-//유효성검사
+
