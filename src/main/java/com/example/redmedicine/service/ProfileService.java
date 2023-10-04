@@ -25,6 +25,7 @@ public class ProfileService {
     public void profilePayRegister(ProfileDto profileDto){
         profileMapper.insertProfilePay(profileDto);
     }
+
     //무료상담사등록
     public void profileFreeRegister(ProfileDto profileDto){
         profileMapper.insertProfileFree(profileDto);
@@ -66,7 +67,14 @@ public class ProfileService {
         return Optional.ofNullable(profileMapper.selectUserName(userNumber))
                 .orElseThrow(() -> { throw new IllegalArgumentException("존재하지 않는 유저 번호 누락!!"); });
     }
-
+    //후기 유저 이름 찾기
+    public Long findUserLevel(Long userNumber){
+        if (userNumber == null) {
+            throw new IllegalArgumentException("유저 번호 누락!!");
+        }
+        return Optional.ofNullable(profileMapper.selectUserLevel(userNumber))
+                .orElseThrow(() -> { throw new IllegalArgumentException("존재하지 않는 유저 번호 누락!!"); });
+    }
 
     //유료상담사상세조회
     public ProfileVo findProfilePay(Long profileNumber){

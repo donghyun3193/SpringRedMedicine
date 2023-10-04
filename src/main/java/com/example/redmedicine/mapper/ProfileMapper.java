@@ -18,6 +18,8 @@ public interface ProfileMapper {
     public void deleteProfileFree(Long profileNumber);
     //후기 유저 이름 찾기
     public String selectUserName(Long userNumber);
+    //후기 유저 이름 찾기
+    public Long selectUserLevel(Long userNumber);
     //유료상담사목록
     public List<ProfileVo> selectProfilePayNumber();
     //무료상담사목록

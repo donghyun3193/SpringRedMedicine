@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 public class ProfileVo {
     private Long userNumber;
     private String userName;
+    private Long userLevel;
     private Long profileNumber;
     private Long profileSuper;
     private Long profileCareer;
