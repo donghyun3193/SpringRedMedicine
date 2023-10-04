@@ -26,14 +26,17 @@ import java.util.List;
 @Slf4j
 public class ProfileController {
     private final ProfileService profileService;
+    private final UserService userService;
 
-    //유료 상담사 등록 페이지
+//    //유료 상담사 등록 페이지
     @GetMapping("/pay/registration")
     public String showRegistrationPage(Model model, HttpServletRequest req){
         Long userNumber = (Long)req.getSession().getAttribute("userNumber");
         model.addAttribute("userName",profileService.findUserName(userNumber));
         return "counselor/pay/registration";
     }
+
+
 
     //유료 상담사 등록 페이지(값 받아 오기)
     @PostMapping("/pay/registration")
@@ -154,7 +157,11 @@ public class ProfileController {
         return "counselor/book/bookingDetails";
     }
 
-
+    //결제페이지
+    @GetMapping("pay/payment")
+    public String showPaymentPage(){
+        return "counselor/pay/payment";
+    }
 
 
 

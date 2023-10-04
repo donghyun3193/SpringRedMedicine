@@ -33,6 +33,13 @@
         WHERE USER_NUMBER = #{userNumber}
     </select>
 
+
+    <select id="selectUserLevel" resultType="long">
+        SELECT USER_LEVEL
+        FROM  TBL_USER
+        WHERE USER_NUMBER = #{userNumber}
+    </select>
+
     <select id="selectProfilePayNumber" resultType="profileVo">
         SELECT P.PROFILE_NUMBER, U.USER_NAME, PROFILE_CAREER, PROFILE_FEE, PROFILE_TARGET, PROFILE_AREA, PF_FILE_ROUTE, PF_FILE_NAME, PF_FILE_UUID
         FROM TBL_PROFILE P JOIN TBL_USER U

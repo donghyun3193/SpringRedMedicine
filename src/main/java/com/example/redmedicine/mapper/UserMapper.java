@@ -19,6 +19,9 @@ public interface UserMapper {
     //유저 이름 찾기
     public String selectUserName(Long userNumber);
 
+    //유저 레벨 찾기
+    public Long selectUserLevel(Long userNumber);
+
     //조회
     public UserDto select(Long userNumber);
 

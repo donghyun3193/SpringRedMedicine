@@ -70,3 +70,5 @@ $('.idfindbutton').on('click', function () {
     }
 
 })
+
+//유효성검사
