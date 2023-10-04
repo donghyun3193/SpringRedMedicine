@@ -23,7 +23,9 @@
                     <div class="main-container-section1">
                         <div class="input-name">아이디</div>
                         <input class="inputid" type="text" placeholder="아이디"
-                        id="userId" name="userId" required><br>
+                        id="userId" name="userId" required/>
+                        <span class="check-id"></span><!--CSS로 색변경 유도-->
+                        <br>
                         <div class="input-name">비밀번호</div>
                         <input class="inputpw" type="password" placeholder="비밀번호"
                         id="userPassword" name="userPassword" required><br>
@@ -39,18 +41,17 @@
 
                         <!--일단 전화번호와 인증절차는 button type으로 처리하였음-->
                         <div class="input-name">휴대전화</div>
-                        
                         <div>
                             <input class="inputphone" type="text" placeholder="휴대폰번호"
                             id="userPhone" name="userPhone" required>
-                            <button class="btn-auth" type="button">전송</button>
+                            <button class="btn-auth" type="button" id="startTimer">전송</button>
                         </div><br>
                         <div class="main-c-s-d1">
                             <div class="main-time" id="time"></div>
                         </div>
                         <div>
-<!--                            <input class="phone-auth" type="text" placeholder="인증번호입력" >-->
-<!--                            <button class="btn-auth" type="button">인증</button>-->
+                            <input class="phone-auth" type="text" placeholder="인증번호입력" required>
+                            <button class="btn-auth" type="button">인증</button>
                         </div><br>
 
                         <div class="input-name">생년월일</div>
@@ -119,7 +120,7 @@
                     
                     <div class="main-container-section3">
 <!--                        <button class="btn-join" type="submit" onclick="Validation()">회원가입</button>-->
-                        <button class="btn-join" type="button" onclick="Validation()" cursor="point">회원가입</button>
+                        <button class="btn-join" type="button" onclick="Validation()" id="join-btn">회원가입</button>
                     </div>
                     <div class="main-container-section4">
                         <a href="/user/login">이미 아이디가 있으신가요? <u>로그인</u></a>
