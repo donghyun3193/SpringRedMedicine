@@ -63,8 +63,8 @@
 
     <update id="updatePw">
         UPDATE TBL_USER
-        SET USER_PASSWORD = #{userPassword}
-        WHERE USER_NUMBER = #{userNumber}
+        SET USER_PASSWORD = #{newPassword}
+        WHERE USER_NAME = #{userName} AND USER_PHONE = #{userPhone}
     </update>
 
     <select id="selectUserId" resultType="string">
