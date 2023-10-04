@@ -88,26 +88,52 @@ $('.modal').on('click', function(event){
   event.stopPropagation();
 });
 
-  //타이머 js
-  var time = 300; //기준시간 작성
-    var min = ""; //분
-    var sec = ""; //초
-  
-    //setInterval(함수, 시간) : 주기적인 실행
-    var x = setInterval(function() {
-      //parseInt() : 정수를 반환
-      min = parseInt(time/60); //몫을 계산
-      sec = time%60; //나머지를 계산
-  
-      document.getElementById("time").innerHTML = min + "분" + sec + "초";
-      time--;
-  
-      //타임아웃 시
-      if (time < 0) {
-        clearInterval(x); //setInterval() 실행을 끝냄
-        document.getElementById("time").innerHTML = "시간초과";
-      }
-    }, 1000);
+//타이머 js
+// 전송 버튼을 클릭할 때 타이머 시작
+// document.getElementById("startTimer").addEventListener("click", function() {
+//   var time = 300; // 기준시간 작성
+//   var min = ""; // 분
+//   var sec = ""; // 초
+//
+//   var x = setInterval(function() {
+//     min = parseInt(time / 60); // 몫을 계산
+//     sec = time % 60; // 나머지를 계산
+//
+//     document.getElementById("time").innerHTML = min + "분" + sec + "초";
+//     time--;
+//
+//     // 타임아웃 시
+//     if (time < 0) {
+//       clearInterval(x); // setInterval() 실행을 끝냄
+//       document.getElementById("time").innerHTML = "시간초과";
+//     }
+//   }, 1000);
+// });
+var timerInterval; // 타이머의 setInterval 반환값을 저장하는 전역 변수
+
+document.getElementById("startTimer").addEventListener("click", function() {
+  if (timerInterval) {
+    clearInterval(timerInterval); // 이전 타이머를 정지시킴
+  }
+
+  var time = 300; // 기준시간 작성
+  var min = ""; // 분
+  var sec = ""; // 초
+
+  timerInterval = setInterval(function() {
+    min = parseInt(time / 60); // 몫을 계산
+    sec = time % 60; // 나머지를 계산
+
+    document.getElementById("time").innerHTML = min + "분" + sec + "초";
+    time--;
+
+    // 타임아웃 시
+    if (time < 0) {
+      clearInterval(timerInterval); // setInterval() 실행을 끝냄
+      document.getElementById("time").innerHTML = "시간초과";
+    }
+  }, 1000);
+});
   //타이머 js 끝
 
 //성별 선택!
@@ -185,12 +211,13 @@ function Validation() {
     id.focus();
     return false;
   }
-  //비밀번호 영어 대소문자 확인
+  //아이디 영어 대소문자 확인
   else if(!regIdPw.test(id.value)){
     alert("아이디를 8~12자 영문 대소문자, 숫자만 입력하세요.")
     id.focus();
     return false;
   }
+
 
   //비밀번호 확인
   if(pw.value == ""){
@@ -268,4 +295,63 @@ function Validation() {
   // 유효성 문제 없을 시 폼에 submit
   document.joinForm.submit();
 }
+
+  /*아이디 중복 유효성 검사*/
+  // $('#userId').on('change', function () {
+  //   console.log("change!!")
+  //
+  //   let userId = $(this).val();
+  //   $.ajax({
+  //     url: `/users/check`,
+  //     type: 'get',
+  //     data: { userId: userId },
+  //     success: function (result) {
+  //       console.log(result);
+  //
+  //       let checkIdElement = $('.check-id');
+  //       if (result == 1) {
+  //         checkIdElement.text("중복된 아이디입니다.");
+  //         checkIdElement.css('color', 'red');
+  //       } else {
+  //         checkIdElement.text("사용 가능한 아이디입니다.");
+  //         checkIdElement.css('color', 'blue');
+  //       }
+  //     }
+  //   })
+  // })
+
+/*아이디 중복 유효성 검사*/
+$('#userId').on('change', function () {
+  console.log("change!!")
+
+  let userId = $(this).val();
+  $.ajax({
+    url: `/users/check`,
+    type: 'get',
+    data: { userId: userId },
+    success: function (result) {
+      console.log(result);
+
+      let checkIdElement = $('.check-id');
+      if (result == 1) {
+        checkIdElement.text("중복된 아이디입니다.");
+        checkIdElement.css('color', 'red');
+
+        // 회원가입 버튼을 비활성화
+        document.getElementById('join-btn').disabled = true;
+      } else {
+        checkIdElement.text("사용 가능한 아이디입니다.");
+        checkIdElement.css('color', 'blue');
+
+        // 중복된 아이디가 없을 때 입력 필드와 회원가입 버튼을 다시 활성화
+        document.getElementById('userId').disabled = false;
+        document.getElementById('join-btn').disabled = false;
+      }
+    }
+  })
+})
+
+
+
 /*-----유효성 검사의 종료-----*/
+

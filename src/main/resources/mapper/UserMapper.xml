@@ -78,4 +78,11 @@
         FROM TBL_USER
         WHERE USER_NAME = #{userName} AND USER_PHONE = #{userPhone}
     </select>
+
+    <!--유효성 검사시 중복되는 아이디를 찾기위해 => 아이디가 다르다면 이름과 이메일이 중복될 수 있다?-->
+    <select id="selectId" resultType="_int">
+        select count(USER_ID)
+        FROM TBL_USER
+        WHERE USER_ID = #{userId}
+    </select>
 </mapper>

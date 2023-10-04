@@ -30,4 +30,9 @@ public class UserRestController {
         String newPassword = param.get("newPassword");
         userService.modifyPw(userName, userPhone, newPassword);
     }
+
+    @GetMapping("/check")//아이디만 중복 체크
+    public int checkId(String userId){
+        return userService.checkId(userId);
+    }
 }

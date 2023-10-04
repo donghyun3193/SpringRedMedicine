@@ -34,5 +34,6 @@ public interface UserMapper {
     //아이디 찾기
     public String selectUserId(String userName, String userPhone);
 
-
+    //아이디 중복 검사
+    public int selectId(String userId);
 }

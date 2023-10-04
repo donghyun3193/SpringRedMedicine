@@ -577,7 +577,11 @@ a{
     font-weight: bold;
     /* border: 1px solid black; */
 }
-
+/*유효성 검사시 span태그 변화*/
+.check-id{
+  display: flex;
+  justify-content: start;
+}
 
   
   /* 푸터 시작 */

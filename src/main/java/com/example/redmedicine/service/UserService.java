@@ -78,4 +78,9 @@ public class UserService {
         return resultText;
     }
 
+    //    회원 아이디 중복 검사
+    public int checkId(String userId){
+        return userMapper.selectId(userId);
+    }
+
 }
