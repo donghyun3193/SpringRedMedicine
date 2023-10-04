@@ -141,9 +141,7 @@ a{
 
   display: flex;
   justify-content: center;
-
 }
-
 .main-nav-container ul{
   list-style: none;
   display: flex;
@@ -156,6 +154,10 @@ a{
   margin: 0 10px;
   text-align: center;
   /* font-weight: bold; */
+}
+.main-nav-container ul li :hover{
+  border-bottom: 4px solid white;
+  padding-bottom: 5px;
 }
 #main-nav-button{
   color: white;

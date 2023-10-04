@@ -39,13 +39,13 @@
 
                 <div th:unless="${session.userNumber == null}">
                     <!--    상담사 면 상담사 님 으로 출력 되게 끔 조건 걸어 주는 부분    -->
+                    <div  th:if="${session.userNumber == 0}">
+                        <a href="" th:text="${session.userName} + ' 관리자 님 '" class="loginName"></a>
+                    </div>
                     <div  th:if="${session.userLevel == 2 || session.userLevel == 3}">
                         <a href="" th:text="${session.userName} + ' 상담사 님 '" class="loginName"></a>
                     </div>
-                    <div  th:if="${session.userLevel == 0}">
-                        <a href="" th:text="${session.userName} + ' 관리자 님 '" class="loginName"></a>
-                    </div>
-                    <div th:unless="${session.userLevel == 2 || session.userLevel == 3}">
+                    <div th:unless="${session.userLevel == 2 || session.userLevel == 3 || session.userNumber == 0}">
                         <a href="" th:text="${session.userName} + ' 님 '" class="loginName"></a>
                     </div>
 
@@ -57,7 +57,7 @@
                         <div  th:if="${session.userLevel == 2 || session.userLevel == 3}">
                             <a href="/counselor/book/counselorBook">상담예약관리</a>
                         </div>
-                        <div th:if="${session.userLevel == 0}">
+                        <div th:if="${session.userNumber == 0}">
                             <a href="/admin/memberShipMm">회원정보관리</a>
                         </div>
                         <div th:if="${session.userLevel == 1}">
