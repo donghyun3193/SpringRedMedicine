@@ -42,9 +42,9 @@
                     <input class="inputemail" type="email" placeholder="이메일"
                            id="userEmail" name="userEmail" required
                            th:value="${user.userEmail}"><br>
-                    <div class="input-name">휴대전화</div>
+<!--                    <div class="input-name">휴대전화</div>-->
                     <div>
-                        <input class="inputphone" type="text" placeholder="휴대폰번호"
+                        <input class="inputphone" type="hidden" placeholder="휴대폰번호"
                                id="userPhone" name="userPhone" readonly
                                th:value="${user.userPhone}">
 <!--                        <button class="btn-auth" type="button">전송</button>-->
@@ -73,11 +73,11 @@
                     </div><br>
                     <div class="input-name">성별</div>
                     <div class="radio-gender">
-                        <label for="gender-m">
+                        <label for="gender-m" style="cursor: pointer;">
                             <input type='radio' name='userGender' value='M'
                                    id="gender-m" required/>남
                         </label>
-                        <label for="gender-f">
+                        <label for="gender-f" style="cursor: pointer;">
                             <input type='radio' name='userGender' value='F'
                                    id="gender-f" required/>여
                         </label>

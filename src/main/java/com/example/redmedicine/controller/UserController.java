@@ -102,7 +102,8 @@ public class UserController {
     public String modify(UserDto userDto, Model model) {
         userService.modify(userDto);
         model.addAttribute("userNumber", userDto.getUserNumber());
-        return "redirect:/user/login?userNumber=" + userDto.getUserNumber();
+//        return "redirect:/user/login?userNumber=" + userDto.getUserNumber();
+        return "main/index";
     }
 
     //아이디찾기 페이지

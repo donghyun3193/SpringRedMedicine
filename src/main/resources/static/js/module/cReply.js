@@ -15,7 +15,7 @@
 
 export function getList(counselorNumber, callback){
     $.ajax({
-        url : `/cReplies/list/${counselorNumber}`,
+        url : `/cReplies/counselBoard/${counselorNumber}`,
         type : 'get',//조회를 위해서 get 방식으로!
         dataType : 'json',//나 json을 받을 것이다.
         success : function (result) {
@@ -98,7 +98,7 @@ export function remove(cCommentNumber, callback){
 //댓글의 페이징 처리
 export function getListPage(pageInfo, callback){
     $.ajax({
-        url: `/cReplies/list/${pageInfo.counselorNumber}/${pageInfo.page}`,
+        url: `/cReplies/counselBoard/${pageInfo.counselorNumber}/${pageInfo.page}`,
         type : 'get',
         dataType : 'json',
         success : function (result){

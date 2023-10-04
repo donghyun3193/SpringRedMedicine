@@ -36,16 +36,16 @@
     </delete>
 
     <select id="selectCCommentListPage" resultType="cCommentVo">
-        SELECT C_COMMENT_NUMBER, C_COMMENT_CONTENT, C_COMMENT_DATE, COUNSELOR_NUMBER, U.USER_NUMBER,
+        SELECT C_COMMENT_NUMBER, C_COMMENT_CONTENT, C_COMMENT_DATE, COUNSELOR_NUMBER, USER_NUMBER,
                USER_NAME
         FROM (
-                 SELECT ROWNUM RNUM, C_COMMENT_NUMBER, C_COMMENT_CONTENT, C_COMMENT_DATE, COUNSELOR_NUMBER, U.USER_NUMBER,
+                 SELECT ROWNUM RNUM, C_COMMENT_NUMBER, C_COMMENT_CONTENT, C_COMMENT_DATE, COUNSELOR_NUMBER, USER_NUMBER,
                         USER_NAME
                  FROM (
-                          SELECT C_COMMENT_NUMBER, C_COMMENT_CONTENT, C_COMMENT_DATE, COUNSELOR_NUMBER, U.USER_NUMBER,
+                          SELECT C_COMMENT_NUMBER, C_COMMENT_CONTENT, C_COMMENT_DATE, COUNSELOR_NUMBER, C.USER_NUMBER,
                                  USER_NAME
                           FROM TBL_C_COMMENT C JOIN TBL_USER U
-                          ON COUNSELOR_NUMBER = #{counselorNumber} AND P.USER_NUMBER = U.USER_NUMBER
+                          ON COUNSELOR_NUMBER = #{counselorNumber} AND C.USER_NUMBER = U.USER_NUMBER
                           ORDER BY C_COMMENT_NUMBER DESC
                       )
             <![CDATA[

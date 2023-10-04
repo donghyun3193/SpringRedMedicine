@@ -52,9 +52,11 @@
                 <button type="button"><a href="/board/counselBoard" id="list-button">목록</a></button>
                 <th:block th:if="${session.userNumber == counselor.userNumber}">
                     <button  class="modify-button" id="modify-button" type="button"
-                             th:data-number="${counselor.counselorNumber}">수정</button>
+                             th:data-number="${counselor.counselorNumber}"
+                            style="cursor: pointer;">수정</button>
                     <button  class="remove-button" id="remove-button" type="button"
-                             th:data-number="${counselor.counselorNumber}">삭제</button>
+                             th:data-number="${counselor.counselorNumber}"
+                             style="cursor: pointer;">삭제</button>
                 </th:block>
             </div>
 <!--                            </form>-->
@@ -64,7 +66,7 @@
                     <h3>댓글 작성</h3>
                     <div class="reply-wrap__box">
                         <div class="reply-content__box">
-                            <div class="reply-writer" th:text="${userName}"></div>
+                            <div class="reply-writer" th:text="${counselor.userName}"></div>
                             <textarea name="cCommentContent" id="reply-content" cols="30" rows="10"></textarea>
                         </div>
                         <div class="reply-btn-wrap">
@@ -74,21 +76,25 @@
                     <!-- 댓글 리스트 -->
                     <div class="reply-list-wrap">
                         <!-- 리플 예시 -->
-                        <div class="reply">
-                            <div class="reply-box">
-                                <div class="reply-box__writer" th:text="${userName}"></div>
-                                <div class="reply-box__content">내용</div>
-                            </div>
-                            <div class="reply-btn-box">
-                                <span class="reply-btns"></span>
-                                <div class="reply-btns__box none">
-                                    <th:block th:if="${session.userNumber == counselor.userNumber}">
-                                        <button type="button" class="reply-modify-btn" th:data-number="${counselor.counselorNumber}">수정</button>
-                                        <button type="button" class="reply-remove-btn" th:data-number="${counselor.counselorNumber}">삭제</button>
-                                    </th:block>
-                                </div>
-                            </div>
-                        </div>
+<!--                        <div class="reply">-->
+<!--                            <div class="reply-box">-->
+<!--                                <div class="reply-box__writer" th:text="${userName}"></div>-->
+<!--                                <div class="reply-box__content">내용</div>-->
+<!--                            </div>-->
+<!--                            <div class="reply-btn-box">-->
+<!--                                <span class="reply-btns"></span>-->
+<!--                                <div class="reply-btns__box none">-->
+<!--                                    <th:block th:if="${session.userNumber == counselor.userNumber}">-->
+<!--                                        <button type="button" class="reply-modify-btn"-->
+<!--                                                th:data-number="${counselor.counselorNumber}"-->
+<!--                                                style="cursor: pointer;">수정</button>-->
+<!--                                        <button type="button" class="reply-remove-btn"-->
+<!--                                                th:data-number="${counselor.counselorNumber}"-->
+<!--                                                style="cursor: pointer;">삭제</button>-->
+<!--                                    </th:block>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
                         <!-- /리플 예시 -->
                     </div>
                 </div>
@@ -108,5 +114,51 @@
 let loginNumber = [[${session.userNumber}]];//타임리프 문법은 [] 2개로 감싸줘야 한다.
 </script><!--script session의 선언이 아래것보다 더 위에 위치해야!!!!!!-->
 <script type="module" src="/js/board/readingCounsel.js"></script>
+<script>
+    // 목록 버튼
+    $('#list-button').on('click', function (){
+        window.location.href = '/board/counselBoard';
+    })
+
+    // 수정 버튼
+    $('#modify-button').on('click', function (){
+        let counselorNumber = $(this).data('number');
+        window.location.href = '/board/modifyCounsel?counselorNumber=' + counselorNumber;
+    });
+
+    //삭제 버튼
+    $('#remove-button').on('click', function () {
+        let counselorNumber = $(this).data('number');
+        if(confirm("글을 삭제 하시겠습니끼?")){
+            window.location.href = '/board/removeCounsel?counselorNumber=' + counselorNumber;
+        }
+    });
+
+    // detail페이지 이미지 띄우기 처리
+    displayAjax();
+
+    function displayAjax(){
+        let counselorNumber = $('.counsel-num').val();
+
+        $.ajax({
+            url : '/cFiles/imgList',
+            type : 'get',
+            data : {counselorNumber : counselorNumber},
+            success : function (cFileList) {
+                let text = '';
+                console.log(cFileList);
+                cFileList.forEach(file => {
+                    let cFileName = file.cfileRoute + '/' + file.cfileUuid + '_' + file.cfileName;
+                    console.log(cFileName);
+                    text += `<img src="/cFiles/display?cFileName=${cFileName}" data-number=${file.cfileNumber} />`;
+                    // <img src="/cFiles/display?cFileName=undefined/undefined_undefined" data-number="undefined">
+                    console.log(file);
+                });
+
+                $('.post-images').html(text);
+            }
+        });
+    }
+</script>
 </body>
 </html>
