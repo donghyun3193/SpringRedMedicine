@@ -32,7 +32,7 @@ public interface UserMapper {
     public void updatePw(String userName, String userPhone, String newPassword);
 
     //아이디 찾기
-    public String selectUserId(String userName, String userPhone);
+    public String selectUserId(@Param("userName") String userName, @Param("userPhone") String userPhone);
 
 
 }
