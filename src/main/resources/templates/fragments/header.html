@@ -17,11 +17,11 @@
                     <li><a href="/board/notice">커뮤니티</a></li>
                     <li><a href="/test/diagnosis">자가진단테스트</a></li>
                     <li><a href="/counselor/pay/payMate">비대면상담받기</a></li>
-                    <div  th:if="${session.userNumber == null}">
+                    <div  th:if="${session.userNumber == null }">
                         <li><a href="/user/login">상담사등록</a></li>
                     </div>
                     <div th:unless="${session.userNumber == null}">
-                        <li><a href="/counselor/pay/registration">상담사등록</a></li>
+                        <li><a href="/counselor/free/freeRegistration">상담사등록</a></li>
                     </div>
                     <li><a href="/main/map">상담센터찾기</a></li>
                 </ul>
@@ -46,7 +46,9 @@
                         <a href="/user/myDaybook">내 글 목록</a>
                         <a href="/user/mypage">회원정보 수정</a>
                         <a href="/admin/memberShipMm">회원정보 관리</a>
-                        <a href="">상담사 등록</a>
+                        <div  th:if="${userLevel == 2 || userLevel == 3}">
+                            <a href="/counselor/pay/payment">월결제</a>
+                        </div>
                         <a href="/user/logout">로그아웃</a>
                     </div>
                 </div>

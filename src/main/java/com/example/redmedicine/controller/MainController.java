@@ -41,4 +41,5 @@ public class MainController {
     public String showMapPage(){
         return "main/map";
     }
+
 }

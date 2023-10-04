@@ -16,10 +16,16 @@
     </select>
 
     <select id="selectUserName" resultType="string">
-        SELECT USER_NAME
+        SELECT USER_NAME, USER_LEVEL
         FROM  TBL_USER
         WHERE USER_NUMBER = #{userNumber}
     </select>
+
+<!--    <select id="selectUserName" resultType="string">-->
+<!--        SELECT USER_NAME-->
+<!--        FROM  TBL_USER-->
+<!--        WHERE USER_NUMBER = #{userNumber}-->
+<!--    </select>-->
 
 <!--    <select id="selectUserName" resultType="string">-->
 <!--        SELECT USER_NAME FROM TBL_USER-->
