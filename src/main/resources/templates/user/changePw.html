@@ -31,13 +31,12 @@
                       <div class="findpw">
                         <a class="findpwa" href="/html/findPw.html">비밀번호 찾기</a>
                       </div> -->
-                        <form method="post" action="/user/changePw">
-                            <input type="hidden" th:value="${session.userNumber}" name="userNumber">
+
                           <div class="div1">
 
                             <input class="inputpw" type="password" placeholder="새로운 비밀번호" name="userPassword" id="nameInput"
-                            th:value="${userPassword}">
-                            <input class="inputpw2" type="password" placeholder="새로운 비밀번호 확인" id="phoneInput">
+                            th:value="${userPassword}" required>
+                            <input class="inputpw2" type="password" placeholder="새로운 비밀번호 확인" id="phoneInput" required>
 
                           </div>
 
@@ -50,10 +49,10 @@
 
                           <hr style="margin-top: 50px; border:1px solid #ffe4cb;">
 
-                          <button class="idfindbutton" type="submit">
+                          <button class="idfindbutton" type="button">
                             비밀번호 변경하기
                           </button>
-                        </form>
+
                     </div>
 
                 </div>
@@ -65,5 +64,7 @@
 <!-- 후터 시작-->
 <footer class="footer" th:replace="fragments/footer :: footer"></footer>
 <!-- 후터 끝-->
+<script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+<script defer src="/js/user/changePw.js"></script>
 </body>
 </html>
