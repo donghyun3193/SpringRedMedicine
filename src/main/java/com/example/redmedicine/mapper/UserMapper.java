@@ -32,7 +32,8 @@ public interface UserMapper {
     public void updatePw(String userName, String userPhone, String newPassword);
 
     //아이디 찾기
-    public String selectUserId(String userName, String userPhone);
+    public String selectUserId(@Param("userName") String userName,@Param("userPhone") String userPhone);
+    //파라미터가 여러개 일 때는 @Param 이라는 어노테이션을 붙여줘야 확실하게 처리 된다.
 
 
 }
