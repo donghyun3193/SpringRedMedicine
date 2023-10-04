@@ -1,11 +1,11 @@
 package com.example.redmedicine.controller;
 
-import com.example.redmedicine.service.SmsService;
+//import com.example.redmedicine.service.SmsService;
 import com.example.redmedicine.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import reactor.core.publisher.Mono;
+//import reactor.core.publisher.Mono;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
@@ -15,7 +15,7 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class UserRestController {
     private final UserService userService;
-    private final SmsService smsService;
+//    private final SmsService smsService;
 
     @GetMapping("/findId")
     public String findId(String userName,String userPhone){

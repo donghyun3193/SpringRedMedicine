@@ -48,6 +48,14 @@ public class UserService {
         return Optional.ofNullable(userMapper.selectUserName(userNumber))
                 .orElseThrow(() -> { throw new IllegalArgumentException("존재하지 않는 유저 번호 누락!!"); });
     }
+    //유저 레벨 찾기
+    public Long findUserLevel(Long userNumber){
+        if (userNumber == null) {
+            throw new IllegalArgumentException("회원 번호 누락");
+        }
+        return Optional.ofNullable(userMapper.selectUserLevel(userNumber))
+                .orElseThrow(() -> { throw new IllegalArgumentException("존재하지 않는 유저 번호 누락!!"); });
+    }
 
     //회원 정보 수정
     public void modify(UserDto userDto){

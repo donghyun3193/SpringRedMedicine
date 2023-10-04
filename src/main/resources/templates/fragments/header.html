@@ -37,17 +37,37 @@
                     <a href="/user/join">회원가입</a>
                 </div>
 
-
                 <div th:unless="${session.userNumber == null}">
-                    <div>
+                    <!--    상담사 면 상담사 님 으로 출력 되게 끔 조건 걸어 주는 부분    -->
+                    <div  th:if="${session.userLevel == 2 || session.userLevel == 3}">
+                        <a href="" th:text="${session.userName} + ' 상담사 님 '" class="loginName"></a>
+                    </div>
+                    <div  th:if="${session.userLevel == 0}">
+                        <a href="" th:text="${session.userName} + ' 관리자 님 '" class="loginName"></a>
+                    </div>
+                    <div th:unless="${session.userLevel == 2 || session.userLevel == 3}">
                         <a href="" th:text="${session.userName} + ' 님 '" class="loginName"></a>
                     </div>
+
                     <div class="myList">
                         <a href="/user/myDaybook">내 글 목록</a>
-                        <a href="/user/mypage">회원정보 수정</a>
-                        <a href="/admin/memberShipMm">회원정보 관리</a>
-                        <div  th:if="${userLevel == 2 || userLevel == 3}">
-                            <a href="/counselor/pay/payment">월결제</a>
+                        <a href="/user/mypage">회원정보수정</a>
+<!--                        <a href="/admin/memberShipMm">회원정보 관리</a>-->
+                        <!--상담사 / 관리자 간의 조건-->
+                        <div  th:if="${session.userLevel == 2 || session.userLevel == 3}">
+                            <a href="/counselor/book/counselorBook">상담예약관리</a>
+                        </div>
+                        <div th:if="${session.userLevel == 0}">
+                            <a href="/admin/memberShipMm">회원정보관리</a>
+                        </div>
+                        <div th:if="${session.userLevel == 1}">
+                            <a href="/board/notice">상담사신청</a>
+                        </div>
+                        <div  th:if="${session.userLevel == 2 || session.userLevel == 3}">
+                            <a href="/counselor/pay/payment">월 결제</a>
+                        </div>
+                        <div th:unless="${session.userLevel == 2 || session.userLevel == 3}">
+                            <a href="/counselor/pay/payMate">비대면상담</a>
                         </div>
                         <a href="/user/logout">로그아웃</a>
                     </div>
