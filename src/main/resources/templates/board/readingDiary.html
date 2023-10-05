@@ -27,7 +27,7 @@
                     <div class="title" th:text="${diary.diaryTitle}">오늘의 일기</div>
                     <div class="writer-date">
                         <div class="writer" th:text="${diary.userName}">이지윤</div>
-                        <div class="date" th:text="${diary.diaryDate}">2023-09-14</div>
+                        <div class="date" th:text="${#dates.format(diary.diaryDate,'yyyy-MM-dd HH:mm')}">2023-09-14</div>
                     </div>
                     <div class="content">
                         <div class="content-text" th:text="${diary.diaryContent}"></div>
