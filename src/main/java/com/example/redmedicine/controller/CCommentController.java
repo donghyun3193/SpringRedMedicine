@@ -6,7 +6,6 @@ import com.example.redmedicine.domain.vo.Criteria;
 import com.example.redmedicine.domain.vo.PageVo;
 import com.example.redmedicine.service.CCommentService;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -59,7 +58,7 @@ public class CCommentController {
         criteria.setPage(page);
 
         // PageVo에서 필요한 total을 Mapper에서 생성 후 적용
-        PageVo pageVo = new PageVo(cCommentService.findCCommentTotal(counselorNumber), criteria);
+        PageVo pageVo = new PageVo(cCommentService.getCCommentTotal(counselorNumber), criteria);
         List<CCommentVo> cCommentVoList = cCommentService.findCCommentListPage(criteria, counselorNumber);
 
         Map<String, Object> cCommentMap = new HashMap<>();

@@ -58,7 +58,7 @@ public class CCommentService {
     }
 
     //    리플 수 조회
-    public int findCCommentTotal(Long counselorNumber){
+    public int getCCommentTotal(Long counselorNumber){
         if (counselorNumber == null) {
             throw new IllegalArgumentException("게시물 번호 누락!!");
         }

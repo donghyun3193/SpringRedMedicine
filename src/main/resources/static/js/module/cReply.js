@@ -41,7 +41,7 @@ export function add(cReply, callback){
             }
         },
         error : function (a,b,c) {
-            console.error(c);
+            console.error(c);//만약 content가 null이라면 여기서 stop
         }
     });
 }
