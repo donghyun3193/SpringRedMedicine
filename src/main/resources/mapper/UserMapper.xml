@@ -73,6 +73,12 @@
         WHERE USER_NAME = #{userName} AND USER_PHONE = #{userPhone}
     </update>
 
+    <update id="updateLv">
+        UPDATE TBL_USER
+        SET USER_LEVEL = 3
+        WHERE USER_NUMBER = #{userNumber}
+    </update>
+
     <select id="selectUserId" resultType="string">
         SELECT USER_ID
         FROM TBL_USER

@@ -6,7 +6,8 @@
             SELECT SEQ_PAY.NEXTVAL FROM DUAL
         </selectKey>
         insert into TBL_PAY (PAY_NUMBER, USER_NUMBER, PAY_DATE, PAY_AMOUNT)
-        values (#{payNumber},#{userNumber},#{payDate},#{payAmount})
+        values (#{payNumber},#{userNumber},SYSDATE,#{payAmount})
     </insert>
+
 
 </mapper>
