@@ -48,7 +48,7 @@
                                         </a>
                                     </td>
                                     <td>관리자</td>
-                                    <td th:text="${notice.noticeDate}"></td>
+                                    <td th:text="${#dates.format(notice.noticeDate,'yyyy-MM-dd')}"></td>
                                 </tr>
                             </tbody>
                         </table>

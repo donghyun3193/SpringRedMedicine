@@ -13,7 +13,7 @@ public class DiaryVo {
     private Long diaryNumber;
     private Long userNumber;
     private String diaryTitle;
-    private String diaryDate;
+    private Date diaryDate;
     private String diaryContent;
     private String diaryOpen;
     private String userId;
