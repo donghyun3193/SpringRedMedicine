@@ -14,13 +14,39 @@ textarea.addEventListener("input", function () {
     }
 });
 
-// 전송 버튼 클릭 시 페이지 이동을 처리합니다.
-submitButton.addEventListener("click", function () {
-    // 입력된 텍스트를 서버로 전송 (이 부분은 서버 측 코드로 대체되어야 합니다).
-    const content = textarea.value.trim();
-    // 서버로 데이터를 전송하는 코드를 여기에 추가하세요.
 
+// 예약 날짜와 시간을 sessionStorage에서 가져옴
+const bookDate = sessionStorage.getItem('bookDate');
+const bookTime = sessionStorage.getItem('bookTime');
+const userCNumber = sessionStorage.getItem('userCNumber');
+
+console.log('Book Date:', bookDate);
+console.log('Book Time:', bookTime);
+console.log('userCNumber:', userCNumber);
+
+
+// const textarea = document.getElementById("writing-area");
+// const submitButton = document.getElementById("submitButton");
+const bookingForm = document.getElementById("bookingForm");
+const bookDateInput = document.getElementById("bookDate");
+const bookTimeInput = document.getElementById("bookTime");
+const userCNumberInput = document.getElementById("userCNumber");
+
+textarea.addEventListener("input", function () {
+    if (textarea.value.trim() === "") {
+        submitButton.disabled = true;
+    } else {
+        submitButton.disabled = false;
+    }
+});
+
+userCNumberInput.value = userCNumber;
+bookDateInput.value = bookDate;
+bookTimeInput.value = bookTime;
+
+submitButton.addEventListener("click", function () {
     alert("메인 페이지로 이동합니다.");
-    // 페이지 이동을 수행합니다.
-    window.location.href = "/src/main/resources/templates/main/index.html"; // 이동할 페이지의 URL로 변경하세요.
+
+    window.location.href = "/src/main/resources/templates/main/index.html";
+
 });

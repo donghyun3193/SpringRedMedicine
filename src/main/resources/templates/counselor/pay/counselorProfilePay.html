@@ -67,7 +67,7 @@
                 <div th:if="${session.userName == profile.userName}">
                     <button style="margin-right: 10px" class="profile-rm-button" type="button" th:data-number="${profile.profileNumber}">삭제</button>
                 </div>
-                <button class="profile-button" type="button" onclick="reservation()">예약</button>
+                <button class="profile-button" type="button" th:data-cnumber="${profile.userNumber}" onclick="reservation()">예약</button>
             </div>
             </div>
         </div>
@@ -158,6 +158,10 @@ let loginNumber = [[${session.userNumber}]]; // 타임리프 문법은 [] 2개�
 <script>
     // JavaScript 함수를 정의하여 페이지 이동을 처리
     function reservation() {
+        let cnumber = $('.profile-button').data('cnumber');
+
+        sessionStorage.setItem('userCNumber', cnumber);
+
         // 페이지 이동을 원하는 URL로 변경
         window.location.href = '/counselor/book/bookingDetails'; // 이동하려는 URL을 여기에 입력
     }
