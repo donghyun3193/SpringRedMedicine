@@ -23,12 +23,17 @@
     <div class="edge">
         <div class="counsel-title"><h2>상담에서 얻고 싶은 것</h2></div>
         <div class="content-content">
-            <textarea name=""id="writing-area" placeholder="내용을 입력해주세요"></textarea>
-            <br>
-            <div class="btn-box">
-                <!-- 버튼에 type="submit" 추가 -->
-                <button type="submit" class="btn-submit" id="submitButton" disabled>전 송</button>
-            </div>
+            <form id="bookingForm" action="/counselor/booking" method="post">
+                <textarea name="bookContent" id="writing-area" placeholder="내용을 입력해주세요"></textarea>
+                <input type="hidden" id="userNumber" name="userNumber" th:value="${session.userNumber}">
+                <input type="hidden" id="userCNumber" name="userCNumber">
+                <input type="hidden" id="bookDate" name="bookDate">
+                <input type="hidden" id="bookTime" name="bookTime">
+                <br>
+                <div class="btn-box">
+                    <button type="submit" class="btn-submit" id="submitButton" disabled>전 송</button>
+                </div>
+            </form>
         </div>
     </div>
 </main>

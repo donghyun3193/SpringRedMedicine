@@ -168,3 +168,40 @@ function disableOtherDates(selectedDate) {
         }
     });
 }
+
+// function choiceDate(newDIV) {
+//     if (document.querySelector('.choiceDay')) {
+//         document.querySelector('.choiceDay').classList.remove('choiceDay');
+//     }
+//
+//     if (!newDIV.classList.contains('disabled')) {
+//         newDIV.classList.add('choiceDay');
+//         const year = document.getElementById('calYear').innerText;
+//         const month = document.getElementById('calMonth').innerText;
+//         const day = newDIV.innerText;
+//         const bookDate = `${year}-${month}-${day}`;
+//         console.log('Selected date:', bookDate);
+//     }
+// }
+
+function choiceDateAndTime() {
+    const selectedDate = document.querySelector('.choiceDay');
+    const selectedTime = document.querySelector('.btn-time.selected');
+
+    if (selectedDate && selectedTime) {
+        const year = document.getElementById('calYear').innerText;
+        const month = document.getElementById('calMonth').innerText;
+        const day = selectedDate.innerText;
+        const bookDate = `${year}-${month}-${day}`;
+        const bookTime = selectedTime.getAttribute('data-time');
+
+        // 데이터를 sessionStorage에 저장
+        sessionStorage.setItem('bookDate', bookDate);
+        sessionStorage.setItem('bookTime', bookTime);
+
+        // 다음 페이지로 이동
+        window.location.href = '/counselor/bookingDetails02';
+    } else {
+        alert('날짜와 시간을 선택해주세요.');
+    }
+}
