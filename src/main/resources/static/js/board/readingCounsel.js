@@ -18,7 +18,7 @@ $('.btn-reply').on('click', function () {
     // 내용, 작성자 정보 등등
 
     let replyObj = {
-        cCommentContent : content,
+        ccommentContent : content,//서버에서 인지불가 cCommentContent -> ccommentContent 수정
         counselorNumber : counselorNumber,
         userNumber : loginNumber//html 세션을 가져온 것!
     };
@@ -45,11 +45,12 @@ function appendReply(map){//result는 배열을 받아오는 것 List의
 
     map.cCommentList.forEach( r => {//반복을 돌리겠다
         text += `
-            <div class="reply" data-num="${r.cCommentNumber}">
+            <div class="reply" data-num="${r.ccommentNumber}">
             <!--댓 삭제를 위해선 number가 필요했기에 임으로 삽입!-->
               <div class="reply-box">
                 <div class="reply-box__writer">${r.userName}</div>
-                <div class="reply-box__content">${r.cCommentContent}</div>
+                <div class="reply-box__content">${r.ccommentContent}</div>
+                <!--화면에서 정보를 받을 수 있도록 cCommentContent -> ccommentContent-->
               </div>
             
               <div class="reply-btn-box">
@@ -102,7 +103,8 @@ function showReply(result){//result는 배열을 받아오는 것 List의
             <div class="reply" data-num="${r.cCommentNumber}">
               <div class="reply-box">
                 <div class="reply-box__writer">${r.userName}</div>
-                <div class="reply-box__content">${r.cCommentContent}</div>
+                <div class="reply-box__content">${r.ccommentContent}</div>
+                <!--받은 정보를 다시 뿌리기 위해서 cCommentContent -> ccommentContent-->
               </div>
               
               <div class="reply-btn-box">
@@ -180,7 +182,7 @@ $('.reply-list-wrap').on('click', '.modify-content-btn', function () {
     let cCommentContent = $(this).closest('.modify-box').find('.modify-content').val();
     //위에서 찾은 num과 content를 넘겨줘야한다
     //이 때 찾은 내용을 Obj에 저장해라!
-    let replyObj = {cCommentContent : cCommentContent};
+    let replyObj = {ccommentContent : cCommentContent};
 
     //여기에 콜백을 사용해서 바로바로 적용되도록!
     cReply.modify(cCommentNumber, replyObj, function (){
