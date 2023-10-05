@@ -168,3 +168,46 @@ function disableOtherDates(selectedDate) {
         }
     });
 }
+
+function choiceDate(newDiv){
+    if (document.querySelector('.choiceDay')){
+        document.querySelector('.choiceDay').classList.remove('choiceDay');
+    }
+    if (!newDIV.classList.contains('disabled')) {
+        newDIV.classList.add('choiceDay');
+        const year = document.getElementById('calYear').innerText;
+        const month = document.getElementById('calMonth').innerText;
+        const day = newDIV.innerText;
+        const bookDate = `${year}-${month}-${day}`;
+        console.log('Selected date:', bookDate);
+    }
+}
+
+// 날짜 및 시간 선택 시 호출되는 함수
+function choiceDateAndTime() {
+    const selectedDate = document.querySelector('.choiceDay');
+    const selectedTime = document.querySelector('.btn-time.selected');
+    const year = document.getElementById('calYear').innerText;
+    const month = document.getElementById('calMonth').innerText;
+    const day = newDIV.innerText;
+    const bookDate = `${year}-${month}-${day}`;
+    const bookTime = selectedTime.getAttribute('data-time');
+
+    sessionStorage.setItem("date", bookDate);
+    sessionStorage.setItem("time", bookTime);
+
+
+    if (selectedDate && selectedTime) {
+        const bookDate = selectedDate.innerText;
+        const bookTime = selectedTime.getAttribute('data-time');
+
+        // 폼 데이터 설정
+        document.getElementById('bookDate').value = bookDate;
+        document.getElementById('bookTime').value = bookTime;
+
+        // 폼 제출
+        document.getElementById('bookingForm').submit();
+    } else {
+        alert('날짜와 시간을 선택해주세요.');
+    }
+}
