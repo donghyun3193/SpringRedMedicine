@@ -8,4 +8,5 @@ public interface PayMapper {
     //결제 정보 등록
     public void insert(PayDto payDto);
 
+
 }
