@@ -1,5 +1,6 @@
 package com.example.redmedicine.service;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
@@ -16,16 +17,21 @@ import java.util.*;
 
 @Service
 public class SmsService {
-    String serviceId = "ncp:sms:kr:317191750931:redmedicine";
-    String accessKey = "WoKUjkScfs0aL2xophFD";
-    String secretKey = "UxjCBgBZ58d4nOgP8aQmlSinfYQb3tpAR7FlQJLe";
+
+    @Value("${smsservice.serviceId}")
+    String serviceId;
+    @Value("${smsservice.accessKey}")
+    String accessKey;
+    @Value("${smsservice.secretKey}")
+    String secretKey;
     String method = "POST";
     String timeStamp = Long.toString(System.currentTimeMillis());
 
-    String requestUrl = "/sms/v2/services/" + serviceId + "/messages";
-    String apiUrl = "https://sens.apigw.ntruss.com" + requestUrl;
 
     public Map<String, Object> sendMessage(String phoneNumber){
+        String requestUrl = "/sms/v2/services/" + serviceId + "/messages";
+        String apiUrl = "https://sens.apigw.ntruss.com" + requestUrl;
+
         Map<String, String> message = new HashMap<>();
         message.put("to", phoneNumber);
 
@@ -69,6 +75,9 @@ public class SmsService {
     }
 
     private String makeSignature() throws NoSuchAlgorithmException, InvalidKeyException {
+        String requestUrl = "/sms/v2/services/" + serviceId + "/messages";
+        String apiUrl = "https://sens.apigw.ntruss.com" + requestUrl;
+
         String message = new StringBuilder()
                 .append(method)
                 .append(" ")

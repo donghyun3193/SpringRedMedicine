@@ -14,6 +14,7 @@
         <typeAlias type="com.example.redmedicine.domain.dto.CFileDto" alias="cFileDto"/>
         <typeAlias type="com.example.redmedicine.domain.dto.BookDto" alias="bookDto"/>
         <typeAlias type="com.example.redmedicine.domain.dto.CCommentDto" alias="cCommentDto"/>
+        <typeAlias type="com.example.redmedicine.domain.dto.PayDto" alias="payDto"/>
 
 
         <typeAlias type="com.example.redmedicine.domain.vo.PfCommentVo" alias="pfCommentVo"/>

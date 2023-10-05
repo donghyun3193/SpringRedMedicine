@@ -34,7 +34,10 @@
                     </div>
                     <div class="private">
                         <div class="private-title">공개여부</div>
-                        <div class="private-text" th:text="${diary.diaryOpen}"></div>
+                        <div class="private-text">
+                            <span th:if="${diary.diaryOpen == '0'}">공개</span>
+                            <span th:unless="${diary.diaryOpen == '0'}">비공개</span>
+                        </div>
                     </div>
                     <div class="buttons">
                         <button id="list-button">목록</button>
