@@ -31,10 +31,6 @@ public class DiaryController {
 
     private final DiaryService diaryService;
 
-//    //공지사항 페이지
-//    @GetMapping("/noticePage")
-//    public String showNoticePage(){return "board/notice";}
-
     //글쓰기
     @GetMapping("/write")
     public String showWritePage(HttpServletRequest req ,Model model){
@@ -72,7 +68,7 @@ public class DiaryController {
         return "board/readingDiary";
     }
 
-    @GetMapping("/list")
+    @GetMapping(value = {"/list","/diary"})
     public String showListPage(Criteria criteria, Model model){
         model.addAttribute("diaryList", diaryService.findAll(criteria));
         model.addAttribute("pageInfo", new PageVo(diaryService.getTotal(), criteria));
