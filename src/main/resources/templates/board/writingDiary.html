@@ -26,7 +26,7 @@
                     <div>일기쓰기</div>
                 </div>
                 <div class="main-content-list">
-                    <form action="/diary/write" method="post">
+                    <form action="/diary/write" method="post" class="writingForm">
                         <table>
                             <tr class="content-name">
                                 <th>이름</th>
@@ -34,11 +34,11 @@
                             </tr>
                             <tr class="content-title">
                                 <th>제목</th>
-                                <td><input type="text" name="diaryTitle" id="" ></td>
+                                <td><input type="text" name="diaryTitle" id="title" ></td>
                             </tr>
                             <tr class="content-text">
                                 <th>내용</th>
-                                <td><textarea name="diaryContent" id="" ></textarea></td>
+                                <td><textarea name="diaryContent" id="content" ></textarea></td>
                             </tr>
 <!--                            <tr class="addfile">-->
 <!--                                <th rowspan="2">첨부파일</th>-->
@@ -50,13 +50,13 @@
                             <tr class="private">
                                 <th>공개여부</th>
                                 <td>
-                                    <input type="radio" name="diaryOpen" id="" value="0">공개
-                                    <input type="radio" name="diaryOpen" id="" value="1">비공개
+                                    <input type="radio" name="diaryOpen" id="open0" value="0">공개
+                                    <input type="radio" name="diaryOpen" id="open1" value="1">비공개
                                 </td>
                             </tr>
                         </table>
                         <div class="buttons">
-                            <button id="main-buttons" type="submit" style="cursor: pointer">등록</button>
+                            <button id="main-buttons" type="button" style="cursor: pointer" class="submitButton">등록</button>
                             <button id="main-buttons" style="cursor: pointer">취소</button>
                         </div>
                     </form>
@@ -67,5 +67,7 @@
 <!-- 후터 시작-->
 <footer class="footer" th:replace="fragments/footer :: footer"></footer>
 <!-- 후터 끝-->
+<script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+<script defer src="/js/board/writingDiary.js"></script>
 </body>
 </html>
