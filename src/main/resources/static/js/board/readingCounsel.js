@@ -153,9 +153,9 @@ $('body').click(function (e) {
 $('.reply-list-wrap').on('click', '.reply-remove-btn', function () {
     $('.reply-btns__box').addClass('none');
 
-    let cCommentNumber = $(this).closest('.reply').data('num');
+    let ccommentNumber = $(this).closest('.reply').data('num');
 
-    cReply.remove(cCommentNumber, function (){
+    cReply.remove(ccommentNumber, function (){
         cReply.getList(counselorNumber, showReply);
     });//새로고침없이 바로바로 삭제되도록 설정 콜백을 통해서
     //reply.remove(cCommentNumber)만 있다면 삭제되나 화면에는 그대로 따라서 새로고침이 필요했다
@@ -177,15 +177,15 @@ $('.reply-list-wrap').on('click', '.reply-modify-btn', function () {
 $('.reply-list-wrap').on('click', '.modify-content-btn', function () {
     console.log('modify!!!');
     //넘버는 삭제와 동일한 방식으로 불러올 수 있다 왜냐하면 처음에 조상을 잡았기 때문에
-    let cCommentNumber = $(this).closest('.reply').data('num');
+    let ccommentNumber = $(this).closest('.reply').data('num');
     //수정완료 버튼의 형제요소인 textarea를 찾아서 적용해라!-부모중 modify-box를 찾아서 그 하위 중 .modify-content를 찾아라!
-    let cCommentContent = $(this).closest('.modify-box').find('.modify-content').val();
+    let ccommentContent = $(this).closest('.modify-box').find('.modify-content').val();
     //위에서 찾은 num과 content를 넘겨줘야한다
     //이 때 찾은 내용을 Obj에 저장해라!
-    let replyObj = {ccommentContent : cCommentContent};
+    let replyObj = {ccommentContent : ccommentContent};
 
     //여기에 콜백을 사용해서 바로바로 적용되도록!
-    cReply.modify(cCommentNumber, replyObj, function (){
+    cReply.modify(ccommentNumber, replyObj, function (){
         cReply.getList(counselorNumber, showReply);
     });
 });

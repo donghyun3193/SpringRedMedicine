@@ -39,21 +39,25 @@
                         <input class="inputemail" type="email" placeholder="이메일"
                         id="userEmail" name="userEmail" required><br>
 
-                        <!--일단 전화번호와 인증절차는 button type으로 처리하였음-->
                         <div class="input-name">휴대전화</div>
                         <div>
                             <input class="inputphone" type="text" placeholder="휴대폰번호"
                             id="userPhone" name="userPhone" required>
-                            <button class="btn-auth" type="button" id="startTimer">전송</button>
-                        </div><br>
-                        <div class="main-c-s-d1">
-                            <div class="main-time" id="time"></div>
-                        </div>
-                        <div>
-                            <input class="phone-auth" type="text" placeholder="인증번호입력" required>
-                            <button class="btn-auth" type="button">인증</button>
+                            <button type="submit" class="btn-auth" id="startTimer"
+                                    name="numberAuth" value="휴대폰 인증 문자 전송">전송</button>
                         </div><br>
 
+                        <div class="inputresult" style="display: none;"></div>
+
+                        <div class="main-c-s-d1">
+                            <input class="phone-auth" type="text" placeholder="인증번호를 입력해주세요."
+                                   id="inputNum" name="confirm-num" required>
+                            <div class="main-time" id="time"></div>
+                            <button class="btn-auth" type="button">인증</button>
+                        </div>
+
+                        <br>
+<!--===============================================================================================-->
                         <div class="input-name">생년월일</div>
                         <div class="info" id="info__birth">
                             <select class="box" id="birth-year">
@@ -98,6 +102,7 @@
                                 <div class="modal">
                                     <div th:replace="fragments/terms :: terms"></div>
                                 </div>
+                                <div class="inputresult" style="display: none;"></div>
                             </section>
                             <div class="checkbox-agree">
                                 <input type="checkbox" value="false" class="main-checkbox" name="check-terms" required>

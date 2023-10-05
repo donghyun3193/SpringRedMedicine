@@ -36,6 +36,19 @@ public class SmsRestController {
         System.out.println("========================"+ phoneNumber);
         return mono;
     }
+    @PostMapping("/msgSend")
+    public Mono<Map> sendJoinMsg(@RequestBody Map<String, String> body, HttpServletRequest req){//제이슨으로 받은 값을 쏴주겠다
+        String phoneNumber = body.get("confirm-num");//맵한테서 꺼내야지
+        Map<String, Object> result = smsService.sendMessage("phoneNumber");//맵으로 받아서 result사용하기 위해
+        String authNumber = (String)result.get("authNumber");//authNumber가 Object타입이었으니 String으로 형변환
+        Mono<Map> mono = (Mono<Map>) result.get("mono");
+
+        req.getSession().setAttribute("authNumber", authNumber);//세션을 통해서 인증번호 저장?
+        req.getSession().setAttribute("userPhone", phoneNumber);
+
+        System.out.println("========================"+ phoneNumber);
+        return mono;
+    }
 
     @PostMapping("/check")
     public String checkNumber(@RequestBody Map<String, String> param, HttpServletRequest req){
@@ -59,6 +72,25 @@ public class SmsRestController {
             result = "인증번호를 잘못 입력하셨습니다.";
         }else {
             result = "인증이 완료되었습니다.";
+        }
+        return result;
+    }
+
+    @PostMapping("/msgCheck")//전달받은 인증번호를 확인란으로 적고 확인 버튼을 눌렀을 때 실행될 것
+    public String joinNumber(@RequestBody String checkNumber, HttpServletRequest req){
+        String authNumber = (String)req.getSession().getAttribute("authNumber");//인증번호를 세션으로 받아오면 되었구나
+        String userPhone = (String) req.getSession().getAttribute("userPhone");
+
+        System.out.println("=========================="+ authNumber);
+        System.out.println(userPhone);
+
+        String result="";
+
+        if (authNumber.equals(checkNumber)){
+            result = "인증이 완료되었습니다.";
+        }
+        else {
+            result = "인증번호를 잘못 입력하셨습니다.";
         }
         return result;
     }
