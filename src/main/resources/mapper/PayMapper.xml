@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.redmedicine.mapper.PayMapper">
+    <insert id="insert">
+        <selectKey keyProperty="payNumber" order="BEFORE" resultType="long">
+            SELECT SEQ_PAY.NEXTVAL FROM DUAL
+        </selectKey>
+        insert into TBL_PAY (PAY_NUMBER, USER_NUMBER, PAY_DATE, PAY_AMOUNT)
+        values (#{payNumber},#{userNumber},#{payDate},#{payAmount})
+    </insert>
+
+</mapper>
