@@ -1,3 +1,77 @@
+
+/*===문자 인증 관련 js 시작===*/
+
+$('#startTimer').on('click', function (){
+  let userPhone = $('.inputphone').val();//폰 번호를 입력받은 input의 정보를 userPhone에 저장하겠다
+
+  let para = {
+    userPhone : userPhone
+  }
+  $.ajax({
+
+    url : '/sms/v1/msgSend',
+    type : 'post',// type : method(요청 방식)
+    data : JSON.stringify(para),// data : 요청 보낼 때 전송할 데이터 -> 내가 컨트롤러에서 작성한 메서드의 매개변수를 보내게된다
+    //요청 보낼 때 전송할 데이터 JSON형태로 보내야 하는데 관련 메서드가 필요하다
+    contentType : 'application/json; charset=utf-8',// dataType : 받는 데이터의 타입 -> 'json'
+    success : function () {
+      $('.inputresult').css('display','block');
+      $('.inputresult').text("입력하신 번호로 인증번호가 발송되었습니다.");
+    }
+
+  })
+
+  //타이머 js
+  var time = 300; //기준시간 작성
+  var min = ""; //분
+  var sec = ""; //초
+
+  //setInterval(함수, 시간) : 주기적인 실행
+  var x = setInterval(function() {
+    //parseInt() : 정수를 반환
+    min = parseInt(time/60); //몫을 계산
+    sec = time%60; //나머지를 계산
+
+    document.getElementById("time").innerHTML = min + "분" + sec + "초";
+    time--;
+
+    //타임아웃 시
+    if (time < 0) {
+      clearInterval(x); //setInterval() 실행을 끝냄
+      document.getElementById("time").innerHTML = "시간초과";
+    }
+  }, 1000);
+  //타이머 js 끝
+})
+
+
+/*인증번호 발송 후 이용자가 인증번호를 입력하는 순간*/
+$('#startTimer').on('click', function () {
+  let checkNumber = $('#confirm-num').val();//가입자가 입력한 값을 value로 받아와 저장하겠다
+
+  let param = {
+    checkNumber : checkNumber,
+  }
+
+  $.ajax({
+    url : '/sms/v1/msgCheck',
+    type : 'post',
+    data : JSON.stringify(param),
+    contentType : 'application/json; charset=utf-8',
+    success : function (result) {
+      console.log(result);
+
+      $('.inputresult').text(result);
+
+      if(result == "인증이 완료되었습니다."){
+        // $('#confirm-num').css('display','block');
+        $('.main-time').css('display','none');
+      }
+    }
+  })
+})
+/*===문자 인증 관련 js 종료===*/
+
 // '출생 연도' 셀렉트 박스 option 목록 동적 생성
 const birthYearEl = document.querySelector('#birth-year')
 // option 목록 생성 여부 확인
@@ -109,31 +183,33 @@ $('.modal').on('click', function(event){
 //     }
 //   }, 1000);
 // });
-var timerInterval; // 타이머의 setInterval 반환값을 저장하는 전역 변수
 
-document.getElementById("startTimer").addEventListener("click", function() {
-  if (timerInterval) {
-    clearInterval(timerInterval); // 이전 타이머를 정지시킴
-  }
 
-  var time = 300; // 기준시간 작성
-  var min = ""; // 분
-  var sec = ""; // 초
-
-  timerInterval = setInterval(function() {
-    min = parseInt(time / 60); // 몫을 계산
-    sec = time % 60; // 나머지를 계산
-
-    document.getElementById("time").innerHTML = min + "분" + sec + "초";
-    time--;
-
-    // 타임아웃 시
-    if (time < 0) {
-      clearInterval(timerInterval); // setInterval() 실행을 끝냄
-      document.getElementById("time").innerHTML = "시간초과";
-    }
-  }, 1000);
-});
+// var timerInterval; // 타이머의 setInterval 반환값을 저장하는 전역 변수
+//
+// document.getElementById("startTimer").addEventListener("click", function() {
+//   if (timerInterval) {
+//     clearInterval(timerInterval); // 이전 타이머를 정지시킴
+//   }
+//
+//   var time = 300; // 기준시간 작성
+//   var min = ""; // 분
+//   var sec = ""; // 초
+//
+//   timerInterval = setInterval(function() {
+//     min = parseInt(time / 60); // 몫을 계산
+//     sec = time % 60; // 나머지를 계산
+//
+//     document.getElementById("time").innerHTML = min + "분" + sec + "초";
+//     time--;
+//
+//     // 타임아웃 시
+//     if (time < 0) {
+//       clearInterval(timerInterval); // setInterval() 실행을 끝냄
+//       document.getElementById("time").innerHTML = "시간초과";
+//     }
+//   }, 1000);
+// });
   //타이머 js 끝
 
 //성별 선택!
@@ -332,6 +408,7 @@ $('#userId').on('change', function () {
     success: function (result) {
       console.log(result);
 
+      let regIdPw = /^[a-zA-Z0-9]{8,12}$/;
       let checkIdElement = $('.check-id');
       if (result == 1) {
         checkIdElement.text("중복된 아이디입니다.");
@@ -339,8 +416,9 @@ $('#userId').on('change', function () {
 
         // 회원가입 버튼을 비활성화
         document.getElementById('join-btn').disabled = true;
-      } else {
-        checkIdElement.text("사용 가능한 아이디입니다.");
+      }
+      else {
+        checkIdElement.text("중복된 아이디가 아닙니다.");
         checkIdElement.css('color', 'blue');
 
         // 중복된 아이디가 없을 때 입력 필드와 회원가입 버튼을 다시 활성화
@@ -354,4 +432,5 @@ $('#userId').on('change', function () {
 
 
 /*-----유효성 검사의 종료-----*/
+
 

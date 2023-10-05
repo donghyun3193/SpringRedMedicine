@@ -64,9 +64,9 @@ export function getDetails(cCommentNumber, callback){
     });
 }
 
-export function modify(cCommentNumber, cReply, callback){
+export function modify(ccommentNumber, cReply, callback){
     $.ajax({
-        url : `/cReplies/${cCommentNumber}`,
+        url : `/cReplies/${ccommentNumber}`,
         type : 'patch',
         data : JSON.stringify(cReply),
         contentType : 'application/json; charset=utf-8',
@@ -80,9 +80,9 @@ export function modify(cCommentNumber, cReply, callback){
         }
     });
 }
-export function remove(cCommentNumber, callback){
+export function remove(ccommentNumber, callback){
     $.ajax({
-        url : `/cReplies/${cCommentNumber}`,
+        url : `/cReplies/${ccommentNumber}`,
         type : 'delete',
         success : function (){
             if(callback){

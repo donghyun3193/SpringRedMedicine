@@ -63,7 +63,7 @@
             <!--===댓글 시작합니다.===-->
             <div class="counsel-comment-box">
                 <div class="reply-wrap">
-                    <th:block th:if="${session.userNumber == counselor.userNumber}">
+                    <th:block th:if="${session.userNumber != null}">
                         <h3>댓글 작성</h3>
                         <div class="reply-wrap__box">
                             <div class="reply-content__box">

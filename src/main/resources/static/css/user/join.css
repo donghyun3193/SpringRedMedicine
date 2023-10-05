@@ -320,15 +320,15 @@ a{
   .phone-auth{
     height: 60px;
     width: 415px;
+    margin-right: 5px;
     padding: 8px 15px 9px;
-    margin-top: 15px;
-    box-sizing: border-box;
+    border: 4px solid #ffa958;
     border-radius: 4px;
-    border-style: none;
+    box-sizing: border-box;
     font-size: 20px;
     line-height: 21px;
     display: inline-block;
-    border: 4px solid #ffa958;
+    justify-content: center;
   }
   .btn-auth{
     height: 60px;
@@ -346,19 +346,16 @@ a{
     font-weight: bold;
   }
   .main-c-s-d1{
-    width: 95%;
-    height: 60px;
     display: flex;
     position: relative;
   }
   .main-time{
     position: absolute;
-    right: 81px;
-    top: -10px;
-  
+    right: 95px;
+    top: 20px;
+
     font-size: 20px;
     color: #000;
-    /* color:rgb(194, 200, 204);; */
   }
 .input-name{
   height: 20px;
