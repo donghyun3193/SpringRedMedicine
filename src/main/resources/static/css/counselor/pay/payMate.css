@@ -18,6 +18,7 @@ a{
   text-decoration: none;
   color: black;
 }
+/*공통으로 사용되는 CSS 종료*/
 .header{
   width: 100vw;
   display: flex;
@@ -91,6 +92,12 @@ a{
 .nav2-box-a{
   margin-right: 20px;
 }
+.main-nav-container5 ul li :hover{
+  border-bottom: 4px solid white;
+  padding-bottom: 5px;
+  font-weight: bold;
+
+}
 .myList{
   position: absolute;
   display: none;
@@ -156,6 +163,10 @@ a{
   margin: 0 10px;
   text-align: center;
   /* font-weight: bold; */
+}
+.main-nav-container ul li :hover{
+  border-bottom: 4px solid white;
+  padding-bottom: 5px;
 }
 #main-nav-button{
   color: white;
