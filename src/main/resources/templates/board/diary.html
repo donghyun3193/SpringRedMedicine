@@ -42,24 +42,25 @@
                             <tbody>
                                 <tr th:each="diary, i : ${diaryList}">
                                     <td th:text="${i.index+1}">1</td>
-                                    <td th:if="${diary.diaryOpen == 1 && diary.userNumber == session.userNumber}">
-                                        <a th:href="@{/diary/detail(diaryNumber=${diary.diaryNumber})}">
+
+                                    <td>
+                                        <a th:if="${diary.diaryOpen == '0'}" th:href="@{/diary/detail(diaryNumber=${diary.diaryNumber})}">
                                             <span th:text="${diary.diaryTitle}">제목</span>
                                         </a>
-                                    </td>
-                                    <td th:unless="${diary.diaryOpen == 1 && diary.userNumber != session.userNumber}">
-<!--                                        <a th:href="@{/diary/detail(diaryNumber=${diary.diaryNumber})}">-->
+                                        <span th:unless="${diary.diaryOpen == '0'}">
+                                            <a th:if="${diary.userNumber == session.userNumber}" th:href="@{/diary/detail(diaryNumber=${diary.diaryNumber})}">
                                             <span th:text="${diary.diaryTitle}">제목</span>
-<!--                                        </a>-->
+                                            </a>
+                                            <span th:unless="${diary.userNumber == session.userNumber}">비공개 글 입니다.</span>
+                                        </span>
                                     </td>
-                                    <td th:unless="${diary.diaryOpen == 0}">
-                                        <a th:href="@{/diary/detail(diaryNumber=${diary.diaryNumber})}">
-                                            <span th:text="${diary.diaryTitle}">제목</span>
-                                        </a>
-                                    </td>
+
                                     <td th:text="${diary.userName}">이지윤</td>
-                                    <td th:text="${diary.diaryDate}">2023-09-09</td>
-                                    <td th:text="${diary.diaryOpen}">공개</td>
+                                    <td th:text="${#dates.format(diary.diaryDate,'yyyy-MM-dd')}">2023-09-09</td>
+                                    <td>
+                                        <span th:if="${diary.diaryOpen == '0'}" >공개</span>
+                                        <span th:unless="${diary.diaryOpen == '0'}">비공개</span>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
