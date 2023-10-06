@@ -35,4 +35,5 @@ public class UserRestController {
     public int checkId(String userId){
         return userService.checkId(userId);
     }
+
 }

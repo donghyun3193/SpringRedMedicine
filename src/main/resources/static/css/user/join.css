@@ -345,6 +345,18 @@ a{
     font-size: 18px;
     font-weight: bold;
   }
+  /*인증을 위해서 삽입된 div*/
+  .inputresult{
+    width: 490px;
+    height: 50px;
+    border: 2px solid #FFA958FF;
+    border-radius: 4px;
+    /* margin: 20px 0 0 0; */
+    display: none;
+    font-size: 14px;
+    text-align: center;
+  }
+  /*종료*/
   .main-c-s-d1{
     display: flex;
     position: relative;

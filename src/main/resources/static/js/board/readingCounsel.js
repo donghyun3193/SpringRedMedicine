@@ -81,7 +81,7 @@ $(window).on('scroll', function (){
     //브라우저 화면의 높이를 구함
     console.log(`window : ${ $(window).height() }`);
 
-    if(Math.round($(window).scrollTop()) == $(document).height() - $(window).height()){
+    if(Math.ceil($(window).scrollTop()) == $(document).height() - $(window).height()){
         console.log(++page);
         cReply.getListPage({counselorNumber:counselorNumber, page : page}, appendReply);
     }
@@ -100,7 +100,7 @@ function showReply(result){//result는 배열을 받아오는 것 List의
 
     result.forEach( r => {
         text += `
-            <div class="reply" data-num="${r.cCommentNumber}">
+            <div class="reply" data-num="${r.ccommentNumber}">
               <div class="reply-box">
                 <div class="reply-box__writer">${r.userName}</div>
                 <div class="reply-box__content">${r.ccommentContent}</div>
