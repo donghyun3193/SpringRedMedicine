@@ -7,7 +7,7 @@
         </selectKey>
         insert into TBL_USER (USER_NUMBER, USER_ID, USER_PASSWORD, USER_NAME, USER_EMAIL, USER_PHONE, USER_BIRTH, USER_GENDER,
         USER_LEVEL, USER_JOINDATE)
-        values (#{userNumber}, #{userId}, #{userPassword}, #{userName}, #{userEmail}, #{userPhone}, #{userBirth}, #{userGender}, #{userLevel}, TO_CHAR(SYSDATE, 'YYYY-MM-DD'))
+        values (#{userNumber}, #{userId}, #{userPassword}, #{userName}, #{userEmail}, #{userPhone}, #{userBirth}, #{userGender}, #{userLevel}, SYSDATE)
     </insert>
 
     <select id="selectUserNumber" resultType="long">

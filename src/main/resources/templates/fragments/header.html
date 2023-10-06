@@ -51,8 +51,13 @@
 
                     <div class="myList">
                         <a href="/user/myDaybook">내 글 목록</a>
-                        <a href="/user/mypage">회원정보수정</a>
-<!--                        <a href="/admin/memberShipMm">회원정보 관리</a>-->
+                        <div th:if="${session.userNumber == 0}">
+<!--                            <a href="/user/mypage">회원정보수정</a>-->
+                        </div>
+                        <div th:unless="${session.userNumber == 0}">
+                            <a href="/user/mypage">회원정보수정</a>
+                        </div>
+
                         <!--상담사 / 관리자 간의 조건-->
                         <div  th:if="${session.userLevel == 2 || session.userLevel == 3}">
                             <a href="/counselor/book/counselorBook">상담예약관리</a>
