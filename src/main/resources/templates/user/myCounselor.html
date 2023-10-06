@@ -55,9 +55,9 @@
                             <tbody class="content">
                                 <th:block th:each="counsel : ${counselorList}">
                                     <tr>
-                                        <td th:text="${counsel.counselorDate}"></td>
-                                        <td th:text="${counsel.counselorTitle}"></td>
-                                        <td>
+                                        <td class="counseldate" th:text="${counsel.counselorDate}"></td>
+                                        <td class="counseltitle" th:text="${counsel.counselorTitle}"></td>
+                                        <td class="counselcount">
                                             <span>비공개</span>
                                         </td>
                                     </tr>
