@@ -13,7 +13,7 @@ $('.btn-reply').on('click', function () {
     // '#reply-content' 요소에서 입력된 내용을 가져와 변수 'content'에 저장합니다.
     let content = $('#reply-content').val();
 
-    reply.getList(profileNumber, showReply);
+    // reply.getList(profileNumber, showReply);
 
 
     // 'content'가 존재하고 'loginNumber'도 존재할 경우에만 아래 코드를 실행합니다.
@@ -122,7 +122,7 @@ function showReply(result){
                 <div class="reply-box__content">${r.pfCommentContent}</div>
               </div>
               
-                            <div class="reply-time">
+            <div class="reply-time">
                 ${reply.timeForToday(r.pfCommentDate)}
               </div>  
 
