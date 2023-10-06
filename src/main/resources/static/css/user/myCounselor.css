@@ -1,20 +1,14 @@
 /*공통으로 사용된는 CSS*/
 @font-face {
-    font-family: 'TAEBAEKmilkyway';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/TAEBAEKmilkyway.woff2') format('woff2');
-    font-weight: normal;
+    font-family: 'SUITE-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/SUITE-Regular.woff2') format('woff2');
+    font-weight: 600;
     font-style: normal;
 }
 @font-face {
     font-family: 'iceJaram-Rg';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/iceJaram-Rg.woff2') format('woff2');
     font-weight: normal;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'SUITE-Regular';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/SUITE-Regular.woff2') format('woff2');
-    font-weight: 600;
     font-style: normal;
 }
 
@@ -103,7 +97,7 @@ a{
     position: absolute;
     display: none;
     width: 100px;
-    height: 110px;
+    height: 130px;
     background-color: #f9f9f9;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 
@@ -344,6 +338,16 @@ a{
 .table-wrap{
     height: 360px;
 }
+.counseldate{
+    width: 30%;
+}
+.counseltitle{
+    width: 50%;
+}
+.counselcount{
+    width: 20%;
+}
+
 /*페이징 처리를 할 공간입니다.*/
 .paging-container{
     width: 300px;

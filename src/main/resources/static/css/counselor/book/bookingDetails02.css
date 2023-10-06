@@ -1,10 +1,3 @@
-/*공통으로 사용된는 CSS*/
-@font-face {
-    font-family: 'TAEBAEKmilkyway';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/TAEBAEKmilkyway.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
-}
 @font-face {
     font-family: 'SUITE-Regular';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/SUITE-Regular.woff2') format('woff2');
@@ -103,7 +96,7 @@ a{
     position: absolute;
     display: none;
     width: 100px;
-    height: 110px;
+    height: 130px;
     background-color: #f9f9f9;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 
@@ -125,7 +118,6 @@ a{
 .nav2-box:hover .myList{
     display: block;
 }
-
 /* 헤더 영역 끝 */
 
 .checkbox1{

@@ -55,8 +55,8 @@
                             <tbody class="content">
                             <th:block th:each="diary : ${diaryList}" th:if="${session.userNumber == diary.userNumber}">
                                 <tr>
-                                    <td th:text="${diary.diaryDate}"></td>
-                                    <td th:text="${diary.diaryTitle}"></td>
+                                    <td class="diarydate" th:text="${#dates.format(diary.diaryDate,'yyyy-MM-dd HH:mm:ss')}"></td>
+                                    <td class="diarytitle" th:text="${diary.diaryTitle}"></td>
                                     <td>
                                         <button class="td-open" type="button">
                                             <span th:if="${diary.diaryOpen == '0'}">공개</span>

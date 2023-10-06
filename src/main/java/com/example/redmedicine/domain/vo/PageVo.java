@@ -14,8 +14,6 @@ public class PageVo {
     private int endPage;
 //    실제 가장 마지막 페이지
     private int realEnd;
-//    내글보기 실제 가장 마지막 페이지
-    private int realMyEnd;
 //    이전 버튼 표시 여부
     private boolean prev;
 //    다음 버튼 표시 여부
@@ -45,7 +43,6 @@ public class PageVo {
 
 //        게시글 전체 수로 실제 마지막 페이지를 구한다.
         this.realEnd = (int)Math.ceil((double)total/criteria.getAmount());
-        this.realMyEnd = (int)Math.ceil((double)total/criteria.getAmountMypage());
 
 //        세트의 마지막 번호보다 실제 마지막 페이지가 작다면?
         if(realEnd < endPage){
@@ -55,12 +52,6 @@ public class PageVo {
         this.prev = startPage > 1;
         this.next = endPage < realEnd;
 
-        //내글보기
-        if(realMyEnd < endPage){
-            this.endPage = realMyEnd == 0 ? 1 : realMyEnd;
-        }
-
-        this.next = endPage < realMyEnd;
 
     }
 
