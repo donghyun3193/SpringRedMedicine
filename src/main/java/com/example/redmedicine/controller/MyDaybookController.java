@@ -24,6 +24,7 @@ public class MyDaybookController {
     @GetMapping("/myDaybook")
     public String showMydiary(Model model, HttpServletRequest req, Criteria criteria){
         Long userNumber = (Long)req.getSession().getAttribute("userNumber");
+        criteria.setAmount(6);
         model.addAttribute("diaryList", myDaybookService.myDiary(criteria, userNumber));
         model.addAttribute("pageInfo", new PageVo(myDaybookService.getTotalDiary(), criteria));
         return "user/myDaybook";
@@ -33,6 +34,7 @@ public class MyDaybookController {
     @GetMapping("/myCounselor")
     public String showMycounselor(Model model, HttpServletRequest req, Criteria criteria){
         Long userNumber = (Long)req.getSession().getAttribute("userNumber");
+        criteria.setAmount(6);
         model.addAttribute("counselorList", myDaybookService.myCounselor(criteria, userNumber));
         model.addAttribute("pageInfo", new PageVo(myDaybookService.getTotalCounselor(), criteria));
         return "user/myCounselor";

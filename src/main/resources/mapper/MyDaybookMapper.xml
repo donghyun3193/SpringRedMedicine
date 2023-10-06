@@ -11,10 +11,10 @@
                     ORDER BY DIARY_NUMBER DESC
                 ) X
                 <![CDATA[
-                WHERE ROWNUM <= #{criteria.page} * #{criteria.amountMypage}
+                WHERE ROWNUM <= #{criteria.page} * #{criteria.amount}
                 ]]>
             ) Y
-        WHERE RNUM > (#{criteria.page} - 1) * #{criteria.amountMypage}
+        WHERE RNUM > (#{criteria.page} - 1) * #{criteria.amount}
     </select>
 
     <select id="selectCounselor" resultType="CounselorDto">
@@ -27,10 +27,10 @@
                          ORDER BY COUNSELOR_NUMBER DESC
                      ) X
                 <![CDATA[
-                WHERE ROWNUM <= #{criteria.page} * #{criteria.amountMypage}
+                WHERE ROWNUM <= #{criteria.page} * #{criteria.amount}
                 ]]>
             ) Y
-        WHERE RNUM > (#{criteria.page} - 1) * #{criteria.amountMypage}
+        WHERE RNUM > (#{criteria.page} - 1) * #{criteria.amount}
     </select>
 
 <!--    글 갯수 세기-->
