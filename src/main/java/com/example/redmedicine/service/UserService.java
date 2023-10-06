@@ -32,6 +32,7 @@ public class UserService {
                 .orElseThrow(()-> {throw new IllegalArgumentException("아이디와 패스워드가 일치하는 회원 정보가 없습니다.");
                 });
     }
+
     //회원 정보 조회
     public UserDto find(Long userNumber){//세션에서 받을 userNumber를 가지고 모든 정보를 조회 후 꽂겠다
         if(userNumber == null){
@@ -82,5 +83,4 @@ public class UserService {
     public int checkId(String userId){
         return userMapper.selectId(userId);
     }
-
 }

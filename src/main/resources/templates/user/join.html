@@ -38,22 +38,24 @@
                         <div class="input-name">이메일</div>
                         <input class="inputemail" type="email" placeholder="이메일"
                         id="userEmail" name="userEmail" required><br>
-
+<!--===============================================================================================-->
                         <div class="input-name">휴대전화</div>
                         <div>
-                            <input class="inputphone" type="text" placeholder="휴대폰번호"
+                            <input class="inputphone" type="text" placeholder="휴대폰 번호 입력"
                             id="userPhone" name="userPhone" required>
-                            <button type="submit" class="btn-auth" id="startTimer"
+                            <button type="button" class="btn-auth" id="startTimer"
                                     name="numberAuth" value="휴대폰 인증 문자 전송">전송</button>
-                        </div><br>
+                        </div>
 
-                        <div class="inputresult" style="display: none;"></div>
-
+                        <!--=========-->
+                        <div class="inputresult"></div>
+                        <!--=========-->
+                        <br>
                         <div class="main-c-s-d1">
                             <input class="phone-auth" type="text" placeholder="인증번호를 입력해주세요."
-                                   id="inputNum" name="confirm-num" required>
+                                   id="inputNum" name="authNumber" required/>
                             <div class="main-time" id="time"></div>
-                            <button class="btn-auth" type="button">인증</button>
+                            <button class="btn-auth" type="button" id="checkNum">인증</button>
                         </div>
 
                         <br>
@@ -71,7 +73,6 @@
                             <option disabled selected required>일</option>
                                 <input type="hidden" id="userBirth" name="userBirth"/>
                             </select>
-
 
                         </div><br>
                         <div class="input-name">성별</div>
@@ -141,5 +142,77 @@
 <!-- 후터 끝-->
     <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
     <script src="/js/user/join.js"></script>
+
+<script>
+    /*===문자 인증 관련 js 시작===*/
+    $('#startTimer').on('click', function (){//전송버튼의 아이디값을 가져와서 클릭 이벤트 생성
+        let userPhone = $('.inputphone').val();//폰 번호를 입력받은 input의 정보를 변수userPhone에 저장하겠다
+
+        $.ajax({
+
+            url : '/sms/v1/msgSend',
+            type : 'post',//method(요청 방식)
+            data : JSON.stringify({ userPhone: userPhone }),//data : 요청 보낼 때 전송할 데이터 -> 내가 smsRestController에서 작성한 메서드의 매개변수를 보내게된다
+            //요청 보낼 때 전송할 데이터 JSON형태로 보내야 하는데 관련 메서드가 필요하다
+            contentType : 'application/json; charset=utf-8',// dataType : 받는 데이터의 타입 -> 'json'으로 인증번호를 받아야한다.
+            success : function () {//성공한다면
+                $('.inputresult').css('display','block');//inputresult라는 div css변경 유도
+                $('.inputresult').text("입력하신 번호로 인증번호가 발송되었습니다.");//내부에 텍스트까지!
+            }
+
+        })
+
+        //타이머 js
+        var time = 300; //기준시간 작성
+        var min = ""; //분
+        var sec = ""; //초
+
+        //setInterval(함수, 시간) : 주기적인 실행
+        var x = setInterval(function() {
+            //parseInt() : 정수를 반환
+            min = parseInt(time/60); //몫을 계산
+            sec = time%60; //나머지를 계산
+
+            document.getElementById("time").innerHTML = min + "분" + sec + "초";
+            time--;
+
+            //타임아웃 시
+            if (time < 0) {
+                clearInterval(x); //setInterval() 실행을 끝냄
+                document.getElementById("time").innerHTML = "시간초과";
+            }
+        }, 1000);
+        //타이머 js 끝
+    })
+
+    /*인증번호 발송 후 이용자가 인증번호를 입력하는 순간*/
+    $('#checkNum').on('click', function () {//사용자가 input에 인증번호를 입력 후 인증버튼의 클릭 이벤트!
+        let checkNumber = $('#inputNum').val();//가입자가 입력한 값을 value로 받아와 변수checkNumber에 저장하겠다
+
+        let param = {
+            checkNumber : checkNumber
+        }
+
+        $.ajax({
+            url : '/sms/v1/msgCheck',
+            type : 'post',
+            data : JSON.stringify(param),
+            contentType : 'application/json; charset=utf-8',
+            success : function (result) {
+                console.log(result);
+
+                $('.inputresult').text(result);
+
+                if(result == "인증이 완료되었습니다."){//result의 내용은 sms컨트롤러를 통해서 발현 될 것!
+                    // $('#confirm-num').css('display','block');
+                    $('.main-time').css('display','none');
+                }
+            }
+        })
+    })
+    //userPhone : 가입자의 폰번호, checkNumber : 가입자가 입력한 인증번호
+    /*===문자 인증 관련 js 종료===*/
+</script>
+
 </body>
 </html>
