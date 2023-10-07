@@ -27,7 +27,8 @@
                         <span class="check-id"></span><!--CSS로 색변경 유도-->
                         <br>
                         <div class="input-name">비밀번호</div>
-                        <input class="inputpw" type="password" placeholder="비밀번호"
+                        <input class="inputpw" type="password"
+                               placeholder="8~12자 영문 대,소문자 각각 한 글자 이상 포함하여 주세요."
                         id="userPassword" name="userPassword" required><br>
                         <div class="input-name">비밀번호확인</div>
                         <input class="inputpw2" type="password" placeholder="비밀번호확인"
@@ -48,7 +49,7 @@
                         </div>
 
                         <!--=========-->
-                        <div class="inputresult"></div>
+                        <div class="inputresult">테스트 테스트 테스트 테스트</div>
                         <!--=========-->
                         <br>
                         <div class="main-c-s-d1">
@@ -62,16 +63,15 @@
 <!--===============================================================================================-->
                         <div class="input-name">생년월일</div>
                         <div class="info" id="info__birth">
-                            <select class="box" id="birth-year">
-                            <option disabled selected required >출생 연도</option>
-
+                            <select class="box" id="birth-year" required>
+                            <option disabled selected  >출생 연도</option>
                             </select>
-                            <select class="box" id="birth-month">
-                            <option disabled selected required>월</option>
+                            <select class="box" id="birth-month" required>
+                            <option disabled selected >월</option>
                             </select>
-                            <select class="box" id="birth-day">
-                            <option disabled selected required>일</option>
-                                <input type="hidden" id="userBirth" name="userBirth"/>
+                            <select class="box" id="birth-day" required>
+                            <option disabled selected >일</option>
+                                <input type="hidden" id="userBirth" name="userBirth" required/>
                             </select>
 
                         </div><br>
@@ -156,8 +156,9 @@
             //요청 보낼 때 전송할 데이터 JSON형태로 보내야 하는데 관련 메서드가 필요하다
             contentType : 'application/json; charset=utf-8',// dataType : 받는 데이터의 타입 -> 'json'으로 인증번호를 받아야한다.
             success : function () {//성공한다면
-                $('.inputresult').css('display','block');//inputresult라는 div css변경 유도
+                $('.inputresult').css('display','flex');//inputresult라는 div css변경 유도
                 $('.inputresult').text("입력하신 번호로 인증번호가 발송되었습니다.");//내부에 텍스트까지!
+                // document.getElementById('join-btn').disabled = true;
             }
 
         })
@@ -206,6 +207,7 @@
                 if(result == "인증이 완료되었습니다."){//result의 내용은 sms컨트롤러를 통해서 발현 될 것!
                     // $('#confirm-num').css('display','block');
                     $('.main-time').css('display','none');
+                    // document.getElementById('join-btn').disabled = true;
                 }
             }
         })

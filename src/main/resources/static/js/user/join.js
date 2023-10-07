@@ -1,3 +1,70 @@
+/*============================모달창 관련 js 설정 시작*/
+// '이용약관' 모달 열기
+$('.btn-open-popup').on('click', function(){
+  $('section.terms-modal').removeClass('none');
+});
+
+// '개인정보수집 및 이용동의' 모달 열기
+$('.btn-open-popup2').on('click', function(){
+  $('section.privacy-modal').removeClass('none');
+});
+
+// 모달 외부를 클릭하면 모달 닫기
+$('section').on('click', function(){
+  $(this).addClass('none');
+});
+
+// 모달 내부를 클릭해도 모달이 닫히지 않도록 처리
+$('.modal').on('click', function(event){
+  event.stopPropagation();
+});
+
+/*=============================모달창 관련 js 설정 종료*/
+
+//타이머 js
+// var timerInterval; // 타이머의 setInterval 반환값을 저장하는 전역 변수
+//
+// document.getElementById("startTimer").addEventListener("click", function() {
+//   if (timerInterval) {
+//     clearInterval(timerInterval); // 이전 타이머를 정지시킴
+//   }
+//
+//   var time = 300; // 기준시간 작성
+//   var min = ""; // 분
+//   var sec = ""; // 초
+//
+//   timerInterval = setInterval(function() {
+//     min = parseInt(time / 60); // 몫을 계산
+//     sec = time % 60; // 나머지를 계산
+//
+//     document.getElementById("time").innerHTML = min + "분" + sec + "초";
+//     time--;
+//
+//     // 타임아웃 시
+//     if (time < 0) {
+//       clearInterval(timerInterval); // setInterval() 실행을 끝냄
+//       document.getElementById("time").innerHTML = "시간초과";
+//     }
+//   }, 1000);
+// });
+  //타이머 js 끝
+
+//성별 선택!
+let $radioGender = $('.radio-gender');
+
+$radioGender.on('click', function(e){
+  let idx = $radioGender.index(this);
+  console.log(idx);
+  for(let i=0;i<$radioGender.length; i++){
+    if (i == idx) {
+      $radioGender.eq(i).addClass('checked');
+    } else {
+      $radioGender.eq(i).removeClass('checked');
+    }
+  }
+});
+
+
 // '출생 연도' 셀렉트 박스 option 목록 동적 생성
 const birthYearEl = document.querySelector('#birth-year')
 // option 목록 생성 여부 확인
@@ -53,83 +120,18 @@ birthDayEl.addEventListener('focus', function () {
   }
 });
 
-    var $all = $(".section2-checkbox");
-    var $inputs = $(".main-checkbox");
-    
-    $all.on('click',function(){
-        //"all" 클래스를 가진 요소들에 대해 클릭 이벤트 리스너를 등록
-        if($(this).is(":checked")){
-            $inputs.prop('checked',true);
-        }else{
-            $inputs.prop('checked',false);
-        }
-    });
+var $all = $(".section2-checkbox");
+var $inputs = $(".main-checkbox");
 
-
-
-
-// '이용약관' 모달 열기
-$('.btn-open-popup').on('click', function(){
-  $('section.terms-modal').removeClass('none');
-});
-
-// '개인정보수집 및 이용동의' 모달 열기
-$('.btn-open-popup2').on('click', function(){
-  $('section.privacy-modal').removeClass('none');
-});
-
-// 모달 외부를 클릭하면 모달 닫기
-$('section').on('click', function(){
-  $(this).addClass('none');
-});
-
-// 모달 내부를 클릭해도 모달이 닫히지 않도록 처리
-$('.modal').on('click', function(event){
-  event.stopPropagation();
-});
-
-//타이머 js
-// var timerInterval; // 타이머의 setInterval 반환값을 저장하는 전역 변수
-//
-// document.getElementById("startTimer").addEventListener("click", function() {
-//   if (timerInterval) {
-//     clearInterval(timerInterval); // 이전 타이머를 정지시킴
-//   }
-//
-//   var time = 300; // 기준시간 작성
-//   var min = ""; // 분
-//   var sec = ""; // 초
-//
-//   timerInterval = setInterval(function() {
-//     min = parseInt(time / 60); // 몫을 계산
-//     sec = time % 60; // 나머지를 계산
-//
-//     document.getElementById("time").innerHTML = min + "분" + sec + "초";
-//     time--;
-//
-//     // 타임아웃 시
-//     if (time < 0) {
-//       clearInterval(timerInterval); // setInterval() 실행을 끝냄
-//       document.getElementById("time").innerHTML = "시간초과";
-//     }
-//   }, 1000);
-// });
-  //타이머 js 끝
-
-//성별 선택!
-let $radioGender = $('.radio-gender');
-
-$radioGender.on('click', function(e){
-  let idx = $radioGender.index(this);
-  console.log(idx);
-  for(let i=0;i<$radioGender.length; i++){
-    if (i == idx) {
-      $radioGender.eq(i).addClass('checked');
-    } else {
-      $radioGender.eq(i).removeClass('checked');
-    }
+$all.on('click',function(){
+  //"all" 클래스를 가진 요소들에 대해 클릭 이벤트 리스너를 등록
+  if($(this).is(":checked")){
+    $inputs.prop('checked',true);
+  }else{
+    $inputs.prop('checked',false);
   }
 });
+// '출생 연도' 종료!!
 
 /*결국 해냈다 회원가입 시 날짜 입력될 수 있도록 유도!*/
 const birthYearSelect = document.getElementById('birth-year');
@@ -162,7 +164,7 @@ birthDaySelect.addEventListener('change', updateUserBirth);
 
 // 초기화시에도 실행
 updateUserBirth();
-
+/* */
 /*-----유효성 검사의 시작-----*/
 // 유효성 검사 메서드
 function Validation() {
@@ -174,11 +176,14 @@ function Validation() {
   let mail = document.getElementById("userEmail")
   let privacy = document.getElementsByName("check-privacy")
   let terms = document.getElementsByName("check-terms")
+  let gender = document.getElementById("userGender")
   let joinForm = document.joinForm;
 
   // 정규식
-  // id, pw
-  let regIdPw = /^[a-zA-Z0-9]{8,12}$/;
+  // id
+  let regId = /^[a-zA-Z0-9]{8,12}$/;
+  // pw
+  let regPw = /^(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9]{8,12}$/;
   // 이름
   let regName = /^[가-힣a-zA-Z]{2,15}$/;
   // 이메일
@@ -192,7 +197,7 @@ function Validation() {
     return false;
   }
   //아이디 영어 대소문자 확인
-  else if(!regIdPw.test(id.value)){
+  else if(!regId.test(id.value)){
     alert("아이디를 8~12자 영문 대소문자, 숫자만 입력하세요.")
     id.focus();
     return false;
@@ -206,8 +211,8 @@ function Validation() {
     return false;
   }
   //비밀번호 영어 대소문자 확인
-  else if(!regIdPw.test(pw.value)){
-    alert("비밀번호를 8~12자 영문 대소문자, 숫자만 입력하세요.")
+  else if(!regPw.test(pw.value)){
+    alert("비밀번호를 8~12자 영문 대소문자, 숫자만 입력하세요.\n영문 대문자와 소문자를 각각 한 글자씩 포함하여 주세요.");
     pw.focus();
     return false;
   }
@@ -237,6 +242,22 @@ function Validation() {
   }else if(!regMail.test(mail.value)){
     alert("잘못된 이메일 형식입니다.")
     mail.focus();
+    return false;
+  }
+
+// 성별 확인
+  if (!isCheckedGender()) {
+    alert("성별을 확인해주세요");
+    return false;
+  }
+// 성별 체크 확인
+  function isCheckedGender() {
+    let genderRadios = document.getElementsByName("userGender");
+    for (let i = 0; i < genderRadios.length; i++) {
+      if (genderRadios[i].checked) {
+        return true;
+      }
+    }
     return false;
   }
 
@@ -312,7 +333,6 @@ $('#userId').on('change', function () {
     success: function (result) {
       console.log(result);
 
-      let regIdPw = /^[a-zA-Z0-9]{8,12}$/;
       let checkIdElement = $('.check-id');
       if (result == 1) {
         checkIdElement.text("중복된 아이디입니다.");
@@ -322,7 +342,7 @@ $('#userId').on('change', function () {
         document.getElementById('join-btn').disabled = true;
       }
       else {
-        checkIdElement.text("중복된 아이디가 아닙니다.");
+        checkIdElement.text("중복된 아이디가 아닙니다. 8~12자 영문 대소문자, 숫자만 입력하세요.");
         checkIdElement.css('color', 'blue');
 
         // 중복된 아이디가 없을 때 입력 필드와 회원가입 버튼을 다시 활성화
@@ -332,7 +352,6 @@ $('#userId').on('change', function () {
     }
   })
 })
-
 
 
 /*-----유효성 검사의 종료-----*/

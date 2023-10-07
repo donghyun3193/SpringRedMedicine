@@ -216,8 +216,10 @@ a{
 }
 .content{
     width: 1000px;
-    height: 500px;
+    min-height: 500px; /* 최소 높이 설정 */
+    max-height: 5000px; /* 최대 높이 설정 */
     background-color: rgb(243, 241, 241);
+    /*overflow: auto;*/
 }
 .buttons{
     width: 1000px;
@@ -234,6 +236,7 @@ a{
     border: none;
     font-size: 17px;
     margin: 0 10px;
+    color: white;
 }
 /*#update-button{*/
 /*    color: white;*/
@@ -397,7 +400,7 @@ a{
 
 #reply-content {
     margin: 10px 0;
-    width: 535px;
+    width: 937px;
     resize: none;
     border: none;
     background-color: #f7f7f7;
@@ -419,15 +422,39 @@ a{
     color: white;
     text-decoration: none;
     margin-left: 20px;
-    border: 1px solid rgb(8, 20, 73);
+    border: 1px solid #FFC658FF;
     padding: 7px;
     cursor: pointer;
     height: 40px;
-    background-color: rgb(8, 20, 73);
+    background-color: #FFC658FF;
 }
 
 .btn-reply:hover {
-    background-color: rgb(8, 20, 73);
+    background-color: orange;
+}
+.modify-box{
+    display: flex;
+    flex-direction: column;
+}
+.modify-content{
+    width: 915px;
+    height: 90px;
+    padding: 4px 4px 4px 4px;
+    border-radius: 3px;
+
+    font-size: 14px;
+    font-weight: 500;
+    resize: none; /* 크기 조정 비활성화 */
+}
+.modify-content-btn{
+    width: 61px;
+    height: 20px;
+    margin: 5px 0 5px 864px;
+    background-color: #FFC658FF;
+    border: 1px solid orange;
+    border-radius: 3px;
+    color: gray;
+    cursor: pointer;
 }
 
 /* 댓글 목록 스타일 */
