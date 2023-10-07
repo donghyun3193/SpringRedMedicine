@@ -48,7 +48,7 @@ public class BookingController {
         session.removeAttribute("bookDate");
         session.removeAttribute("bookTime");
         session.removeAttribute("userCNumber");
-
+//        session.invalidate();
         return "main/index";
     }
 }
