@@ -8,9 +8,14 @@ import org.springframework.stereotype.Component;
 @Data
 @NoArgsConstructor
 public class BookVo {
-    private Long bookNumber;
+    //유저 정보
     private Long userNumber;
     private Long userCNumber;
+    private String userName;
+    private String userPhone;
+    private String userEmail;
+    //예약 정보
+    private Long bookNumber;
     private String bookContent;
     private String bookTime;
     private String bookDate;

@@ -3,9 +3,90 @@
 <mapper namespace="com.example.redmedicine.mapper.BookingMapper">
     <insert id="insert">
         <selectKey keyProperty="bookNumber" order="BEFORE" resultType="long">
-            SELECT SEQ_BOOK.NEXTVAL FROM DUAL
+        SELECT SEQ_BOOK.NEXTVAL FROM DUAL
         </selectKey>
         insert into TBL_BOOK (BOOK_NUMBER, USER_NUMBER, USER_C_NUMBER, BOOK_DATE, BOOK_TIME, BOOK_CONTENT)
         VALUES (#{bookNumber}, #{userNumber}, #{userCNumber}, #{bookDate}, #{bookTime}, #{bookContent})
     </insert>
+
+    <!--  상담사 번호 조회  -->
+    <select id="selectCNumber" resultType="long">
+        SELECT USER_C_NUMBER
+        FROM TBL_BOOK
+        WHERE USER_NUMBER = #{userNumber}
+    </select>
+
+    <!-- 상담 예약자 조회 -->
+    <select id="selectAll" resultType="bookVo">
+    SELECT RNUM, USER_C_NUMBER, USER_NUMBER, USER_NAME, BOOK_DATE, BOOK_TIME,
+       USER_PHONE, USER_EMAIL, BOOK_CONTENT, BOOK_NUMBER
+    FROM (
+         SELECT ROWNUM AS RNUM, USER_C_NUMBER, USER_NUMBER, USER_NAME, BOOK_DATE, BOOK_TIME,
+            USER_PHONE, USER_EMAIL, BOOK_CONTENT, BOOK_NUMBER
+         FROM(
+             SELECT USER_C_NUMBER, U.USER_NUMBER, USER_NAME, BOOK_DATE, BOOK_TIME,
+                USER_PHONE, USER_EMAIL, BOOK_CONTENT, BOOK_NUMBER
+
+             FROM TBL_BOOK B JOIN TBL_USER U
+                ON B.USER_NUMBER = U.USER_NUMBER
+
+        <choose>
+            <when test="'name'.equals(searchVo.cate)">
+                WHERE USER_NAME LIKE '%' || #{searchVo.keyword} || '%'
+            </when>
+            <when test="'date'.equals(searchVo.cate)">
+                WHERE BOOK_DATE LIKE '%' || #{searchVo.keyword} || '%'
+            </when>
+            <when test="'time'.equals(searchVo.cate)">
+                WHERE BOOK_TIME LIKE '%' || #{searchVo.keyword} || '%'
+            </when>
+        </choose>
+
+    AND USER_C_NUMBER = #{userCNumber} -- 조건 추가
+    ORDER BY BOOK_DATE , BOOK_TIME
+                 ) X
+        <![CDATA[
+             WHERE ROWNUM <= #{criteria.page} * #{criteria.amount}
+        ]]>
+    ) Y
+    WHERE RNUM > (#{criteria.page} - 1) * #{criteria.amount}
+    </select>
+
+    <!--    검색결과 토탈-->
+    <select id="searchTotal" resultType="_int">
+        SELECT COUNT(BOOK_NUMBER)
+        FROM TBL_BOOK B JOIN TBL_USER U
+        ON B.USER_NUMBER = U.USER_NUMBER
+        <choose>
+            <when test="'name'.equals(searchVo.cate)">
+                WHERE USER_NAME LIKE '%' || #{searchVo.keyword} || '%'
+            </when>
+            <when test="'date'.equals(searchVo.cate)">
+                WHERE BOOK_DATE LIKE '%' || #{searchVo.keyword} || '%'
+            </when>
+            <when test="'time'.equals(searchVo.cate)">
+                WHERE BOOK_TIME LIKE '%' || #{searchVo.keyword} || '%'
+            </when>
+        </choose>
+        AND USER_C_NUMBER = #{userCNumber}
+    </select>
+
+    <select id="selectTotal" resultType="_int">
+        SELECT COUNT(BOOK_NUMBER)
+        FROM TBL_BOOK B JOIN TBL_USER U
+         ON B.USER_NUMBER = U.USER_NUMBER
+        WHERE USER_C_NUMBER = #{userCNumber}
+    </select>
+
+    <delete id="delete">
+        DELETE FROM TBL_BOOK
+        WHERE BOOK_NUMBER = #{bookNumber}
+    </delete>
+
+    <select id="selectBook" resultType="bookDto">
+        SELECT BOOK_NUMBER, USER_NUMBER, USER_C_NUMBER, BOOK_DATE, BOOK_TIME, BOOK_CONTENT, BOOK_STATUS
+        FROM TBL_BOOK
+        WHERE USER_NUMBER = #{userNumber} and BOOK_STATUS = '1'
+    </select>
+
 </mapper>

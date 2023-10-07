@@ -130,6 +130,7 @@ public class ProfileController {
         model.addAttribute("userName",profileService.findUserName(userNumber));
         ProfileVo profileVo = profileService.findProfileFree(profileNumber);
         model.addAttribute("profile", profileVo);
+        model.addAttribute("user",profileVo);
 
         return "counselor/free/counselorProfileFree";
     }
