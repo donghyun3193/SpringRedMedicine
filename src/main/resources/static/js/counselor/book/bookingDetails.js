@@ -196,6 +196,11 @@ function choiceDateAndTime() {
         const bookTime = selectedTime.getAttribute('data-time');
 
         // 데이터를 sessionStorage에 저장
+        // bookingDetails 페이지에서 userCNumber 가져오기
+        let userCNumber = sessionStorage.getItem('userCNumber');
+
+        // userCNumber를 사용하여 필요한 작업 수행
+        console.log('userCNumber:', userCNumber);
         sessionStorage.setItem('bookDate', bookDate);
         sessionStorage.setItem('bookTime', bookTime);
 
