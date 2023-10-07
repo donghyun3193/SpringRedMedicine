@@ -35,16 +35,6 @@ public class BookingService {
         bookingMapper.insert(bookDto);
     }
 
-    //상담회원 조회
-    public BookVo find(Long userCNumber){
-        log.info("============================{}",userCNumber.toString());
-        if (userCNumber == null) {
-            throw new IllegalArgumentException("상담사 번호 누락!");
-        }
-        return Optional.ofNullable(bookingMapper.select(userCNumber))
-                .orElseThrow(()-> {throw new IllegalArgumentException("존재하지않는 상담사 번호!");
-                });
-    }
 
     //상담회원 전체조회
     public List<BookVo> findAll(Criteria criteria, SearchVo searchVo, Long userCNumber){
