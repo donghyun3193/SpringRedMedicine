@@ -15,10 +15,6 @@ public interface BookingMapper {
     //상담예약하기
     public void insert(BookDto bookDto);
 
-    //상담회원 조회
-    public BookVo select(Long userCNumber);
-//    public BookVo select(Long userNumber);
-
     //상담사 번호 조회
     public Long selectCNumber(Long userNumber);
 

@@ -16,14 +16,6 @@
         WHERE USER_NUMBER = #{userNumber}
     </select>
 
-    <select id="select" resultType="bookVo">
-        SELECT USER_C_NUMBER, U.USER_NUMBER, USER_NAME, BOOK_DATE, BOOK_TIME,
-               USER_PHONE, USER_EMAIL, BOOK_CONTENT, BOOK_NUMBER
-        FROM TBL_BOOK B JOIN TBL_USER U
-                             ON B.USER_NUMBER = U.USER_NUMBER
-        WHERE USER_C_NUMBER = #{userCNumber}
-    </select>
-
     <!-- 상담 예약자 조회 -->
     <select id="selectAll" resultType="bookVo">
     SELECT RNUM, USER_C_NUMBER, USER_NUMBER, USER_NAME, BOOK_DATE, BOOK_TIME,
