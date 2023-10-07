@@ -8,4 +8,10 @@
         insert into TBL_BOOK (BOOK_NUMBER, USER_NUMBER, USER_C_NUMBER, BOOK_DATE, BOOK_TIME, BOOK_CONTENT)
         VALUES (#{bookNumber}, #{userNumber}, #{userCNumber}, #{bookDate}, #{bookTime}, #{bookContent})
     </insert>
+
+    <select id="selectBook" resultType="bookDto">
+        SELECT BOOK_NUMBER, USER_NUMBER, USER_C_NUMBER, BOOK_DATE, BOOK_TIME, BOOK_CONTENT, BOOK_STATUS
+        FROM TBL_BOOK
+        WHERE USER_NUMBER = #{userNumber} and BOOK_STATUS = '1'
+    </select>
 </mapper>

@@ -40,4 +40,7 @@ public interface UserMapper {
 
     //결제->유료상담사 전환
     public void updateLv(Long userNumber);
+
+    //회원 휴대폰 번호 조회
+    public String selectUserPhoneNumber(Long userNumber);
 }

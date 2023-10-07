@@ -17,12 +17,15 @@ public class SmsRestController {
     private final SmsService smsService;
     private final UserService userService;
 
+    //비밀번호찾기 인증번호
     @PostMapping("/send")
     public Mono<Map> sendMsg(@RequestBody Map<String, String> body, HttpServletRequest req){
+        System.out.println(body);
         String phoneNumber = body.get("userPhone");
         String userName = body.get("userName");
+
         Map<String,Object> result = smsService.sendMessage(phoneNumber);
-        String authNumber = (String) result.get("authNumber");
+        String authNumber = (String)result.get("authNumber");
         Mono<Map> mono = (Mono<Map>) result.get("mono");
 
         req.getSession().setAttribute("authNumber", authNumber);
@@ -33,18 +36,51 @@ public class SmsRestController {
         System.out.println("========================"+ phoneNumber);
         return mono;
     }
+
+    //상담예약 내역 문자 전송
+    @PostMapping("/sendBookMsg")
+    public Mono<Map> sendBookMsg(@RequestBody Map<String, String> body, HttpServletRequest req){
+        System.out.println(body);
+        String phoneNumber = body.get("userPhone");
+        String userName = body.get("userName");
+        String counselorName = body.get("counselorName");
+        String bookDate = body.get("bookDate");
+        String bookTime = body.get("bookTime");
+
+//        String smsContent = "[몽글몽글]예약확정 안내\n"
+//                            + userName + "님, 예약이 확정되었습니다.\n"
+//                            +"담당 상담사 : " + counselorName + "\n"
+//                            +"예약 날짜 : " + bookDate + "\n"
+//                            +"예약 시간 : " + bookTime;
+
+        String smsContent = "담당 상담사 : " + counselorName + "\n"
+                            +"예약 날짜 : " + bookDate + "\n"
+                            +"예약 시간 : " + bookTime;
+
+
+        System.out.println(smsContent);
+        Map<String,Object> result = smsService.sendBookMsg(phoneNumber,smsContent);
+        Mono<Map> mono = (Mono<Map>) result.get("mono");
+
+        req.getSession().setAttribute("userName", userName);
+        req.getSession().setAttribute("userPhone", phoneNumber);
+
+        System.out.println("========================"+ userName);
+        System.out.println("========================"+ phoneNumber);
+        return mono;
+    }
+
     @PostMapping("/msgSend")
-    public Mono<Map> sendJoinMsg(@RequestBody Map<String, String> body, HttpServletRequest req){
-        String phoneNumber = body.get("userPhone");//가입자의 전화번호를 받아 phoneNumber에 저장하겠다
-        Map<String, Object> result = smsService.sendMessage(phoneNumber);//맵으로 받아서 result사용하기 위해
-        String authNumber = (String)result.get("authNumber");//authNumber가 Object타입이었으니 String으로 형변환->보낼 인증번호
+    public Mono<Map> sendJoinMsg(@RequestBody Map<String, String> body, HttpServletRequest req){//제이슨으로 받은 값을 쏴주겠다
+        String phoneNumber = body.get("confirm-num");//맵한테서 꺼내야지
+        Map<String, Object> result = smsService.sendMessage("phoneNumber");//맵으로 받아서 result사용하기 위해
+        String authNumber = (String)result.get("authNumber");//authNumber가 Object타입이었으니 String으로 형변환
         Mono<Map> mono = (Mono<Map>) result.get("mono");
 
         req.getSession().setAttribute("authNumber", authNumber);//세션을 통해서 인증번호 저장?
-        req.getSession().setAttribute("userPhone", phoneNumber);//세션을 통해서 가입자의 전화번호 세션에 저장
+        req.getSession().setAttribute("userPhone", phoneNumber);
 
-        System.out.println("*****************"+authNumber);//ok
-        System.out.println("*****************"+ phoneNumber);//확인해보자 -> ok
+        System.out.println("========================"+ phoneNumber);
         return mono;
     }
 

@@ -20,4 +20,8 @@ public class BookingService {
         bookingMapper.insert(bookDto);
     }
 
+    //예약 조회
+    public BookDto selectBook(Long userNumber){
+        return bookingMapper.selectBook(userNumber);
+    }
 }
