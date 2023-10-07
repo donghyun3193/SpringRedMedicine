@@ -20,52 +20,52 @@ import static org.junit.jupiter.api.Assertions.*;
 @Transactional
 @Slf4j
 class PfCommentMapperTest {
-    @Autowired
-    PfCommentMapper pfCommentMapper;
-
-    @Autowired
-    UserMapper userMapper;
-
-    @Autowired
-    ProfileMapper profileMapper;
-
-    PfCommentDto pfCommentDto;
-    UserDto userDto;
-    ProfileDto profileDto;
-
-    @BeforeEach
-    void setUp() {
-        pfCommentDto = new PfCommentDto();
-        pfCommentDto.setPfCommentContent("첫글");
-        pfCommentDto.setPfCommnetDate("123");
-
-        pfCommentMapper.insertPfComment(pfCommentDto);
-
-        userDto = new UserDto();
-        userDto.setUserName("칸쵸");
-        userDto.setUserPhone("01023421234");
-        userDto.setUserId("aaa");
-        userDto.setUserBirth("20201029");
-        userDto.setUserEmail("aaa@naver.com");
-        userDto.setUserGender("M");
-        userDto.setUserPassword("123");
-        userDto.setUserLevel(1L);
-        userDto.setUserJoindate("1111");
-
-        userMapper.insert(userDto);
-
-        profileDto = new ProfileDto();
-        profileDto.setProfileSuper(3L);
-        profileDto.setProfileCareer(2L);
-        profileDto.setProfileFee(10000L);
-        profileDto.setProfileTarget("성인");
-        profileDto.setProfileArea("가정폭력");
-        profileDto.setProfileDay("월");
-        profileDto.setProfileTime("09:00~10:00");
-        profileDto.setProfileContent("아뵤뵤");
-
-        profileMapper.insertProfilePay(profileDto);
-    }
+//    @Autowired
+//    PfCommentMapper pfCommentMapper;
+//
+//    @Autowired
+//    UserMapper userMapper;
+//
+//    @Autowired
+//    ProfileMapper profileMapper;
+//
+//    PfCommentDto pfCommentDto;
+//    UserDto userDto;
+//    ProfileDto profileDto;
+//
+//    @BeforeEach
+//    void setUp() {
+//        pfCommentDto = new PfCommentDto();
+//        pfCommentDto.setPfCommentContent("첫글");
+//        pfCommentDto.setPfCommnetDate("123");
+//
+//        pfCommentMapper.insertPfComment(pfCommentDto);
+//
+//        userDto = new UserDto();
+//        userDto.setUserName("칸쵸");
+//        userDto.setUserPhone("01023421234");
+//        userDto.setUserId("aaa");
+//        userDto.setUserBirth("20201029");
+//        userDto.setUserEmail("aaa@naver.com");
+//        userDto.setUserGender("M");
+//        userDto.setUserPassword("123");
+//        userDto.setUserLevel(1L);
+//        userDto.setUserJoindate("1111");
+//
+//        userMapper.insert(userDto);
+//
+//        profileDto = new ProfileDto();
+//        profileDto.setProfileSuper(3L);
+//        profileDto.setProfileCareer(2L);
+//        profileDto.setProfileFee(10000L);
+//        profileDto.setProfileTarget("성인");
+//        profileDto.setProfileArea("가정폭력");
+//        profileDto.setProfileDay("월");
+//        profileDto.setProfileTime("09:00~10:00");
+//        profileDto.setProfileContent("아뵤뵤");
+//
+//        profileMapper.insertProfilePay(profileDto);
+//    }
 
 
 //    @Test
