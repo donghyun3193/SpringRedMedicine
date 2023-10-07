@@ -51,13 +51,7 @@ submitButton.addEventListener("click", function () {
 
     alert("예약이 완료되었습니다.");
 
-
-<<<<<<< HEAD
     sessionStorage.clear();
-
-    window.location.href = "/src/main/resources/templates/main/index.html";
-=======
->>>>>>> jiyoon1007
 
 });
 

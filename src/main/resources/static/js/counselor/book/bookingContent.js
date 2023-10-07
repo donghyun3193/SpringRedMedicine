@@ -28,7 +28,7 @@ $('.submitButton').on('click', function () {
         contentType: 'application/json; charset=utf-8',
         success: function () {
 
-            alert("입력하신 번호로 인증번호가 발송되었습니다.")
+            alert("입력하신 번호로 예약하신 내용이 발송되었습니다.")
         }
     })
 })
