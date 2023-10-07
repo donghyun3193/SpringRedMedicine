@@ -9,7 +9,6 @@
         VALUES (#{bookNumber}, #{userNumber}, #{userCNumber}, #{bookDate}, #{bookTime}, #{bookContent})
     </insert>
 
-<<<<<<< HEAD
     <!--  상담사 번호 조회  -->
     <select id="selectCNumber" resultType="long">
         SELECT USER_C_NUMBER
@@ -83,11 +82,11 @@
         DELETE FROM TBL_BOOK
         WHERE BOOK_NUMBER = #{bookNumber}
     </delete>
-=======
+
     <select id="selectBook" resultType="bookDto">
         SELECT BOOK_NUMBER, USER_NUMBER, USER_C_NUMBER, BOOK_DATE, BOOK_TIME, BOOK_CONTENT, BOOK_STATUS
         FROM TBL_BOOK
         WHERE USER_NUMBER = #{userNumber} and BOOK_STATUS = '1'
     </select>
->>>>>>> jiyoon1007
+
 </mapper>
