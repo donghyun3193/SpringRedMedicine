@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.redmedicine.mapper.MyDaybookMapper">
-    <select id="selectDiary" resultType="DiaryDto">
+    <select id="selectDiary" resultType="diaryDto">
         SELECT RNUM,DIARY_NUMBER, USER_NUMBER, DIARY_TITLE, DIARY_DATE, DIARY_OPEN
         FROM(
                 SELECT ROWNUM AS RNUM, DIARY_NUMBER, USER_NUMBER, DIARY_TITLE, DIARY_DATE, DIARY_OPEN
@@ -17,21 +17,24 @@
         WHERE RNUM > (#{criteria.page} - 1) * #{criteria.amount}
     </select>
 
-    <select id="selectCounselor" resultType="CounselorDto">
-        SELECT RNUM,COUNSELOR_NUMBER, USER_NUMBER, COUNSELOR_TITLE, COUNSELOR_DATE
-        FROM(
-                SELECT ROWNUM AS RNUM, COUNSELOR_NUMBER, USER_NUMBER, COUNSELOR_TITLE, COUNSELOR_DATE
-                FROM (
-                         SELECT COUNSELOR_NUMBER, USER_NUMBER, COUNSELOR_TITLE, COUNSELOR_DATE
-                         FROM TBL_COUNSELOR
-                         ORDER BY COUNSELOR_NUMBER DESC
-                     ) X
-                <![CDATA[
-                WHERE ROWNUM <= #{criteria.page} * #{criteria.amount}
-                ]]>
-            ) Y
+    <select id="selectCounselor" resultType="myDaybookVo">
+        SELECT RNUM, COUNSELOR_NUMBER, USER_NUMBER, COUNSELOR_TITLE, COUNSELOR_DATE, CNT
+        FROM (
+                 SELECT ROWNUM AS RNUM, COUNSELOR_NUMBER, USER_NUMBER, COUNSELOR_TITLE, COUNSELOR_DATE,
+                        (SELECT COUNT(CC.C_COMMENT_NUMBER) FROM TBL_C_COMMENT CC WHERE CC.COUNSELOR_NUMBER = X.COUNSELOR_NUMBER) CNT
+                 FROM (
+                          SELECT COUNSELOR_NUMBER, USER_NUMBER, COUNSELOR_TITLE, COUNSELOR_DATE
+                          FROM TBL_COUNSELOR
+                          ORDER BY COUNSELOR_NUMBER DESC
+                      ) X
+        <![CDATA[
+                 WHERE ROWNUM <= #{criteria.page} * #{criteria.amount}
+        ]]>
+    ) C
         WHERE RNUM > (#{criteria.page} - 1) * #{criteria.amount}
     </select>
+
+
 
 <!--    글 갯수 세기-->
     <select id="countDiary" resultType="_int">

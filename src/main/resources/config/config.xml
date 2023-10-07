@@ -26,6 +26,7 @@
         <typeAlias type="com.example.redmedicine.domain.vo.DiaryVo" alias="diaryVo"/>
         <typeAlias type="com.example.redmedicine.domain.vo.BookVo" alias="bookVo"/>
         <typeAlias type="com.example.redmedicine.domain.vo.CCommentVo" alias="cCommentVo"/>
+        <typeAlias type="com.example.redmedicine.domain.vo.MyDaybookVo" alias="myDaybookVo"/>
 
 
         <typeAlias type="com.example.redmedicine.domain.vo.Criteria" alias="criteria"/>
