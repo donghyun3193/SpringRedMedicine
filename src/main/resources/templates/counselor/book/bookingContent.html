@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/counselor/book/bookingContent.css">
+  <title>예약내용확인</title>
+</head>
+<body>
+<!-- 헤더 시작-->
+<header class="header" th:replace="fragments/header :: header"></header>
+<!-- 헤더 종료-->
+<div class="main-nav-container">
+  <ul>
+    <!-- <li><a href="/html/diagnosis.html" id="main-nav-button">우울증</a></li>
+    <li><a href="/html/bipolarDisorder.html" id="main-nav-button">조울증</a></li>
+    <li><a href="/html/anxiety.html" id="main-nav-button">불안증</a></li>
+    <li><a href="/html/stress.html" id="main-nav-button">스트레스</a></li> -->
+  </ul>
+</div>
+<div class="main-content">
+  <div class="main-content-container">
+    <div class="main-title">예약 내용 확인</div>
+    <div class="subTitle">예약이 완료되었습니다. 확인 버튼을 누르시면 예약 내용을 문자로 발송해드립니다.</div>
+    <table>
+      <tr class="userName">
+        <th >예약자 이름</th>
+        <td th:text="${userName}" class="userNameInput"></td>
+        <input type="hidden" th:value="${userPhoneNumber}" class="userPhoneNumberInput">
+      </tr>
+      <tr class="counselorName">
+        <th>상담사 이름</th>
+        <td th:text="${counselorName}" class="counselorNameInput"></td>
+      </tr>
+      <tr class="bookDate">
+        <th>예약 날짜</th>
+        <td th:text="${bookDate}" class="bookDateInput"></td>
+      </tr>
+      <tr class="bookTime">
+        <th>예약 시간</th>
+        <td th:text="${bookTime}" class="bookTimeInput"></td>
+      </tr>
+    </table>
+    <div class="button-container">
+      <button class="submitButton">확인</button>
+    </div>
+  </div>
+</div>
+<footer class="footer" th:replace="fragments/footer :: footer"></footer>
+<!-- =====풋터 종료====== -->
+<script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+<script src="/js/counselor/book/bookingContent.js"></script>
+</body>
+</html>

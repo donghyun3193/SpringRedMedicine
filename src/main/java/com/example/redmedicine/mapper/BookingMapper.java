@@ -15,6 +15,7 @@ public interface BookingMapper {
     //상담예약하기
     public void insert(BookDto bookDto);
 
+<<<<<<< HEAD
     //상담사 번호 조회
     public Long selectCNumber(Long userNumber);
 
@@ -33,4 +34,8 @@ public interface BookingMapper {
     public int searchTotal(@Param("searchVo") SearchVo searchVo, @Param("userCNumber") Long userCNumber);
 
 
+=======
+    //예약조회
+    public BookDto selectBook(Long userNumber);
+>>>>>>> jiyoon1007
 }

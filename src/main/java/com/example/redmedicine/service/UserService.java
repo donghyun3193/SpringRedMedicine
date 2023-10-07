@@ -83,4 +83,10 @@ public class UserService {
     public int checkId(String userId){
         return userMapper.selectId(userId);
     }
+
+    // 회원 휴대폰 번호 조회
+    public String findUserPhoneNumber(Long userNumber){
+       String userPhoneNumber = userMapper.selectUserPhoneNumber(userNumber);
+       return userPhoneNumber;
+    }
 }
