@@ -1,8 +1,10 @@
 package com.example.redmedicine.service;
 
+import com.example.redmedicine.domain.dto.CCommentDto;
 import com.example.redmedicine.domain.dto.CounselorDto;
 import com.example.redmedicine.domain.dto.DiaryDto;
 import com.example.redmedicine.domain.vo.Criteria;
+import com.example.redmedicine.domain.vo.MyDaybookVo;
 import com.example.redmedicine.mapper.MyDaybookMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -33,7 +35,7 @@ public class MyDaybookService {
     }
 
 //    상담 게시글 조회
-    public List<CounselorDto> myCounselor(Criteria criteria, Long userNumber){
+    public List<MyDaybookVo> myCounselor(Criteria criteria, Long userNumber){
         if (userNumber == null){
             throw new IllegalArgumentException("회원번호 글번호 누락");
         }
@@ -46,4 +48,7 @@ public class MyDaybookService {
         return myDaybookMapper.countCounselor();
     }
 
+
 }
+
+
