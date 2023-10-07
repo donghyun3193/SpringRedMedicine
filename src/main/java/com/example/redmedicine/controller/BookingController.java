@@ -53,11 +53,6 @@ public class BookingController {
         session.removeAttribute("bookDate");
         session.removeAttribute("bookTime");
         session.removeAttribute("userCNumber");
-<<<<<<< HEAD
-//        session.invalidate();
-        return "main/index";
-=======
-
 
         return new RedirectView("/counselor/sendBook");
     }
@@ -97,6 +92,5 @@ public class BookingController {
 
         //모델에 담아서
         return "counselor/book/bookingContent";
->>>>>>> jiyoon1007
     }
 }
