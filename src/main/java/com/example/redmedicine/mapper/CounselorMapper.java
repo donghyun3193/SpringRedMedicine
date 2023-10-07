@@ -27,4 +27,5 @@ public interface CounselorMapper {
 
     //    전체 게시물 수 조회
     public int selectTotal();
+
 }

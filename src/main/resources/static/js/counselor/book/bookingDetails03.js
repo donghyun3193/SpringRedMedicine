@@ -45,10 +45,20 @@ bookDateInput.value = bookDate;
 bookTimeInput.value = bookTime;
 
 submitButton.addEventListener("click", function () {
-    alert("메인 페이지로 이동합니다.");
+    // alert("메인 페이지로 이동합니다.");
+    //
+    // window.location.href = "/src/main/resources/templates/main/index.html";
 
+    alert("예약이 완료되었습니다.");
+
+
+<<<<<<< HEAD
     sessionStorage.clear();
 
     window.location.href = "/src/main/resources/templates/main/index.html";
+=======
+>>>>>>> jiyoon1007
 
 });
+
+

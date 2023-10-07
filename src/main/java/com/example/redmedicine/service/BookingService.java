@@ -35,6 +35,7 @@ public class BookingService {
         bookingMapper.insert(bookDto);
     }
 
+<<<<<<< HEAD
 
     //상담회원 전체조회
     public List<BookVo> findAll(Criteria criteria, SearchVo searchVo, Long userCNumber){
@@ -57,5 +58,10 @@ public class BookingService {
             throw new IllegalArgumentException("예약 번호 누락!!");
         }
         bookingMapper.delete(bookNumber);
+=======
+    //예약 조회
+    public BookDto selectBook(Long userNumber){
+        return bookingMapper.selectBook(userNumber);
+>>>>>>> jiyoon1007
     }
 }
