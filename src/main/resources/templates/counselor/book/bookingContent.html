@@ -34,7 +34,7 @@
       </tr>
       <tr class="bookDate">
         <th>예약 날짜</th>
-        <td th:text="${bookDate}" class="bookDateInput"></td>
+        <td th:text="${#strings.replace(bookDate,'00:00:00','')}" class="bookDateInput"></td>
       </tr>
       <tr class="bookTime">
         <th>예약 시간</th>

@@ -207,6 +207,7 @@ td{
     color: white;
     border: none;
     border-radius: 3px;
+    cursor: pointer;
 }
 .footer{
     width: 100vw;
