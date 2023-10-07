@@ -61,14 +61,12 @@
                     <img src="/img/question-mark.png" alt="물음표" style="width: 17px; height: 17px; margin-top: 14px; margin-left: 2px; cursor: pointer;">
                 </button>
             </div>
-            <div>
 
             <div style="display: flex;">
                 <div th:if="${session.userName == profile.userName}">
                     <button style="margin-right: 10px" class="profile-rm-button" type="button" th:data-number="${profile.profileNumber}">삭제</button>
                 </div>
                 <button class="profile-button" type="button" th:data-cnumber="${profile.userNumber}" onclick="reservation()">예약</button>
-            </div>
             </div>
         </div>
         <div class="profile-careerbox">
