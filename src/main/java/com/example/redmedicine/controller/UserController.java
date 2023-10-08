@@ -2,6 +2,7 @@ package com.example.redmedicine.controller;
 
 
 import com.example.redmedicine.domain.dto.UserDto;
+import com.example.redmedicine.service.BookingService;
 import com.example.redmedicine.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -18,7 +19,7 @@ import javax.servlet.http.HttpServletRequest;
 public class UserController {
 
     private final UserService userService;
-    private final UserDto userDto;
+    private final BookingService bookingService;
 
     //로그인페이지
     @GetMapping("/login")
@@ -46,6 +47,9 @@ public class UserController {
 
         //↑세션 객체를 사용하여 사용자 번호를 "userNumber"라는 이름으로 세션에 저장합니다.
         // 이렇게 하면 로그인한 사용자의 정보를 세션에 유지하게 됩니다.
+
+//        Long userCNumber = bookingService.findCNumber(userNumber);
+//        req.getSession().setAttribute("userCNumber", userCNumber);
 
         String userName = userService.findUserName(userNumber);
         req.getSession().setAttribute("userName",userName);

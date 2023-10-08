@@ -307,7 +307,7 @@ a{
 
 .main-content-list table{
   width: 950px;
-  height: 600px;
+  /*height: 600px;*/
   text-align: center;
   margin: 0 auto;
   /* background-color: paleturquoise; */

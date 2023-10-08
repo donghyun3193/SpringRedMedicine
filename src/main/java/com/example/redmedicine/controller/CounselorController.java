@@ -21,23 +21,8 @@ public class CounselorController {
 
     //상담사회원관리 페이지
     @GetMapping("/book/counselorBook")
-    public String showCounselorBookPage(Criteria criteria, Model model, SearchVo searchVo, HttpServletRequest req){
-        Long userNumber = (Long)req.getSession().getAttribute("userNumber");
-
-        Long userCNumber = bookingService.findCNumber(userNumber);
-        req.getSession().setAttribute("userCNumber", userCNumber);
-
-        if (userNumber == userCNumber) {
-            model.addAttribute("userList", bookingService.findAll(criteria, searchVo, userCNumber));
-            model.addAttribute("pageInfo", new PageVo(bookingService.getTotal(userCNumber), criteria));
-            return "counselor/book/counselorBook";
-        } else {
-            return "error/404";
-        }
-//        model.addAttribute("userList", bookingService.findAll(criteria, searchVo, userCNumber));
-//        model.addAttribute("pageInfo", new PageVo(bookingService.getTotal(userCNumber), criteria));
-
-//        return "counselor/book/counselorBook";
+    public String showCounselorBookPage(){
+        return "counselor/book/counselorBook";
     }
 
     //상담 예약 취소
