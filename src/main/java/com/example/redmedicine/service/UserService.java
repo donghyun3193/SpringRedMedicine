@@ -71,11 +71,11 @@ public class UserService {
         String resultText ="";
         String result =userMapper.selectUserId(userName,userPhone);
 
-         if(result == null){
+        if(result == null){
             resultText = "일치하는 회원정보가 없습니다.";
         }else{
-             resultText = "회원님의 아이디는 " + result + " 입니다";
-         }
+            resultText = "회원님의 아이디는 " + result + " 입니다";
+        }
         return resultText;
     }
 
@@ -86,7 +86,7 @@ public class UserService {
 
     // 회원 휴대폰 번호 조회
     public String findUserPhoneNumber(Long userNumber){
-       String userPhoneNumber = userMapper.selectUserPhoneNumber(userNumber);
-       return userPhoneNumber;
+        String userPhoneNumber = userMapper.selectUserPhoneNumber(userNumber);
+        return userPhoneNumber;
     }
 }
