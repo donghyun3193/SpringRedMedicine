@@ -342,7 +342,7 @@ $('#userId').on('change', function () {
         document.getElementById('join-btn').disabled = true;
       }
       else {
-        checkIdElement.text("중복된 아이디가 아닙니다. 8~12자 영문 대소문자, 숫자만 입력하세요.");
+        checkIdElement.text("8~12자 영문 대소문자, 숫자만 입력하세요.");
         checkIdElement.css('color', 'blue');
 
         // 중복된 아이디가 없을 때 입력 필드와 회원가입 버튼을 다시 활성화

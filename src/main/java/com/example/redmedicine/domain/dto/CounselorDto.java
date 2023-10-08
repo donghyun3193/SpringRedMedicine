@@ -18,6 +18,6 @@ public class CounselorDto {
     private Long counselorNumber;
     private Long userNumber;
     private String counselorTitle;
-    private String counselorDate;
+    private Date counselorDate;
     private String counselorContent;
 }

@@ -3,7 +3,6 @@ package com.example.redmedicine.controller;
 import com.example.redmedicine.service.SmsService;
 import com.example.redmedicine.service.UserService;
 import lombok.RequiredArgsConstructor;
-import org.apache.catalina.User;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
 

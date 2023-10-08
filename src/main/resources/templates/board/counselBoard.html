@@ -33,8 +33,10 @@
                 </div>
                 <img src="/img/counseling_img.png" alt="상담 게시판 베너이미지">
             </div>
+
             <div class="main-content-list">
-                <table>
+                <div class="table-wrap">
+                <table class="table-container">
                     <th>번호</th>
                     <th id="main-content-list-title">제목</th>
                     <th>작성자</th>
@@ -53,9 +55,10 @@
                             </a>
                         </td>
                         <td th:text="${counselor.userName}">작성자</td>
-                        <td th:text="${counselor.counselorDate}">작성일</td>
+                        <td th:text="${#dates.format(counselor.counselorDate,'yyyy-MM-dd')}">작성일</td>
                     </tr>
                 </table>
+                </div>
             </div>
             <!-- 페이징 처리 -->
             <div class="paging-container">
