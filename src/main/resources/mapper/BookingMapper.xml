@@ -12,8 +12,9 @@
     <!--  상담사 번호 조회  -->
     <select id="selectCNumber" resultType="long">
         SELECT USER_C_NUMBER
-        FROM TBL_BOOK
-        WHERE USER_NUMBER = #{userNumber}
+        FROM TBL_USER U JOIN TBL_BOOK B
+         ON B.USER_C_NUMBER = U.USER_NUMBER
+        WHERE U.USER_NUMBER = #{userNumber}
     </select>
 
     <!-- 상담 예약자 조회 -->

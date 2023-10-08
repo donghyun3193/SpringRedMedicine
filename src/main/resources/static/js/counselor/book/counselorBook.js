@@ -43,37 +43,7 @@
       text += `
 <tr>
     <td>${r.userNumber}</td>
-    <!-- 모달 창 들어 가는 부분  -->
-    <div class="modal">
-        <div class="modal_body">
-            <strong style="font-size: 30px; ">
-                ${r.userName}
-            </strong>
-            <br><br><br>
-            <hr>
-            <br><br>
 
-            <span class="modal_span">
-            <span style="font-size: 20px;">휴대폰 번호 : ${r.userPhone}</span>
-            <br>
-            <br>
-            
-            <span style="font-size: 20px;">이메일 : ${r.userEmail}</span>
-            <br>
-            <br>
-            <br><hr><br><br>
-            <strong style="font-size: 20px;">
-              상담내용
-              </strong>
-            <br><br><br>
-            <span style="font-size: 20px;">${r.bookContent}</span>
-            
-            <br><br><br><br><br><br><br><br><br>
-            <hr>
-            </span>
-            </div>
-        </div>
-        <!-- 모달 창 들어 가는 부분 끝 -->
         <td> <button class="btn-open-popup">${r.userName}</button></td>
         <td>${r.bookDate}</td>
         <td>${r.bookTime}</td>
@@ -86,6 +56,33 @@
     </tr>
 			`;
     });
+
+
+    // 이 부분에서 모달 창을 열도록 이벤트 리스너를 추가
+  //   document.querySelector('.modal_body').innerHTML = text; // 모달 내용을 업데이트
+  //   const openButtons = document.querySelectorAll('.btn-open-popup');
+  //   openButtons.forEach(button => {
+  //     button.addEventListener('click', function() {
+  //       const userName = this.getAttribute('data-userName');
+  //       const userPhone = this.getAttribute('data-userPhone');
+  //       const userEmail = this.getAttribute('data-userEmail');
+  //       const bookContent = this.getAttribute('data-bookContent');
+  //
+  //       // 모달 내용 업데이트
+  //       document.querySelector('.modal_body strong').textContent = userName;
+  //       document.querySelector('.modal_span span:nth-child(1)').textContent = `휴대폰 번호 : ${userPhone}`;
+  //       document.querySelector('.modal_span span:nth-child(3)').textContent = `이메일 : ${userEmail}`;
+  //       document.querySelector('.modal_span span:nth-child(11)').textContent = bookContent;
+  //
+  //       // 모달을 화면에 보이도록 스타일 변경
+  //       document.querySelector('.modal').style.display = 'block';
+  //     });
+  //   });
+  // }
+
+
+
+
 
     $('.content').html(text);
     let pageVo = result.pageVo;
