@@ -91,9 +91,9 @@
     </select>
 
     <select id="selectDayAndTime" resultType="profileDto">
-        SELECT PROFILE_TIME, PROFILE_DAY, USER_NUMBER
+        SELECT PROFILE_TIME, PROFILE_DAY, PROFILE_NUMBER
         FROM TBL_PROFILE
-        WHERE USER_NUMBER = #{userNumber}
+        WHERE PROFILE_NUMBER = #{profileNumber}
     </select>
 
 </mapper>

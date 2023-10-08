@@ -45,9 +45,6 @@ function showResult(result) {
 			`;
     });
 
-
-
-
     $('.content').html(text);
     let pageVo = result.pageVo;
     let block = '';

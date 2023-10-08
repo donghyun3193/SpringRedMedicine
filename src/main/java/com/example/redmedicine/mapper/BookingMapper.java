@@ -1,6 +1,7 @@
 package com.example.redmedicine.mapper;
 
 import com.example.redmedicine.domain.dto.BookDto;
+import com.example.redmedicine.domain.dto.ProfileDto;
 import com.example.redmedicine.domain.dto.UserDto;
 import com.example.redmedicine.domain.vo.BookVo;
 import com.example.redmedicine.domain.vo.Criteria;
@@ -35,4 +36,7 @@ public interface BookingMapper {
 
     //예약조회
     public BookDto selectBook(Long userNumber);
+
+    //요일, 시간 조회
+    public ProfileDto selectDayAndTime(Long profileNumber);
 }

@@ -1,6 +1,7 @@
 package com.example.redmedicine.service;
 
 import com.example.redmedicine.domain.dto.BookDto;
+import com.example.redmedicine.domain.dto.ProfileDto;
 import com.example.redmedicine.domain.vo.BookVo;
 import com.example.redmedicine.domain.vo.Criteria;
 import com.example.redmedicine.domain.vo.SearchVo;
@@ -60,5 +61,10 @@ public class BookingService {
     //예약 조회
     public BookDto selectBook(Long userNumber){
         return bookingMapper.selectBook(userNumber);
+    }
+
+    ////요일, 시간 조회
+    public ProfileDto selectDayAndTime(Long profileNumber){
+        return bookingMapper.selectDayAndTime(profileNumber);
     }
 }

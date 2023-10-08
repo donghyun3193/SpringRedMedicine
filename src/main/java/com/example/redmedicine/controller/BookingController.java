@@ -1,6 +1,7 @@
 package com.example.redmedicine.controller;
 
 import com.example.redmedicine.domain.dto.BookDto;
+import com.example.redmedicine.domain.dto.ProfileDto;
 import com.example.redmedicine.service.BookingService;
 import com.example.redmedicine.service.CounselorService;
 import com.example.redmedicine.service.UserService;
@@ -15,6 +16,7 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.lang.reflect.Member;
 
 @Controller
 @RequestMapping("/counselor/*")
@@ -27,6 +29,7 @@ public class BookingController {
     @GetMapping("/bookingDetails")
     public String bookingDetails(HttpServletRequest req){
         Long userNumber = (Long)req.getSession().getAttribute("userNumber");
+
         return "counselor/book/bookingDetails";
     }
 
@@ -93,4 +96,6 @@ public class BookingController {
         //모델에 담아서
         return "counselor/book/bookingContent";
     }
+
+
 }
