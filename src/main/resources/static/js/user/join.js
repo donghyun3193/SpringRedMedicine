@@ -183,7 +183,7 @@ function Validation() {
   // id
   let regId = /^[a-zA-Z0-9]{8,12}$/;
   // pw
-  let regPw = /^(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9]{8,12}$/;
+  let regPw = /^(?=.*[a-z])[a-zA-Z0-9]{8,12}$/;
   // 이름
   let regName = /^[가-힣a-zA-Z]{2,15}$/;
   // 이메일
@@ -202,7 +202,6 @@ function Validation() {
     id.focus();
     return false;
   }
-
 
   //비밀번호 확인
   if(pw.value == ""){
