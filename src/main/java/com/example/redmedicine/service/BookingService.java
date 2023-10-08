@@ -61,4 +61,14 @@ public class BookingService {
     public BookDto selectBook(Long userNumber){
         return bookingMapper.selectBook(userNumber);
     }
+
+    //상담회원 모달 조회
+    public BookVo findModal(Long bookNumber){
+        return bookingMapper.selectModal(bookNumber);
+    }
+
+    //상담 후 완료 처리
+    public void complete(Long bookNumber){
+        bookingMapper.update(bookNumber);
+    }
 }

@@ -31,4 +31,11 @@ public class CounselorController {
         bookingService.remove(bookNumber);
         return "counselor/book/counselorBook";
     }
+
+    //상담 예약 완료
+    @GetMapping("/update")
+    public String update(Long bookNumber){
+        bookingService.complete(bookNumber);
+        return "counselor/book/counselorBook";
+    }
 }

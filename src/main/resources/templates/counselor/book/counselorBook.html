@@ -51,7 +51,7 @@
                   <!-- 모달 창 들어 가는 부분  -->
                   <div class="modal">
                       <div class="modal_body">
-                          <strong style="font-size: 30px; ">
+                          <strong style="font-size: 30px; " class="modal__userName">
                               ${userName}
                           </strong>
                           <br><br><br>
@@ -59,11 +59,11 @@
                           <br><br>
 
                           <span class="modal_span">
-            <span style="font-size: 20px;">휴대폰 번호 : ${userPhone}</span>
+            <span style="font-size: 20px;" class="modal__userPhone"> ${userPhone}</span>
             <br>
             <br>
 
-            <span style="font-size: 20px;">이메일 : ${userEmail}</span>
+            <span style="font-size: 20px;" class="modal__userEmail">${userEmail}</span>
             <br>
             <br>
             <br><hr><br><br>
@@ -71,7 +71,7 @@
               상담내용
               </strong>
             <br><br><br>
-            <span style="font-size: 20px;">${bookContent}</span>
+            <span style="font-size: 20px;" class="modal__bookContent">${bookContent}</span>
 
             <br><br><br><br><br><br><br><br><br>
             <hr>
@@ -102,29 +102,29 @@
 </script>
 <script>
     //모달창 js
-    const body = document.querySelector('body');
-    const modal = document.querySelector('.modal');
-    const btnOpenPopup = document.querySelector('.btn-open-popup');
-
-    btnOpenPopup.addEventListener('click', () => {
-        modal.classList.toggle('show');
-        //모달 on
-
-        if (modal.classList.contains('show')) {
-            body.style.overflow = 'hidden';
-            //모달 off
-        }
-    });
-
-    modal.addEventListener('click', (event) => { if (event.target === modal) {
-        modal.classList.toggle('show');
-        // //class를 이용한 모달 on/off
-
-        if (!modal.classList.contains('show')) {
-            body.style.overflow = 'auto';
-        }
-    }
-    });
+    // const body = document.querySelector('body');
+    // const modal = document.querySelector('.modal');
+    // const btnOpenPopup = document.querySelector('.btn-open-popup');
+    //
+    // btnOpenPopup.addEventListener('click', () => {
+    //     modal.classList.toggle('show');
+    //     //모달 on
+    //
+    //     if (modal.classList.contains('show')) {
+    //         body.style.overflow = 'hidden';
+    //         //모달 off
+    //     }
+    // });
+    //
+    // modal.addEventListener('click', (event) => { if (event.target === modal) {
+    //     modal.classList.toggle('show');
+    //     // //class를 이용한 모달 on/off
+    //
+    //     if (!modal.classList.contains('show')) {
+    //         body.style.overflow = 'auto';
+    //     }
+    // }
+    // });
     //모달창 js 끝
 </script>
 </body>

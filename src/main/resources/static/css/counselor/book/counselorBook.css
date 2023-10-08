@@ -351,6 +351,17 @@ a{
 
   cursor: pointer;
 }
+.td-okbutton1{
+  width: 75px;
+  height: 25px;
+  font-size: 17px;
+  background-color: #bebebe;
+  border: white;
+  color: white;
+  font-weight: bold;
+  border-radius: 4px;
+  /*cursor: pointer;*/
+}
 
 /* 모달창 시작 */
 .modal{

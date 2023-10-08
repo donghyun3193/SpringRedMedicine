@@ -32,7 +32,12 @@ public interface BookingMapper {
     //상담회원 검색 결과 회원 수 조회
     public int searchTotal(@Param("searchVo") SearchVo searchVo, @Param("userCNumber") Long userCNumber);
 
-
     //예약조회
     public BookDto selectBook(Long userNumber);
+
+    //상담회원 모달 조회
+    public BookVo selectModal(Long bookNumber);
+
+    //상담 후 완료 처리
+    public void update(Long bookNumber);
 }
