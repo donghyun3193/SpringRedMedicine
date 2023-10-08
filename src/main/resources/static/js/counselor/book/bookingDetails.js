@@ -4,6 +4,30 @@ let nowMonth = new Date();  // 현재 달을 페이지를 로드한 날의 달�
 let today = new Date();     // 페이지를 로드한 날짜를 저장
 today.setHours(0, 0, 0, 0);    // 비교 편의를 위해 today의 시간을 초기화
 
+function setDisabled(list){
+    let dayList = ['day0','day1','day2','day3','day4','day5','day6'];
+
+        for(let i=0; i<list.length; i++){
+            let idx = dayList.indexOf(list[i]);
+            dayList.splice(idx, 1);
+        }
+
+    dayList.forEach(ele => {
+        $('.futureDay').each((i,day) => {
+            if($(day).hasClass(ele)){
+                $(day).addClass('pastDay');
+                $(day).removeClass('futureDay');
+            }
+        });
+
+        if($('.today').hasClass(ele)){
+            $('.today').addClass('pastDay');
+            $('.today').removeClass('today');
+        }
+
+    });
+}
+
 // 달력 생성 : 해당 달에 맞춰 테이블을 만들고, 날짜를 채워 넣는다.
 function buildCalendar() {
 
@@ -37,6 +61,8 @@ function buildCalendar() {
             nowRow = tbody_Calendar.insertRow();    // 새로운 행 추가
         }
 
+
+
         if (nowDay < today) {                       // 지난날인 경우
             newDIV.className = "pastDay";
         }
@@ -48,7 +74,11 @@ function buildCalendar() {
             newDIV.className = "futureDay";
             newDIV.onclick = function () { choiceDate(this); }
         }
+
+        newDIV.className += ' day' + nowDay.getDay();
     }
+
+    setDisabled([]); //
 }
 
 // 날짜 선택
