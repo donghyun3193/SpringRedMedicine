@@ -90,4 +90,10 @@
         WHERE USER_NUMBER = #{userNumber} and BOOK_STATUS = '1'
     </select>
 
+    <select id="selectDayAndTime" resultType="profileDto">
+        SELECT PROFILE_TIME, PROFILE_DAY, PROFILE_NUMBER
+        FROM TBL_PROFILE
+        WHERE PROFILE_NUMBER = #{profileNumber}
+    </select>
+
 </mapper>

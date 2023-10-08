@@ -153,7 +153,9 @@ let loginNumber = [[${session.userNumber}]]; // 타임리프 문법은 [] 2개�
     // JavaScript 함수를 정의하여 페이지 이동을 처리
     function reservation() {
         let cnumber = $('.profile-button').data('cnumber');
+        let profileNumber = $('.profile-num').val();
         sessionStorage.setItem('userCNumber', cnumber);
+        sessionStorage.setItem('profileNumber', profileNumber);
 
         // 페이지 이동을 원하는 URL로 변경
         window.location.href = '/counselor/book/bookingDetails';
