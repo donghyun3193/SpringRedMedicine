@@ -28,7 +28,7 @@ public class SmsService {
     String timeStamp = Long.toString(System.currentTimeMillis());
 
 
-    //비밀번호찾기 인증번호
+    //비밀번호찾기 인증번호, 회원가입 인증번호
     public Map<String, Object> sendMessage(String phoneNumber){
         String requestUrl = "/sms/v2/services/" + serviceId + "/messages";
         String apiUrl = "https://sens.apigw.ntruss.com" + requestUrl;

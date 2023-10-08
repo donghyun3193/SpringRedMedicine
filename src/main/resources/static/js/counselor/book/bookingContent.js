@@ -29,6 +29,8 @@ $('.submitButton').on('click', function () {
         success: function () {
 
             alert("입력하신 번호로 예약하신 내용이 발송되었습니다.")
+            window.location.href = '/counselor/pay/payMate';
         }
     })
+
 })
