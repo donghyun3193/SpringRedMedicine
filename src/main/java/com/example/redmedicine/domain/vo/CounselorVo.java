@@ -17,6 +17,8 @@ public class CounselorVo {
     private String counselorContent;
     //↓write에 필요 단 수정은 불가능하도록
     private String userName;
+    //↓counselBoard에 필요 게시판에서 찾을 수 있도록!
+    private Long userLevel;
     //↓Vo에 첨부파일때문에 아래의 쿼리 추가해줬다
     private String cFileName;
     private String cFileRoute;

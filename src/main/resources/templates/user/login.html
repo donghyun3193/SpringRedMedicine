@@ -19,7 +19,7 @@
         <div class="main-content">
             <div class="main-content-contaniner">
                 <div class="main-content-title">로그인</div>
-                
+                <div id="errorMessage" style="color: red;"></div>
                 <div class="content-box">
                     <form class="login-form" method="post" action="/user/login">
                         <!--post로 지정해야 컨트롤러에서 post로 어노테이션 실행할꺼니까-->
@@ -58,5 +58,17 @@
     <!-- 후터 시작-->
     <footer class="footer" th:replace="fragments/footer :: footer"></footer>
     <!-- 후터 끝-->
+    <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+    <script>
+        // URL에서 에러 메시지 가져오기
+        var urlParams = new URLSearchParams(window.location.search);
+        var errorMessage = urlParams.get("errorMessage");
+
+        // 에러 메시지가 있을 경우, 알림 표시
+        if (errorMessage) {
+            document.getElementById("errorMessage").innerText = errorMessage;
+            alert(errorMessage); // alert 창도 띄울 수 있음
+        }
+    </script>
 </body>
 </html>
