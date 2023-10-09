@@ -17,10 +17,10 @@ public class BookingRestController {
     private final BookingService bookingService;
 
     @GetMapping("/bookingDayAndTime")
-    public ProfileDto bookingDayAndTime(ProfileDto profileDto, @RequestBody Map<String, Long> body){
-        Long profileNumber = body.get("profileNumber");
-        
-        return bookingService.selectDayAndTime(profileNumber);
-
+    public ProfileDto bookingDayAndTime(Long profileNumber){
+        ProfileDto profileDto = bookingService.selectDayAndTime(profileNumber);
+        System.out.println(profileDto);
+        return profileDto;
     }
+
 }
