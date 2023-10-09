@@ -34,27 +34,33 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public RedirectView login(String userId, String userPassword, HttpServletRequest req){//user.html의 id와 name을 이미 지정하였다
-        Long userNumber = userService.findUserNumber(userId, userPassword);//로그인 위한 정보를 입력받아 Long userNumber에 저장
+    public String login(String userId, String userPassword, HttpServletRequest req){//user.html의 id와 name을 이미 지정하였다
+        try {
+            Long userNumber = userService.findUserNumber(userId, userPassword);//로그인 위한 정보를 입력받아 Long userNumber에 저장
 
-        // userNumber를 사용하여 userLevel을 가져옴
-        Long userLevel = userService.findUserLevel(userNumber);
+            // userNumber를 사용하여 userLevel을 가져옴
+            Long userLevel = userService.findUserLevel(userNumber);
 
-        req.getSession().setAttribute("userNumber", userNumber);//매개변수에 req를 지정하고 session을 저장
-        req.getSession().setAttribute("userLevel", userLevel); // userLevel을 세션에 저장
+            req.getSession().setAttribute("userNumber", userNumber);//매개변수에 req를 지정하고 session을 저장
+            req.getSession().setAttribute("userLevel", userLevel); // userLevel을 세션에 저장
 //        req.getSession().setAttribute("userLevel" , userLevel);
-        //이 때 user모든 정보가 아닌 pk만 서버에 무리 적게 위해!
+            //이 때 user모든 정보가 아닌 pk만 서버에 무리 적게 위해!
 
-        //↑세션 객체를 사용하여 사용자 번호를 "userNumber"라는 이름으로 세션에 저장합니다.
-        // 이렇게 하면 로그인한 사용자의 정보를 세션에 유지하게 됩니다.
+            //↑세션 객체를 사용하여 사용자 번호를 "userNumber"라는 이름으로 세션에 저장합니다.
+            // 이렇게 하면 로그인한 사용자의 정보를 세션에 유지하게 됩니다.
 
 //        Long userCNumber = bookingService.findCNumber(userNumber);
 //        req.getSession().setAttribute("userCNumber", userCNumber);
 
-        String userName = userService.findUserName(userNumber);
-        req.getSession().setAttribute("userName",userName);
+            String userName = userService.findUserName(userNumber);
+            req.getSession().setAttribute("userName",userName);
 
-        return new RedirectView("/main/index");//즉 메인 페이지에서 로그인한 상태에서는 세션정보 존재함
+//            return new RedirectView("/main/index");//즉 메인 페이지에서 로그인한 상태에서는 세션정보 존재함
+            return "redirect:/main/index";
+        } catch (IllegalArgumentException e) {
+            req.setAttribute("errorMessage", "아이디와 비밀번호를 다시 입력해주세요.");
+            return "/user/login"; // 로그인 페이지로 돌아감
+        }
     }
 
 

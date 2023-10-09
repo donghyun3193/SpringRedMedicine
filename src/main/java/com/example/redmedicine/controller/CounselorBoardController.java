@@ -31,11 +31,22 @@ public class CounselorBoardController {
     private final CounselorService counselorService;
     private final UserService userService;
 
+
     //상담 게시판 시작
     @GetMapping("/counselBoard")
-    public String showListPage(Model model, Criteria criteria){
+    public String showListPage(Model model, Criteria criteria, HttpServletRequest req){
+        Long userNumber = (Long)req.getSession().getAttribute("userNumber");
+        Long userLevel = userService.findUserLevel(userNumber);
+
+        model.addAttribute("userLevel",userLevel);
+
         model.addAttribute("counselor",  counselorService.findAll(criteria));
         model.addAttribute("pageInfo", new PageVo(counselorService.getTotal(), criteria));
+
+
+
+//        req.getSession().getAttribute("userLevel", userLevel);
+//        Long userLevel = userService.findUserLevel(userNumber);
 
         return "board/counselBoard";
     }

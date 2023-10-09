@@ -23,14 +23,22 @@ public class UserService {
         userDto.setUserLevel(1L);
 
 //        userDto.setUserBirth("20000506");
+
         userMapper.insert(userDto);
     }
 
     //회원 번호 찾기
-    public Long findUserNumber(String userId, String userPassword){
-        return ofNullable(userMapper.selectUserNumber(userId,userPassword))
-                .orElseThrow(()-> {throw new IllegalArgumentException("아이디와 패스워드가 일치하는 회원 정보가 없습니다.");
-                });
+//    public Long findUserNumber(String userId, String userPassword){
+//        return ofNullable(userMapper.selectUserNumber(userId,userPassword))
+//                .orElseThrow(()-> {throw new IllegalArgumentException("아이디와 패스워드가 일치하는 회원 정보가 없습니다.");
+//                });
+//    }
+    public Long findUserNumber(String userId, String userPassword) {
+        Long userNumber = userMapper.selectUserNumber(userId, userPassword);
+        if (userNumber == null) {
+            throw new IllegalArgumentException("아이디와 패스워드가 일치하는 회원 정보가 없습니다.");
+        }
+        return userNumber;
     }
 
     //회원 정보 조회
@@ -53,11 +61,26 @@ public class UserService {
     public Long findUserLevel(Long userNumber){
         if (userNumber == null) {
             throw new IllegalArgumentException("회원 번호 누락");
+//            return 0L;
         }
         return Optional.ofNullable(userMapper.selectUserLevel(userNumber))
                 .orElseThrow(() -> { throw new IllegalArgumentException("존재하지 않는 유저 번호 누락!!"); });
     }
+/*
+->null의 경우 회원번호 누락으로 인식하여 비회원의 존재가 난감할 수 있다
 
+public Long findUserLevel(Long userNumber) {
+    if (userNumber == null) {
+        // userNumber가 null이면 비회원으로 처리하고 원하는 기본값(예: 0)을 반환하거나
+        // 다른 비회원 처리 로직을 여기에 추가할 수 있습니다.
+        return 4L; // 예: 기본값으로 0을 반환
+    }
+
+    // 유효한 userNumber가 있는 경우에만 데이터베이스에서 레벨을 조회합니다.
+    return Optional.ofNullable(userMapper.selectUserLevel(userNumber))
+            .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 유저 번호 누락!!"));
+}
+*/
     //회원 정보 수정
     public void modify(UserDto userDto){
         userMapper.update(userDto);

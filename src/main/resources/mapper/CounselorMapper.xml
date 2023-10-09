@@ -29,21 +29,21 @@
 
     <select id="select" resultType="counselorVo">
         SELECT COUNSELOR_NUMBER, COUNSELOR_TITLE, COUNSELOR_CONTENT, C.USER_NUMBER,
-               COUNSELOR_DATE, U.USER_NAME
+               COUNSELOR_DATE, U.USER_NAME, U.USER_LEVEL
         FROM TBL_COUNSELOR C JOIN TBL_USER U
         ON C.USER_NUMBER = U.USER_NUMBER
         WHERE C.COUNSELOR_NUMBER = #{counselorNumber}
-    </select><!--즉, -->
+    </select>
 
     <select id="selectAll" resultType="counselorVo">
         SELECT RNUM, COUNSELOR_NUMBER, COUNSELOR_TITLE, COUNSELOR_CONTENT, COUNSELOR_DATE, USER_NUMBER,
-               USER_NAME, C_FILE_ROUTE, C_FILE_UUID, C_FILE_NAME
+               USER_NAME, USER_LEVEL, C_FILE_ROUTE, C_FILE_UUID, C_FILE_NAME
         FROM (
                  SELECT ROWNUM AS RNUM, COUNSELOR_NUMBER, COUNSELOR_TITLE, COUNSELOR_CONTENT, COUNSELOR_DATE, USER_NUMBER,
-                        USER_NAME, C_FILE_ROUTE, C_FILE_UUID, C_FILE_NAME
+                        USER_NAME, USER_LEVEL, C_FILE_ROUTE, C_FILE_UUID, C_FILE_NAME
                  FROM (
                           SELECT C.COUNSELOR_NUMBER, COUNSELOR_TITLE, COUNSELOR_CONTENT, COUNSELOR_DATE, C.USER_NUMBER,
-                                 U.USER_NAME, C_FILE_ROUTE, C_FILE_UUID, C_FILE_NAME
+                                 U.USER_NAME, U.USER_LEVEL, C_FILE_ROUTE, C_FILE_UUID, C_FILE_NAME
                           FROM TBL_COUNSELOR C JOIN TBL_USER U
                           ON C.USER_NUMBER = U.USER_NUMBER
                           LEFT OUTER JOIN (
@@ -70,5 +70,6 @@
         SELECT COUNT(COUNSELOR_NUMBER)
         FROM TBL_COUNSELOR
     </select>
+
 
 </mapper>
