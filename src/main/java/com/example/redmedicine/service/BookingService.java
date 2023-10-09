@@ -70,5 +70,8 @@ public class BookingService {
     //상담 후 완료 처리
     public void complete(Long bookNumber){
         bookingMapper.update(bookNumber);
+    ////요일, 시간 조회
+    public ProfileDto selectDayAndTime(Long profileNumber){
+        return bookingMapper.selectDayAndTime(profileNumber);
     }
 }

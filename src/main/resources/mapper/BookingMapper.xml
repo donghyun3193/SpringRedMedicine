@@ -102,4 +102,11 @@
                              ON B.USER_NUMBER = U.USER_NUMBER
         WHERE B.BOOK_NUMBER = #{bookNumber}
     </select>
+    <select id="selectDayAndTime" resultType="profileDto">
+        SELECT PROFILE_NUMBER, USER_NUMBER, PROFILE_SUPER, PROFILE_CAREER, PROFILE_FEE, PROFILE_TARGET,
+               PROFILE_AREA, PROFILE_CONTENT, PROFILE_DAY, PROFILE_TIME
+        FROM TBL_PROFILE
+        WHERE PROFILE_NUMBER = #{profileNumber}
+    </select>
+
 </mapper>

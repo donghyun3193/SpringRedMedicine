@@ -55,7 +55,7 @@
                             <tbody class="content">
                                 <th:block th:each="counsel : ${counselorList}" th:if="${session.userNumber == counsel.userNumber}">
                                     <tr>
-                                        <td class="counseldate" th:text="${counsel.counselorDate}"></td>
+                                        <td class="counseldate" th:text="${#dates.format(counsel.counselorDate,'yyyy-MM-dd')}"></td>
                                         <td class="counseltitle">
                                         <a th:href="@{/board/readingCounsel(counselorNumber=${counsel.counselorNumber})}" th:text="${counsel.counselorTitle}">
                                         </td>
