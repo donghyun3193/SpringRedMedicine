@@ -6,8 +6,10 @@
         FROM(
                 SELECT ROWNUM AS RNUM, DIARY_NUMBER, USER_NUMBER, DIARY_TITLE, DIARY_DATE, DIARY_OPEN
                 FROM (
-                SELECT DIARY_NUMBER, USER_NUMBER, DIARY_TITLE, DIARY_DATE, DIARY_OPEN
+
+                    SELECT DIARY_NUMBER, USER_NUMBER, DIARY_TITLE, DIARY_DATE, DIARY_OPEN
                     FROM TBL_DIARY
+                    WHERE USER_NUMBER = #{userNumber}
                     ORDER BY DIARY_NUMBER DESC
                 ) X
                 <![CDATA[
@@ -25,6 +27,7 @@
                  FROM (
                           SELECT COUNSELOR_NUMBER, USER_NUMBER, COUNSELOR_TITLE, COUNSELOR_DATE
                           FROM TBL_COUNSELOR
+                          WHERE USER_NUMBER = #{userNumber}
                           ORDER BY COUNSELOR_NUMBER DESC
                       ) X
         <![CDATA[
@@ -40,11 +43,13 @@
     <select id="countDiary" resultType="_int">
         SELECT COUNT(DIARY_NUMBER)
         FROM TBL_DIARY
+        WHERE USER_NUMBER = #{userNumber}
     </select>
 
     <select id="countCounselor" resultType="_int">
         SELECT COUNT(COUNSELOR_NUMBER)
         FROM TBL_COUNSELOR
+        WHERE USER_NUMBER = #{userNumber}
     </select>
 
 </mapper>

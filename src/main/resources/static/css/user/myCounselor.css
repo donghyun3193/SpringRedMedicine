@@ -339,13 +339,13 @@ a{
     height: 360px;
 }
 .counseldate{
-    width: 30%;
+    width: 25%;
 }
 .counseltitle{
     width: 50%;
 }
 .counselcount{
-    width: 20%;
+    width: 25%;
 }
 
 /*페이징 처리를 할 공간입니다.*/
