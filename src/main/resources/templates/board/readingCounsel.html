@@ -67,7 +67,8 @@
                         <h3>댓글 작성</h3>
                         <div class="reply-wrap__box">
                             <div class="reply-content__box">
-                                <div class="reply-writer" th:text="${counselor.userName}"></div>
+                                <div class="reply-writer" th:text="${session.userName}"></div>
+<!--                                th:text="${counselor.userName}"-->
                                 <textarea name="cCommentContent" id="reply-content" cols="30" rows="10"></textarea>
                             </div>
                             <div class="reply-btn-wrap">
