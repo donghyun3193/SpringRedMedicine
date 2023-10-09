@@ -13,9 +13,6 @@ $('.btn-reply').on('click', function () {
     // '#reply-content' 요소에서 입력된 내용을 가져와 변수 'content'에 저장합니다.
     let content = $('#reply-content').val();
 
-
-
-
     // 'content'가 존재하고 'loginNumber'도 존재할 경우에만 아래 코드를 실행합니다.
     if (!(content && loginNumber)) {
         // 댓글이나 로그인이 되어 있지 않을 경우 경고창을 띄우고 함수를 종료합니다.

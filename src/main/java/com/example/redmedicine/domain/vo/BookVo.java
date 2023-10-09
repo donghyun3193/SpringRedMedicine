@@ -19,8 +19,11 @@ public class BookVo {
     private String bookContent;
     private String bookTime;
     private String bookDate;
+    private char bookStatus;
 //    예약가능 날짜/시간
     private String profileDay;
     private String profileTime;
 
+    //rnum 선언, 순서 대로 조회
+    private Long rnum;
 }

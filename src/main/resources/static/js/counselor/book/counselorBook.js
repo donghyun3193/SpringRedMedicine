@@ -1,5 +1,3 @@
-
-
 //여기서 부터 검색 리스트
   let page = 1;
   let keyword = $('.keyword').val();
@@ -16,15 +14,18 @@
     } else {
     }
   });
+
   //상담 완료 버튼
-  // $('.content').on('click', '.td-okbutton', function () {
-  //   if(confirm("상담을 완료 하시겠습니까?")){
-  //     alert("완료 되었습니다!");
-  //     let userNumber = $(this).data('number');
-  //     window.location.href = '/counselor/remove?bookNumber=' + bookNumber;
-  //   } else {
-  //   }
-  // });
+  $('.content').on('click', '.td-okbutton', function () {
+    if(confirm("상담을 완료 하시겠습니까?")){
+      alert("완료 되었습니다!");
+      let bookNumber = $(this).data('number');
+      window.location.href = '/counselor/update?bookNumber=' + bookNumber;
+    } else {
+    }
+  });
+
+
 
   //검색 기능
   $('.btn-search').on('click', function () {
@@ -42,47 +43,33 @@
     result.list.forEach(r => {
       text += `
 <tr>
-    <td>${r.userNumber}</td>
+    <td >${r.rnum}</td>
 
-        <td> <button class="btn-open-popup">${r.userName}</button></td>
+        <td> <button class="btn-open-popup" data-num="${r.bookNumber}">${r.userName}</button></td>
         <td>${r.bookDate}</td>
         <td>${r.bookTime}</td>
         <td>
+        `;
+    if (r.bookStatus == 2) {
+      text += `
+          <input class="td-okbutton1" type="button" data-number="${r.bookNumber}" value="상담완료">
+       </td>
+<td>
+          <input class="td-okbutton1" type="button" data-number="${r.bookNumber}" value="상담완료">
+          `;
+    } else {
+      text += `
           <input class="td-nobutton" type="submit" data-number="${r.bookNumber}" value="상담취소">
        </td>
-        <td>
-            <input class="td-okbutton" type="submit"  value="상담완료">
-        </td>
+<td>
+          <input class="td-okbutton" type="submit" data-number="${r.bookNumber}" value="상담완료">
+          `;
+    }
+
+      text +=`</td>
     </tr>
 			`;
     });
-
-
-    // 이 부분에서 모달 창을 열도록 이벤트 리스너를 추가
-  //   document.querySelector('.modal_body').innerHTML = text; // 모달 내용을 업데이트
-  //   const openButtons = document.querySelectorAll('.btn-open-popup');
-  //   openButtons.forEach(button => {
-  //     button.addEventListener('click', function() {
-  //       const userName = this.getAttribute('data-userName');
-  //       const userPhone = this.getAttribute('data-userPhone');
-  //       const userEmail = this.getAttribute('data-userEmail');
-  //       const bookContent = this.getAttribute('data-bookContent');
-  //
-  //       // 모달 내용 업데이트
-  //       document.querySelector('.modal_body strong').textContent = userName;
-  //       document.querySelector('.modal_span span:nth-child(1)').textContent = `휴대폰 번호 : ${userPhone}`;
-  //       document.querySelector('.modal_span span:nth-child(3)').textContent = `이메일 : ${userEmail}`;
-  //       document.querySelector('.modal_span span:nth-child(11)').textContent = bookContent;
-  //
-  //       // 모달을 화면에 보이도록 스타일 변경
-  //       document.querySelector('.modal').style.display = 'block';
-  //     });
-  //   });
-  // }
-
-
-
-
 
     $('.content').html(text);
     let pageVo = result.pageVo;
@@ -107,6 +94,38 @@
     $('.page-box').html(block);
 
   }
+
+
+
+$('.content').on('click', '.btn-open-popup', function(){
+  $('.modal').addClass('show');
+
+  let bookNumber = $(this).data('num');
+  console.log(bookNumber)
+
+  $.ajax({
+    url: `/counselor/counselorBook/modal`,
+    type : 'get',
+    data : {bookNumber : bookNumber},
+    dataType: 'json',
+    success : function (result){
+      console.log(result)
+      $('.modal__userName').text(result.userName);
+      $('.modal__userPhone').text('휴대폰 번호 : ' + result.userPhone);
+      $('.modal__userEmail').text('이메일 : ' + result.userEmail);
+      $('.modal__bookContent').text(result.bookContent);
+    }
+  });
+});
+
+$('.modal').on('click', function(e){
+  if($(e.target).hasClass('modal')){
+    $('.modal').removeClass('show');
+  }
+})
+
+
+
 
   function myModule(cate, keyword, callback) {
     $.ajax({

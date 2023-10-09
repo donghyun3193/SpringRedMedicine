@@ -9,9 +9,9 @@
         VALUES (#{bookNumber}, #{userNumber}, #{userCNumber}, #{bookDate}, #{bookTime}, #{bookContent})
     </insert>
 
-    <!--  상담사 번호 조회  -->
+    <!--  상담사 번호 조회, DISTINCT : 중복값 제거 -->
     <select id="selectCNumber" resultType="long">
-        SELECT USER_C_NUMBER
+        SELECT DISTINCT USER_C_NUMBER
         FROM TBL_USER U JOIN TBL_BOOK B
          ON B.USER_C_NUMBER = U.USER_NUMBER
         WHERE U.USER_NUMBER = #{userNumber}
@@ -19,14 +19,14 @@
 
     <!-- 상담 예약자 조회 -->
     <select id="selectAll" resultType="bookVo">
-    SELECT RNUM, USER_C_NUMBER, USER_NUMBER, USER_NAME, BOOK_DATE, BOOK_TIME,
-       USER_PHONE, USER_EMAIL, BOOK_CONTENT, BOOK_NUMBER
+    SELECT RNUM, USER_C_NUMBER, USER_NUMBER, USER_NAME, TO_CHAR(BOOK_DATE, 'YYYY-MM-DD') AS BOOK_DATE, BOOK_TIME,
+       USER_PHONE, USER_EMAIL, BOOK_CONTENT, BOOK_NUMBER, BOOK_STATUS
     FROM (
          SELECT ROWNUM AS RNUM, USER_C_NUMBER, USER_NUMBER, USER_NAME, BOOK_DATE, BOOK_TIME,
-            USER_PHONE, USER_EMAIL, BOOK_CONTENT, BOOK_NUMBER
+            USER_PHONE, USER_EMAIL, BOOK_CONTENT, BOOK_NUMBER, BOOK_STATUS
          FROM(
              SELECT USER_C_NUMBER, U.USER_NUMBER, USER_NAME, BOOK_DATE, BOOK_TIME,
-                USER_PHONE, USER_EMAIL, BOOK_CONTENT, BOOK_NUMBER
+                USER_PHONE, USER_EMAIL, BOOK_CONTENT, BOOK_NUMBER, BOOK_STATUS
 
              FROM TBL_BOOK B JOIN TBL_USER U
                 ON B.USER_NUMBER = U.USER_NUMBER
@@ -84,12 +84,24 @@
         WHERE BOOK_NUMBER = #{bookNumber}
     </delete>
 
+    <delete id="update">
+        UPDATE TBL_BOOK
+        SET BOOK_STATUS= 2
+        WHERE BOOK_NUMBER = #{bookNumber}
+    </delete>
+
     <select id="selectBook" resultType="bookDto">
         SELECT BOOK_NUMBER, USER_NUMBER, USER_C_NUMBER, BOOK_DATE, BOOK_TIME, BOOK_CONTENT, BOOK_STATUS
         FROM TBL_BOOK
         WHERE USER_NUMBER = #{userNumber} and BOOK_STATUS = '1'
     </select>
 
+    <select id="selectModal" resultType="bookVo">
+        SELECT U.USER_NUMBER,  USER_NAME, USER_PHONE, USER_EMAIL, BOOK_CONTENT
+        FROM TBL_BOOK B JOIN TBL_USER U
+                             ON B.USER_NUMBER = U.USER_NUMBER
+        WHERE B.BOOK_NUMBER = #{bookNumber}
+    </select>
     <select id="selectDayAndTime" resultType="profileDto">
         SELECT PROFILE_NUMBER, USER_NUMBER, PROFILE_SUPER, PROFILE_CAREER, PROFILE_FEE, PROFILE_TARGET,
                PROFILE_AREA, PROFILE_CONTENT, PROFILE_DAY, PROFILE_TIME
