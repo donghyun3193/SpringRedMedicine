@@ -36,7 +36,6 @@ public interface BookingMapper {
     //예약조회
     public BookDto selectBook(Long userNumber);
 
-<<<<<<< HEAD
     //상담회원 모달 조회
     public BookVo selectModal(Long bookNumber);
 
