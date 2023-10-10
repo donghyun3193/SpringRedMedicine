@@ -53,6 +53,10 @@ function appendReply(map){//result는 배열을 받아오는 것 List의
                 <!--화면에서 정보를 받을 수 있도록 cCommentContent -> ccommentContent-->
               </div>
             
+                <div class="reply-time">
+                    ${cReply.timeForToday(r.ccommentDate)}
+                </div>  
+            
               <div class="reply-btn-box">
               `;
 
@@ -106,6 +110,10 @@ function showReply(result){//result는 배열을 받아오는 것 List의
                 <div class="reply-box__content">${r.ccommentContent}</div>
                 <!--받은 정보를 다시 뿌리기 위해서 cCommentContent -> ccommentContent-->
               </div>
+              
+              <div class="reply-time">
+                ${cReply.timeForToday(r.ccommentDate)}
+              </div>  
               
               <div class="reply-btn-box">
               `;

@@ -125,7 +125,7 @@ a{
 /* 메인 시작 */
 .main-container{
   width: 100%;
-  height: 1600px;
+  height: 1200px;
   /* background-color: aqua;*/
 }
 .main-nav-container{
@@ -139,14 +139,14 @@ a{
 }
 .main-content{
   width: 100%;
-  height: 1500px;
+  height: 950px;
   display: flex;
   justify-content: center;
   /* background-color: white;*/
 }
 .main-content-contaniner{
   width: 1100px;
-  height: 1400px;
+  height: 950px;
   margin: 20px auto;
   border-radius: 10px;
   padding: 10px 0;
@@ -162,7 +162,7 @@ a{
   font-size: 30px;
   font-weight: bold;
   line-height: 120px;
-  text-indent: 40px;
+  /*text-indent: 40px;*/
   text-align: center;
   /* background-color: blue;*/
 }
@@ -170,14 +170,14 @@ a{
   
   margin: 150px auto;
   width: 550px;
-  height: 1400px;
+  height: 950px;
   /* border: 4px solid black; */
   border-top: 1px solid #ffe4cb;
-  border-bottom: 1px solid #ffe4cb;
+  /*border-bottom: 1px solid #ffe4cb;*/
 }
 .main-container-section1{
   width: 530px;
-  height: 900px;
+  height: 600px;
   margin-top: 50px;
   border-radius: 4px;
   box-sizing: border-box;
@@ -352,6 +352,7 @@ a{
   border-radius: 4px;
   text-align: center;
   font-size: 18px;
+  cursor: pointer;
   
 }
 

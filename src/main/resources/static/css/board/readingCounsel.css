@@ -216,10 +216,15 @@ a{
 }
 .content{
     width: 1000px;
-    min-height: 500px; /* 최소 높이 설정 */
-    max-height: 5000px; /* 최대 높이 설정 */
+    min-height: 500px;
+    max-height: 10000px;
     background-color: rgb(243, 241, 241);
-    /*overflow: auto;*/
+
+    /* overflow: auto; */
+
+    padding: 10px;
+    box-sizing: border-box;
+    resize: none;
 }
 .buttons{
     width: 1000px;
@@ -522,6 +527,16 @@ a{
 
 .none {
     display: none;
+}
+.reply-time{
+    font-size: 6px;
+    width: 50px;
+    height: auto;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    margin: 8px 0 0 3px;
 }
 
 /* 추가추가! */

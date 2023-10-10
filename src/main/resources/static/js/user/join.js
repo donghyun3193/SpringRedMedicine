@@ -134,14 +134,14 @@ $all.on('click',function(){
 // '출생 연도' 종료!!
 
 /*결국 해냈다 회원가입 시 날짜 입력될 수 있도록 유도!*/
-const birthYearSelect = document.getElementById('birth-year');
-const birthMonthSelect = document.getElementById('birth-month');
-const birthDaySelect = document.getElementById('birth-day');
-const userBirthInput = document.getElementById('userBirth');
+let birthYearSelect = document.getElementById('birth-year');
+let birthMonthSelect = document.getElementById('birth-month');
+let birthDaySelect = document.getElementById('birth-day');
+let userBirthInput = document.getElementById('userBirth');
 
 // 선택한 년, 월, 일 값을 가져와서 userBirth input 필드에 설정
 function updateUserBirth() {
-  const selectedYear = birthYearSelect.value;
+  let selectedYear = birthYearSelect.value;
   let selectedMonth = birthMonthSelect.value;
   let selectedDay = birthDaySelect.value;
 
@@ -244,6 +244,14 @@ function Validation() {
     return false;
   }
 
+  // 생년월일 확인
+  let selectedDay = $('#birth-day').val();
+
+  if (selectedDay == null) {
+    alert('생년월일을 선택해 주세요.');
+    return false;
+  }
+
 // 성별 확인
   if (!isCheckedGender()) {
     alert("성별을 확인해주세요");
@@ -292,111 +300,56 @@ function Validation() {
     return false;
   }
 
+  //function che
+
   // 유효성 문제 없을 시 폼에 submit
   document.joinForm.submit();
 }
 
-  /*아이디 중복 유효성 검사*/
-  // $('#userId').on('change', function () {
-  //   console.log("change!!")
-  //
-  //   let userId = $(this).val();
-  //   $.ajax({
-  //     url: `/users/check`,
-  //     type: 'get',
-  //     data: { userId: userId },
-  //     success: function (result) {
-  //       console.log(result);
-  //
-  //       let checkIdElement = $('.check-id');
-  //       if (result == 1) {
-  //         checkIdElement.text("중복된 아이디입니다.");
-  //         checkIdElement.css('color', 'red');
-  //       } else {
-  //         checkIdElement.text("사용 가능한 아이디입니다.");
-  //         checkIdElement.css('color', 'blue');
-  //       }
-  //     }
-  //   })
-  // })
-
 /*아이디 중복 유효성 검사*/
-// $('#userId').on('change', function () {
-//   console.log("change!!")
-//
-//   let userId = $(this).val();
-//   $.ajax({
-//     url: `/users/check`,
-//     type: 'get',
-//     data: { userId: userId },
-//     success: function (result) {
-//       console.log(result);
-//
-//       let checkIdElement = $('.check-id');
-//       if (result == 1) {
-//         checkIdElement.text("중복된 아이디입니다.");
-//         checkIdElement.css('color', 'red');
-//
-//         // 회원가입 버튼을 비활성화
-//         document.getElementById('join-btn').disabled = true;
-//       }
-//       else {
-//         checkIdElement.text("8~12자 영문 대소문자, 숫자만 입력하세요.");
-//         checkIdElement.css('color', 'blue');
-//
-//         // 중복된 아이디가 없을 때 입력 필드와 회원가입 버튼을 다시 활성화
-//         document.getElementById('userId').disabled = false;
-//         document.getElementById('join-btn').disabled = false;
-//       }
-//     }
-//   })
-// })
-// 아이디 입력 필드에서 keypress 이벤트 핸들러를 추가
-$("#userId").on("keypress", function (event) {
-  // Enter 키 (키 코드 13)가 눌렸을 때 아이디 중복 확인을 수행
-  if (event.keyCode === 13) {
-    let userId = $(this).val();
-    $.ajax({
-      url: `/users/check`,
-      type: 'get',
-      data: { userId: userId },
-      success: function (result) {
-        console.log(result);
+// 확인 버튼 클릭 이벤트를 처리하는 부분
+$("#confirm-id").on("click", function () {
+  let userId = $("#userId").val();
 
-        let checkIdElement = $('.check-id');
-        if (result == 1) {
-          checkIdElement.text("중복된 아이디입니다.");
-          checkIdElement.css('color', 'red');
+  // 공백 문자 제거
+  userId = userId.replace(/\s/g, "");
 
-          // 회원가입 버튼을 비활성화
-          document.getElementById('join-btn').disabled = true;
-        }
-        else {
-          checkIdElement.text("8~12자 영문 대소문자, 숫자만 입력하세요.");
-          checkIdElement.css('color', 'blue');
-
-          // 중복된 아이디가 없을 때 입력 필드와 회원가입 버튼을 다시 활성화
-          document.getElementById('userId').disabled = false;
-          document.getElementById('join-btn').disabled = false;
-        }
-        // else if(userId.length < 8 || userId.length > 12){
-        //   // $('.inputresult').css('display', 'flex');
-        //   // $('.inputresult').text("8자리 ~ 12자리 이내로 입력해주세요.");
-        // }
-        // else if(userId.search(/\s/) != -1){
-        //   // $('.inputresult').css('display', 'flex');
-        //   // $('.inputresult').text("비밀번호는 공백 없이 입력해주세요.");
-        // }else if((num < 0 || eng < 0)){
-        //   // $('.inputresult').css('display', 'flex');
-        //   // $('.inputresult').text("영문 대소문자, 숫자를 혼합하여 입력해주세요.");
-        // }else{
-        //
-        // }
-      }
-    });
+  // 글자 길이가 8~12자가 아닌 경우
+  if (userId.length < 8 || userId.length > 12) {
+    let checkIdElement = $('.check-id');
+    checkIdElement.text("8~12자 영문 대소문자, 숫자만 입력하세요.");
+    checkIdElement.css('color', 'blue');
+    // 회원가입 버튼을 비활성화
+    document.getElementById('join-btn').disabled = true;
+    return; // 함수 종료
   }
-});
 
+  $.ajax({
+    url: `/users/check`,
+    type: 'get',
+    data: { userId: userId },
+    success: function (result) {
+      console.log(result);
+
+      let checkIdElement = $('.check-id');
+      if (result == 1) {
+        checkIdElement.text("중복된 아이디입니다.");
+        checkIdElement.css('color', 'red');
+
+        // 회원가입 버튼을 비활성화
+        document.getElementById('join-btn').disabled = true;
+      }
+      else {
+        checkIdElement.text("사용 가능한 아이디입니다.");
+        checkIdElement.css('color', 'green');
+
+        // 중복된 아이디가 없을 때 입력 필드와 회원가입 버튼을 다시 활성화
+        document.getElementById('userId').disabled = false;
+        document.getElementById('join-btn').disabled = false;
+      }
+    }
+  });
+});
 /*-----유효성 검사의 종료-----*/
 
 

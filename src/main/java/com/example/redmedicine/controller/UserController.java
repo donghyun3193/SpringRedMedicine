@@ -22,7 +22,7 @@ public class UserController {
     private final BookingService bookingService;
 
     //로그인페이지
-    @GetMapping("/login")
+    @GetMapping("/login")//로그인 페이지로 이동하겠다
     public String showLoginPage() {
         return "user/login";
     }
@@ -63,8 +63,7 @@ public class UserController {
         }
     }
 
-
-    @PostMapping("join")//회원가입시 postMapping
+        @PostMapping("join")//회원가입시 postMapping
     public RedirectView join(UserDto userDto){
         userService.register(userDto);//서비스에서 만든 메서드를 사용하겠구나
         return new RedirectView("/user/login");//RedirectView를 쓰는 이유는 가져온 정보를 뿌려줄 수 있으므로!
@@ -90,7 +89,7 @@ public class UserController {
             return "user/login";
         }else{
             model.addAttribute("user",userService.find(userNumber));
-            return "user/mypage";
+            return "user/checkPw";
         }
     }
     /*
@@ -115,7 +114,7 @@ public class UserController {
 //        return "redirect:/user/login?userNumber=" + userDto.getUserNumber();
         return "main/index";
     }
-
+    
     //아이디찾기 페이지
     @GetMapping("/findId")
     public String showFindIdPage(){ return "user/findId";}
@@ -130,4 +129,14 @@ public class UserController {
         return "user/changePw";
     }
 
+    //비밀번호 확인 페이지에서 입력 후 회원 정보 수정 페이지로 이동
+    @PostMapping("/checkPw")
+    public String confirmPw(String userPassword, HttpServletRequest req, Model model) {
+        Long userNumber = userService.findUserNumberByPassword(userPassword);
+        //비밀번호 확인 위한 정보를 입력받아 Long userNumber에 저장
+        req.getSession().setAttribute("userNumber", userNumber);//매개변수에 req를 지정하고 session을 저장
+
+        model.addAttribute("user",userService.find(userNumber));
+        return "user/mypage";
+    }
 }
