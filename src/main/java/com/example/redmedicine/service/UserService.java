@@ -41,6 +41,15 @@ public class UserService {
         return userNumber;
     }
 
+    //
+    public Long findUserNumberByPassword(String userPassword){
+        Long userNumber = userMapper.selectUserNumberByPassword(userPassword);
+        if(userNumber == null){
+            throw new IllegalArgumentException("패스워드가 일치하는 회원 정보가 없습니다.");
+        }
+        return userNumber;
+    }
+
     //회원 정보 조회
     public UserDto find(Long userNumber){//세션에서 받을 userNumber를 가지고 모든 정보를 조회 후 꽂겠다
         if(userNumber == null){
@@ -66,21 +75,20 @@ public class UserService {
         return Optional.ofNullable(userMapper.selectUserLevel(userNumber))
                 .orElseThrow(() -> { throw new IllegalArgumentException("존재하지 않는 유저 번호 누락!!"); });
     }
-/*
-->null의 경우 회원번호 누락으로 인식하여 비회원의 존재가 난감할 수 있다
+    //상담 게시판 진입 시 유저 레벨로 비회원 구분할 수 있도록!
+    //->null의 경우 회원번호 누락으로 인식하여 비회원의 존재가 난감할 수 있다
 
-public Long findUserLevel(Long userNumber) {
-    if (userNumber == null) {
-        // userNumber가 null이면 비회원으로 처리하고 원하는 기본값(예: 0)을 반환하거나
-        // 다른 비회원 처리 로직을 여기에 추가할 수 있습니다.
-        return 4L; // 예: 기본값으로 0을 반환
+    public Long confirmUserLevel(Long userNumber){
+        if(userNumber == null){
+            // userNumber가 null이면 비회원으로 처리하고 원하는 기본값(예: 0)을 반환하거나
+            // 다른 비회원 처리 로직을 여기에 추가할 수 있습니다.
+            return 4L;
+            // null값을 가질 때 오류가 날 경우가 생기므로 임의로 null -> 4로 변경 후 상담게시판 진입!
+        }
+        return Optional.ofNullable(userMapper.selectUserLevel(userNumber))
+                .orElseThrow(() -> { throw new IllegalArgumentException("존재하지 않는 유저 번호 누락!!"); });
     }
 
-    // 유효한 userNumber가 있는 경우에만 데이터베이스에서 레벨을 조회합니다.
-    return Optional.ofNullable(userMapper.selectUserLevel(userNumber))
-            .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 유저 번호 누락!!"));
-}
-*/
     //회원 정보 수정
     public void modify(UserDto userDto){
         userMapper.update(userDto);

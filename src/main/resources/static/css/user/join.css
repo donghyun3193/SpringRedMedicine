@@ -204,7 +204,7 @@ a{
     padding-top: 50px;
     padding-bottom: 50px;
     border-top: 1px solid #ffe4cb;
-    border-bottom: 1px solid #ffe4cb;
+    /*border-bottom: 1px solid #ffe4cb;*/
     /* border: 1px solid black; */
 }
   
@@ -225,7 +225,7 @@ a{
   }
   .inputid{
     height: 60px;
-    width: 95%;
+    width: 415px;
     
     padding: 8px 15px 9px;
     border: 4px solid #ffa958;
@@ -399,7 +399,8 @@ a{
   border: #ffa958 4px solid;
   border-radius: 4px;
   text-align: center;
-  font-size: 18px;   
+  font-size: 18px;
+  cursor: pointer;
 }
 
 .main-container-section1 input:focus{
@@ -592,8 +593,10 @@ a{
 }
 /*유효성 검사시 span태그 변화*/
 .check-id{
+  width: 503.5px;
   display: flex;
   justify-content: start;
+  margin: 4px 0 0 4px;
 }
 
   

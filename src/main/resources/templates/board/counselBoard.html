@@ -44,9 +44,9 @@
                     <tr th:each="counselor : ${counselor}">
                         <td th:text="${counselor.counselorNumber}"></td>
                         <td>
-                            <a th:if="${userLevel != null and (userLevel != 1 or counselor.userNumber == session.userNumber)}"
+                            <a th:if="${userLevel != 4 and (userLevel != 1 or counselor.userNumber == session.userNumber)}"
                                th:href="@{/board/readingCounsel(counselorNumber=${counselor.counselorNumber})}">
-                                <h3 class="board-item-title" th:text="${counselor.counselorTitle}">글제목</h3>
+                                <span class="board-item-title" th:text="${counselor.counselorTitle}">글제목</span>
 
                                 <!--https://via.placeholder.com/300x200는 이미지가 존제하지 않을경우 존재하는 기본상태 x 표시 이미지-->
                                 <div th:if="${counselor.cFileName == null}" class="board-item-image" style="background-image: url(https://via.placeholder.com/25x25)"></div>
@@ -54,16 +54,16 @@
                                      th:style="'background-image: url(/upload/'
                                      + ${counselor.cFileRoute} + '/th_'+ ${counselor.cFileUuid} + '_' + ${counselor.cFileName} +')'"></div>
                             </a>
-                            <h3 class="board-item-title" th:unless="${userLevel != null and (userLevel != 1 or counselor.userNumber == session.userNumber)}">
+                            <span class="board-item-title" th:unless="${userLevel != 4 and (userLevel != 1 or counselor.userNumber == session.userNumber)}">
                                 <a th:if="${counselor.userNumber == session.userNumber}" th:href="@{/board/readingCounsel(counselorNumber=${counselor.counselorNumber})}">
-                                    <h3 th:text="${counselor.counselorTitle}">글제목</h3>
+                                    <span th:text="${counselor.counselorTitle}">글제목</span>
                                     <div th:if="${counselor.cFileName == null}" class="board-item-image" style="background-image: url(https://via.placeholder.com/25x25)"></div>
                                     <div th:unless="${counselor.cFileName == null}" class="board-item-image"
                                          th:style="'background-image: url(/upload/'
                                      + ${counselor.cFileRoute} + '/th_'+ ${counselor.cFileUuid} + '_' + ${counselor.cFileName} +')'"></div>
                                 </a>
-                                <h3 th:unless="${counselor.userNumber == session.userNumber}">비공개 글 입니다.</h3>
-                            </h3>
+                                <span th:unless="${counselor.userNumber == session.userNumber}"> 상담사와 작성자만 볼 수 있습니다.</span>
+                            </span>
                         </td>
                         <td th:text="${counselor.userName}">작성자</td>
                         <td th:text="${#dates.format(counselor.counselorDate,'yyyy-MM-dd')}">작성일</td>
