@@ -26,9 +26,9 @@ import java.util.List;
 @Slf4j
 public class ProfileController {
     private final ProfileService profileService;
-    private final UserService userService;
 
-//    //유료 상담사 등록 페이지
+
+//    유료 상담사 등록 페이지
     @GetMapping("/pay/registration")
     public String showRegistrationPage(Model model, HttpServletRequest req){
         Long userNumber = (Long)req.getSession().getAttribute("userNumber");

@@ -29,5 +29,4 @@ public interface ProfileMapper {
     //무료상담사상세조회
     public ProfileVo selectProfileFree(Long profileNumber);
 
-
 }

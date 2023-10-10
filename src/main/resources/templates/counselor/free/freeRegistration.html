@@ -21,7 +21,14 @@
             <div th:unless="${session.userLevel == 3}">
                 <li><a href="/counselor/pay/payment" id="main-nav-button">유료상담사등록</a></li>
             </div>
-            <li><a href="/counselor/free/freeRegistration" id="main-nav-button">무료상담사등록</a></li>
+
+            <div th:if="${session.userLevel == 3 || session.userLevel == 2}">
+                <li><a href="/counselor/free/freeRegistration" id="main-nav-button">무료상담사등록</a></li>
+            </div>
+            <div th:unless="${session.userLevel == 3 || session.userLevel == 2}">
+                <li><a href="/board/notice" id="main-nav-button">무료상담사등록</a></li>
+            </div>
+
         </ul>
     </div>
     <div class="main-content-container">
@@ -105,7 +112,7 @@
                 <tr>
                     <th>내용</th>
                     <td colspan="3" class="content-text">
-                            <textarea name="profileContent" id="">
+                            <textarea name="profileContent" id="content">
 
 ※자격※
 
