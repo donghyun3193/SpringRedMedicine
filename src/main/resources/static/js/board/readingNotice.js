@@ -16,3 +16,6 @@ $('#remove-button').on('click', function () {
     window.location.href = '/notice/remove?noticeNumber=' + noticeNumber;
     }
 });
+
+let content = $('.content-text').text();
+content.replaceAll('\n', '<br/>');
