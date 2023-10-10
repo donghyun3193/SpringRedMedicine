@@ -25,6 +25,23 @@ function choiceDateAndTime() {
         sessionStorage.setItem('bookTime', bookTime);
         sessionStorage.setItem('userCNumber', userCNumber);
 
-        // 다음 페이지로 이동
-        window.location.href = '/counselor/bookingDetails03';
+        const checkboxes = document.querySelectorAll('.checkbox1');
+        let allChecked = true;
+
+        checkboxes.forEach(checkbox => {
+                if (!checkbox.checked) {
+                        allChecked = false;
+                        return;
+                }
+        });
+
+        if (allChecked) {
+                // 모든 체크박스가 체크되었을 때 다음 단계로 이동
+                window.location.href = '/counselor/bookingDetails03';
+        } else {
+                // 얼럿창 표시
+                alert('모든 동의 항목에 체크해주세요.');
+        }
+
 }
+
