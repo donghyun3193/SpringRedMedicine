@@ -21,8 +21,8 @@ public interface MyDaybookMapper {
     public List<MyDaybookVo> selectCounselor(@Param("criteria") Criteria criteria, @Param("userNumber") Long userNumber);
 
 //    다이어리 전체글 갯수 조회
-    public int countDiary();
+    public int countDiary(Long userNumber);
 //    상담록 전체글 갯수 조회
-    public int countCounselor();
+    public int countCounselor(Long userNumber);
 
 }

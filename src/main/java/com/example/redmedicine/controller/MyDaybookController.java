@@ -22,8 +22,9 @@ public class MyDaybookController {
     public String showMydiary(Model model, HttpServletRequest req, Criteria criteria){
         Long userNumber = (Long)req.getSession().getAttribute("userNumber");
         criteria.setAmount(6);
+
         model.addAttribute("diaryList", myDaybookService.myDiary(criteria, userNumber));
-        model.addAttribute("pageInfo", new PageVo(myDaybookService.getTotalDiary(), criteria));
+        model.addAttribute("pageInfo", new PageVo(myDaybookService.getTotalDiary(userNumber), criteria));
         return "user/myDaybook";
     }
 
@@ -34,7 +35,7 @@ public String showMycounselor(Model model, HttpServletRequest req, Criteria crit
     criteria.setAmount(6);
 
     model.addAttribute("counselorList", myDaybookService.myCounselor(criteria, userNumber));
-    model.addAttribute("pageInfo", new PageVo(myDaybookService.getTotalCounselor(), criteria));
+    model.addAttribute("pageInfo", new PageVo(myDaybookService.getTotalCounselor(userNumber), criteria));
 
     return "user/myCounselor";
     }

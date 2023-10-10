@@ -30,8 +30,8 @@ public class MyDaybookService {
     }
 
 //  다이어리 전체글 수 조회
-    public int getTotalDiary(){
-        return myDaybookMapper.countDiary();
+    public int getTotalDiary(Long userNumber){
+        return myDaybookMapper.countDiary(userNumber);
     }
 
 //    상담 게시글 조회
@@ -44,8 +44,8 @@ public class MyDaybookService {
             });
     }
     //  다이어리 전체글 수 조회
-    public int getTotalCounselor(){
-        return myDaybookMapper.countCounselor();
+    public int getTotalCounselor(Long userNumber){
+        return myDaybookMapper.countCounselor(userNumber);
     }
 
 

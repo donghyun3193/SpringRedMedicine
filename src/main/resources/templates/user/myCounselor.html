@@ -53,7 +53,7 @@
                                 </tr>
                             </thead>
                             <tbody class="content">
-                                <th:block th:each="counsel : ${counselorList}" th:if="${session.userNumber == counsel.userNumber}">
+                                <th:block th:each="counsel : ${counselorList}">
                                     <tr>
                                         <td class="counseldate" th:text="${#dates.format(counsel.counselorDate,'yyyy-MM-dd')}"></td>
                                         <td class="counseltitle">

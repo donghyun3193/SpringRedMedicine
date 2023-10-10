@@ -288,4 +288,18 @@ a{
   color: black;
   cursor: pointer;
 }
+
+.nextpage{
+    width: 100px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 5px;
+    background-color: rgb(255, 226, 173);
+    font-size: 18px;
+    font-weight: 400;
+    margin:30px 50px 0 0 ;
+}
 /* 예약 페이지02 종료 */
