@@ -259,6 +259,7 @@ th{
     /* background-color: pink; */
     margin: 0 auto;
     margin-top: 30px;
+    cursor: pointer;
 }
 .buttons button{
     width: 55px;
@@ -271,6 +272,7 @@ th{
 }
 #main-buttons{
     color: white;
+    cursor: pointer;
 }
 .footer{
     width: 100vw;

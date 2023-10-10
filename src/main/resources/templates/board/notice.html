@@ -35,10 +35,10 @@
                 <div class="main-content-list">
                     <div class="table-wrap">
                         <table>
-                            <th>번호</th>
-                            <th>제목</th>
-                            <th>작성자</th>
-                            <th>작성일</th>
+                            <th width="10%">번호</th>
+                            <th width="60%">제목</th>
+                            <th width="10%">작성자</th>
+                            <th width="20%">작성일</th>
                             <tbody>
                                 <tr th:each="notice, i : ${noticeList}">
                                     <td th:text="${i.index+1}"></td>

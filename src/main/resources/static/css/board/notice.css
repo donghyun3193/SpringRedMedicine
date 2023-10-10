@@ -226,7 +226,7 @@ a{
 .main-content-list table{
   width: 950px;
   /*height: 600px;*/
-  /*table-layout: fixed;*/
+  table-layout: fixed;
   text-align: center;
   margin: 0 auto;
   border-top: 0.5px solid rgb(183, 182, 182);
