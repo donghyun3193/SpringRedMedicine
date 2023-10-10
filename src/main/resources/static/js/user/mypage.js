@@ -138,7 +138,7 @@ function Validation() {
 
   // 정규식
   // id, pw
-  let regIdPw = /^[a-zA-Z0-9]{8,12}$/;
+  let regIdPw = /^(?=.*[a-z])[a-zA-Z0-9]{8,12}$/;
   // 이메일
   let regMail = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
 
@@ -149,9 +149,9 @@ function Validation() {
     pw.focus();
     return false;
   }
-  //비밀번호 영어 대소문자 확인
+  //비밀번호 영어 소문자 확인
   else if(!regIdPw.test(pw.value)){
-    alert("비밀번호를 8~12자 영문 대소문자, 숫자만 입력하세요.")
+    alert("비밀번호를 8~12자,영문 소문자를 최소 1글자 이상 포함해 주세요.")
     pw.focus();
     return false;
   }

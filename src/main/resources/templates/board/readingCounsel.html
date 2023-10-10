@@ -31,7 +31,7 @@
                 <div class="writer" name="userName" id="userName"
                      th:text="${counselor.userName}" ></div>
                 <div class="date" name="counselorDate" id="counselorDate"
-                     th:text="${counselor.counselorDate}"></div>
+                     th:text="${#dates.format(counselor.counselorDate,'yyyy-MM-dd HH:mm')}"></div>
             </div>
             <div class="content" >
                 <div class="content-text" name="counselorContent" id="counselorContent"

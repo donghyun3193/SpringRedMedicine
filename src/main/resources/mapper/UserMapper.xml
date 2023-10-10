@@ -15,6 +15,11 @@
         WHERE USER_ID = #{userId} AND USER_PASSWORD = #{userPassword}
     </select>
 
+    <select id="selectUserNumberByPassword" resultType="long">
+        SELECT USER_NUMBER FROM TBL_USER
+        WHERE USER_PASSWORD = #{userPassword}
+    </select>
+
     <select id="selectUserName" resultType="string">
         SELECT USER_NAME
         FROM  TBL_USER
@@ -62,10 +67,10 @@
     <update id="update">
         UPDATE TBL_USER
         SET USER_ID = #{userId}, USER_PASSWORD = #{userPassword},
-            USER_NAME =#{userName}, USER_EMAIL = #{userEmail}, USER_PHONE=#{userPhone},
-            USER_BIRTH = #{userBirth}, USER_GENDER= #{userGender}
+            USER_NAME =#{userName}, USER_EMAIL = #{userEmail}, USER_PHONE=#{userPhone}
         WHERE USER_NUMBER = #{userNumber}
     </update>
+<!--    USER_BIRTH = #{userBirth}, USER_GENDER= #{userGender} 삭제 된 상태 update는 바꾸고 싶은것만!-->
 
     <update id="updatePw">
         UPDATE TBL_USER

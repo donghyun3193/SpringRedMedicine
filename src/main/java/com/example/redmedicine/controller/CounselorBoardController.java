@@ -36,14 +36,12 @@ public class CounselorBoardController {
     @GetMapping("/counselBoard")
     public String showListPage(Model model, Criteria criteria, HttpServletRequest req){
         Long userNumber = (Long)req.getSession().getAttribute("userNumber");
-        Long userLevel = userService.findUserLevel(userNumber);
+        Long userLevel = userService.confirmUserLevel(userNumber);
 
         model.addAttribute("userLevel",userLevel);
 
         model.addAttribute("counselor",  counselorService.findAll(criteria));
         model.addAttribute("pageInfo", new PageVo(counselorService.getTotal(), criteria));
-
-
 
 //        req.getSession().getAttribute("userLevel", userLevel);
 //        Long userLevel = userService.findUserLevel(userNumber);
