@@ -50,9 +50,12 @@ public class BookingController {
                           HttpServletRequest req) {
 
         Long userNumber = (Long)req.getSession().getAttribute("userNumber");
-        bookingService.inputData(bookDto);
+        Long bookNumber = bookingService.inputData(bookDto);
+        System.out.println("============================" + bookNumber);
+
 
         HttpSession session = req.getSession();
+        session.setAttribute("bookNumber",bookNumber);
         session.removeAttribute("bookDate");
         session.removeAttribute("bookTime");
         session.removeAttribute("userCNumber");
@@ -62,30 +65,29 @@ public class BookingController {
 
     //예약내역 문자전송
     @GetMapping("/sendBook")
-    public String sendBook(HttpServletRequest req, BookDto bookDto, Model model){
+    public String sendBook(HttpServletRequest req, Model model){
 
         //예약자 이름
         Long userNumber = (Long)req.getSession().getAttribute("userNumber");
         String userName = userService.findUserName(userNumber);
+        Long bookNumber = (Long)req.getSession().getAttribute("bookNumber");
+
+        BookDto bookDto = bookingService.selectBook(bookNumber);
+
+        System.out.println("========================"+bookNumber+"============================");
 
         //예약자의 휴대폰 번호
         String userPhoneNumber = userService.findUserPhoneNumber(userNumber);
 
         //상담사 이름
         //상담사 번호
-        Long counselorNumber = bookingService.selectBook(userNumber).getUserCNumber();
+        Long counselorNumber = bookDto.getUserCNumber();
         //상담사 이름
         String counselorName = userService.findUserName(counselorNumber);
 
         //예약날짜/시간
-        String bookDate = bookingService.selectBook(userNumber).getBookDate();
-        String bookTime = bookingService.selectBook(userNumber).getBookTime();
-
-//        Map<Object, Object> bookingContent = new HashMap<>();
-//        bookingContent.put("userName",userName);
-//        bookingContent.put("counselorName", counselorName);
-//        bookingContent.put("bookDate", bookDate);
-//        bookingContent.put("bookTime", bookTime);
+        String bookDate = bookDto.getBookDate();
+        String bookTime = bookDto.getBookTime();
 
         model.addAttribute("userName",userName);
         model.addAttribute("userPhoneNumber",userPhoneNumber);
@@ -96,6 +98,5 @@ public class BookingController {
         //모델에 담아서
         return "counselor/book/bookingContent";
     }
-
 
 }

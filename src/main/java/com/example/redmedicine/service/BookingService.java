@@ -31,9 +31,12 @@ public class BookingService {
     }
 
     // 데이터 입력
-    public void inputData(BookDto bookDto){
+    public Long inputData(BookDto bookDto){
         log.info(bookDto.toString());
         bookingMapper.insert(bookDto);
+
+        Long bookNumber = bookDto.getBookNumber();
+        return bookNumber;
     }
 
     //상담회원 전체조회
@@ -59,8 +62,8 @@ public class BookingService {
         bookingMapper.delete(bookNumber);
     }
     //예약 조회
-    public BookDto selectBook(Long userNumber){
-        return bookingMapper.selectBook(userNumber);
+    public BookDto selectBook(Long bookNumber){
+        return bookingMapper.selectBook(bookNumber);
     }
 
     //상담회원 모달 조회
