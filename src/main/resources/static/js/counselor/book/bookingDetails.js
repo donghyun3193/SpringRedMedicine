@@ -4,6 +4,8 @@ let nowMonth = new Date();  // 현재 달을 페이지를 로드한 날의 달�
 let today = new Date();     // 페이지를 로드한 날짜를 저장
 today.setHours(0, 0, 0, 0);    // 비교 편의를 위해 today의 시간을 초기화
 
+
+
 function getDayAndTime(){
     const profileNumber = sessionStorage.getItem('profileNumber');
 
@@ -14,29 +16,36 @@ function getDayAndTime(){
         success: function (profileDto) {
 
             let list = profileDto.profileDay;
+            console.log(profileDto)
             console.log(list);
             setDisabled(list);
-
+            setTimeDisabled(profileDto.profileTime);
         },
     });
 }
 
-function setDisabled(list){
-    console.log(list);
+function setTimeDisabled(list){
+    let arList = list.split(', ');
 
+    arList.forEach( time => {
+
+        $('.btn-time').each((i, ele) => {
+            if($(ele).val() == time){
+                $(ele).attr('disabled', false);
+            }
+        })
+
+    });
+}
+
+function setDisabled(list){
     let dayList = ['day0','day1','day2','day3','day4','day5','day6'];
-    let timeList = [];
     list = list.split(', ');
 
     for(let i=0; i<list.length; i++){
-        console.log(list[i]);
         let idx = dayList.indexOf(list[i]);
-        console.log(idx);
         dayList.splice(idx, 1);
-        console.log(dayList);
     }
-
-    console.log(dayList);
 
     dayList.forEach(ele => {
         $('.futureDay').each((i,day) => {
@@ -52,7 +61,6 @@ function setDisabled(list){
         }
 
     });
-
 }
 
 
@@ -177,16 +185,23 @@ timeButtons.forEach(button => {
 });
 
 // 시간 선택 함수
-function choiceTime(button) {
-    if (document.querySelector('.btn-time.selected')) {
-        // 이미 선택한 시간이 있는 경우
-        alert('이미 시간을 선택하셨습니다.');
-    } else {
-        // 선택한 시간 버튼에 'selected' 클래스 추가
-        button.classList.add('selected');
-        alert(`${button.getAttribute('data-time')}를 선택하셨습니다.`);
+    function choiceTime(button) {
+        // 이미 선택한 시간인지 확인
+        const isSelected = button.classList.contains('selected');
+
+        // 모든 시간 버튼에서 'selected' 클래스 제거
+        timeButtons.forEach(button => {
+            button.classList.remove('selected');
+        });
+
+        // 선택한 시간이 아닌 경우에만 'selected' 클래스 추가
+        if (!isSelected) {
+            button.classList.add('selected');
+            // 선택한 시간에 대한 처리 추가
+            alert(`${button.getAttribute('data-time')}를 선택하셨습니다.`);
+        }
     }
-}
+
 
 // "다음 단계" 링크 클릭 시 선택 여부 확인
 document.querySelector('.nextpage').addEventListener('click', function (event) {

@@ -377,6 +377,10 @@ td {
   background-color: rgb(255, 226, 173);
   border-radius: 5px;
 }
+.btn-time[disabled] {
+    color: #ccc; /* 회색 처리 */
+    cursor: not-allowed; /* 마우스 커서 변경 */
+}
 .selected{
   background-color: orange;
   border-radius: 5px;
