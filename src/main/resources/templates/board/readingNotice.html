@@ -35,7 +35,7 @@
                     </div>
                     <div class="buttons">
                         <button id="list-button">목록</button>
-                        <th:block th:if="${session.userNumber == 1}">
+                        <th:block th:if="${session.userNumber == 0}">
                             <button id="modify-button" th:data-number="${notice.noticeNumber}">수정</button>
                             <button id="remove-button" th:data-number="${notice.noticeNumber}">삭제</button>
                         </th:block>
