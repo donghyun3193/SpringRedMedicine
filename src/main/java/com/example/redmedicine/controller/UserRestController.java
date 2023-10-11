@@ -36,4 +36,12 @@ public class UserRestController {
         return userService.checkId(userId);
     }
 
+    @GetMapping("/checkPw") //회원정보수정 페이지 진입 전 비밀번호 확인
+    public String checkPw(HttpServletRequest req){
+        Long userNumber = (Long)req.getSession().getAttribute("userNumber");
+        String userPassword =userService.findPasswordByUserNumber(userNumber);
+
+        return userPassword;
+    }
+
 }

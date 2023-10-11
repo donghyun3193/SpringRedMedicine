@@ -14,7 +14,7 @@ public interface UserMapper {
     public Long selectUserNumber(@Param("userId") String userId, @Param("userPassword") String userPassword);
 
     //회원 번호 조회 -> 회원 정보 수정 페이지 진입 전 비밀번호 확인!
-    public long selectUserNumberByPassword(String userPassword);
+    public String selectPasswordByUserNumber(Long userNumber);
 
     //회원 번호 조회 -> 회원 정보 수정 페이지 진입 전 회원아이디 확인!
     public long selectUserNumberById(String userId);

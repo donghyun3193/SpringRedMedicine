@@ -15,9 +15,9 @@
         WHERE USER_ID = #{userId} AND USER_PASSWORD = #{userPassword}
     </select>
 
-    <select id="selectUserNumberByPassword" resultType="long">
-        SELECT USER_NUMBER FROM TBL_USER
-        WHERE USER_PASSWORD = #{userPassword}
+    <select id="selectPasswordByUserNumber" resultType="string">
+        SELECT USER_PASSWORD FROM TBL_USER
+        WHERE USER_NUMBER = #{userNumber}
     </select>
 
     <select id="selectUserNumberById" resultType="long">

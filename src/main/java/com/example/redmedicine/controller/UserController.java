@@ -74,7 +74,7 @@ public class UserController {
         return "main/index";
     }
 
-    @GetMapping("/mypage")
+    @GetMapping("/mypageIntro")
     public String showloginPage2(HttpServletRequest req, Model model){
         Long userNumber = (Long) req.getSession().getAttribute("userNumber");//세션을 통해서 userNumber를 불러오고
         //불러온 userNumber를 통해서 모든 정보를 가져올 수 있나? -> select를해서 세션을 통해서 받아 올 userNumber를 사용해서
@@ -107,6 +107,13 @@ public class UserController {
             return new RedirectView("/user/login");//리다이렉트시 요청한 정보 날라가니 쿼리스트링을 통해서 받아와야지!
         }
        */
+    @GetMapping("/showmypage")
+    public String showMyPage(HttpServletRequest req, Model model){
+        Long userNumber = (Long) req.getSession().getAttribute("userNumber");
+        model.addAttribute("user",userService.find(userNumber));
+        return "user/mypage";
+    }
+
     @PostMapping("/mypage")
     public String modify(UserDto userDto, Model model) {
         userService.modify(userDto);
@@ -144,19 +151,19 @@ public class UserController {
 //        return "user/mypage";
 //    }
 
-    @PostMapping("/checkPw")
-    public String confirmPw(String userId, HttpServletRequest req, Model model) {
-        Long userNumber = userService.findUserNumberById(userId);
-        //↑사용자가 입력한 userPassword를 통해서 관련 userNumber를 모두 가져옴
-
-        req.getSession().setAttribute("userNumber", userNumber);
-        //↑변수 req에 userNumber의 세션정보를 저장하겠다
-
-        System.out.println("***********"+userNumber);
-
-        model.addAttribute("user",userService.find(userNumber));
-        return "user/mypage";
-    }
+//    @PostMapping("/checkPw")
+//    public String confirmPw(String userId, HttpServletRequest req, Model model) {
+//        Long userNumber = userService.findUserNumberById(userId);
+//        //↑사용자가 입력한 userPassword를 통해서 관련 userNumber를 모두 가져옴
+//
+//        req.getSession().setAttribute("userNumber", userNumber);
+//        //↑변수 req에 userNumber의 세션정보를 저장하겠다
+//
+//        System.out.println("***********"+userNumber);
+//
+//        model.addAttribute("user",userService.find(userNumber));
+//        return "user/mypage";
+//    }
 }
 
 
