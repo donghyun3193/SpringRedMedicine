@@ -113,21 +113,20 @@ public class UserService {
         return userPhoneNumber;
     }
 
-    //비밀번호를 입력하여 회원 번호를 가져오겠다
-    public Long findUserNumberByPassword(String userPassword){
-        Long userNumber = userMapper.selectUserNumberByPassword(userPassword);
-        if(userNumber == null){
-            throw new IllegalArgumentException("패스워드가 일치하는 회원 정보가 없습니다.");
-        }
-        return userNumber;
-    }
+//    //비밀번호를 입력하여 회원 번호를 가져오겠다
+//    public Long findUserNumberByPassword(String userPassword){
+//
+//        Long userNumber = userMapper.selectPasswordByUserNumber(userNumber);
+//        if(userNumber == null){
+//            throw new IllegalArgumentException("패스워드가 일치하는 회원 정보가 없습니다.");
+//        }
+//        return userNumber;
+//    }
     
-    //회원아이디를 입력하여 회원 번호를 가져오겠다
-    public Long findUserNumberById(String userId){
-        Long userNumber = userMapper.selectUserNumberById(userId);
-        if(userNumber == null){
-            throw new IllegalArgumentException("패스워드가 일치하는 회원 정보가 없습니다.");
-        }
-        return userNumber;
+    //회원번호로 해당 회원의 비밀번호 가져오기
+    public String findPasswordByUserNumber(Long userNumber){
+        String userPassword = userMapper.selectPasswordByUserNumber(userNumber);
+
+        return userPassword;
     }
 }
