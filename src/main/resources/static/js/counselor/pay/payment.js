@@ -62,7 +62,7 @@ IMP.request_pay({
    }, function (rsp) {
       console.log(rsp);// 결제 응답 데이터를 콘솔에 출력
    if (rsp.success) {// 결제가 성공한 경우
-      var msg = '결제가 완료되었습니다.';
+      var msg = '결제가 완료되었습니다. 재 로그인 후 이용해 주세요^^';
       msg += '결제 금액 : ' + rsp.paid_amount;
        // 성공 메시지 생성 및 결제된 금액 표시
 
@@ -79,7 +79,7 @@ IMP.request_pay({
            success: function(response) {
                console.log(response); // 서버에서의 응답을 처리할 수 있습니다.
                // 메인 페이지로 리디렉션하거나 다른 동작을 수행할 수 있습니다.
-               location.href = '/counselor/pay/registration';
+               location.href = '/user/logout';
            },
            error: function(a, b, c) {
                console.error(c);

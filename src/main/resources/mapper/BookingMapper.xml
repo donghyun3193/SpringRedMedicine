@@ -93,7 +93,7 @@
     <select id="selectBook" resultType="bookDto">
         SELECT BOOK_NUMBER, USER_NUMBER, USER_C_NUMBER, BOOK_DATE, BOOK_TIME, BOOK_CONTENT, BOOK_STATUS
         FROM TBL_BOOK
-        WHERE USER_NUMBER = #{userNumber} and BOOK_STATUS = '1'
+        WHERE BOOK_NUMBER = #{bookNumber}
     </select>
 
     <select id="selectModal" resultType="bookVo">

@@ -14,7 +14,7 @@ import java.util.List;
 @Mapper
 public interface BookingMapper {
     //상담예약하기
-    public void insert(BookDto bookDto);
+    public Long insert(BookDto bookDto);
 
     //상담사 번호 조회
     public Long selectCNumber(Long userNumber);
@@ -34,7 +34,7 @@ public interface BookingMapper {
     public int searchTotal(@Param("searchVo") SearchVo searchVo, @Param("userCNumber") Long userCNumber);
 
     //예약조회
-    public BookDto selectBook(Long userNumber);
+    public BookDto selectBook(Long bookNumber);
 
     //상담회원 모달 조회
     public BookVo selectModal(Long bookNumber);

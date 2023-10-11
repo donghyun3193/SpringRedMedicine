@@ -61,7 +61,7 @@
             </div>
             <div style="display: flex;">
                 <div th:if="${session.userName == profile.userName}">
-                    <button style="margin-right: 10px" class="profile-button" type="button" th:data-number="${profile.profileNumber}">삭제</button>
+                    <button style="margin-right: 10px" class="profile-rm-button" type="button" th:data-number="${profile.profileNumber}">삭제</button>
                 </div>
                 <button class="profile-button" type="button" th:data-cnumber="${profile.userNumber}" onclick="reservation()">예약</button>
             </div>

@@ -10,6 +10,9 @@
   font-weight: normal;
   font-style: normal;
 }
+input{
+  cursor: pointer;
+}
 
 *{
   margin: 0;
@@ -204,9 +207,12 @@ align-items: center;
 
 .main-content-list{
   margin: 40px auto;
-  width: 1000px;
+  /*width: 1400px;*/
+  width: 100%;
   height: 850px;
   /* background-color: greenyellow; */
+
+  /*margin-left: 100px;*/
 }
 .main-titlename{
 /* width: 1000px; */
@@ -220,21 +226,23 @@ text-align: center;
 /* 자가 검진 */
 
 
-.w10per {
-width: 10%;
-}
+/*.w10per {*/
+/*width: 6%;*/
+/*}*/
 thead{
 height: 70px;
 }
 table {
 width: 100%;
+  /*width: 1500px;*/
 border-collapse: collapse;
 border-spacing: 0;
 text-align: center;
-width: auto;
+/*width: 1000px;*/
 /* border-right: 0; */
 }
 tbody {
+  /*width: 1500px;*/
 display: table-row-group;
 vertical-align: middle;
 border-color: inherit;
@@ -294,7 +302,10 @@ color: orange;
 }
 
 .th1{
-  width: 420px;
+  width: 400px;
+}
+.th2{
+  width: 30px;
 }
 
 /* 푸터 시작 */

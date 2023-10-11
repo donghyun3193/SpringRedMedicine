@@ -30,7 +30,7 @@
                         <div class="date" th:text="${#dates.format(diary.diaryDate,'yyyy-MM-dd HH:mm')}">2023-09-14</div>
                     </div>
                     <div class="content">
-                        <div class="content-text" th:text="${diary.diaryContent}"></div>
+                        <div class="content-text" th:text="${diary.diaryContent}" style="white-space: break-spaces"></div>
                     </div>
                     <div class="private">
                         <div class="private-title">공개여부</div>
@@ -74,6 +74,8 @@
             window.location.href = '/diary/remove?diaryNumber=' + diaryNumber;
         }
     });
+
+
 </script>
 </body>
 </html>

@@ -5,16 +5,28 @@
         <selectKey keyProperty="profileNumber" order="BEFORE" resultType="long">
         SELECT SEQ_PROFILE.NEXTVAL FROM DUAL
         </selectKey>
-        insert into TBL_PROFILE (PROFILE_NUMBER, USER_NUMBER, PROFILE_SUPER, PROFILE_CAREER, PROFILE_FEE, PROFILE_TARGET, PROFILE_AREA, PROFILE_DAY, PROFILE_TIME, PROFILE_CONTENT)
-            values (#{profileNumber},#{userNumber},#{profileSuper},#{profileCareer},#{profileFee},#{profileTarget},#{profileArea},#{profileDay},#{profileTime},#{profileContent})
+        INSERT INTO TBL_PROFILE (PROFILE_NUMBER, USER_NUMBER, PROFILE_SUPER, PROFILE_CAREER, PROFILE_FEE, PROFILE_TARGET, PROFILE_AREA, PROFILE_DAY, PROFILE_TIME, PROFILE_CONTENT)
+        SELECT #{profileNumber},#{userNumber},#{profileSuper},#{profileCareer},#{profileFee},#{profileTarget},#{profileArea},#{profileDay},#{profileTime},#{profileContent}
+        FROM DUAL
+        WHERE NOT EXISTS (
+        SELECT 1
+        FROM TBL_PROFILE
+        WHERE USER_NUMBER = #{userNumber}
+        )
     </insert>
 
     <insert id="insertProfileFree">
         <selectKey keyProperty="profileNumber" order="BEFORE" resultType="long">
         SELECT SEQ_PROFILE.NEXTVAL FROM DUAL
         </selectKey>
-        insert into TBL_PROFILE (PROFILE_NUMBER, USER_NUMBER, PROFILE_SUPER, PROFILE_CAREER, PROFILE_TARGET, PROFILE_AREA, PROFILE_DAY, PROFILE_TIME, PROFILE_CONTENT)
-        values (#{profileNumber},#{userNumber},#{profileSuper},#{profileCareer},#{profileTarget},#{profileArea},#{profileDay},#{profileTime},#{profileContent})
+        INSERT INTO TBL_PROFILE (PROFILE_NUMBER, USER_NUMBER, PROFILE_SUPER, PROFILE_CAREER, PROFILE_TARGET, PROFILE_AREA, PROFILE_DAY, PROFILE_TIME, PROFILE_CONTENT)
+        SELECT #{profileNumber},#{userNumber},#{profileSuper},#{profileCareer},#{profileTarget},#{profileArea},#{profileDay},#{profileTime},#{profileContent}
+        FROM DUAL
+        WHERE NOT EXISTS (
+        SELECT 1
+        FROM TBL_PROFILE
+        WHERE USER_NUMBER = #{userNumber}
+        )
     </insert>
 
     <delete id="deleteProfilePay">
@@ -109,8 +121,6 @@
         WHERE P.PROFILE_NUMBER = #{profileNumber}
         ORDER BY P.PROFILE_NUMBER
     </select>
-
-
 
 </mapper>
 

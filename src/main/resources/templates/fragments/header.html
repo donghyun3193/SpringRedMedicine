@@ -17,11 +17,22 @@
                     <li><a href="/board/notice">커뮤니티</a></li>
                     <li><a href="/test/diagnosis">자가진단테스트</a></li>
                     <li><a href="/counselor/pay/payMate">비대면상담받기</a></li>
-                    <div  th:if="${session.userNumber == null }">
+
+                    <div th:if="${session.userNumber == null }">
                         <li><a href="/user/login">상담사등록</a></li>
                     </div>
+
                     <div th:unless="${session.userNumber == null}">
-                        <li><a href="/counselor/free/freeRegistration">상담사등록</a></li>
+
+                        <div th:if="${session.userLevel == 3 || session.userLevel == 2}">
+                            <li><a href="/counselor/free/freeRegistration">상담사등록</a></li>
+                        </div>
+                        <div th:unless="${session.userLevel == 3 || session.userLevel == 2}">
+                            <li><a href="/notice/detail?noticeNumber=1">상담사등록</a></li>
+                        </div>
+
+<!--                        <li><a href="/counselor/free/freeRegistration">상담사등록</a></li>-->
+
                     </div>
                     <li><a href="/main/map">상담센터찾기</a></li>
                 </ul>
@@ -66,7 +77,7 @@
                             <a href="/admin/memberShipMm">회원정보관리</a>
                         </div>
                         <div th:if="${session.userLevel == 1}">
-                            <a href="/board/notice">상담사신청</a>
+                            <a href="/notice/detail?noticeNumber=1">상담사신청</a>
                         </div>
                         <div  th:if="${session.userLevel == 2 || session.userLevel == 3}">
                             <a href="/counselor/pay/payment">월 결제</a>
