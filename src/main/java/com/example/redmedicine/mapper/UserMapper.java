@@ -49,4 +49,7 @@ public interface UserMapper {
 
     //회원 휴대폰 번호 조회
     public String selectUserPhoneNumber(Long userNumber);
+
+    //    삭제
+    public void delete(Long userNumber);
 }
