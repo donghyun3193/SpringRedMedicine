@@ -318,6 +318,25 @@ a{
 
     /* border-bottom: white; */
 }
+
+.userId{
+    height: 60px;
+    width: 100%;
+
+    padding: 8px 15px 9px;
+    border: 3px solid #ffa958;
+    border-radius: 4px;
+    box-sizing: border-box;
+
+    font-size: 23px;
+    line-height: 21px;
+
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
+
+}
+
 .inputphonenumber{
     margin-top: 10px;
 

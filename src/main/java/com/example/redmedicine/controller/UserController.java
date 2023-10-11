@@ -130,13 +130,33 @@ public class UserController {
     }
 
     //비밀번호 확인 페이지에서 입력 후 회원 정보 수정 페이지로 이동
+//    @PostMapping("/checkPw")
+//    public String confirmPw(String userPassword, HttpServletRequest req, Model model) {
+//        Long userNumber = userService.findUserNumberByPassword(userPassword);
+//        //↑사용자가 입력한 userPassword를 통해서 관련 userNumber를 모두 가져옴
+//
+//        req.getSession().setAttribute("userNumber", userNumber);
+//        //↑변수 req에 userNumber의 세션정보를 저장하겠다
+//
+//        System.out.println("***********"+userNumber);
+//
+//        model.addAttribute("user",userService.find(userNumber));
+//        return "user/mypage";
+//    }
+
     @PostMapping("/checkPw")
-    public String confirmPw(String userPassword, HttpServletRequest req, Model model) {
-        Long userNumber = userService.findUserNumberByPassword(userPassword);
-        //비밀번호 확인 위한 정보를 입력받아 Long userNumber에 저장
-        req.getSession().setAttribute("userNumber", userNumber);//매개변수에 req를 지정하고 session을 저장
+    public String confirmPw(String userId, HttpServletRequest req, Model model) {
+        Long userNumber = userService.findUserNumberById(userId);
+        //↑사용자가 입력한 userPassword를 통해서 관련 userNumber를 모두 가져옴
+
+        req.getSession().setAttribute("userNumber", userNumber);
+        //↑변수 req에 userNumber의 세션정보를 저장하겠다
+
+        System.out.println("***********"+userNumber);
 
         model.addAttribute("user",userService.find(userNumber));
         return "user/mypage";
     }
 }
+
+

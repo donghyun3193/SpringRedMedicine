@@ -5,6 +5,7 @@ import com.example.redmedicine.mapper.UserMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 import static java.util.Optional.*;
@@ -37,15 +38,6 @@ public class UserService {
         Long userNumber = userMapper.selectUserNumber(userId, userPassword);
         if (userNumber == null) {
             throw new IllegalArgumentException("아이디와 패스워드가 일치하는 회원 정보가 없습니다.");
-        }
-        return userNumber;
-    }
-
-    //
-    public Long findUserNumberByPassword(String userPassword){
-        Long userNumber = userMapper.selectUserNumberByPassword(userPassword);
-        if(userNumber == null){
-            throw new IllegalArgumentException("패스워드가 일치하는 회원 정보가 없습니다.");
         }
         return userNumber;
     }
@@ -119,5 +111,23 @@ public class UserService {
     public String findUserPhoneNumber(Long userNumber){
         String userPhoneNumber = userMapper.selectUserPhoneNumber(userNumber);
         return userPhoneNumber;
+    }
+
+    //비밀번호를 입력하여 회원 번호를 가져오겠다
+    public Long findUserNumberByPassword(String userPassword){
+        Long userNumber = userMapper.selectUserNumberByPassword(userPassword);
+        if(userNumber == null){
+            throw new IllegalArgumentException("패스워드가 일치하는 회원 정보가 없습니다.");
+        }
+        return userNumber;
+    }
+    
+    //회원아이디를 입력하여 회원 번호를 가져오겠다
+    public Long findUserNumberById(String userId){
+        Long userNumber = userMapper.selectUserNumberById(userId);
+        if(userNumber == null){
+            throw new IllegalArgumentException("패스워드가 일치하는 회원 정보가 없습니다.");
+        }
+        return userNumber;
     }
 }

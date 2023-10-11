@@ -20,6 +20,11 @@
         WHERE USER_PASSWORD = #{userPassword}
     </select>
 
+    <select id="selectUserNumberById" resultType="long">
+        SELECT USER_NUMBER FROM TBL_USER
+        WHERE USER_ID = #{userId}
+    </select>
+
     <select id="selectUserName" resultType="string">
         SELECT USER_NAME
         FROM  TBL_USER
