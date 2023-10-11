@@ -120,13 +120,6 @@ birthDaySelect.addEventListener('change', updateUserBirth);
 
 // 초기화시에도 실행
 updateUserBirth();
-
-/*취소 버튼 클릭 시 메인 페이지로 이동할 수 있도록*/
-$('.btn-join').on('click',function(){
-  window.location.href = '/main/index';
-})
-
-
 /*-----유효성 검사의 시작-----*/
 // 유효성 검사 메서드
 function Validation() {
@@ -177,3 +170,4 @@ function Validation() {
   document.updateForm.submit();
 }
 /*-----유효성 검사의 종료-----*/
+

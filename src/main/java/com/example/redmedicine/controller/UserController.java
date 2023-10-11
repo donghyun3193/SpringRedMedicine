@@ -164,6 +164,13 @@ public class UserController {
 //        model.addAttribute("user",userService.find(userNumber));
 //        return "user/mypage";
 //    }
+    @GetMapping("/removeUser")
+    public RedirectView remove(HttpServletRequest req){
+        Long userNumber = (Long)req.getSession().getAttribute("userNumber");
+        userService.remove(userNumber);
+        req.getSession().invalidate();
+        return new RedirectView("/main/index");
+    }
 }
 
 

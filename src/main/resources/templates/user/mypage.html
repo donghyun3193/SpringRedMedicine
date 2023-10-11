@@ -23,6 +23,8 @@
             <form class="content-box" action="/user/mypage" method="post" name="updateForm">
                 <input type="hidden" th:value="${user.userNumber}" name="userNumber"/>
                 <!--↑히든으로 숨겨서 컨트롤러의 Dto에 꽂히도록!<-컨트롤러에서 왔음-->
+                <button class="withdraw" id="remove-button"
+                        type="button" style="cursor: pointer;">탈퇴하기</button>
                 <div class="main-container-section1">
                     <div class="input-name">아이디</div>
                     <input class="inputid" type="text" placeholder="아이디"
@@ -100,5 +102,18 @@
 <!--    <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>-->
 <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
 <script src="/js/user/mypage.js"></script>
+<script>
+    /*취소 버튼 클릭 시 메인 페이지로 이동할 수 있도록*/
+    $('.btn-join').on('click',function(){
+        window.location.href = '/main/index';
+    })
+
+    //삭제 버튼
+    $('#remove-button').on('click', function () {
+        if(confirm("정말 탈퇴하시겠습니까?")){
+            window.location.href = '/user/removeUser';
+        }
+    });
+</script>
 </body>
 </html>
