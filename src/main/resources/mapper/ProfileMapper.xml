@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.redmedicine.mapper.ProfileMapper">
+    <!--유료 상담사 등록 쿼리-->
     <insert id="insertProfilePay">
         <selectKey keyProperty="profileNumber" order="BEFORE" resultType="long">
         SELECT SEQ_PROFILE.NEXTVAL FROM DUAL
@@ -14,7 +15,7 @@
         WHERE USER_NUMBER = #{userNumber}
         )
     </insert>
-
+    <!--무료 상담사 등록 쿼리-->
     <insert id="insertProfileFree">
         <selectKey keyProperty="profileNumber" order="BEFORE" resultType="long">
         SELECT SEQ_PROFILE.NEXTVAL FROM DUAL
@@ -52,6 +53,7 @@
         WHERE USER_NUMBER = #{userNumber}
     </select>
 
+    <!--유료 상담사 목록 쿼리-->
     <select id="selectProfilePayNumber" resultType="profileVo">
         SELECT P.PROFILE_NUMBER, U.USER_NAME, PROFILE_CAREER, PROFILE_FEE, PROFILE_TARGET, PROFILE_AREA, PF_FILE_ROUTE, PF_FILE_NAME, PF_FILE_UUID
         FROM TBL_PROFILE P JOIN TBL_USER U
@@ -68,7 +70,7 @@
         WHERE PROFILE_FEE IS NOT NULL
         ORDER BY P.PROFILE_NUMBER
     </select>
-
+    <!--무료 상담사 목록 쿼리-->
     <select id="selectProfileFreeNumber" resultType="profileVo">
         SELECT P.PROFILE_NUMBER, U.USER_NAME, PROFILE_CAREER, PROFILE_FEE, PROFILE_TARGET, PROFILE_AREA, PF_FILE_ROUTE, PF_FILE_NAME, PF_FILE_UUID
         FROM TBL_PROFILE P JOIN TBL_USER U
@@ -85,7 +87,7 @@
         WHERE PROFILE_FEE IS NULL
         ORDER BY P.PROFILE_NUMBER
     </select>
-
+    <!--유료 상담사 상세페이지 쿼리-->
     <select id="selectProfilePay" resultType="profileVo">
         SELECT P.PROFILE_NUMBER, U.USER_NAME, P.PROFILE_SUPER, P.PROFILE_CAREER, P.PROFILE_FEE, P.PROFILE_TARGET,
                P.PROFILE_AREA, J1.PF_FILE_ROUTE, J1.PF_FILE_NAME, J1.PF_FILE_UUID, P.PROFILE_CONTENT, P.USER_NUMBER
@@ -103,7 +105,7 @@
         WHERE P.PROFILE_NUMBER = #{profileNumber}
         ORDER BY P.PROFILE_NUMBER
     </select>
-
+    <!--무료 상담사 상세페이지 쿼리-->
     <select id="selectProfileFree" resultType="profileVo">
         SELECT P.PROFILE_NUMBER, U.USER_NAME, P.PROFILE_SUPER, P.PROFILE_CAREER, P.PROFILE_FEE, P.PROFILE_TARGET,
                P.PROFILE_AREA, J1.PF_FILE_ROUTE, J1.PF_FILE_NAME, J1.PF_FILE_UUID, P.PROFILE_CONTENT, P.USER_NUMBER

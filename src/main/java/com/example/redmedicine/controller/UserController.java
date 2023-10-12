@@ -22,9 +22,45 @@ public class UserController {
     private final BookingService bookingService;
 
     //로그인페이지
-    @GetMapping("/login")//로그인 페이지로 이동하겠다
+    @GetMapping("/login")
     public String showLoginPage() {
         return "user/login";
+    }
+
+    @PostMapping("/login")
+    public String login(String userId, String userPassword, HttpServletRequest req){
+        // "/login" 경로에 POST 요청을 처리하는 메소드 정의
+
+        // 사용자로부터 입력받은 userId와 userPassword를 파라미터로 받음
+        try {
+            // 사용자 번호를 찾기 위한 서비스(UserService)를 이용하여 사용자 정보를 검색
+            Long userNumber = userService.findUserNumber(userId, userPassword);
+            // 사용자의 아이디와 비밀번호를 기반으로 사용자 번호를 검색하여 userNumber에 저장
+
+            // userNumber를 사용하여 사용자 레벨을 가져옴
+            Long userLevel = userService.findUserLevel(userNumber);
+            // 사용자 번호를 이용하여 사용자 레벨 정보를 가져와 userLevel에 저장
+
+            // 현재 요청과 관련된 세션(HttpSession)을 얻어와서 사용자 번호와 사용자 레벨을 세션에 저장
+            req.getSession().setAttribute("userNumber", userNumber);
+            // "userNumber"라는 이름으로 사용자 번호를 세션에 저장
+            req.getSession().setAttribute("userLevel", userLevel);
+            // "userLevel"라는 이름으로 사용자 레벨을 세션에 저장
+
+            // 사용자 번호를 이용하여 사용자 이름을 가져옴
+            String userName = userService.findUserName(userNumber);
+            // 사용자 번호를 이용하여 사용자 이름을 검색하여 userName에 저장
+
+            // 사용자 이름을 세션에 저장
+            req.getSession().setAttribute("userName", userName);
+
+            // 로그인이 성공했으므로 "/main/index"로 리다이렉트(다른 페이지로 이동)
+            return "redirect:/main/index";
+        } catch (IllegalArgumentException e) {
+            // 예외 발생 시, 사용자에게 오류 메시지를 전달하고 로그인 페이지로 이동
+            req.setAttribute("errorMessage", "아이디와 비밀번호를 다시 입력해주세요.");
+            return "/user/login"; // 로그인 페이지로 돌아감
+        }
     }
 
 
@@ -33,41 +69,12 @@ public class UserController {
         return "user/join";
     }
 
-    @PostMapping("/login")
-    public String login(String userId, String userPassword, HttpServletRequest req){//user.html의 id와 name을 이미 지정하였다
-        try {
-            Long userNumber = userService.findUserNumber(userId, userPassword);//로그인 위한 정보를 입력받아 Long userNumber에 저장
-
-            // userNumber를 사용하여 userLevel을 가져옴
-            Long userLevel = userService.findUserLevel(userNumber);
-
-            req.getSession().setAttribute("userNumber", userNumber);//매개변수에 req를 지정하고 session을 저장
-            req.getSession().setAttribute("userLevel", userLevel); // userLevel을 세션에 저장
-//        req.getSession().setAttribute("userLevel" , userLevel);
-            //이 때 user모든 정보가 아닌 pk만 서버에 무리 적게 위해!
-
-            //↑세션 객체를 사용하여 사용자 번호를 "userNumber"라는 이름으로 세션에 저장합니다.
-            // 이렇게 하면 로그인한 사용자의 정보를 세션에 유지하게 됩니다.
-
-//        Long userCNumber = bookingService.findCNumber(userNumber);
-//        req.getSession().setAttribute("userCNumber", userCNumber);
-
-            String userName = userService.findUserName(userNumber);
-            req.getSession().setAttribute("userName",userName);
-
-//            return new RedirectView("/main/index");//즉 메인 페이지에서 로그인한 상태에서는 세션정보 존재함
-            return "redirect:/main/index";
-        } catch (IllegalArgumentException e) {
-            req.setAttribute("errorMessage", "아이디와 비밀번호를 다시 입력해주세요.");
-            return "/user/login"; // 로그인 페이지로 돌아감
-        }
-    }
-
-        @PostMapping("join")//회원가입시 postMapping
+    @PostMapping("join")//회원가입시 postMapping
     public RedirectView join(UserDto userDto){
         userService.register(userDto);//서비스에서 만든 메서드를 사용하겠구나
         return new RedirectView("/user/login");//RedirectView를 쓰는 이유는 가져온 정보를 뿌려줄 수 있으므로!
     }
+
     @GetMapping("/logout")
     public String logout(HttpServletRequest req){
         req.getSession().invalidate();//invalidate()모든 정보 날려버려!!
@@ -79,12 +86,6 @@ public class UserController {
         Long userNumber = (Long) req.getSession().getAttribute("userNumber");//세션을 통해서 userNumber를 불러오고
         //불러온 userNumber를 통해서 모든 정보를 가져올 수 있나? -> select를해서 세션을 통해서 받아 올 userNumber를 사용해서
 
-        //Model에 저장 후 사용해보자!
-//        UserDto userDto = userService.find((Long) userNumber);
-//        model.addAttribute("user",userService.find(userNumber));
-        //이거먼 세션을 통해서 가져온 userNumber를 사용해 userService의 find메서드를 사용할 수 있는 것 아닌가?
-
-//        return userNumber == null ? "user/login" : "user/mypage";
         if(userNumber == null){
             return "user/login";
         }else{
@@ -92,21 +93,7 @@ public class UserController {
             return "user/checkPw";
         }
     }
-    /*
-        @PostMapping("/mypage")//수정 자체는 join과 마찬가지로 post방식으로
-        public RedirectView modify(UserDto userDto, RedirectAttributes redirectAttributes){
 
-            userService.modify(userDto);//getMapping을 통해서 userNumber를 넘겨받고 관련 정보를 넣은 후
-
-            redirectAttributes.addAttribute("userNumber", userDto.getUserNumber());
-
-    //       리다이렉션 시 데이터 전달: RedirectView를 사용하여 리다이렉션 시 데이터를 전달할 수 있습니다.
-    //       이를 통해 리다이렉션된 페이지로 데이터를 전송하거나, 쿼리 문자열에 데이터를 추가하여 다음 요청에서 사용할 수 있습니다.
-
-
-            return new RedirectView("/user/login");//리다이렉트시 요청한 정보 날라가니 쿼리스트링을 통해서 받아와야지!
-        }
-       */
     @GetMapping("/showmypage")
     public String showMyPage(HttpServletRequest req, Model model){
         Long userNumber = (Long) req.getSession().getAttribute("userNumber");
@@ -118,7 +105,6 @@ public class UserController {
     public String modify(UserDto userDto, Model model) {
         userService.modify(userDto);
         model.addAttribute("userNumber", userDto.getUserNumber());
-//        return "redirect:/user/login?userNumber=" + userDto.getUserNumber();
         return "main/index";
     }
     
@@ -136,34 +122,6 @@ public class UserController {
         return "user/changePw";
     }
 
-    //비밀번호 확인 페이지에서 입력 후 회원 정보 수정 페이지로 이동
-//    @PostMapping("/checkPw")
-//    public String confirmPw(String userPassword, HttpServletRequest req, Model model) {
-//        Long userNumber = userService.findUserNumberByPassword(userPassword);
-//        //↑사용자가 입력한 userPassword를 통해서 관련 userNumber를 모두 가져옴
-//
-//        req.getSession().setAttribute("userNumber", userNumber);
-//        //↑변수 req에 userNumber의 세션정보를 저장하겠다
-//
-//        System.out.println("***********"+userNumber);
-//
-//        model.addAttribute("user",userService.find(userNumber));
-//        return "user/mypage";
-//    }
-
-//    @PostMapping("/checkPw")
-//    public String confirmPw(String userId, HttpServletRequest req, Model model) {
-//        Long userNumber = userService.findUserNumberById(userId);
-//        //↑사용자가 입력한 userPassword를 통해서 관련 userNumber를 모두 가져옴
-//
-//        req.getSession().setAttribute("userNumber", userNumber);
-//        //↑변수 req에 userNumber의 세션정보를 저장하겠다
-//
-//        System.out.println("***********"+userNumber);
-//
-//        model.addAttribute("user",userService.find(userNumber));
-//        return "user/mypage";
-//    }
     @GetMapping("/removeUser")
     public RedirectView remove(HttpServletRequest req){
         Long userNumber = (Long)req.getSession().getAttribute("userNumber");

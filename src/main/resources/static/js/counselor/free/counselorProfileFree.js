@@ -87,22 +87,6 @@ function appendReply(map){
     $('.reply-list-wrap').append(text);
 }
 
-// 무한 스크롤 페이징
-// $(window).on('scroll', function (){
-//
-//     // 현재 브라우저의 스크롤 위치를 의미함
-//     console.log(`scrollTop : ${ $(window).scrollTop() }`);
-//     // 문서 전체의 높이를 구함
-//     console.log(`document : ${ $(document).height() }`);
-//     //브라우저 화면의 높이를 구함
-//     console.log(`window : ${ $(window).height() }`);
-//
-//     if(Math.round($(window).scrollTop()) == $(document).height() - $(window).height()){
-//         console.log(++page);
-//         reply.getListPage({profileNumber:profileNumber, page : page}, appendReply);
-//     }
-//
-// });
 /**
  * 리플 목록을 만들어주는 콜백 함수
  *

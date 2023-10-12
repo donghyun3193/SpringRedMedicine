@@ -28,15 +28,13 @@ public class ProfileController {
     private final ProfileService profileService;
 
 
-//    유료 상담사 등록 페이지
+    //유료 상담사 등록 페이지
     @GetMapping("/pay/registration")
     public String showRegistrationPage(Model model, HttpServletRequest req){
         Long userNumber = (Long)req.getSession().getAttribute("userNumber");
         model.addAttribute("userName",profileService.findUserName(userNumber));
         return "counselor/pay/registration";
     }
-
-
 
     //유료 상담사 등록 페이지(값 받아 오기)
     @PostMapping("/pay/registration")
@@ -81,8 +79,6 @@ public class ProfileController {
         Long profileNumber = profileDto.getProfileNumber();
         //등록된 프로필 번호인 profileNumber을 가져옴
 
-//        log.info("====================================={}", profileDto.toString());
-
         redirectAttributes.addFlashAttribute("profileNumber",profileNumber);
 
         return new RedirectView("/counselor/free/freeMate");
@@ -94,13 +90,6 @@ public class ProfileController {
     public String showCounselorPayLitPage(Model model){
         model.addAttribute("profileList", profileService.findProfilePayNumber());
         return "counselor/pay/payMate";
-    }
-
-    //무료 상담사 페이지
-    @GetMapping("/free/freeMate")
-    public String showCounselorFreeLitPage(Model model){
-        model.addAttribute("profileList", profileService.findProfileFreeNumber());
-        return "counselor/free/freeMate";
     }
 
     //유료 상담사 상세 페이지
@@ -119,19 +108,30 @@ public class ProfileController {
         return "counselor/pay/counselorProfilePay";
     }
 
+    //무료 상담사 페이지
+    @GetMapping("/free/freeMate")
+    public String showCounselorFreeLitPage(Model model){
+        model.addAttribute("profileList", profileService.findProfileFreeNumber());
+        return "counselor/free/freeMate";
+    }
 
     //무료 상담사 상세 페이지
     @GetMapping("/free/counselorProfileFree")
     public String showCounselorDetailPag(Model model, Long profileNumber, HttpServletRequest req){
         Long userNumber = (Long)req.getSession().getAttribute("userNumber");
+        // 사용자가 로그인하지 않은 경우, 로그인 페이지로 이동합니다.
         if (userNumber == null) {
             return "user/login";
         }
-        model.addAttribute("userName",profileService.findUserName(userNumber));
+        // 현재 사용자의 이름을 모델에 추가합니다.
+        model.addAttribute("userName", profileService.findUserName(userNumber));
+        // 주어진 프로필 번호를 사용하여 무료 상담사의 상세 정보를 가져옵니다.
         ProfileVo profileVo = profileService.findProfileFree(profileNumber);
+        // 무료 상담사의 프로필 정보를 모델에 추가합니다.
         model.addAttribute("profile", profileVo);
-        model.addAttribute("user",profileVo);
-
+        // 무료 상담사의 프로필 정보를 "user"라는 이름으로도 모델에 추가합니다.
+        model.addAttribute("user", profileVo);
+        // 무료 상담사의 상세 정보를 보여주는 무료 상담사 프로필 페이지로 이동합니다.
         return "counselor/free/counselorProfileFree";
     }
 

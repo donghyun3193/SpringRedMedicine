@@ -21,12 +21,6 @@
         WHERE COUNSELOR_NUMBER = #{counselorNumber}
     </update>
 
-<!--    <update id="updateName">-->
-<!--        UPDATE TBL_COUNSELOR-->
-<!--        SET COUNSELOR_TITLE = #{counselorTitle}, COUNSELOR_CONTENT = #{counselorContent}-->
-<!--        WHERE COUNSELOR_NUMBER = #{counselorNumber}-->
-<!--    </update>-->
-
     <select id="select" resultType="counselorVo">
         SELECT COUNSELOR_NUMBER, COUNSELOR_TITLE, COUNSELOR_CONTENT, C.USER_NUMBER,
                COUNSELOR_DATE, U.USER_NAME, U.USER_LEVEL
@@ -34,7 +28,7 @@
         ON C.USER_NUMBER = U.USER_NUMBER
         WHERE C.COUNSELOR_NUMBER = #{counselorNumber}
     </select>
-
+    <!--상담 예약 관리 - 조회 - 쿼리-->
     <select id="selectAll" resultType="counselorVo">
         SELECT RNUM, COUNSELOR_NUMBER, COUNSELOR_TITLE, COUNSELOR_CONTENT, COUNSELOR_DATE, USER_NUMBER,
                USER_NAME, USER_LEVEL, C_FILE_ROUTE, C_FILE_UUID, C_FILE_NAME
@@ -64,12 +58,12 @@
         ) Y
         WHERE RNUM > (#{page} - 1) * #{amount}
     </select>
-
     <!--최신글이 가장 위로 올라가도록 수정해도 상관없이하기 위해서 DESC 설정-->
+
+
     <select id="selectTotal" resultType="_int">
         SELECT COUNT(COUNSELOR_NUMBER)
         FROM TBL_COUNSELOR
     </select>
-
 
 </mapper>

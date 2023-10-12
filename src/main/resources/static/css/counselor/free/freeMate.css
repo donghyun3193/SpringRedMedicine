@@ -226,10 +226,10 @@ td img {
 }
 
 .right{
-   width: 300px;
+  width: 300px;
   /* margin-right: 5px; */
+  text-align:start;
 }
-
 .divsum{
   /* margin-left: 20px; */
   font-size: 15px;
