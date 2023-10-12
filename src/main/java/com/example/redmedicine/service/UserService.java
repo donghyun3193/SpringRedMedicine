@@ -3,6 +3,7 @@ package com.example.redmedicine.service;
 import com.example.redmedicine.domain.dto.UserDto;
 import com.example.redmedicine.mapper.UserMapper;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,18 +17,18 @@ public class UserService {
     private final UserMapper userMapper;
 
     //회원 가입
-    public void register(UserDto userDto){
+    public ResponseEntity<String> register(UserDto userDto) {
         if (userDto == null) {
-            throw new IllegalArgumentException("회원 정보 누락!");
+            // 회원 정보 누락 시 클라이언트에게 오류 메시지를 반환
+            return ResponseEntity.badRequest().body("회원 정보가 누락되었습니다.");
         }
-        //회원 가입 시 회원의 레벨을 1로 고정 -> 추후 상담사가 된다면 바뀔 것
+        // 회원 가입 시 회원의 레벨을 1로 고정 -> 추후 상담사가 된다면 바뀔 것
         userDto.setUserLevel(1L);
-
-//        userDto.setUserBirth("20000506");
-
         userMapper.insert(userDto);
-    }
 
+        // 성공적으로 가입한 경우 성공 메시지 반환
+        return ResponseEntity.ok("회원 가입이 완료되었습니다.");
+    }
     //회원 번호 찾기
 //    public Long findUserNumber(String userId, String userPassword){
 //        return ofNullable(userMapper.selectUserNumber(userId,userPassword))
@@ -50,6 +51,7 @@ public class UserService {
         return Optional.ofNullable(userMapper.select(userNumber))
                 .orElseThrow(()->{throw new IllegalArgumentException("존재하지 않는 회원번호");});
     }
+    
     //유저 이름 찾기
     public String findUserName(Long userNumber){
         if (userNumber == null) {
