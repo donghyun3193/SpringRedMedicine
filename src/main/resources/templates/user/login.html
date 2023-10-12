@@ -19,7 +19,9 @@
         <div class="main-content">
             <div class="main-content-contaniner">
                 <div class="main-content-title">로그인</div>
-                <div id="errorMessage" style="color: red;"></div>
+                <div th:if="${errorMessage}" class="alert alert-danger" style="color:red; font-size: 20px;">
+                    <p th:text="${errorMessage}"></p>
+                </div>
                 <div class="content-box">
                     <form class="login-form" method="post" action="/user/login">
                         <!--post로 지정해야 컨트롤러에서 post로 어노테이션 실행할꺼니까-->
@@ -61,8 +63,8 @@
     <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
     <script>
         // URL에서 에러 메시지 가져오기
-        var urlParams = new URLSearchParams(window.location.search);
-        var errorMessage = urlParams.get("errorMessage");
+        let urlParams = new URLSearchParams(window.location.search);
+        let errorMessage = urlParams.get("errorMessage");
 
         // 에러 메시지가 있을 경우, 알림 표시
         if (errorMessage) {

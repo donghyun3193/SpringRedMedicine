@@ -1,3 +1,79 @@
+/*===문자 인증 관련 js 시작===*/
+$('#checkNum').on('click', function () {
+  let checkNumber = $('#inputNum').val();
+  let inputphone = $('.inputphone').val();
+
+  // 인증번호와 휴대전화 입력값이 모두 비어있으면 회원가입 버튼 비활성화
+  if (checkNumber.trim() === '' || inputphone.trim() === '') {
+    document.getElementById('join-btn').disabled = true;
+    return;
+  }
+
+  let param = {
+    checkNumber: checkNumber
+  }
+
+  $.ajax({
+    url: '/sms/v1/msgCheck',
+    type: 'post',
+    data: JSON.stringify(param),
+    contentType: 'application/json; charset=utf-8',
+    success: function (result) {
+      console.log(result);
+
+      $('.inputresult').text(result);
+
+      if (result == "인증이 완료되었습니다.") {
+        $('.main-time').css('display', 'none');
+        document.getElementById('join-btn').disabled = false;
+      }
+    }
+  });
+});
+
+// 휴대전화 인증 시작 버튼 클릭 이벤트를 처리하는 부분
+$('#startTimer').on('click', function () {
+  let userPhone = $('.inputphone').val();
+
+  // 휴대전화 입력값이 비어있으면 인증 버튼 비활성화
+  if (userPhone.trim() === '') {
+    document.getElementById('join-btn').disabled = true;
+    return;
+  }
+
+  $.ajax({
+    url: '/sms/v1/msgSend',
+    type: 'post',
+    data: JSON.stringify({ userPhone: userPhone }),
+    contentType: 'application/json; charset=utf-8',
+    success: function () {
+      $('.inputresult').css('display', 'flex');
+      $('.inputresult').text("입력하신 번호로 인증번호가 발송되었습니다.");
+      document.getElementById('join-btn').disabled = true;
+    }
+  });
+
+  // 타이머 js
+  var time = 300; // 기준시간 작성
+  var min = ""; // 분
+  var sec = ""; // 초
+
+  var x = setInterval(function () {
+    min = parseInt(time / 60);
+    sec = time % 60;
+
+    document.getElementById("time").innerHTML = min + "분" + sec + "초";
+    time--;
+
+    if (time < 0) {
+      clearInterval(x);
+      document.getElementById("time").innerHTML = "시간초과";
+    }
+  }, 1000);
+});
+//userPhone : 가입자의 폰번호, checkNumber : 가입자가 입력한 인증번호
+/*===문자 인증 관련 js 종료===*/
+
 /*============================모달창 관련 js 설정 시작*/
 // '이용약관' 모달 열기
 $('.btn-open-popup').on('click', function(){
@@ -211,7 +287,7 @@ function Validation() {
   }
   //비밀번호 영어 대소문자 확인
   else if(!regPw.test(pw.value)){
-    alert("비밀번호를 8~12자 영문 대소문자, 숫자만 입력하세요.\n영문 대문자와 소문자를 각각 한 글자씩 포함하여 주세요.");
+    alert("비밀번호를 8~12자 영문 소문자, 숫자만 입력하세요.\n영문 소문자를 한 글자이상 포함하여 주세요.");
     pw.focus();
     return false;
   }
@@ -286,7 +362,7 @@ function Validation() {
 
   //개인정보처리방침 확인
   if(!checkedPrivacy(privacy)){
-    alert("개인정보처리방침을 체크하세요.")
+    alert("개인정보수집 및 이용동의를 체크하세요.")
     privacy.focus();
     return false;
   }
