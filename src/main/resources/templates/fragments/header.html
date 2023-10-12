@@ -6,6 +6,14 @@
     <link rel="stylesheet" href="/css/fragments/header.css">
     <title>header</title>
 </head>
+<!--페이지 설명
+    - session.userNumber 변수를 사용 : 사용자가 로그인한 경우 또는 로그인하지 않은 경우를 확인하고 메뉴를 조정.
+    - <div th:if="${session.userNumber == null }">와 <div th:unless="${session.userNumber != null}">
+    : 사용하여 로그인하지 않은 경우와 로그인한 경우를 구분
+    - session.userLevel 변수를 사용 : 사용자의 레벨을 확인하고 상담사, 관리자 등의 메뉴를 표시
+    - 로그인 상태와 사용자의 레벨에 따라 링크 텍스트와 URL이 동적으로 생성
+    - 사용자가 로그아웃할 수 있는 로그아웃 링크도 제공
+-->
 <body>
 <div class="header" th:fragment="header">
     <div class="header-container">
@@ -17,22 +25,17 @@
                     <li><a href="/board/notice">커뮤니티</a></li>
                     <li><a href="/test/diagnosis">자가진단테스트</a></li>
                     <li><a href="/counselor/pay/payMate">비대면상담받기</a></li>
-
+                    <!--타임리프 : 해당 세션의 정보에 따라 이동 하는 페이지를 다르게 줌.-->
                     <div th:if="${session.userNumber == null }">
                         <li><a href="/user/login">상담사등록</a></li>
                     </div>
-
                     <div th:unless="${session.userNumber == null}">
-
                         <div th:if="${session.userLevel == 3 || session.userLevel == 2}">
                             <li><a href="/counselor/free/freeRegistration">상담사등록</a></li>
                         </div>
                         <div th:unless="${session.userLevel == 3 || session.userLevel == 2}">
                             <li><a href="/notice/detail?noticeNumber=1">상담사등록</a></li>
                         </div>
-
-<!--                        <li><a href="/counselor/free/freeRegistration">상담사등록</a></li>-->
-
                     </div>
                     <li><a href="/main/map">상담센터찾기</a></li>
                 </ul>
@@ -40,9 +43,8 @@
         </div>
 
         <form class="header-nav2">
-
             <div class="nav2-box" >
-
+                <!--로그인 및 로그아웃 시 세션에 따른 메뉴 변경-->
                 <div  th:if="${session.userNumber == null}">
                     <a class="nav2-box-a" href="/user/login">로그인</a>
                     <a href="/user/join">회원가입</a>
@@ -92,7 +94,6 @@
             </div>
 
         </form>
-
     </div>
 </div>
 <!--=======헤더 종료=======-->

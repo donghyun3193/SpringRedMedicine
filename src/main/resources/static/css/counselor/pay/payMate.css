@@ -237,6 +237,7 @@ td img {
 .right{
    width: 300px;
   /* margin-right: 5px; */
+  text-align:start;
 }
 
 .divsum{

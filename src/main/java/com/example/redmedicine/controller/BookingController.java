@@ -53,7 +53,6 @@ public class BookingController {
         Long bookNumber = bookingService.inputData(bookDto);
         System.out.println("============================" + bookNumber);
 
-
         HttpSession session = req.getSession();
         session.setAttribute("bookNumber",bookNumber);
         session.removeAttribute("bookDate");
