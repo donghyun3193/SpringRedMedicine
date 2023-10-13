@@ -26,4 +26,10 @@ public interface NoticeMapper {
 
     //    수정
     public void update(NoticeDto noticeDto);
+
+    //공지사항 1번글 조회
+    public NoticeVo selectFirstNotice();
+
+    //공지사항 2번글 조회
+    public NoticeVo selectSecondNotice();
 }

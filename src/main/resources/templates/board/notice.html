@@ -40,6 +40,26 @@
                             <th width="10%">작성자</th>
                             <th width="20%">작성일</th>
                             <tbody>
+                            <tr>
+                                <td>[필독]</td>
+                                <td>
+                                    <a th:href="@{/notice/detail(noticeNumber=${firstNotice.noticeNumber})}">
+                                        <span th:text="${firstNotice.noticeTitle}">제목</span>
+                                    </a>
+                                </td>
+                                <td>관리자</td>
+                                <td th:text="${#dates.format(firstNotice.noticeDate,'yyyy-MM-dd')}"></td>
+                            </tr>
+                            <tr>
+                                <td>[필독]</td>
+                                <td>
+                                    <a th:href="@{/notice/detail(noticeNumber=${secondNotice.noticeNumber})}">
+                                        <span th:text="${secondNotice.noticeTitle}">제목</span>
+                                    </a>
+                                </td>
+                                <td>관리자</td>
+                                <td th:text="${#dates.format(firstNotice.noticeDate,'yyyy-MM-dd')}"></td>
+                            </tr>
                                 <tr th:each="notice, i : ${noticeList}">
                                     <td th:text="${i.index+1}"></td>
                                     <td>

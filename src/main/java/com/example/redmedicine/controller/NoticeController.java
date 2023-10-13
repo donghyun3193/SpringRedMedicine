@@ -65,6 +65,8 @@ public class NoticeController {
 
     @GetMapping(value = {"/list","/notice"})
     public String showListPage(Criteria criteria, Model model){
+        model.addAttribute("firstNotice",noticeService.selectFirstNotice());
+        model.addAttribute("secondNotice",noticeService.selectSecondNotice());
         model.addAttribute("noticeList", noticeService.findAll(criteria));
         model.addAttribute("pageInfo", new PageVo(noticeService.getTotal(), criteria));
         return "board/notice";

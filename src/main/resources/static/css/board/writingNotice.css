@@ -275,6 +275,7 @@ th{
 }
 #main-buttons{
     color: white;
+    cursor: pointer;
 }
 .footer{
     width: 100vw;
