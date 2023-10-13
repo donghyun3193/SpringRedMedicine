@@ -55,4 +55,10 @@ public class NoticeService {
     public void modify(NoticeDto noticeDto){
         noticeMapper.update(noticeDto);
     }
+
+    //공지사항 1번글 조회
+    public NoticeVo selectFirstNotice(){return noticeMapper.selectFirstNotice();};
+
+    //공지사항 2번글 조회
+    public NoticeVo selectSecondNotice(){return noticeMapper.selectSecondNotice();};
 }
