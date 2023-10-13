@@ -53,5 +53,20 @@
         WHERE NOTICE_NUMBER = #{noticeNumber}
     </update>
 
+    <select id="selectFirstNotice" resultType="noticeVo">
+        SELECT NOTICE_NUMBER, NOTICE_TITLE, NOTICE_CONTENT, N.USER_NUMBER, USER_NAME,
+               NOTICE_DATE, U.USER_ID
+        FROM TBL_NOTICE N JOIN TBL_USER U
+                               ON N.USER_NUMBER = U.USER_NUMBER
+        WHERE N.NOTICE_NUMBER = 1
+    </select>
+
+    <select id="selectSecondNotice" resultType="noticeVo">
+        SELECT NOTICE_NUMBER, NOTICE_TITLE, NOTICE_CONTENT, N.USER_NUMBER, USER_NAME,
+               NOTICE_DATE, U.USER_ID
+        FROM TBL_NOTICE N JOIN TBL_USER U
+                               ON N.USER_NUMBER = U.USER_NUMBER
+        WHERE N.NOTICE_NUMBER = 2
+    </select>
 
 </mapper>

@@ -220,10 +220,11 @@ a{
   /* background-color: white; */
 }
 .main-content-title{
+  font-family: 'iceJaram-Rg';
   margin: 0 auto;
   width: 1000px;
   height: 150px;
-  font-size: 30px;
+  font-size: 60px;
   font-weight: bold;
   line-height: 120px;
   /* text-indent: 40px; */
