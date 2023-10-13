@@ -93,7 +93,12 @@
 
             <!-- 글쓰기 버튼 -->
             <div class="button-container">
-                <button type="submit"><a href="/board/writingCounsel" id="writing-button">글쓰기</a></button>
+                <th:block th:if="${session.userNumber != null}">
+                    <button class="write-btn" id="write-btn"  type="submit"
+                            style="cursor: pointer;">
+                           글쓰기
+                    </button>
+                </th:block>
             </div>
         </div>
     </div>
@@ -102,5 +107,11 @@
 <footer class="footer" th:replace="fragments/footer :: footer"></footer>
 <!-- 후터 끝-->
 <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+<script>
+    //글쓰기 버튼
+    $('#write-btn').on('click', function () {
+        window.location.href = '/board/writingCounsel';
+    });
+</script>
 </body>
 </html>
