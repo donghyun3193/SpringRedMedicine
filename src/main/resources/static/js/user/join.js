@@ -1,79 +1,3 @@
-/*===문자 인증 관련 js 시작===*/
-$('#checkNum').on('click', function () {
-  let checkNumber = $('#inputNum').val();
-  let inputphone = $('.inputphone').val();
-
-  // 인증번호와 휴대전화 입력값이 모두 비어있으면 회원가입 버튼 비활성화
-  if (checkNumber.trim() === '' || inputphone.trim() === '') {
-    document.getElementById('join-btn').disabled = true;
-    return;
-  }
-
-  let param = {
-    checkNumber: checkNumber
-  }
-
-  $.ajax({
-    url: '/sms/v1/msgCheck',
-    type: 'post',
-    data: JSON.stringify(param),
-    contentType: 'application/json; charset=utf-8',
-    success: function (result) {
-      console.log(result);
-
-      $('.inputresult').text(result);
-
-      if (result == "인증이 완료되었습니다.") {
-        $('.main-time').css('display', 'none');
-        document.getElementById('join-btn').disabled = false;
-      }
-    }
-  });
-});
-
-// 휴대전화 인증 시작 버튼 클릭 이벤트를 처리하는 부분
-$('#startTimer').on('click', function () {
-  let userPhone = $('.inputphone').val();
-
-  // 휴대전화 입력값이 비어있으면 인증 버튼 비활성화
-  if (userPhone.trim() === '') {
-    document.getElementById('join-btn').disabled = true;
-    return;
-  }
-
-  $.ajax({
-    url: '/sms/v1/msgSend',
-    type: 'post',
-    data: JSON.stringify({ userPhone: userPhone }),
-    contentType: 'application/json; charset=utf-8',
-    success: function () {
-      $('.inputresult').css('display', 'flex');
-      $('.inputresult').text("입력하신 번호로 인증번호가 발송되었습니다.");
-      document.getElementById('join-btn').disabled = true;
-    }
-  });
-
-  // 타이머 js
-  var time = 300; // 기준시간 작성
-  var min = ""; // 분
-  var sec = ""; // 초
-
-  var x = setInterval(function () {
-    min = parseInt(time / 60);
-    sec = time % 60;
-
-    document.getElementById("time").innerHTML = min + "분" + sec + "초";
-    time--;
-
-    if (time < 0) {
-      clearInterval(x);
-      document.getElementById("time").innerHTML = "시간초과";
-    }
-  }, 1000);
-});
-//userPhone : 가입자의 폰번호, checkNumber : 가입자가 입력한 인증번호
-/*===문자 인증 관련 js 종료===*/
-
 /*============================모달창 관련 js 설정 시작*/
 // '이용약관' 모달 열기
 $('.btn-open-popup').on('click', function(){
@@ -94,36 +18,6 @@ $('section').on('click', function(){
 $('.modal').on('click', function(event){
   event.stopPropagation();
 });
-
-/*=============================모달창 관련 js 설정 종료*/
-
-//타이머 js
-// var timerInterval; // 타이머의 setInterval 반환값을 저장하는 전역 변수
-//
-// document.getElementById("startTimer").addEventListener("click", function() {
-//   if (timerInterval) {
-//     clearInterval(timerInterval); // 이전 타이머를 정지시킴
-//   }
-//
-//   var time = 300; // 기준시간 작성
-//   var min = ""; // 분
-//   var sec = ""; // 초
-//
-//   timerInterval = setInterval(function() {
-//     min = parseInt(time / 60); // 몫을 계산
-//     sec = time % 60; // 나머지를 계산
-//
-//     document.getElementById("time").innerHTML = min + "분" + sec + "초";
-//     time--;
-//
-//     // 타임아웃 시
-//     if (time < 0) {
-//       clearInterval(timerInterval); // setInterval() 실행을 끝냄
-//       document.getElementById("time").innerHTML = "시간초과";
-//     }
-//   }, 1000);
-// });
-  //타이머 js 끝
 
 //성별 선택!
 let $radioGender = $('.radio-gender');
@@ -240,147 +134,6 @@ birthDaySelect.addEventListener('change', updateUserBirth);
 
 // 초기화시에도 실행
 updateUserBirth();
-/* */
-/*-----유효성 검사의 시작-----*/
-// 유효성 검사 메서드
-function Validation() {
-  //변수에 저장
-  let id = document.getElementById("userId")
-  let pw = document.getElementById("userPassword")
-  let cpw = document.getElementById("confirm-password")
-  let name = document.getElementById("userName")
-  let mail = document.getElementById("userEmail")
-  let privacy = document.getElementsByName("check-privacy")
-  let terms = document.getElementsByName("check-terms")
-  let gender = document.getElementById("userGender")
-  let joinForm = document.joinForm;
-
-  // 정규식
-  // id
-  let regId = /^[a-zA-Z0-9]{8,12}$/;
-  // pw
-  let regPw = /^(?=.*[a-z])[a-zA-Z0-9]{8,12}$/;
-  // 이름
-  let regName = /^[가-힣a-zA-Z]{2,15}$/;
-  // 이메일
-  let regMail = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
-
-
-  //아이디 확인
-  if(id.value.length == 0){
-    alert("아이디를 입력하세요.")
-    id.focus();
-    return false;
-  }
-  //아이디 영어 대소문자 확인
-  else if(!regId.test(id.value)){
-    alert("아이디를 8~12자 영문 대소문자, 숫자만 입력하세요.")
-    id.focus();
-    return false;
-  }
-
-  //비밀번호 확인
-  if(pw.value == ""){
-    alert("비밀번호를 입력하세요.")
-    pw.focus();
-    return false;
-  }
-  //비밀번호 영어 대소문자 확인
-  else if(!regPw.test(pw.value)){
-    alert("비밀번호를 8~12자 영문 소문자, 숫자만 입력하세요.\n영문 소문자를 한 글자이상 포함하여 주세요.");
-    pw.focus();
-    return false;
-  }
-  //비밀번호 확인
-  if(cpw.value !== pw.value){
-    alert("비밀번호가 동일하지 않습니다.")
-    cpw.focus();
-    return false;
-  }
-
-  //이름 확인 = 한글과 영어만 가능하도록
-  if(name.value == ""){
-    alert("이름을 입력해주세요")
-    name.focus();
-    return false;
-  } else if(!regName.test(name.value)){
-    alert("이름을 최소 2글자 이상, 한글과 영어만 입력하세요.")
-    name.focus();
-    return false;
-  }
-
-  //메일주소 확인
-  if(mail.value.length == 0){
-    alert("메일주소를 입력하세요.")
-    mail.focus();
-    return false;
-  }else if(!regMail.test(mail.value)){
-    alert("잘못된 이메일 형식입니다.")
-    mail.focus();
-    return false;
-  }
-
-  // 생년월일 확인
-  let selectedDay = $('#birth-day').val();
-
-  if (selectedDay == null) {
-    alert('생년월일을 선택해 주세요.');
-    return false;
-  }
-
-// 성별 확인
-  if (!isCheckedGender()) {
-    alert("성별을 확인해주세요");
-    return false;
-  }
-// 성별 체크 확인
-  function isCheckedGender() {
-    let genderRadios = document.getElementsByName("userGender");
-    for (let i = 0; i < genderRadios.length; i++) {
-      if (genderRadios[i].checked) {
-        return true;
-      }
-    }
-    return false;
-  }
-
-  //이용약관 확인
-  if(!checkedTerms(terms)){
-    alert("이용약관을 체크하세요.")
-    terms.focus();
-    return false;
-  }
-  //이용약관 체크 확인
-  function checkedTerms(arr){
-    for(let i=0; i<arr.length; i++){
-      if(arr[i].checked == true){
-        return true;
-      }
-    }
-    return false;
-  }
-
-  //개인정보처리방침 확인
-  if(!checkedPrivacy(privacy)){
-    alert("개인정보수집 및 이용동의를 체크하세요.")
-    privacy.focus();
-    return false;
-  }
-  //개인정보처리방침 체크 확인
-  function checkedPrivacy(arr){
-    for(let i=0; i<arr.length; i++){
-      if(arr[i].checked == true){
-        return true;
-      }
-    }
-    return false;
-  }
-
-  //function che
-
-  // 유효성 문제 없을 시 폼에 submit
-  document.joinForm.submit();
-}
 
 /*아이디 중복 유효성 검사*/
 // 확인 버튼 클릭 이벤트를 처리하는 부분
@@ -394,7 +147,7 @@ $("#confirm-id").on("click", function () {
   if (userId.length < 8 || userId.length > 12) {
     let checkIdElement = $('.check-id');
     checkIdElement.text("8~12자 영문 대소문자, 숫자만 입력하세요.");
-    checkIdElement.css('color', 'blue');
+    checkIdElement.css('color', 'red');
     // 회원가입 버튼을 비활성화
     document.getElementById('join-btn').disabled = true;
     return; // 함수 종료
@@ -417,7 +170,7 @@ $("#confirm-id").on("click", function () {
       }
       else {
         checkIdElement.text("사용 가능한 아이디입니다.");
-        checkIdElement.css('color', 'green');
+        checkIdElement.css('color', 'blue');
 
         // 중복된 아이디가 없을 때 입력 필드와 회원가입 버튼을 다시 활성화
         document.getElementById('userId').disabled = false;
@@ -429,3 +182,235 @@ $("#confirm-id").on("click", function () {
 /*-----유효성 검사의 종료-----*/
 
 
+// 회원가입 버튼 클릭 이벤트 처리
+$('#join-btn').on('click', function () {
+  /*-----유효성 검사의 시작-----*/
+// 유효성 검사 메서드
+  function Validation() {
+    //변수에 저장
+    let id = document.getElementById("userId")
+    let pw = document.getElementById("userPassword")
+    let cpw = document.getElementById("confirm-password")
+    let name = document.getElementById("userName")
+    let mail = document.getElementById("userEmail")
+    let phone = document.getElementById("userPhone")
+    let confirm = document.getElementById("inputNum")
+    let privacy = document.getElementsByName("check-privacy")
+    let terms = document.getElementsByName("check-terms")
+    let gender = document.getElementById("userGender")
+    // let joinForm = document.joinForm;
+
+    // 정규식
+    // id
+    let regId = /^[a-zA-Z0-9]{8,12}$/;
+    // pw
+    let regPw = /^(?=.*[a-z])[a-zA-Z0-9]{8,12}$/;
+    // 이름
+    let regName = /^[가-힣a-zA-Z]{2,15}$/;
+    // 이메일
+    let regMail = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
+
+
+    //아이디 확인
+    if(id.value.length == 0){
+      alert("아이디를 입력하세요.")
+      id.focus();
+      return false;
+    }
+    //아이디 영어 대소문자 확인
+    else if(!regId.test(id.value)){
+      alert("아이디를 8~12자 영문 대소문자, 숫자만 입력하세요.")
+      id.focus();
+      return false;
+    }
+
+    //비밀번호 확인
+    if(pw.value == ""){
+      alert("비밀번호를 입력하세요.")
+      pw.focus();
+      return false;
+    }
+    //비밀번호 영어 대소문자 확인
+    else if(!regPw.test(pw.value)){
+      alert("비밀번호를 8~12자 영문 소문자, 숫자만 입력하세요.\n영문 소문자를 한 글자이상 포함하여 주세요.");
+      pw.focus();
+      return false;
+    }
+    //비밀번호 확인
+    if(cpw.value !== pw.value){
+      alert("비밀번호가 동일하지 않습니다.")
+      cpw.focus();
+      return false;
+    }
+
+    //이름 확인 = 한글과 영어만 가능하도록
+    if(name.value == ""){
+      alert("이름을 입력해주세요")
+      name.focus();
+      return false;
+    } else if(!regName.test(name.value)){
+      alert("이름을 최소 2글자 이상, 한글과 영어만 입력하세요.")
+      name.focus();
+      return false;
+    }
+
+    //메일주소 확인
+    if(mail.value.length == 0){
+      alert("메일주소를 입력하세요.")
+      mail.focus();
+      return false;
+    }else if(!regMail.test(mail.value)){
+      alert("잘못된 이메일 형식입니다.")
+      mail.focus();
+      return false;
+    }
+    //휴대전화 번호 확인
+    if(phone.value.length == 0){
+      alert("전화번호를 입력하세요.")
+      phone.focus();
+      return false;
+    }
+    //인증번호 입력
+    if(confirm.value.length == 0){
+      alert("인증번호를 입력하세요.")
+      confirm.focus();
+      return false;
+    }
+
+    // 생년월일 확인
+    let selectedDay = $('#birth-day').val();
+
+    if (selectedDay == null) {
+      alert('생년월일을 선택해 주세요.');
+      return false;
+    }
+
+// 성별 확인
+    if (!isCheckedGender()) {
+      alert("성별을 확인해주세요");
+      return false;
+    }
+// 성별 체크 확인
+    function isCheckedGender() {
+      for (let i = 0; i < gender.length; i++) {
+        if (gender[i].checked) {
+          return true;
+        }
+      }
+      return false;
+    }
+
+    //이용약관 확인
+    if(!checkedTerms(terms)){
+      alert("이용약관을 체크하세요.")
+      terms.focus();
+      return false;
+    }
+    //이용약관 체크 확인
+    function checkedTerms(arr){
+      for(let i=0; i<arr.length; i++){
+        if(arr[i].checked == true){
+          return true;
+        }
+      }
+      return false;
+    }
+    //개인정보처리방침 확인
+    if(!checkedPrivacy(privacy)){
+      alert("개인정보수집 및 이용동의를 체크하세요.")
+      privacy.focus();
+      return false;
+    }
+    //개인정보처리방침 체크 확인
+    function checkedPrivacy(arr){
+      for(let i=0; i<arr.length; i++){
+        if(arr[i].checked == true){
+          return true;
+        }
+      }
+      return false;
+    }
+  }
+  // Validation 함수를 호출하여 유효성 검사 수행
+  if (Validation()) {
+    // 유효성 문제 없을 시 폼에 submit
+    document.joinForm.submit();
+  }
+});
+
+
+/*===문자 인증 관련 js 시작===*/
+$('#checkNum').on('click', function () {
+  let checkNumber = $('#inputNum').val();
+  let inputphone = $('.inputphone').val();
+
+  // 인증번호와 휴대전화 입력값이 모두 비어있으면 회원가입 버튼 비활성화
+  if (checkNumber.trim() === '' || inputphone.trim() === '') {
+    document.getElementById('join-btn').disabled = true;
+    return;
+  }
+
+  let param = {
+    checkNumber: checkNumber
+  }
+
+  $.ajax({
+    url: '/sms/v1/msgCheck',
+    type: 'post',
+    data: JSON.stringify(param),
+    contentType: 'application/json; charset=utf-8',
+    success: function (result) {
+      console.log(result);
+
+      $('.inputresult').text(result);
+
+      if (result == "인증이 완료되었습니다.") {
+        $('.main-time').css('display', 'none');
+        document.getElementById('join-btn').disabled = false;
+      }
+    }
+  });
+});
+
+// 휴대전화 인증 시작 버튼 클릭 이벤트를 처리하는 부분
+$('#startTimer').on('click', function () {
+  let userPhone = $('.inputphone').val();
+
+  // 휴대전화 입력값이 비어있으면 인증 버튼 비활성화
+  if (userPhone.trim() === '') {
+    document.getElementById('join-btn').disabled = true;
+    return;
+  }
+
+  $.ajax({
+    url: '/sms/v1/msgSend',
+    type: 'post',
+    data: JSON.stringify({ userPhone: userPhone }),
+    contentType: 'application/json; charset=utf-8',
+    success: function () {
+      $('.inputresult').css('display', 'flex');
+      $('.inputresult').text("입력하신 번호로 인증번호가 발송되었습니다.");
+      document.getElementById('join-btn').disabled = true;
+    }
+  });
+
+  // 타이머 js
+  var time = 300; // 기준시간 작성
+  var min = ""; // 분
+  var sec = ""; // 초
+
+  var x = setInterval(function () {
+    min = parseInt(time / 60);
+    sec = time % 60;
+
+    document.getElementById("time").innerHTML = min + "분" + sec + "초";
+    time--;
+
+    if (time < 0) {
+      clearInterval(x);
+      document.getElementById("time").innerHTML = "시간초과";
+    }
+  }, 1000);
+});
+//userPhone : 가입자의 폰번호, checkNumber : 가입자가 입력한 인증번호
+/*===문자 인증 관련 js 종료===*/

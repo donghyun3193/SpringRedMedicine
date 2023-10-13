@@ -13,18 +13,15 @@
 
 <div class="main-container">
     <div class="main-nav-container">
-        <!-- <div class="main-nav"> -->
         <ul>
             <li><a href="/board/notice" id="main-nav-button">공지사항</a></li>
             <li><a href="/board/counselBoard" id="main-nav-button">상담게시판</a></li>
             <li><a href="/board/diary" id="main-nav-button">일기쓰기</a></li>
         </ul>
-        <!-- </div> -->
     </div>
     <div class="main-content">
         <div class="main-content-contaniner">
             <div class="main-title">상담게시판</div>
-<!--                            <form action="/board/readingCounsel" method="get">-->
             <div class="title" name="counselorTitle" id="counselorTitle"
                  th:text="${counselor.counselorTitle}"></div>
             <div class="writer-date">
@@ -42,11 +39,6 @@
                     <img src="" alt="" />
                     <!-- /이미지 예시 -->
                 </div>
-                <!-- 이미지 -->
-<!--                <div class="post-images">-->
-<!--                    <div th:if="${counselor.cFileName == null}" class="board-item-image" style="background-image: url(https://via.placeholder.com/25x25)"></div>-->
-<!--                    <div th:unless="${counselor.cFileName == null}" class="board-item-image" th:style="'background-image: url(/upload/' + ${counselor.cFileRoute} + '/th_' + ${counselor.cFileUuid} + '_' + ${counselor.cFileName} + ')'"></div>-->
-<!--                </div>-->
             </div>
             <div class="buttons">
                 <button type="button"><a href="/board/counselBoard" id="list-button">목록</a></button>
@@ -59,7 +51,6 @@
                              style="cursor: pointer;">삭제</button>
                 </th:block>
             </div>
-<!--                            </form>-->
             <!--===댓글 시작합니다.===-->
             <div class="counsel-comment-box">
                 <div class="reply-wrap">
@@ -68,7 +59,6 @@
                         <div class="reply-wrap__box">
                             <div class="reply-content__box">
                                 <div class="reply-writer" th:text="${session.userName}"></div>
-<!--                                th:text="${counselor.userName}"-->
                                 <textarea name="cCommentContent" id="reply-content" cols="30" rows="10"></textarea>
                             </div>
                             <div class="reply-btn-wrap">
