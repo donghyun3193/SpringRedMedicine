@@ -43,7 +43,7 @@
 <details open>
 <summary>ERD이미지</summary>
 
-[![빨간약 erd구성]<a href='https://ifh.cc/v-H9Fj40' target='_blank'><img src='https://ifh.cc/g/H9Fj40.jpg' border='0'></a>]
+<a href='https://ifh.cc/v-H9Fj40' target='_blank'><img src='https://ifh.cc/g/H9Fj40.jpg' border='0'></a>
 
 </details>
 
