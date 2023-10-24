@@ -56,7 +56,7 @@
 
 ## 나의 작업
 
-### 회원 가입 기능 <a href="https://github.com/gimdaeyeon/happy_pets_day/wiki/%EC%82%B0%EC%B1%85-%EA%B2%8C%EC%8B%9C%ED%8C%90-%EA%B8%80-%EC%9E%91%EC%84%B1-%EB%B0%8F-%EC%88%98%EC%A0%95"> 기능소개 WIKI로 이동</a>
+### 회원 가입 기능 <a href="https://github.com/donghyun3193/SpringRedMedicine/wiki/%ED%9A%8C%EC%9B%90%EA%B0%80%EC%9E%85"> 기능소개 WIKI로 이동</a>
 - 회원 가입 시 필요한 정보 입력할 수 있도록
 - 아이디 유효성 검사(비동기)
 - 휴대전화 문자 인증
