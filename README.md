@@ -20,7 +20,7 @@
   - [ERD구성](#erd구성)
   - [Tools](#tools)
   - [나의 작업](#나의-작업)
-    - [회원가입  기능소개 WIKI로 이동](#회원가입--기능소개-wiki로-이동)
+    - [회원가입  기능소개 WIKI로 이동](#회원 가입 기능--기능소개-wiki로-이동)
     - [산책 게시판 리스트 기능소개 WIKI로 이동](#산책-게시판-리스트-기능소개-wiki로-이동)
     - [산책 게시판 글 보기 기능소개 WIKI로 이동](#산책-게시판-글-보기-기능소개-wiki로-이동)
     - [산책 게시판 댓글 기능소개 WIKI로 이동](#산책-게시판-댓글-기능소개-wiki로-이동)
@@ -61,8 +61,8 @@
 - 아이디 유효성 검사(비동기)
 - 휴대전화 문자 인증
 
-<a href="https://github.com/gimdaeyeon/happy_pets_day/wiki/%EC%82%B0%EC%B1%85-%EA%B2%8C%EC%8B%9C%ED%8C%90-%EA%B8%80-%EC%9E%91%EC%84%B1-%EB%B0%8F-%EC%88%98%EC%A0%95"> 
- <img src="https://postfiles.pstatic.net/MjAyMzA4MDJfMTYx/MDAxNjkwOTQ5MTY5NzE4.frpd021Y49mnOixxx1MYTmdrq6DxUBwiX5Vt2ZqjMEIg.73elE9Iu_Hudk0qQ5yOwTLVgpq5aVMdRs_cbKnV9jvwg.GIF.rlaeodus1306/%EC%9E%91%EC%84%B1.gif?type=w580" width="500">
+<a href="https://github.com/donghyun3193/SpringRedMedicine/wiki/%ED%9A%8C%EC%9B%90%EA%B0%80%EC%9E%85"> 
+ <img src="https://github.com/donghyun3193/SpringRedMedicine/assets/131939490/558a6f13-68af-4237-99f7-35710c704e24?type=w580" width="500">
 </a>
 
 ### 로그인 기능<a href="https://github.com/gimdaeyeon/happy_pets_day/wiki/%EC%82%B0%EC%B1%85-%EA%B2%8C%EC%8B%9C%ED%8C%90-%EB%A6%AC%EC%8A%A4%ED%8A%B8"> 기능소개 WIKI로 이동</a>
